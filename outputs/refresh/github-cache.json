@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "repositories": {
+    "274495425": {
+      "fullName": "remotion-dev/remotion",
+      "etag": "W/\"1f17c99c43faf4fdc273f0b5ce85d391558bb19f131bf3bf8a9f5a932789655b\"",
+      "lastCheckedAt": "2026-08-27T11:05:43Z"
+    },
+    "231283452": {
+      "fullName": "excalidraw/excalidraw",
+      "etag": "W/\"573d2265750e68d9646ada7821663bd35646d021ed77ea0831e2255095f4e002\"",
+      "lastCheckedAt": "2026-08-27T11:05:43Z"
+    },
+    "455229168": {
+      "fullName": "immich-app/immich",
+      "etag": "W/\"4ce416ff0fbea4736eb8937a37c768a50b1768187634d9ff65f7938a1726a592\"",
+      "lastCheckedAt": "2026-08-27T11:05:43Z"
+    },
+    "193215554": {
+      "fullName": "n8n-io/n8n",
+      "etag": "W/\"c2235c0211f755e42250a5123ee5787128a1e9b1e92473490dc0dd99455a5f9d\"",
+      "lastCheckedAt": "2026-08-27T11:05:43Z"
+    }
+  }
+}

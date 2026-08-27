@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectId": "n8n",
+  "sourceFingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65",
+  "reviewedAt": "2026-08-27T13:37:28Z",
+  "impact": "minor",
+  "summary": "当前 README 更突出 AI Agent、模型选择和 1500+ 集成，但已发布页面已经说明 AI 模型、可视化节点、条件动作、自托管和自定义代码，核心产品解释仍然准确。最新 Release 以 API 与核心错误修复为主，因此暂不改写页面。",
+  "affectedFields": [],
+  "evidence": [
+    {
+      "sourceId": "S2",
+      "finding": "README 继续确认可视化画布、自定义代码、自托管或云端部署、AI 工作流和大量集成能力。"
+    },
+    {
+      "sourceId": "S3",
+      "finding": "n8n 2.36.7 主要包含 API、OAuth 和许可证续期等修复，没有改变页面当前描述的核心工作方式。"
+    }
+  ],
+  "recommendedAction": "keep-published",
+  "publicationAuthorized": false
+}

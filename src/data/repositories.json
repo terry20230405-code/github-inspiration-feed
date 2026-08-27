@@ -1,0 +1,50 @@
+{
+  "remotion": {
+    "githubId": 274495425,
+    "fullName": "remotion-dev/remotion",
+    "name": "Remotion",
+    "stars": 57479,
+    "forks": 4346,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:04:01Z",
+    "license": "Remotion License",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "excalidraw": {
+    "githubId": 231283452,
+    "fullName": "excalidraw/excalidraw",
+    "name": "Excalidraw",
+    "stars": 130621,
+    "forks": 15022,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T01:44:31Z",
+    "license": "MIT",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "immich": {
+    "githubId": 455229168,
+    "fullName": "immich-app/immich",
+    "name": "Immich",
+    "stars": 112773,
+    "forks": 6738,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:02:12Z",
+    "license": "AGPL-3.0",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "n8n": {
+    "githubId": 193215554,
+    "fullName": "n8n-io/n8n",
+    "name": "n8n",
+    "stars": 202574,
+    "forks": 60416,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:03:20Z",
+    "license": "Sustainable Use License",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  }
+}

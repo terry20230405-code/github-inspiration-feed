@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-27T13:38:39Z",
+  "mode": "write",
+  "selectedBy": "stage-six-report",
+  "githubApiVersion": "2026-03-10",
+  "authenticated": false,
+  "summary": {
+    "checked": 3,
+    "updated": 0,
+    "refreshed": 3,
+    "semanticReviewPending": 0,
+    "contentDraftRequired": 0,
+    "humanDecisionRequired": 0,
+    "failed": 0
+  },
+  "repositories": [
+    {
+      "id": "remotion",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "ac177f65a23445eb58ffdf47c6444330195773be73fedefdbee2bbb3d1a2328c",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "12",
+      "reasons": []
+    },
+    {
+      "id": "immich",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "9",
+      "reasons": []
+    },
+    {
+      "id": "n8n",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "6",
+      "reasons": []
+    }
+  ]
+}

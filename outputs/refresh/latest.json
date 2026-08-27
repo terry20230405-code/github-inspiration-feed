@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-08-27T11:05:43Z",
+  "mode": "write",
+  "dataFile": "src\\data\\repositories.json",
+  "githubApiVersion": "2026-03-10",
+  "authenticated": false,
+  "summary": {
+    "checked": 4,
+    "updated": 4,
+    "refreshed": 0,
+    "reviewRequired": 0,
+    "failed": 0,
+    "researchRefreshRecommended": 3,
+    "contentReviewRecommended": 0
+  },
+  "repositories": [
+    {
+      "id": "remotion",
+      "requestedFullName": "remotion-dev/remotion",
+      "httpStatus": 200,
+      "rateLimitRemaining": "7",
+      "status": "updated",
+      "changeLevel": "activity",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 57462,
+          "after": 57479,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 4344,
+          "after": 4346,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-08-27T07:42:21Z",
+          "after": "2026-08-27T11:04:01Z",
+          "level": "activity"
+        }
+      ],
+      "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "excalidraw",
+      "requestedFullName": "excalidraw/excalidraw",
+      "httpStatus": 200,
+      "rateLimitRemaining": "6",
+      "status": "updated",
+      "changeLevel": "statistics",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 130613,
+          "after": 130621,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 15021,
+          "after": 15022,
+          "level": "statistics"
+        }
+      ],
+      "researchRefreshRecommended": false,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "immich",
+      "requestedFullName": "immich-app/immich",
+      "httpStatus": 200,
+      "rateLimitRemaining": "5",
+      "status": "updated",
+      "changeLevel": "activity",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 112758,
+          "after": 112773,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 6737,
+          "after": 6738,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-08-27T08:51:36Z",
+          "after": "2026-08-27T11:02:12Z",
+          "level": "activity"
+        }
+      ],
+      "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "n8n",
+      "requestedFullName": "n8n-io/n8n",
+      "httpStatus": 200,
+      "rateLimitRemaining": "4",
+      "status": "updated",
+      "changeLevel": "activity",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 202560,
+          "after": 202574,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 60413,
+          "after": 60416,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-08-27T08:50:55Z",
+          "after": "2026-08-27T11:03:20Z",
+          "level": "activity"
+        }
+      ],
+      "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    }
+  ]
+}

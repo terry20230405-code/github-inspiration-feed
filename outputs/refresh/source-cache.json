@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "repositories": {
+    "274495425": {
+      "metadata": {
+        "etag": "W/\"ae7479462221f70efc1741faa0d6a571a056ed7227a199e9213d8e034c2caafb\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "readme": {
+        "etag": "W/\"3eb05612d3c1322dcdf7e84cf75195a1d334e06c\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "release": {
+        "etag": "W/\"09663e0bbb6bc43e894bf263c252731a9354b138a1a9b2fe64f857f07f87549a\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "fullName": "remotion-dev/remotion"
+    },
+    "455229168": {
+      "metadata": {
+        "etag": "W/\"734d3f2386e8bc10a2891620a4f36c71a80b956436b9d40d322309725c12d78d\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "readme": {
+        "etag": "W/\"02ae01857e52955e07cdb4d83a3d8f1d45e29e53\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "release": {
+        "etag": "W/\"2bc8199ecb0510078fd5573f7a15843ff9e77ed6f85df2bc36c6cb8f947f5c86\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "fullName": "immich-app/immich"
+    },
+    "193215554": {
+      "metadata": {
+        "etag": "W/\"96130dedf183bb9b40c58d99170509b54aa714dafa6e79c2195a62faa697058a\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "readme": {
+        "etag": "W/\"21909fae00cbad4f18af84d2948752445051a915\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "release": {
+        "etag": "W/\"1c57477bbfddef17a4f9b843b39d6a3e96239493b891c5cec4332412a4207a4e\"",
+        "lastCheckedAt": "2026-08-27T13:38:39Z"
+      },
+      "fullName": "n8n-io/n8n"
+    }
+  }
+}

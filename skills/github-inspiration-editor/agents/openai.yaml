@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Inspiration Editor"
+  short_description: "将 GitHub 仓库整理成中文灵感卡片、改造方向与可验证数据"
+  default_prompt: "Use $github-inspiration-editor to turn this GitHub repository into a concise inspiration card and evidence-based extension directions."

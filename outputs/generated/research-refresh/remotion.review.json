@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectId": "remotion",
+  "sourceFingerprint": "ac177f65a23445eb58ffdf47c6444330195773be73fedefdbee2bbb3d1a2328c",
+  "reviewedAt": "2026-08-27T13:37:28Z",
+  "impact": "minor",
+  "summary": "当前 README 新增了智能体辅助和拖拽编辑的产品定位，最新版本也加入了 WebMCP 与新的语音处理包；但已发布页面关于 React 组件、代码控制、模板化和批量渲染的核心描述仍由当前来源支持，不需要立即改写。",
+  "affectedFields": [],
+  "evidence": [
+    {
+      "sourceId": "S2",
+      "finding": "README 仍明确说明 React 代码是视频的事实来源，并支持程序化连接数据、批量渲染和制作视频应用。"
+    },
+    {
+      "sourceId": "S3",
+      "finding": "v4.0.518 的新增内容扩展了智能体与 Studio 能力，没有删除页面当前依赖的核心视频生成能力。"
+    }
+  ],
+  "recommendedAction": "keep-published",
+  "publicationAuthorized": false
+}

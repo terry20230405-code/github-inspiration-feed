@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "repositories": {
+    "remotion": {
+      "githubId": 274495425,
+      "fullName": "remotion-dev/remotion",
+      "defaultBranch": "main",
+      "description": "🎥      Make videos programmatically with React",
+      "homepage": "https://remotion.dev",
+      "topics": [
+        "javascript",
+        "react",
+        "video"
+      ],
+      "readme": {
+        "sha": "3eb05612d3c1322dcdf7e84cf75195a1d334e06c",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/blob/main/README.md",
+        "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d"
+      },
+      "latestRelease": {
+        "id": 377334450,
+        "tagName": "v4.0.518",
+        "name": "v4.0.518",
+        "publishedAt": "2026-08-26T18:26:09Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.518",
+        "bodySha256": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668"
+      },
+      "capturedAt": "2026-08-27T13:38:39Z",
+      "fingerprint": "ac177f65a23445eb58ffdf47c6444330195773be73fedefdbee2bbb3d1a2328c"
+    },
+    "immich": {
+      "githubId": 455229168,
+      "fullName": "immich-app/immich",
+      "defaultBranch": "main",
+      "description": "High performance self-hosted photo and video management solution.",
+      "homepage": "https://immich.app",
+      "topics": [
+        "backup-tool",
+        "flutter",
+        "google-photos",
+        "google-photos-alternative",
+        "javascript",
+        "mobile-app",
+        "nestjs",
+        "nodejs",
+        "photo-gallery",
+        "photos",
+        "photos-management",
+        "self-hosted",
+        "svelte",
+        "sveltekit",
+        "typescript",
+        "videos"
+      ],
+      "readme": {
+        "sha": "02ae01857e52955e07cdb4d83a3d8f1d45e29e53",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/immich-app/immich/blob/main/README.md",
+        "contentSha256": "03a9c05673a43119eae0813eaac8bacc2167bb2ffd962fe6436648c506ea75ac"
+      },
+      "latestRelease": {
+        "id": 360659796,
+        "tagName": "v3.1.0",
+        "name": "v3.1.0",
+        "publishedAt": "2026-07-29T14:20:10Z",
+        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
+        "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
+      },
+      "capturedAt": "2026-08-27T13:38:39Z",
+      "fingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b"
+    },
+    "n8n": {
+      "githubId": 193215554,
+      "fullName": "n8n-io/n8n",
+      "defaultBranch": "master",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "homepage": "https://n8n.io",
+      "topics": [
+        "ai",
+        "apis",
+        "automation",
+        "cli",
+        "data-flow",
+        "development",
+        "integration-framework",
+        "integrations",
+        "ipaas",
+        "low-code",
+        "low-code-platform",
+        "mcp",
+        "mcp-client",
+        "mcp-server",
+        "n8n",
+        "no-code",
+        "self-hosted",
+        "typescript",
+        "workflow",
+        "workflow-automation"
+      ],
+      "readme": {
+        "sha": "21909fae00cbad4f18af84d2948752445051a915",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/n8n-io/n8n/blob/master/README.md",
+        "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
+      },
+      "latestRelease": {
+        "id": 376408911,
+        "tagName": "n8n@2.36.7",
+        "name": "n8n@2.36.7",
+        "publishedAt": "2026-08-25T13:02:22Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.7",
+        "bodySha256": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89"
+      },
+      "capturedAt": "2026-08-27T13:38:39Z",
+      "fingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65"
+    }
+  }
+}

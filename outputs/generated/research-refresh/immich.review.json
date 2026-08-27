@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectId": "immich",
+  "sourceFingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b",
+  "reviewedAt": "2026-08-27T13:37:28Z",
+  "impact": "none",
+  "summary": "当前 README 继续支持自托管照片和视频管理、手机备份、相册共享、地图、人脸与对象搜索等页面核心主张；v3.1.0 主要是筛选、上传、归档和管理体验改进，没有推翻已发布内容。",
+  "affectedFields": [],
+  "evidence": [
+    {
+      "sourceId": "S2",
+      "finding": "README 功能表明确列出自动和后台备份、共享相册、EXIF 地图、人脸聚类、元数据及 CLIP 搜索。"
+    },
+    {
+      "sourceId": "S3",
+      "finding": "v3.1.0 的重点是上传唤醒锁、撤销归档、工作流筛选和管理体验改进，未改变页面现有产品模型。"
+    }
+  ],
+  "recommendedAction": "keep-published",
+  "publicationAuthorized": false
+}
