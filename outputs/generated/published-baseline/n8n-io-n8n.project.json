@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "id": "n8n",
+  "repository": {
+    "githubId": 193215554,
+    "fullName": "n8n-io/n8n",
+    "name": "n8n",
+    "stars": 202574,
+    "forks": 60416,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:03:20Z",
+    "license": "Sustainable Use License",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "editorial": {
+    "hook": "画一条线，让几十个工具替你工作",
+    "summary": "它把邮箱、表格、数据库、网页服务和 AI 模型变成可以连接的节点，让用户通过拖拽组合触发器、判断条件与执行动作；流程可以定时或自动运行，也能自托管并插入自定义代码。",
+    "meaning": "它已经拥有大量连接器和可靠的执行底座，Vibe Coding 用户可以隐藏复杂配置，只保留某个职业真正需要的输入和结果，快速做出垂直产品。",
+    "audience": "技术团队、自动化爱好者与运营人员",
+    "features": [
+      "可视化工作流编辑器",
+      "数百种服务连接器",
+      "自托管与代码节点"
+    ],
+    "stack": [
+      "Vue",
+      "TypeScript",
+      "Node.js"
+    ],
+    "opportunity": [
+      "通用自动化的概念和配置仍有学习成本",
+      "大量用户需要的是少数固定行业流程",
+      "可将节点与参数隐藏在更贴近业务的产品界面后"
+    ],
+    "directions": [
+      {
+        "id": "creator-inbox",
+        "name": "创作者合作收件箱",
+        "tagline": "自动整理品牌询价并生成待办",
+        "problem": "创作者的合作邮件散乱，容易漏回和错过截止日期。",
+        "audience": "独立内容创作者",
+        "approach": "连接邮箱，识别合作意向，提取预算与日期并汇总成看板。",
+        "difference": "隐藏工作流节点，只保留创作者熟悉的收件箱和项目视图。",
+        "scope": [
+          "邮件转发入口",
+          "合作信息提取",
+          "状态看板",
+          "回复提醒"
+        ]
+      },
+      {
+        "id": "shop-review",
+        "name": "小店评价雷达",
+        "tagline": "把多平台评价汇总成每日行动建议",
+        "problem": "小店老板没时间逐个平台阅读和回复评价。",
+        "audience": "餐饮与本地服务商家",
+        "approach": "汇总评价、标注情绪和重复问题，每天生成三条优先行动。",
+        "difference": "将自由搭建器变成开箱即用的店铺经营助手。",
+        "scope": [
+          "评价导入",
+          "情绪标签",
+          "问题聚类",
+          "每日摘要"
+        ]
+      },
+      {
+        "id": "personal-brief",
+        "name": "个人信息晨报",
+        "tagline": "每天把关注的信息整理成一页摘要",
+        "problem": "信息分散在多个网站和订阅中，阅读负担大。",
+        "audience": "行业研究者与知识工作者",
+        "approach": "让用户选择少量来源，定时抓取标题并生成分类摘要。",
+        "difference": "提供极简订阅体验，不暴露自动化配置。",
+        "scope": [
+          "RSS 来源",
+          "定时聚合",
+          "分类列表",
+          "邮件发送"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "n8n-io/n8n",
+    "accent": "#1b8825",
+    "foreground": "#000000",
+    "motif": "network",
+    "variant": 2367143650
+  }
+}

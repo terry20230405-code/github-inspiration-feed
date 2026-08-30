@@ -50,7 +50,7 @@ After adding, inserting, reordering, or deliberately migrating a published card,
 npm run test:visual-identity
 ```
 
-This test checks the generator and the actual `projectIds` feed order, so a sequence of individually valid but visually similar colors cannot pass unnoticed.
+This test checks the generator and the actual `src/data/order.json` feed order, so a sequence of individually valid but visually similar colors cannot pass unnoticed.
 
 ## Rendering limits
 

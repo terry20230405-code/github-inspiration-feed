@@ -1,6 +1,4 @@
-export const projectIds = ['remotion', 'excalidraw', 'immich', 'n8n'] as const
-
-export type ProjectId = (typeof projectIds)[number]
+export type ProjectId = string
 
 export type Direction = {
   readonly id: string
@@ -60,4 +58,4 @@ export type Project = {
   readonly visual: ProjectVisual
 }
 
-export type ProjectLayerMap<T> = Readonly<Record<ProjectId, T>>
+export type ProjectLayerMap<T> = Readonly<Record<string, T>>

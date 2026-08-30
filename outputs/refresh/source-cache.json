@@ -45,6 +45,21 @@
         "lastCheckedAt": "2026-08-27T13:38:39Z"
       },
       "fullName": "n8n-io/n8n"
+    },
+    "231283452": {
+      "metadata": {
+        "etag": "W/\"cc307a51b336ecb684a8e2107f39f43a3203fed7cd7253b8e77b58cedf6f2c71\"",
+        "lastCheckedAt": "2026-08-30T03:42:47Z"
+      },
+      "readme": {
+        "etag": "W/\"48b9d1de9fbb1c74406407e89e2471a01b1f28de\"",
+        "lastCheckedAt": "2026-08-30T03:42:47Z"
+      },
+      "release": {
+        "etag": "W/\"3e5c6612b9c53735dccc24a852ce8d2d63aa9367d17382abb6cd3ae320c7fc41\"",
+        "lastCheckedAt": "2026-08-30T03:42:47Z"
+      },
+      "fullName": "excalidraw/excalidraw"
     }
   }
 }

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-import re
+import json
 import unittest
 from pathlib import Path
 
@@ -67,12 +67,9 @@ class VisualIdentityTests(unittest.TestCase):
 
     def test_published_feed_has_distinct_neighbors(self) -> None:
         root = Path(__file__).resolve().parents[3]
-        types_source = (root / "src/data/types.ts").read_text(encoding="utf-8")
-        visuals_source = (root / "src/data/visuals.ts").read_text(encoding="utf-8")
-        order_match = re.search(r"projectIds\s*=\s*\[(.*?)\]\s*as const", types_source, re.DOTALL)
-        self.assertIsNotNone(order_match)
-        order = re.findall(r"['\"]([a-z0-9-]+)['\"]", order_match.group(1))  # type: ignore[union-attr]
-        accents = dict(re.findall(r"^\s*([a-z0-9-]+):.*?accent:\s*['\"](#[0-9a-fA-F]{6})['\"]", visuals_source, re.MULTILINE))
+        order = json.loads((root / "src/data/order.json").read_text(encoding="utf-8"))
+        visuals = json.loads((root / "src/data/visuals.json").read_text(encoding="utf-8"))
+        accents = {project_id: visual["accent"] for project_id, visual in visuals.items()}
         self.assertEqual(set(order), set(accents))
         for first_id, second_id in zip(order, order[1:]):
             self.assertTrue(

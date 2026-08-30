@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "projectId": "excalidraw",
+  "sourceFingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d",
+  "reviewedAt": "2026-08-30T03:30:00Z",
+  "impact": "none",
+  "summary": "当前 README 继续支持手绘风格无限画布、图形与图片、素材库、PNG/SVG 导出、实时协作和分享链接等页面核心主张；最新安全补丁没有改变产品定位。",
+  "affectedFields": [],
+  "evidence": [
+    {
+      "sourceId": "S2",
+      "finding": "README 明确列出无限画布、手绘风格、图片与素材库支持、PNG/SVG 导出，以及 Excalidraw.com 的实时协作和分享链接。"
+    },
+    {
+      "sourceId": "S3",
+      "finding": "v0.18.1 是针对上游 Mermaid XSS 的安全补丁，没有移除页面依赖的核心白板能力。"
+    }
+  ],
+  "recommendedAction": "keep-published",
+  "publicationAuthorized": false
+}

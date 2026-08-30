@@ -8,7 +8,7 @@
 2. 判断它为什么值得继续改造。
 3. 给出三个更具体的小产品方向，并让用户选择后查看完整分析。
 
-当前示例项目为 Remotion、Excalidraw、Immich 和 n8n。主要页面文件是 `src/App.tsx` 和 `src/styles.css`；`src/data.ts` 是组合层，实际数据分别位于 `src/data/repositories.json`、`src/data/editorial.ts` 和 `src/data/visuals.ts`。`src/data/repositories.ts` 负责加载并校验可机器更新的 JSON。
+当前示例项目为 Remotion、Excalidraw、Immich 和 n8n。主要页面文件是 `src/App.tsx` 和 `src/styles.css`；`src/data.ts` 是组合层，页面顺序和三层数据分别位于 `src/data/order.json`、`src/data/repositories.json`、`src/data/editorial.json` 和 `src/data/visuals.json`。同目录下的 TypeScript 加载器负责在页面读取前校验这些 JSON。
 
 ## 当前页面结构
 

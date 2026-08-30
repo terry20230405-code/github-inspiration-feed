@@ -1,6 +1,6 @@
 # 阶段七：仓库内容信号与语义复审
 
-阶段七接收阶段六的 `researchRefreshRecommended` 队列，比较仓库描述、Topics、默认分支、README 和最新正式 Release。它只生成来源证据包和 AI 语义审核结果；不能直接修改 `src/data/editorial.ts`、`src/data/visuals.ts` 或发布内容。
+阶段七接收阶段六的 `researchRefreshRecommended` 队列，比较仓库描述、Topics、默认分支、README 和最新正式 Release。它只生成来源证据包和 AI 语义审核结果；不能直接修改 `src/data/editorial.json`、`src/data/visuals.json`、`src/data/order.json` 或发布内容。
 
 ## 两层职责
 
@@ -92,7 +92,7 @@ npm run validate:research-review -- outputs/generated/research-refresh/immich.so
 - 阶段六报告含失败或关键变化时，阶段七默认拒绝启动。
 - GitHub 限流后停止后续项目，不循环重试。
 - 来源身份或状态异常时不写入该项目的新来源状态。
-- `meaningful` 只允许生成待审核草稿，不能覆盖 `src/data/editorial.ts`。
+- `meaningful` 只允许生成待审核草稿，不能覆盖 `src/data/editorial.json`。
 - `critical` 必须询问用户。
 - 结构校验和质量检查全部通过，也只代表发布候选；只有用户明确批准后才能加入产品数据。
 - 阶段七由总控写入时属于同一个刷新事务；如果后续工程验证失败，来源状态、缓存和 `*.source.json` 一起恢复到写入前快照。

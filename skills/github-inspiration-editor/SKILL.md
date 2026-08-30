@@ -25,6 +25,8 @@ When stage-six results recommend deeper research, read [references/research-refr
 
 Before changing refreshable published data or restoring an earlier refresh state, read [references/version-control-workflow.md](references/version-control-workflow.md). Use a verified pre-write snapshot for every multi-file refresh transaction. Preview manual restores before `--write`, create a safety snapshot before restoration, and never use destructive Git commands to automate refresh rollback. A full rollback may restore only refresh-managed files; editorial and visual history belongs to Git.
 
+Before adding a validated candidate to the feed or replacing an existing project's editorial layer, read [references/publication-workflow.md](references/publication-workflow.md). Prepare and freeze the candidate before approval, require an explicit fingerprint-matched human approval, and use the publication manager for the multi-layer write. Never edit the four published JSON layers as an improvised publication shortcut. A failed publication must restore all four layers from its transaction backup.
+
 When running or maintaining the later end-to-end scheduled refresh, read [references/automation-workflow.md](references/automation-workflow.md). Use the cycle orchestrator instead of manually skipping between stages. Follow `nextActor` and stop at its stated boundary: AI review and draft repair may continue automatically, but repository identity, license, archive status, product-direction choices, publication, deployment, and external writes require their own explicit authorization. A completed refresh never implies publication permission.
 
 ## Produce the content
@@ -33,10 +35,11 @@ Read [references/editorial-guide.md](references/editorial-guide.md) before writi
 
 For a new project without a persisted identity, read [references/visual-identity.md](references/visual-identity.md). Choose a broad family hint from verified capabilities, run `scripts/generate_visual_identity.py`, and store its complete output under `visual`. Pass the immediately adjacent published accent with `--avoid`; when inserting between cards, pass both neighbors. Run the visual-identity test after changing feed order. Do not regenerate visual identity during metadata refresh or ordinary editorial revision.
 
-Create two artifacts:
+Create three artifacts:
 
 1. `<owner>-<repo>.project.json`, containing one app-ready project record.
 2. `<owner>-<repo>.research.md`, listing sources, concrete evidence, uncertain claims, and the reasoning behind each extension direction.
+3. `<owner>-<repo>.quality.json`, containing all 19 A1–E3 results, artifact fingerprints, blockers, and `publicationAuthorized: false`.
 
 When the user requests only a draft, return or save the artifacts without changing the app. Add the record to product data only when the user asks to add, import, or show it in the feed. Preserve existing records and unrelated code.
 
@@ -55,6 +58,7 @@ Run:
 ```bash
 python scripts/validate_research.py <path-to-research-md>
 python scripts/validate_project.py <path-to-project-json>
+python scripts/validate_quality_review.py <path-to-quality-json>
 ```
 
 Resolve validation failures before delivery. Then read [references/quality-rubric.md](references/quality-rubric.md) and check every required item. If any item fails, read [references/quality-repair-loop.md](references/quality-repair-loop.md), repair only the affected fields, and recheck. Stop and ask the user in the situations defined by the rubric or after two distinct repair approaches fail the same item. Passing the quality check creates a publication candidate; it does not authorize adding the record to the feed.

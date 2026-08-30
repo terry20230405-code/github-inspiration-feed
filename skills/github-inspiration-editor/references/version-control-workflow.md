@@ -21,7 +21,7 @@
 - `outputs/refresh/research-latest.json`
 - `outputs/generated/research-refresh/*.source.json`
 
-`src/data/editorial.ts` 和 `src/data/visuals.ts` 不属于自动刷新写入范围，因此不会被刷新事务回滚。它们由 Git 保护。AI生成的 `*.review.json` 和候选草稿也不会被一次元数据回滚误删。
+`src/data/editorial.json`、`src/data/visuals.json` 和 `src/data/order.json` 不属于自动刷新写入范围，因此不会被刷新事务回滚。它们由 Git 和阶段十的发布事务共同保护。AI 生成的 `*.review.json` 和候选草稿也不会被一次元数据回滚误删。
 
 ## 快照包含什么
 

@@ -114,6 +114,38 @@
       },
       "capturedAt": "2026-08-27T13:38:39Z",
       "fingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65"
+    },
+    "excalidraw": {
+      "githubId": 231283452,
+      "fullName": "excalidraw/excalidraw",
+      "defaultBranch": "master",
+      "description": "Virtual whiteboard for sketching hand-drawn like diagrams",
+      "homepage": "https://excalidraw.com",
+      "topics": [
+        "canvas",
+        "collaboration",
+        "diagrams",
+        "drawing",
+        "hacktoberfest",
+        "productivity",
+        "whiteboard"
+      ],
+      "readme": {
+        "sha": "48b9d1de9fbb1c74406407e89e2471a01b1f28de",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/excalidraw/excalidraw/blob/master/README.md",
+        "contentSha256": "011eea74cbbf38fd263ec93a221f379466c557dc7587acfe93797201193a7e7a"
+      },
+      "latestRelease": {
+        "id": 311608023,
+        "tagName": "v0.18.1",
+        "name": "v0.18.1",
+        "publishedAt": "2026-04-21T08:43:20Z",
+        "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
+        "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
+      },
+      "capturedAt": "2026-08-30T03:42:47Z",
+      "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
     }
   }
 }

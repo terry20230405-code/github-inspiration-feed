@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "id": "immich",
+  "repository": {
+    "githubId": 455229168,
+    "fullName": "immich-app/immich",
+    "name": "Immich",
+    "stars": 112773,
+    "forks": 6738,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:02:12Z",
+    "license": "AGPL-3.0",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "editorial": {
+    "hook": "把一生的照片，真正留在自己手里",
+    "summary": "它会从手机自动备份照片和视频到自己的服务器，并按时间轴、相册、地点与人脸整理内容；还支持智能搜索、重复照片识别、共享相册和多端浏览，让私人照片云也拥有成熟产品的体验。",
+    "meaning": "它不只解决了照片保存问题，还积累了人物、地点和时间等有价值的信息，因此很适合继续发展出家庭回忆、旅行故事或照片整理产品。",
+    "audience": "重视隐私、拥有家庭服务器的照片用户",
+    "features": [
+      "手机照片自动备份",
+      "人脸与地点检索",
+      "相册分享"
+    ],
+    "stack": [
+      "Flutter",
+      "TypeScript",
+      "PostgreSQL"
+    ],
+    "opportunity": [
+      "完整自托管对普通用户仍然太复杂",
+      "照片元数据可以衍生出回忆、家庭和旅行体验",
+      "现有能力偏存储管理，上层内容体验仍有空间"
+    ],
+    "directions": [
+      {
+        "id": "family-digest",
+        "name": "家庭照片周报",
+        "tagline": "每周自动生成一份家人共同回忆",
+        "problem": "家庭照片散落在多人手机里，拍完后很少再次回顾。",
+        "audience": "有孩子的家庭与异地亲属",
+        "approach": "按时间聚合同一家庭相册，选出本周照片并生成故事页。",
+        "difference": "从照片备份转向主动的家庭回忆消费。",
+        "scope": [
+          "照片导入",
+          "每周精选",
+          "故事页",
+          "私密分享"
+        ]
+      },
+      {
+        "id": "trip-map",
+        "name": "旅行轨迹相册",
+        "tagline": "用照片位置自动还原一段旅程",
+        "problem": "旅行照片很多，但回忆缺少路线和叙事。",
+        "audience": "旅行爱好者",
+        "approach": "读取照片时间与位置，在地图上形成每日路线和照片节点。",
+        "difference": "围绕一次旅行提供地图叙事。",
+        "scope": [
+          "照片选择",
+          "地图轨迹",
+          "日期分组",
+          "分享长图"
+        ]
+      },
+      {
+        "id": "photo-cleaner",
+        "name": "隐私照片整理助手",
+        "tagline": "找出重复、模糊和可能泄露隐私的照片",
+        "problem": "相册越积越多，手动清理费时且容易忽略敏感截图。",
+        "audience": "相册重度用户",
+        "approach": "在本地分析重复图、模糊图和包含证件信息的截图。",
+        "difference": "强调本地隐私和整理决策，而非云备份。",
+        "scope": [
+          "重复照片分组",
+          "模糊检测",
+          "手动确认",
+          "批量清理"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "immich-app/immich",
+    "accent": "#c526ae",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 1244886925
+  }
+}

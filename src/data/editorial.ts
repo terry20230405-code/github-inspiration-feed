@@ -1,60 +1,50 @@
-import type { ProjectEditorial, ProjectLayerMap } from './types'
+import rawEditorial from './editorial.json'
+import { projectIds } from './order'
+import type { Direction, ProjectEditorial, ProjectLayerMap } from './types'
 
-export const projectEditorial: ProjectLayerMap<ProjectEditorial> = {
-  remotion: {
-    hook: '让视频像网页一样被写出来',
-    summary: '它允许开发者用 React 组件编排画面，用代码精确控制每一帧的字幕、动画、音频和转场。同一套模板可以接收不同数据，在本地、服务器或云端批量渲染成视频。',
-    meaning: '它把原本依赖剪辑软件的重复工作，变成可以复用、自动运行的程序，非常适合继续包装成普通创作者也能使用的小工具。',
-    audience: '需要批量、自动生成视频的开发者与内容团队',
-    features: ['React 组件渲染视频', '逐帧动画控制', '服务端批量渲染'],
-    stack: ['React', 'TypeScript', 'FFmpeg'],
-    opportunity: ['基础能力强，但普通创作者仍需要编写代码', '适合在上层包装模板、表单与行业工作流', '内容生产天然有大量重复、批量场景'],
-    directions: [
-      { id: 'short-video', name: '中文短视频工厂', tagline: '输入脚本，批量生成带字幕的竖屏视频', problem: '小团队制作大量口播短视频时，剪辑步骤重复且耗时。', audience: '知识博主、MCN 与独立创作者', approach: '把 Remotion 模板封装成表单：填写文案、选择配色和配音后自动渲染。', difference: '从代码框架变成无需编程的中文内容工作台。', scope: ['3 套竖屏模板', '文案分镜输入', '字幕自动排版', 'MP4 导出'] },
-      { id: 'knowledge-card', name: '文章转知识卡片视频', tagline: '把长文章拆成可分享的动态知识卡片', problem: '优质长文很难直接在短内容平台传播。', audience: '教育博主、Newsletter 作者', approach: '粘贴文章后手动确认卡片结构，再套用动画模板生成视频。', difference: '聚焦知识内容拆解，而非通用视频编程。', scope: ['文章粘贴', '卡片编辑', '两套动画', '本地导出'] },
-      { id: 'commerce-video', name: '商品视频生成器', tagline: '用商品图片和卖点快速生成促销视频', problem: '小商家无法为每个 SKU 单独制作视频。', audience: '独立站与电商卖家', approach: '上传商品图、价格和卖点，自动套用促销节奏与转场。', difference: '加入电商字段和批量 SKU 工作流。', scope: ['商品信息表单', '图片上传', '1 套促销模板', '单条导出'] },
-    ],
-  },
-  excalidraw: {
-    hook: '让复杂想法，像随手一画那样清楚',
-    summary: '它提供带手绘质感的无限画布，可以插入图形、箭头、文字、图片和便签，并支持多人实时协作、链接分享、素材库以及 PNG、SVG 等格式导出。',
-    meaning: '它已经解决了画布、图形和协作这些难题，特别适合在上面增加模板、结构化输入或 AI 辅助，改造成面向某一类用户的专用工具。',
-    audience: '需要快速表达想法的团队、教师与开发者',
-    features: ['无限画布与手绘图形', '多人实时协作', '图片与场景导出'],
-    stack: ['React', 'TypeScript', 'Canvas'],
-    opportunity: ['通用白板自由度高，新用户面对空白画布容易无从下手', '成熟画布能力可以承载垂直模板和结构化数据', '移动端的轻量捕捉流程仍有空间'],
-    directions: [
-      { id: 'story-map', name: '故事地图生成器', tagline: '用卡片快速梳理角色、地点和情节', problem: '小说和剧本创作者难以直观看到线索关系。', audience: '小说作者、编剧与跑团主持人', approach: '在画布上提供角色、事件、地点三类结构化卡片和关系线。', difference: '把空白白板变成面向故事创作的工作区。', scope: ['三类卡片', '关系连接', '故事模板', '图片导出'] },
-      { id: 'lesson-board', name: '一页课件白板', tagline: '把一个知识点变成可演示的互动白板', problem: '教师制作视觉化讲解材料的门槛较高。', audience: '中小学教师与知识讲师', approach: '提供课堂布局模板、逐步显示和演示模式。', difference: '面向教学讲解流程，而不是自由绘图。', scope: ['课件模板', '元素分步显示', '演示模式', '分享链接'] },
-      { id: 'idea-camera', name: '灵感随手画', tagline: '手机上三十秒记录一个图形化想法', problem: '移动端记录关系型想法时，文字备忘录不够直观。', audience: '产品经理与创意工作者', approach: '简化工具栏，用手势快速放置便签、箭头和图片。', difference: '大幅收窄功能，围绕手机单手快速记录。', scope: ['便签', '箭头', '相册图片', '本地保存'] },
-    ],
-  },
-  immich: {
-    hook: '把一生的照片，真正留在自己手里',
-    summary: '它会从手机自动备份照片和视频到自己的服务器，并按时间轴、相册、地点与人脸整理内容；还支持智能搜索、重复照片识别、共享相册和多端浏览，让私人照片云也拥有成熟产品的体验。',
-    meaning: '它不只解决了照片保存问题，还积累了人物、地点和时间等有价值的信息，因此很适合继续发展出家庭回忆、旅行故事或照片整理产品。',
-    audience: '重视隐私、拥有家庭服务器的照片用户',
-    features: ['手机照片自动备份', '人脸与地点检索', '相册分享'],
-    stack: ['Flutter', 'TypeScript', 'PostgreSQL'],
-    opportunity: ['完整自托管对普通用户仍然太复杂', '照片元数据可以衍生出回忆、家庭和旅行体验', '现有能力偏存储管理，上层内容体验仍有空间'],
-    directions: [
-      { id: 'family-digest', name: '家庭照片周报', tagline: '每周自动生成一份家人共同回忆', problem: '家庭照片散落在多人手机里，拍完后很少再次回顾。', audience: '有孩子的家庭与异地亲属', approach: '按时间聚合同一家庭相册，选出本周照片并生成故事页。', difference: '从照片备份转向主动的家庭回忆消费。', scope: ['照片导入', '每周精选', '故事页', '私密分享'] },
-      { id: 'trip-map', name: '旅行轨迹相册', tagline: '用照片位置自动还原一段旅程', problem: '旅行照片很多，但回忆缺少路线和叙事。', audience: '旅行爱好者', approach: '读取照片时间与位置，在地图上形成每日路线和照片节点。', difference: '围绕一次旅行提供地图叙事。', scope: ['照片选择', '地图轨迹', '日期分组', '分享长图'] },
-      { id: 'photo-cleaner', name: '隐私照片整理助手', tagline: '找出重复、模糊和可能泄露隐私的照片', problem: '相册越积越多，手动清理费时且容易忽略敏感截图。', audience: '相册重度用户', approach: '在本地分析重复图、模糊图和包含证件信息的截图。', difference: '强调本地隐私和整理决策，而非云备份。', scope: ['重复照片分组', '模糊检测', '手动确认', '批量清理'] },
-    ],
-  },
-  n8n: {
-    hook: '画一条线，让几十个工具替你工作',
-    summary: '它把邮箱、表格、数据库、网页服务和 AI 模型变成可以连接的节点，让用户通过拖拽组合触发器、判断条件与执行动作；流程可以定时或自动运行，也能自托管并插入自定义代码。',
-    meaning: '它已经拥有大量连接器和可靠的执行底座，Vibe Coding 用户可以隐藏复杂配置，只保留某个职业真正需要的输入和结果，快速做出垂直产品。',
-    audience: '技术团队、自动化爱好者与运营人员',
-    features: ['可视化工作流编辑器', '数百种服务连接器', '自托管与代码节点'],
-    stack: ['Vue', 'TypeScript', 'Node.js'],
-    opportunity: ['通用自动化的概念和配置仍有学习成本', '大量用户需要的是少数固定行业流程', '可将节点与参数隐藏在更贴近业务的产品界面后'],
-    directions: [
-      { id: 'creator-inbox', name: '创作者合作收件箱', tagline: '自动整理品牌询价并生成待办', problem: '创作者的合作邮件散乱，容易漏回和错过截止日期。', audience: '独立内容创作者', approach: '连接邮箱，识别合作意向，提取预算与日期并汇总成看板。', difference: '隐藏工作流节点，只保留创作者熟悉的收件箱和项目视图。', scope: ['邮件转发入口', '合作信息提取', '状态看板', '回复提醒'] },
-      { id: 'shop-review', name: '小店评价雷达', tagline: '把多平台评价汇总成每日行动建议', problem: '小店老板没时间逐个平台阅读和回复评价。', audience: '餐饮与本地服务商家', approach: '汇总评价、标注情绪和重复问题，每天生成三条优先行动。', difference: '将自由搭建器变成开箱即用的店铺经营助手。', scope: ['评价导入', '情绪标签', '问题聚类', '每日摘要'] },
-      { id: 'personal-brief', name: '个人信息晨报', tagline: '每天把关注的信息整理成一页摘要', problem: '信息分散在多个网站和订阅中，阅读负担大。', audience: '行业研究者与知识工作者', approach: '让用户选择少量来源，定时抓取标题并生成分类摘要。', difference: '提供极简订阅体验，不暴露自动化配置。', scope: ['RSS 来源', '定时聚合', '分类列表', '邮件发送'] },
-    ],
-  },
+const editorialFields = ['audience', 'directions', 'features', 'hook', 'meaning', 'opportunity', 'stack', 'summary']
+const directionFields = ['approach', 'audience', 'difference', 'id', 'name', 'problem', 'scope', 'tagline']
+const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value)
 }
+
+function hasExactFields(value: Record<string, unknown>, fields: readonly string[]) {
+  return Object.keys(value).sort().join('|') === [...fields].sort().join('|')
+}
+
+function isStringList(value: unknown, minimum: number, maximum: number): value is string[] {
+  return Array.isArray(value) && value.length >= minimum && value.length <= maximum && value.every((item) => typeof item === 'string' && item.trim())
+}
+
+function assertDirection(value: unknown, projectId: string, index: number): asserts value is Direction {
+  if (!isRecord(value) || !hasExactFields(value, directionFields)) throw new Error(`Direction ${projectId}[${index}] has unexpected fields`)
+  for (const field of directionFields.filter((field) => field !== 'scope')) {
+    if (typeof value[field] !== 'string' || !value[field]) throw new Error(`Direction ${projectId}[${index}] has an invalid ${field}`)
+  }
+  if (typeof value.id !== 'string' || !slugPattern.test(value.id)) throw new Error(`Direction ${projectId}[${index}] has an invalid ID`)
+  if (!isStringList(value.scope, 3, 6)) throw new Error(`Direction ${projectId}[${index}] must have 3-6 scope items`)
+}
+
+function loadEditorial(value: unknown): ProjectLayerMap<ProjectEditorial> {
+  if (!isRecord(value)) throw new Error('Project editorial data must be an object')
+  if (Object.keys(value).sort().join('|') !== [...projectIds].sort().join('|')) throw new Error('Project editorial IDs must match the published project IDs')
+  for (const id of projectIds) {
+    const editorial = value[id]
+    if (!isRecord(editorial) || !hasExactFields(editorial, editorialFields)) throw new Error(`Project editorial ${id} has unexpected fields`)
+    for (const field of ['hook', 'summary', 'meaning', 'audience']) {
+      if (typeof editorial[field] !== 'string' || !editorial[field]) throw new Error(`Project editorial ${id} has an invalid ${field}`)
+    }
+    if (!isStringList(editorial.features, 3, 6)) throw new Error(`Project editorial ${id} must have 3-6 features`)
+    if (!isStringList(editorial.stack, 1, 8)) throw new Error(`Project editorial ${id} must have 1-8 stack entries`)
+    if (!isStringList(editorial.opportunity, 2, 5)) throw new Error(`Project editorial ${id} must have 2-5 opportunities`)
+    if (!Array.isArray(editorial.directions) || editorial.directions.length < 3 || editorial.directions.length > 5) throw new Error(`Project editorial ${id} must have 3-5 directions`)
+    editorial.directions.forEach((direction, index) => assertDirection(direction, id, index))
+    const directionIds = editorial.directions.map((direction) => (direction as Direction).id)
+    if (new Set(directionIds).size !== directionIds.length) throw new Error(`Project editorial ${id} has duplicate direction IDs`)
+  }
+  return value as ProjectLayerMap<ProjectEditorial>
+}
+
+export const projectEditorial = loadEditorial(rawEditorial)

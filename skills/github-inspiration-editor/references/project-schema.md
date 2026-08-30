@@ -87,4 +87,4 @@ This layer contains the complete persisted product visual identity. It is genera
 - `visual.motif` is `orbit`, `network`, `wave`, `radial`, `stack`, `grid`, `path`, or `polyline`.
 - Display formatting belongs to the frontend. Do not store abbreviated counts, relative dates, or a duplicated GitHub URL in the record.
 
-The three layers match the `Project` type and source files under `src/data/`. Published repository snapshots are stored in `src/data/repositories.json`, validated by `src/data/repositories.ts`, and refreshed according to [refresh-workflow.md](refresh-workflow.md).
+The three layers match the `Project` type and JSON files under `src/data/`. Feed order is stored in `src/data/order.json`; repository snapshots, reviewed copy, and visual identities are stored in `repositories.json`, `editorial.json`, and `visuals.json`. TypeScript loaders validate these files before the page renders. Repository facts refresh according to [refresh-workflow.md](refresh-workflow.md); multi-layer additions and editorial replacements follow [publication-workflow.md](publication-workflow.md).

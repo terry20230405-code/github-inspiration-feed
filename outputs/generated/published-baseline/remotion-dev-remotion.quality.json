@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "remotion",
+  "projectPath": "outputs/generated/published-baseline/remotion-dev-remotion.project.json",
+  "researchPath": "outputs/generated/published-baseline/remotion-dev-remotion.research.md",
+  "projectSha256": "46243e8abc7037ef495b5626bc85554793612c76315be8bec07aea46cf8faad6",
+  "researchSha256": "cb1fadc5c30db78200ce401f5fdfffe20032a24df6e164192eed216c9dbe9bc4",
+  "reviewedAt": "2026-08-30T03:45:00Z",
+  "items": [
+    {
+      "id": "A1",
+      "status": "pass",
+      "evidence": "Repository and editorial facts map to F1-F6 and official sources S1-S5."
+    },
+    {
+      "id": "A2",
+      "status": "pass",
+      "evidence": "I1-I2 and D1-D3 clearly separate derivative workflows from existing Remotion capabilities."
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "GitHub ID, repository identity, license, state, fetch time, and raw counters match the snapshot."
+    },
+    {
+      "id": "A4",
+      "status": "pass",
+      "evidence": "Uncertainty is explicit; dynamic counters are snapshots and proposed features are not presented as existing facts."
+    },
+    {
+      "id": "B1",
+      "status": "pass",
+      "evidence": "The hook uses Remotion's distinctive code-to-video model."
+    },
+    {
+      "id": "B2",
+      "status": "pass",
+      "evidence": "The summary covers data-driven templates, code-controlled composition, and rendered video output."
+    },
+    {
+      "id": "B3",
+      "status": "pass",
+      "evidence": "React composition, code control, and batch rendering are evidenced core capabilities."
+    },
+    {
+      "id": "B4",
+      "status": "pass",
+      "evidence": "React, TypeScript, and FFmpeg are retained at an appropriate product-understanding level."
+    },
+    {
+      "id": "C1",
+      "status": "pass",
+      "evidence": "The hook creates a memory point while the summary alone carries the complete product explanation."
+    },
+    {
+      "id": "C2",
+      "status": "pass",
+      "evidence": "The summary describes the original project; meaning discusses why its verified capabilities are reusable."
+    },
+    {
+      "id": "C3",
+      "status": "pass",
+      "evidence": "Each opportunity connects code/batch capabilities or code friction to a focused interface opportunity."
+    },
+    {
+      "id": "C4",
+      "status": "pass",
+      "evidence": "Project audience, direction audiences, complete approaches, and 3-6 item scopes remain separate."
+    },
+    {
+      "id": "D1",
+      "status": "pass",
+      "evidence": "All three directions name a concrete user and a recurring problem."
+    },
+    {
+      "id": "D2",
+      "status": "pass",
+      "evidence": "All three directions state input, core workflow, and visible outcome in the page copy and rationale."
+    },
+    {
+      "id": "D3",
+      "status": "pass",
+      "evidence": "Every direction names the Remotion capability it reuses and changes audience, workflow, or outcome."
+    },
+    {
+      "id": "D4",
+      "status": "pass",
+      "evidence": "Each direction has a closed 3-4 item first-version scope that supports the stated flow."
+    },
+    {
+      "id": "E1",
+      "status": "pass",
+      "evidence": "Short-form scripts, article knowledge cards, and product fields differ in input, workflow, and output."
+    },
+    {
+      "id": "E2",
+      "status": "pass",
+      "evidence": "Every direction names a concrete burden reduced or experience created rather than generic efficiency."
+    },
+    {
+      "id": "E3",
+      "status": "pass",
+      "evidence": "At least one direction primarily serves personal, family, learning, or creative value."
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

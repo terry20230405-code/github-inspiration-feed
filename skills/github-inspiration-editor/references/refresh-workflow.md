@@ -19,7 +19,7 @@ API 返回的仓库 slug 可能全部小写。如果它和现有展示名称仅�
 
 - 默认运行是 dry-run，只输出报告，不写文件。
 - `--write` 只写 `src/data/repositories.json`、ETag 缓存和刷新报告。
-- `src/data/editorial.ts` 与 `src/data/visuals.ts` 永远不是刷新器输入或输出。
+- `src/data/editorial.json`、`src/data/visuals.json` 与 `src/data/order.json` 永远不是刷新器输入或输出。
 - 任一项目发生关键变化时，该项目保持原快照，不部分覆盖。
 - GitHub 限流后立即停止后续请求，不持续重试。
 - 不关闭 TLS/SSL 证书校验。

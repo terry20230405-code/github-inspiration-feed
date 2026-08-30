@@ -1,6 +1,7 @@
 import { projectEditorial } from './data/editorial'
+import { projectIds } from './data/order'
 import { repositorySnapshots } from './data/repositories'
-import { projectIds, type Project } from './data/types'
+import type { Project } from './data/types'
 import { projectVisuals } from './data/visuals'
 
 export const projects: Project[] = projectIds.map((id) => ({

@@ -1,5 +1,6 @@
 import rawSnapshots from './repositories.json'
-import { projectIds, type ProjectLayerMap, type RepositorySnapshot, type RepositoryState } from './types'
+import { projectIds } from './order'
+import type { ProjectLayerMap, RepositorySnapshot, RepositoryState } from './types'
 
 const repositoryStates = new Set<RepositoryState>(['active', 'archived', 'disabled', 'unavailable'])
 const repositoryFields = ['githubId', 'fullName', 'name', 'stars', 'forks', 'language', 'pushedAt', 'license', 'state', 'fetchedAt'] as const

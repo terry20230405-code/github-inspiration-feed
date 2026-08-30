@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 2,
+  "id": "remotion",
+  "repository": {
+    "githubId": 274495425,
+    "fullName": "remotion-dev/remotion",
+    "name": "Remotion",
+    "stars": 57479,
+    "forks": 4346,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-27T11:04:01Z",
+    "license": "Remotion License",
+    "state": "active",
+    "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "editorial": {
+    "hook": "让视频像网页一样被写出来",
+    "summary": "它允许开发者用 React 组件编排画面，用代码精确控制每一帧的字幕、动画、音频和转场。同一套模板可以接收不同数据，在本地、服务器或云端批量渲染成视频。",
+    "meaning": "它把原本依赖剪辑软件的重复工作，变成可以复用、自动运行的程序，非常适合继续包装成普通创作者也能使用的小工具。",
+    "audience": "需要批量、自动生成视频的开发者与内容团队",
+    "features": [
+      "React 组件渲染视频",
+      "逐帧动画控制",
+      "服务端批量渲染"
+    ],
+    "stack": [
+      "React",
+      "TypeScript",
+      "FFmpeg"
+    ],
+    "opportunity": [
+      "基础能力强，但普通创作者仍需要编写代码",
+      "适合在上层包装模板、表单与行业工作流",
+      "内容生产天然有大量重复、批量场景"
+    ],
+    "directions": [
+      {
+        "id": "short-video",
+        "name": "中文短视频工厂",
+        "tagline": "输入脚本，批量生成带字幕的竖屏视频",
+        "problem": "小团队制作大量口播短视频时，剪辑步骤重复且耗时。",
+        "audience": "知识博主、MCN 与独立创作者",
+        "approach": "把 Remotion 模板封装成表单：填写文案、选择配色和配音后自动渲染。",
+        "difference": "从代码框架变成无需编程的中文内容工作台。",
+        "scope": [
+          "3 套竖屏模板",
+          "文案分镜输入",
+          "字幕自动排版",
+          "MP4 导出"
+        ]
+      },
+      {
+        "id": "knowledge-card",
+        "name": "文章转知识卡片视频",
+        "tagline": "把长文章拆成可分享的动态知识卡片",
+        "problem": "优质长文很难直接在短内容平台传播。",
+        "audience": "教育博主、Newsletter 作者",
+        "approach": "粘贴文章后手动确认卡片结构，再套用动画模板生成视频。",
+        "difference": "聚焦知识内容拆解，而非通用视频编程。",
+        "scope": [
+          "文章粘贴",
+          "卡片编辑",
+          "两套动画",
+          "本地导出"
+        ]
+      },
+      {
+        "id": "commerce-video",
+        "name": "商品视频生成器",
+        "tagline": "用商品图片和卖点快速生成促销视频",
+        "problem": "小商家无法为每个 SKU 单独制作视频。",
+        "audience": "独立站与电商卖家",
+        "approach": "上传商品图、价格和卖点，自动套用促销节奏与转场。",
+        "difference": "加入电商字段和批量 SKU 工作流。",
+        "scope": [
+          "商品信息表单",
+          "图片上传",
+          "1 套促销模板",
+          "单条导出"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "remotion-dev/remotion",
+    "accent": "#588019",
+    "foreground": "#ffffff",
+    "motif": "orbit",
+    "variant": 2966549373
+  }
+}
