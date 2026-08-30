@@ -29,6 +29,8 @@ Before adding a validated candidate to the feed or replacing an existing project
 
 When running or maintaining the later end-to-end scheduled refresh, read [references/automation-workflow.md](references/automation-workflow.md). Use the cycle orchestrator instead of manually skipping between stages. Follow `nextActor` and stop at its stated boundary: AI review and draft repair may continue automatically, but repository identity, license, archive status, product-direction choices, publication, deployment, and external writes require their own explicit authorization. A completed refresh never implies publication permission.
 
+When searching for new repositories automatically or maintaining the scheduled discovery workflows, read [references/discovery-workflow.md](references/discovery-workflow.md). Keep search frequency, candidate limits, and topic lanes in the documented configuration. Search and AI generation may create fingerprinted candidate batches, but they must not change `src/data/`. A human merge of the matching review PR is the explicit batch approval; only the merge-triggered batch publisher may then update the four product layers, and it must restore all four if any validation fails.
+
 ## Produce the content
 
 Read [references/editorial-guide.md](references/editorial-guide.md) before writing or revising card copy. When the source contains English or other non-Chinese product terminology, also read [references/localization-guide.md](references/localization-guide.md) before producing Chinese copy. Read [references/direction-guide.md](references/direction-guide.md) before generating extension directions. Read [references/project-schema.md](references/project-schema.md) before creating the JSON output.

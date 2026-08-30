@@ -4,7 +4,7 @@
 
 ## 当前功能
 
-- Remotion、Excalidraw、Immich、n8n 四个本地示例项目
+- Remotion、Excalidraw、Immich、n8n、Archify 五个已发布项目
 - CSS Scroll Snap 整屏翻页
 - 支持触摸、鼠标滚轮、键盘方向键和桌面翻页按钮
 - 项目摘要、意义、Star、语言、GitHub 链接和拓展方向预告
@@ -29,7 +29,7 @@ npm run dev
 npm run build
 ```
 
-页面仍使用本地数据，不包含登录、数据库、浏览器运行时 GitHub API 或 AI API。项目顺序保存在 `src/data/order.json`，三层数据分别位于 `src/data/repositories.json`、`src/data/editorial.json` 和 `src/data/visuals.json`。同目录下的 TypeScript 加载器会先校验 JSON，`src/data.ts` 再把三层组合给页面；页面拿到的 TypeScript 类型均为只读，避免意外改写源数据。
+页面仍使用本地 JSON，不包含登录、数据库、浏览器运行时 GitHub API 或 AI API。自动发现只在 GitHub Actions 服务端使用 GitHub API 与 OpenAI API，密钥不会进入前端构建。项目顺序保存在 `src/data/order.json`，三层数据分别位于 `src/data/repositories.json`、`src/data/editorial.json` 和 `src/data/visuals.json`。同目录下的 TypeScript 加载器会先校验 JSON，`src/data.ts` 再把三层组合给页面；页面拿到的 TypeScript 类型均为只读，避免意外改写源数据。
 
 ## GitHub 元数据刷新
 
@@ -87,7 +87,33 @@ npm run refresh:cycle:resume
 
 第一个命令只预演；第二个命令写入安全的仓库快照和来源证据；第三个命令在 AI 完成语义审核后继续。统一状态保存在 `outputs/automation/latest.json`，历史运行保存在 `outputs/automation/runs/`。流水线会区分“已完成、等待 AI、需要草稿、需要用户决定、技术失败”，所有结果都固定为 `publicationAuthorized: false`。
 
-自动化总控还没有替用户决定定时频率，也没有接入部署平台。完整职责、恢复方式和 AI 续跑规则见 [`automation-workflow.md`](skills/github-inspiration-editor/references/automation-workflow.md)。
+自动化总控与已发布项目刷新仍遵循暂停边界。新项目发现已经由独立工作流定时运行；公网部署平台仍未接入。完整职责、恢复方式和 AI 续跑规则见 [`automation-workflow.md`](skills/github-inspiration-editor/references/automation-workflow.md)。
+
+## 自动发现新项目
+
+`.github/workflows/discover-projects.yml` 默认在每周二、周五北京时间 09:00 自动运行，也支持在 GitHub Actions 页面手动启动。默认每次让 AI 深读最多 12 个仓库，生成最多 8 个候选，也就是理论上每周最多 16 个；实际数量取决于证据和 19 项质量检查。
+
+搜索主题、Star 下限、活跃窗口和每次数量集中保存在 `config/discovery.json`。手动运行时可以临时覆盖 AI 深读数量和候选数量。候选上限不能高于 AI 深读数量，单次候选安全上限为 20。
+
+本地只搜索、不写文件：
+
+```powershell
+npm run discover:repositories
+```
+
+写入搜索报告：
+
+```powershell
+npm run discover:repositories:write
+```
+
+自动化在服务端继续读取 README、调用 OpenAI Responses API、生成项目/研究/质量三件套并创建一张候选审核 PR。它不会直接改页面：
+
+- 合并候选 PR：明确批准整批，随后一次性写入四层产品数据并运行完整检查。
+- 关闭候选 PR：拒绝整批，正式页面不改变。
+- 发布中任一检查失败：四层页面数据全部恢复，不产生半成品。
+
+首次启用需要在 GitHub 仓库的 Actions Secrets 中添加 `OPENAI_API_KEY`，并允许 GitHub Actions 写入仓库和创建 Pull Request。`GITHUB_TOKEN` 由 Actions 自动提供，不要把任何 Token 写入代码或前端。完整搜索、授权和恢复边界见 [`discovery-workflow.md`](skills/github-inspiration-editor/references/discovery-workflow.md)。
 
 ## 校验项目草稿
 

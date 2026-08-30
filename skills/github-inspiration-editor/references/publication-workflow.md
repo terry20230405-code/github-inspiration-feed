@@ -56,6 +56,8 @@ npm run publication:approve -- <candidate-id> --approved-by Terry --write
 
 不加 `--write` 只显示将要批准什么，不产生授权。批准绑定候选指纹；候选内容变化后旧批准立即失效。
 
+自动发现使用等价但独立的批次批准方式：定时任务把冻结候选和批次指纹放入审核 PR；用户合并该 PR，表示批准该批次全部候选。合并触发器记录合并者、PR 编号和批次指纹，再由 `publish_discovery_batch.py` 在一个事务中写入四层数据。关闭 PR 不授权发布。具体边界见 [discovery-workflow.md](discovery-workflow.md)。
+
 ## 发布与自动恢复
 
 先查看发布计划：

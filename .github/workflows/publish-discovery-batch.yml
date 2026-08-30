@@ -1,0 +1,64 @@
+name: 发布已批准的自动候选批次
+
+on:
+  pull_request:
+    types: [closed]
+
+concurrency:
+  group: github-inspiration-publication
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    if: >-
+      github.event.pull_request.merged == true &&
+      startsWith(github.event.pull_request.head.ref, 'automation/discovery-')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 读取已合并版本
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: 准备 Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: 准备 Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: 安装网页依赖
+        run: npm ci
+
+      - name: 核对合并者并发布整批项目
+        env:
+          HEAD_REF: ${{ github.event.pull_request.head.ref }}
+          APPROVED_BY: ${{ github.event.pull_request.merged_by.login }}
+          SOURCE_PR: ${{ github.event.pull_request.number }}
+        run: |
+          batch_id="${HEAD_REF#automation/discovery-}"
+          python skills/github-inspiration-editor/scripts/publish_discovery_batch.py \
+            "$batch_id" \
+            --approved-by "$APPROVED_BY" \
+            --source-pr "$SOURCE_PR" \
+            --write > outputs/discovery/publication-result.json
+          cat outputs/discovery/publication-result.json >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 提交正式页面数据
+        env:
+          SOURCE_PR: ${{ github.event.pull_request.number }}
+        run: |
+          git config user.name "github-inspiration-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data outputs/generated/discovery-batches
+          git commit -m "Publish approved discovery batch from PR #${SOURCE_PR}"
+          git push origin main

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "maxSearchResultsPerQuery": 20,
+  "shortlistSize": 36,
+  "aiAnalysisLimit": 12,
+  "maxCandidatesPerRun": 8,
+  "activeWithinDays": 365,
+  "minimumStars": 30,
+  "minimumReadmeCharacters": 800,
+  "model": "gpt-5.4",
+  "reasoningEffort": "medium",
+  "searchLanes": [
+    {
+      "id": "ai-products",
+      "label": "AI 与智能助手",
+      "familyHint": "ai",
+      "query": "ai agent in:name,description,topics"
+    },
+    {
+      "id": "automation",
+      "label": "自动化与工作流",
+      "familyHint": "automation",
+      "query": "workflow automation in:name,description,topics"
+    },
+    {
+      "id": "design",
+      "label": "设计与创作",
+      "familyHint": "design",
+      "query": "whiteboard design in:name,description,topics"
+    },
+    {
+      "id": "video-audio",
+      "label": "视频与音频",
+      "familyHint": "video",
+      "query": "video editor in:name,description,topics"
+    },
+    {
+      "id": "photo-media",
+      "label": "照片与个人媒体",
+      "familyHint": "photo",
+      "query": "photo management in:name,description,topics"
+    },
+    {
+      "id": "knowledge",
+      "label": "知识与笔记",
+      "familyHint": "data",
+      "query": "knowledge base in:name,description,topics"
+    },
+    {
+      "id": "productivity",
+      "label": "个人效率",
+      "familyHint": "general",
+      "query": "productivity tool in:name,description,topics"
+    },
+    {
+      "id": "data-tools",
+      "label": "数据工具",
+      "familyHint": "data",
+      "query": "data visualization in:name,description,topics"
+    },
+    {
+      "id": "self-hosted",
+      "label": "自托管与隐私",
+      "familyHint": "automation",
+      "query": "self hosted privacy in:name,description,topics"
+    },
+    {
+      "id": "learning",
+      "label": "学习与教育",
+      "familyHint": "general",
+      "query": "learning tool in:name,description,topics"
+    },
+    {
+      "id": "creator-tools",
+      "label": "创作者工具",
+      "familyHint": "design",
+      "query": "creator tool in:name,description,topics"
+    },
+    {
+      "id": "developer-products",
+      "label": "可视化开发者产品",
+      "familyHint": "automation",
+      "query": "developer visualization in:name,description,topics"
+    }
+  ],
+  "excludedTopics": [
+    "malware",
+    "exploit",
+    "gambling",
+    "crypto-trading",
+    "trading-bot"
+  ],
+  "excludedNameFragments": [
+    "awesome-",
+    "-awesome",
+    "course-assignment",
+    "homework"
+  ]
+}
