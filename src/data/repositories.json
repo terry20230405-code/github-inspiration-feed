@@ -46,5 +46,17 @@
     "license": "Sustainable Use License",
     "state": "active",
     "fetchedAt": "2026-08-27T11:05:43Z"
+  },
+  "archify": {
+    "githubId": 1211139949,
+    "fullName": "tt-a1i/archify",
+    "name": "Archify",
+    "stars": 31514,
+    "forks": 1956,
+    "language": "JavaScript",
+    "pushedAt": "2026-08-29T17:13:30Z",
+    "license": "MIT",
+    "state": "active",
+    "fetchedAt": "2026-08-30T04:10:02Z"
   }
 }

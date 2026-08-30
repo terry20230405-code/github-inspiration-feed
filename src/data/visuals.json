@@ -30,5 +30,13 @@
     "foreground": "#000000",
     "motif": "network",
     "variant": 2367143650
+  },
+  "archify": {
+    "generatorVersion": 2,
+    "seed": "tt-a1i/archify",
+    "accent": "#7d28c3",
+    "foreground": "#ffffff",
+    "motif": "stack",
+    "variant": 4159244231
   }
 }

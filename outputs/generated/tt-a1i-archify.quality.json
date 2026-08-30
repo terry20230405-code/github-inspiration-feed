@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "archify",
+  "projectPath": "outputs/generated/tt-a1i-archify.project.json",
+  "researchPath": "outputs/generated/tt-a1i-archify.research.md",
+  "projectSha256": "655d3dc7b12678e001a51f849a9b6c1ca1981d109fd0138e3a9af80e65bac881",
+  "researchSha256": "07445abf4968d64f812cf87e3cd9928a24cb9450d4ae85e583d07f1ec6152c6e",
+  "reviewedAt": "2026-08-30T04:18:00Z",
+  "items": [
+    {
+      "id": "A1",
+      "status": "pass",
+      "evidence": "Repository facts and factual editorial fields map to F1-F9, which cite GitHub metadata, the official README, Skill, manifest, and release."
+    },
+    {
+      "id": "A2",
+      "status": "pass",
+      "evidence": "I1-I2 and D1-D3 clearly label the reuse reasoning and separate all three proposed products from built-in Archify behavior."
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "GitHub ID, canonical name, MIT license, active state, raw counts, push time, and fetchedAt match the 2026-08-30 metadata snapshot."
+    },
+    {
+      "id": "A4",
+      "status": "pass",
+      "evidence": "The note records snapshot staleness, the main-versus-stable release boundary, direction status, and the absence of demand research."
+    },
+    {
+      "id": "B1",
+      "status": "pass",
+      "evidence": "The hook uses Archify's distinctive transformation from a complex system into an explorable map without generic praise or a feature list."
+    },
+    {
+      "id": "B2",
+      "status": "pass",
+      "evidence": "The summary states the codebase or description input, typed JSON and validation process, five viewing modes, interaction, and export outcomes."
+    },
+    {
+      "id": "B3",
+      "status": "pass",
+      "evidence": "Five diagram types, typed source, validation gates, interactive exploration, and exports are all supported by F2-F5."
+    },
+    {
+      "id": "B4",
+      "status": "pass",
+      "evidence": "AI agent, JSON, HTML/SVG, Node.js, and JSON Schema are retained only where they explain generation, portability, runtime, or validation."
+    },
+    {
+      "id": "C1",
+      "status": "pass",
+      "evidence": "The hook establishes one memorable transformation; the summary independently explains the complete existing-product workflow."
+    },
+    {
+      "id": "C2",
+      "status": "pass",
+      "evidence": "The summary describes Archify only, while meaning explains why its verified generation and delivery pipeline can support focused products."
+    },
+    {
+      "id": "C3",
+      "status": "pass",
+      "evidence": "Each opportunity connects a verified capability or technical-authoring friction to guided learning, privacy review, or incident storytelling."
+    },
+    {
+      "id": "C4",
+      "status": "pass",
+      "evidence": "The original technical audience is distinct from three narrower audiences; every approach is a journey and every scope is a 5-item minimum set."
+    },
+    {
+      "id": "D1",
+      "status": "pass",
+      "evidence": "Each direction names a concrete user and recurring situation: explaining a Vibe project, checking household data, or reviewing an incident."
+    },
+    {
+      "id": "D2",
+      "status": "pass",
+      "evidence": "Each direction states its input, transformation steps, reused diagram mode, and visible interactive page, checklist, or replayable path."
+    },
+    {
+      "id": "D3",
+      "status": "pass",
+      "evidence": "D1-D3 cite F2-F5 and change both the authoring workflow and result instead of merely adding AI, mobile access, translation, or a new label."
+    },
+    {
+      "id": "D4",
+      "status": "pass",
+      "evidence": "All scopes contain five necessary functions that close the promised input-to-outcome journey without schedules or optional roadmap items."
+    },
+    {
+      "id": "E1",
+      "status": "pass",
+      "evidence": "The directions differ across audience, repository versus household versus incident input, core workflow, and visible outcome."
+    },
+    {
+      "id": "E2",
+      "status": "pass",
+      "evidence": "The directions create concrete understanding, privacy visibility, and shared incident comprehension rather than promising generic efficiency or growth."
+    },
+    {
+      "id": "E3",
+      "status": "pass",
+      "evidence": "The Vibe learning direction and household privacy direction primarily serve learning, personal understanding, and family value."
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

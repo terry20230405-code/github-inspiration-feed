@@ -506,7 +506,15 @@ def default_check_runner(project_root: Path) -> list[dict[str, object]]:
     )
     results = []
     for command in commands:
-        completed = subprocess.run(command, cwd=project_root, capture_output=True, text=True, check=False)
+        completed = subprocess.run(
+            command,
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=False,
+        )
         results.append({"command": " ".join(command), "exitCode": completed.returncode})
         if completed.returncode != 0:
             tail = "\n".join((completed.stdout + "\n" + completed.stderr).splitlines()[-30:])

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "candidateId": "archify-655d3dc7b126",
+  "createdAt": "2026-08-30T04:13:54Z",
+  "status": "published",
+  "mode": "add",
+  "projectId": "archify",
+  "fullName": "tt-a1i/archify",
+  "githubId": 1211139949,
+  "insertAfter": "n8n",
+  "artifacts": {
+    "project": {
+      "file": "project.json",
+      "sha256": "655d3dc7b12678e001a51f849a9b6c1ca1981d109fd0138e3a9af80e65bac881"
+    },
+    "research": {
+      "file": "research.md",
+      "sha256": "07445abf4968d64f812cf87e3cd9928a24cb9450d4ae85e583d07f1ec6152c6e"
+    },
+    "quality": {
+      "file": "quality.json",
+      "sha256": "c1e462a60c01fae62452691a98249815ec2c38b2a5c0e013009b2fe005779d74"
+    }
+  },
+  "candidateFingerprint": "7af785ff498eb93679d2fab859ab62469275a6550032ef89ab55091f781e72e9",
+  "baselineDataFingerprint": "9bc8833b41af20f56db338701e718b08f2e8156d4bd6936c9a8dd0e6e7c2f2e0",
+  "publicationAuthorized": true
+}
