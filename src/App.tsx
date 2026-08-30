@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Check, ChevronRight, ExternalLink, Star } from 'lucide-react'
 import { ProjectIdentity } from './components/ProjectIdentity'
 import { formatRelativeDate, formatRepositoryCount, projects, repositoryUrl, type Direction, type Project } from './data'
@@ -94,7 +94,28 @@ export default function App() {
   const [active, setActive] = useState(0)
   const [detail, setDetail] = useState<Project | null>(null)
   const feedRef = useRef<HTMLDivElement>(null)
+  const restoreFeedPosition = useRef(false)
   const goTo = (next: number) => feedRef.current?.children[Math.max(0, Math.min(projects.length - 1, next))]?.scrollIntoView({ behavior: 'smooth' })
+
+  useLayoutEffect(() => {
+    if (detail || !restoreFeedPosition.current) return
+
+    const feed = feedRef.current
+    const card = feed?.children[active] as HTMLElement | undefined
+    if (feed && card) {
+      const scrollBehavior = feed.style.scrollBehavior
+      feed.style.scrollBehavior = 'auto'
+      feed.scrollTop = card.offsetTop
+      feed.style.scrollBehavior = scrollBehavior
+    }
+    restoreFeedPosition.current = false
+  }, [active, detail])
+
+  const closeDetail = () => {
+    restoreFeedPosition.current = true
+    setDetail(null)
+  }
+
   useEffect(() => {
     if (detail) return
     const el = feedRef.current
@@ -105,10 +126,10 @@ export default function App() {
     window.addEventListener('keydown', key)
     return () => { observer.disconnect(); window.removeEventListener('keydown', key) }
   }, [active, detail])
-  if (detail) return <Detail project={detail} onBack={() => setDetail(null)}/>
+  if (detail) return <Detail project={detail} onBack={closeDetail}/>
   return <div className="app-shell" style={{ '--project-accent': projects[active].visual.accent, '--project-foreground': projects[active].visual.foreground } as CSSProperties}>
     <header className="topbar"><a className="brand" href="#">灵感流<span>β</span></a><div className="progress">{projects.map((_, i) => <button key={i} className={i === active ? 'active' : ''} onClick={() => goTo(i)} aria-label={`前往第 ${i + 1} 个项目`}/>)}</div><span className="top-note">为你的下一个项目，找一个起点</span></header>
-    <div className="feed" ref={feedRef}>{projects.map((project, index) => <FeedCard key={project.id} project={project} index={index} active={index === active} onOpen={() => setDetail(project)}/>)}</div>
+    <div className="feed" ref={feedRef}>{projects.map((project, index) => <FeedCard key={project.id} project={project} index={index} active={index === active} onOpen={() => { setActive(index); setDetail(project) }}/>)}</div>
     <div className="pager"><button onClick={() => goTo(active - 1)} disabled={active === 0}><ArrowUp size={18}/></button><span>{active + 1} / {projects.length}</span><button onClick={() => goTo(active + 1)} disabled={active === projects.length - 1}><ArrowDown size={18}/></button></div>
   </div>
 }
