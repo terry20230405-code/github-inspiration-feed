@@ -56,15 +56,15 @@
   },
   "devDependencies": {
     "@eslint/js": "latest",
-    "@rolldown/binding-win32-x64-msvc": "^1.2.5",
-    "@terry/selector-dev": "file:../plugins/selector-dev",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
-    "lightningcss-win32-x64-msvc": "^1.33.0",
     "typescript-eslint": "latest"
+  },
+  "optionalDependencies": {
+    "@terry/selector-dev": "file:../plugins/selector-dev"
   }
 }
