@@ -61,6 +61,10 @@ class DraftError(RuntimeError):
     """Raised when one automation stage cannot safely continue."""
 
 
+class OpenAIServiceError(DraftError):
+    """Raised when OpenAI cannot complete a request independent of candidate quality."""
+
+
 def utc_now() -> datetime:
     return datetime.now(timezone.utc).replace(microsecond=0)
 
@@ -324,13 +328,15 @@ def call_openai(api_key: str, model: str, reasoning_effort: str, instructions: s
                 wait_seconds = int(retry_after) if retry_after and retry_after.isdigit() else 2 ** attempt
                 time.sleep(min(wait_seconds, 30))
                 continue
-            raise DraftError(f"OpenAI request failed ({error.code}): {detail}") from error
+            raise OpenAIServiceError(f"OpenAI request failed ({error.code}): {detail}") from error
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
             if attempt + 1 < attempts:
                 time.sleep(2 ** attempt)
                 continue
-            raise DraftError(f"OpenAI request failed: {error}") from error
-    raise DraftError("OpenAI request failed after retries")
+            raise OpenAIServiceError(f"OpenAI request failed: {error}") from error
+        except DraftError as error:
+            raise OpenAIServiceError(f"OpenAI response could not be read: {error}") from error
+    raise OpenAIServiceError("OpenAI request failed after retries")
 
 
 def source_records(evidence: dict[str, object], accessed_date: str) -> list[dict[str, str]]:
@@ -614,16 +620,18 @@ def create_quality(project_id: str, project_path: Path, research_path: Path, qua
 
 
 def batch_preview(batch_id: str, candidates: list[dict[str, object]], rejected: list[dict[str, str]], generated_at: str) -> str:
+    status = "等待人工审核" if candidates else "本轮没有合格候选，不创建审核 PR"
     lines = [
         f"# 自动候选审核：{batch_id}",
         "",
         f"- 生成时间：{generated_at}",
         f"- 合格候选：{len(candidates)}",
         f"- 未通过深读：{len(rejected)}",
-        "- 当前状态：等待人工审核",
-        "- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。",
+        f"- 当前状态：{status}",
         "",
     ]
+    if candidates:
+        lines.insert(6, "- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。")
     for index, item in enumerate(candidates, start=1):
         project = item["project"]
         assert isinstance(project, dict)
@@ -717,11 +725,24 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
             visual = project["visual"]
             assert isinstance(visual, dict)
             previous_accent = str(visual["accent"])
+        except OpenAIServiceError as error:
+            raise OpenAIServiceError(f"{full_name} 调用 OpenAI 时失败：{error}") from error
         except (DraftError, DiscoveryError, ValueError, KeyError) as error:
             rejected.append({"fullName": full_name, "reason": str(error)})
 
     if not accepted:
-        raise DraftError("本轮没有仓库通过证据、结构和 19 项质量检查")
+        preview = batch_preview(batch_id, [], rejected, generated_at)
+        return {
+            "status": "no-candidates",
+            "batchId": batch_id,
+            "batchPath": "",
+            "candidateCount": 0,
+            "rejectedCount": len(rejected),
+            "rejected": rejected,
+            "batchFingerprint": None,
+            "preview": preview,
+            "publicationAuthorized": False,
+        }
 
     candidate_entries: list[dict[str, object]] = []
     written: list[dict[str, object]] = []
@@ -777,10 +798,12 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
         write_json(batch_dir / "manifest.json", manifest)
         (batch_dir / "preview.md").write_text(preview, encoding="utf-8")
     return {
+        "status": "awaiting-approval",
         "batchId": batch_id,
         "batchPath": batch_dir.relative_to(PROJECT_ROOT).as_posix(),
         "candidateCount": len(candidate_entries),
         "rejectedCount": len(rejected),
+        "rejected": rejected,
         "batchFingerprint": batch_fingerprint,
         "preview": preview,
         "publicationAuthorized": False,

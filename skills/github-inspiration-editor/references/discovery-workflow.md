@@ -10,6 +10,7 @@
 - AI 每次最多深读 12 个仓库。
 - 每次最多生成 8 个通过结构、证据和 19 项质量检查的候选。
 - 因此默认理论上每周最多产生 16 个候选，不保证每次达到上限。
+- 如果所有仓库都因证据或内容质量不足被拒绝，本轮正常结束并在运行摘要中逐仓库列出原因，不创建空的审核 PR。OpenAI、GitHub 或网络服务错误则保持为失败，并显示具体服务错误，不能伪装成内容不合格。
 
 频率定义在 `.github/workflows/discover-projects.yml`。数量和搜索范围定义在 `config/discovery.json`。手动运行工作流时可以临时覆盖 `aiAnalysisLimit` 和 `maxCandidatesPerRun`；候选上限不能高于 AI 深读上限。
 

@@ -115,6 +115,60 @@ def evidence() -> dict[str, object]:
 
 
 class DraftTests(unittest.TestCase):
+    def test_zero_candidates_is_a_reported_normal_result(self) -> None:
+        config = {
+            "model": "test-model",
+            "reasoningEffort": "medium",
+            "minimumReadmeCharacters": 10_000,
+            "aiAnalysisLimit": 1,
+            "maxCandidatesPerRun": 1,
+        }
+        discovery = {
+            "policySha256": "b" * 64,
+            "aiQueue": [{"fullName": "example/visual-map"}],
+        }
+        result = drafts.generate_batch(
+            config,
+            discovery,
+            "test-key",
+            openai_call=lambda *_args, **_kwargs: self.fail("OpenAI should not be called"),
+            evidence_fetcher=lambda _full_name, _token: evidence(),
+            now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
+            write=True,
+        )
+        self.assertEqual(result["status"], "no-candidates")
+        self.assertEqual(result["candidateCount"], 0)
+        self.assertEqual(result["rejectedCount"], 1)
+        self.assertIn("README 信息不足", result["preview"])
+        self.assertEqual(result["batchPath"], "")
+
+    def test_openai_service_error_is_not_misreported_as_candidate_rejection(self) -> None:
+        config = {
+            "model": "test-model",
+            "reasoningEffort": "medium",
+            "minimumReadmeCharacters": 100,
+            "aiAnalysisLimit": 1,
+            "maxCandidatesPerRun": 1,
+        }
+        discovery = {
+            "policySha256": "c" * 64,
+            "aiQueue": [{"fullName": "example/visual-map"}],
+        }
+
+        def unavailable_openai(*_args: object, **_kwargs: object) -> dict[str, object]:
+            raise drafts.OpenAIServiceError("OpenAI request failed (403): model access denied")
+
+        with self.assertRaisesRegex(drafts.OpenAIServiceError, "example/visual-map.*403"):
+            drafts.generate_batch(
+                config,
+                discovery,
+                "test-key",
+                openai_call=unavailable_openai,
+                evidence_fetcher=lambda _full_name, _token: evidence(),
+                now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
+                write=False,
+            )
+
     def test_generates_valid_fingerprinted_batch_without_network(self) -> None:
         payload = generation_payload()
         quality = {

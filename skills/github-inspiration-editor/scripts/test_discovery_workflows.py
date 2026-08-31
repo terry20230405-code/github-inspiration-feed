@@ -34,6 +34,7 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}", workflow)
         self.assertIn("pull-requests: write", workflow)
         self.assertIn("gh pr create", workflow)
+        self.assertIn("if: steps.drafts.outputs.candidate_count != '0'", workflow)
         self.assertNotIn("publish_discovery_batch.py", workflow)
         self.assertNotIn("git add src/data", workflow)
 

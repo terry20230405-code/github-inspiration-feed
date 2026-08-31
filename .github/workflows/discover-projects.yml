@@ -92,6 +92,7 @@ jobs:
           npm run build
 
       - name: 创建候选审核分支
+        if: steps.drafts.outputs.candidate_count != '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BATCH_ID: ${{ steps.drafts.outputs.batch_id }}
