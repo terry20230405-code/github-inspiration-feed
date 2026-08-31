@@ -3,12 +3,24 @@
 
 from __future__ import annotations
 
+import json
 import tempfile
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 import generate_discovery_drafts as drafts
+
+
+def ai_provider() -> dict[str, object]:
+    return {
+        "protocol": "openai-chat-completions",
+        "baseUrl": "https://4router.net/v1",
+        "model": "gpt-5.4",
+        "reasoningEffort": "medium",
+        "maxCompletionTokens": 16000,
+    }
 
 
 def generation_payload() -> dict[str, object]:
@@ -115,10 +127,76 @@ def evidence() -> dict[str, object]:
 
 
 class DraftTests(unittest.TestCase):
+    def test_builds_chat_completions_request_contract(self) -> None:
+        provider = ai_provider()
+        schema = {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"], "additionalProperties": False}
+        payload = drafts.chat_completions_payload(provider, "system rules", "repository evidence", "test_schema", schema)
+
+        self.assertEqual(drafts.chat_completions_endpoint(provider), "https://4router.net/v1/chat/completions")
+        self.assertEqual(payload["model"], "gpt-5.4")
+        self.assertEqual(payload["messages"], [
+            {"role": "system", "content": "system rules"},
+            {"role": "user", "content": "repository evidence"},
+        ])
+        self.assertEqual(payload["reasoning_effort"], "medium")
+        self.assertEqual(payload["max_completion_tokens"], 16000)
+        self.assertEqual(payload["response_format"]["json_schema"], {
+            "name": "test_schema",
+            "strict": True,
+            "schema": schema,
+        })
+        self.assertNotIn("instructions", payload)
+        self.assertNotIn("input", payload)
+
+    def test_calls_configured_provider_and_parses_json(self) -> None:
+        class FakeResponse:
+            def __enter__(self) -> "FakeResponse":
+                return self
+
+            def __exit__(self, *_args: object) -> None:
+                return None
+
+            def read(self) -> bytes:
+                return json.dumps({
+                    "choices": [{
+                        "finish_reason": "stop",
+                        "message": {"role": "assistant", "content": '{"ok":true}'},
+                    }],
+                }).encode("utf-8")
+
+        schema = {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"], "additionalProperties": False}
+        with patch.object(drafts.urllib.request, "urlopen", return_value=FakeResponse()) as urlopen:
+            result = drafts.call_ai("sk-test-secret", ai_provider(), "rules", "evidence", "test_schema", schema)
+
+        self.assertEqual(result, {"ok": True})
+        request = urlopen.call_args.args[0]
+        self.assertEqual(request.full_url, "https://4router.net/v1/chat/completions")
+        self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-secret")
+        sent = json.loads(request.data.decode("utf-8"))
+        self.assertEqual(sent["response_format"]["type"], "json_schema")
+
+    def test_reads_chat_completion_content_and_rejects_truncation(self) -> None:
+        response = {
+            "choices": [{
+                "finish_reason": "stop",
+                "message": {"role": "assistant", "content": '{"ok":true}'},
+            }],
+        }
+        self.assertEqual(drafts.extract_chat_completion_text(response), '{"ok":true}')
+        response["choices"][0]["finish_reason"] = "length"
+        with self.assertRaisesRegex(drafts.DraftError, "token limit"):
+            drafts.extract_chat_completion_text(response)
+
+    def test_redacts_provider_keys_from_error_details(self) -> None:
+        key = "sk-sensitive-secret-value"
+        detail = f"Incorrect key {key}; fallback sk-anothersecretvalue"
+        redacted = drafts.redact_service_detail(detail, key)
+        self.assertNotIn(key, redacted)
+        self.assertNotIn("sk-anothersecretvalue", redacted)
+
     def test_zero_candidates_is_a_reported_normal_result(self) -> None:
         config = {
-            "model": "test-model",
-            "reasoningEffort": "medium",
+            "aiProvider": ai_provider(),
             "minimumReadmeCharacters": 10_000,
             "aiAnalysisLimit": 1,
             "maxCandidatesPerRun": 1,
@@ -131,7 +209,7 @@ class DraftTests(unittest.TestCase):
             config,
             discovery,
             "test-key",
-            openai_call=lambda *_args, **_kwargs: self.fail("OpenAI should not be called"),
+            ai_call=lambda *_args, **_kwargs: self.fail("AI should not be called"),
             evidence_fetcher=lambda _full_name, _token: evidence(),
             now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
             write=True,
@@ -142,10 +220,9 @@ class DraftTests(unittest.TestCase):
         self.assertIn("README 信息不足", result["preview"])
         self.assertEqual(result["batchPath"], "")
 
-    def test_openai_service_error_is_not_misreported_as_candidate_rejection(self) -> None:
+    def test_ai_service_error_is_not_misreported_as_candidate_rejection(self) -> None:
         config = {
-            "model": "test-model",
-            "reasoningEffort": "medium",
+            "aiProvider": ai_provider(),
             "minimumReadmeCharacters": 100,
             "aiAnalysisLimit": 1,
             "maxCandidatesPerRun": 1,
@@ -155,15 +232,15 @@ class DraftTests(unittest.TestCase):
             "aiQueue": [{"fullName": "example/visual-map"}],
         }
 
-        def unavailable_openai(*_args: object, **_kwargs: object) -> dict[str, object]:
-            raise drafts.OpenAIServiceError("OpenAI request failed (403): model access denied")
+        def unavailable_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
+            raise drafts.AIServiceError("AI provider request failed (403): model access denied")
 
-        with self.assertRaisesRegex(drafts.OpenAIServiceError, "example/visual-map.*403"):
+        with self.assertRaisesRegex(drafts.AIServiceError, "example/visual-map.*403"):
             drafts.generate_batch(
                 config,
                 discovery,
                 "test-key",
-                openai_call=unavailable_openai,
+                ai_call=unavailable_ai,
                 evidence_fetcher=lambda _full_name, _token: evidence(),
                 now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
                 write=False,
@@ -177,12 +254,11 @@ class DraftTests(unittest.TestCase):
         }
         calls = iter([payload, quality])
 
-        def fake_openai(*_args: object, **_kwargs: object) -> dict[str, object]:
+        def fake_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
             return next(calls)
 
         config = {
-            "model": "test-model",
-            "reasoningEffort": "medium",
+            "aiProvider": ai_provider(),
             "minimumReadmeCharacters": 100,
             "aiAnalysisLimit": 2,
             "maxCandidatesPerRun": 1,
@@ -199,7 +275,7 @@ class DraftTests(unittest.TestCase):
                     config,
                     discovery,
                     "test-key",
-                    openai_call=fake_openai,
+                    ai_call=fake_ai,
                     evidence_fetcher=lambda _full_name, _token: evidence(),
                     now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
                     write=True,

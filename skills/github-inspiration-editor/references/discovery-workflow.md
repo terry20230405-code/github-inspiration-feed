@@ -10,7 +10,7 @@
 - AI 每次最多深读 12 个仓库。
 - 每次最多生成 8 个通过结构、证据和 19 项质量检查的候选。
 - 因此默认理论上每周最多产生 16 个候选，不保证每次达到上限。
-- 如果所有仓库都因证据或内容质量不足被拒绝，本轮正常结束并在运行摘要中逐仓库列出原因，不创建空的审核 PR。OpenAI、GitHub 或网络服务错误则保持为失败，并显示具体服务错误，不能伪装成内容不合格。
+- 如果所有仓库都因证据或内容质量不足被拒绝，本轮正常结束并在运行摘要中逐仓库列出原因，不创建空的审核 PR。AI 提供商、GitHub 或网络服务错误则保持为失败，并显示具体服务错误，不能伪装成内容不合格。
 
 频率定义在 `.github/workflows/discover-projects.yml`。数量和搜索范围定义在 `config/discovery.json`。手动运行工作流时可以临时覆盖 `aiAnalysisLimit` 和 `maxCandidatesPerRun`；候选上限不能高于 AI 深读上限。
 
@@ -35,7 +35,7 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README 和可选的最�
 
 1. 重新检查仓库身份、公开状态、Fork、归档、禁用和许可证。
 2. README 少于配置字数时停止，不用猜测补内容。
-3. 通过 OpenAI Responses API 的严格 JSON Schema 生成 `editorial`、事实、字段证据、推断和方向依据。
+3. 通过 OpenAI 兼容的 Chat Completions 接口和严格 JSON Schema 生成 `editorial`、事实、字段证据、推断和方向依据。请求使用 `messages` 发送规则与仓库证据，从 `choices[0].message.content` 读取结果。
 4. 脚本确定性写入 `repository` 层并生成相邻颜色避让后的 `visual` 层；AI不能改写 GitHub 数字或自行选择随机颜色。
 5. 运行项目结构和研究笔记校验。
 6. AI逐项检查 A1–E3；失败时最多进行两种定向修复。
@@ -68,7 +68,9 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README 和可选的最�
 ## 必要密钥与权限
 
 - `GITHUB_TOKEN` 由 GitHub Actions 自动提供，用于搜索、创建候选分支和 PR、提交已批准页面数据。
-- `OPENAI_API_KEY` 必须由仓库所有者保存在 GitHub Actions Secret 中，只允许服务端工作流读取。
+- `OPENAI_API_KEY` 必须由仓库所有者保存在 GitHub Actions Secret 中，只允许服务端工作流读取。名称为兼容现有设置而保留，当前保存的是 4Router Key。
+- 默认 AI 协议、Base URL、模型、推理强度和输出上限保存在 `config/discovery.json` 的 `aiProvider` 中。当前是 `openai-chat-completions`、`https://4router.net/v1` 和 `gpt-5.4`。
+- 如需临时切换兼容服务，可在 GitHub Actions Variables 中设置 `AI_API_BASE_URL` 和 `AI_MODEL`；地址必须是无账号、密码、查询参数和片段的 HTTPS URL。
 - 仓库 Actions 设置需要允许工作流读写仓库内容并创建 Pull Request。
 
-缺少密钥、接口限流、网络失败或 API 返回无效结构时，工作流停止并保留日志，不降低标准继续发布。
+缺少密钥、接口限流、网络失败、服务不支持严格 JSON Schema 或 API 返回无效结构时，工作流停止并保留日志，不自动退回到不受约束的普通文本模式，也不降低标准继续发布。错误日志会遮盖疑似 API Key。

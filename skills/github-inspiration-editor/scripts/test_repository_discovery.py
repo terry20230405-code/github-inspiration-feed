@@ -6,10 +6,11 @@ from __future__ import annotations
 import json
 import tempfile
 import unittest
+from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 
-from discover_repositories import discover, validate_config
+from discover_repositories import DiscoveryError, discover, validate_config
 
 
 NOW = datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc)
@@ -50,7 +51,7 @@ class DiscoveryTests(unittest.TestCase):
             "existing": {"githubId": 1, "fullName": "owner/existing"},
         }), encoding="utf-8")
         self.config = validate_config({
-            "schemaVersion": 1,
+            "schemaVersion": 2,
             "maxSearchResultsPerQuery": 20,
             "shortlistSize": 5,
             "aiAnalysisLimit": 4,
@@ -58,8 +59,13 @@ class DiscoveryTests(unittest.TestCase):
             "activeWithinDays": 365,
             "minimumStars": 30,
             "minimumReadmeCharacters": 800,
-            "model": "test-model",
-            "reasoningEffort": "medium",
+            "aiProvider": {
+                "protocol": "openai-chat-completions",
+                "baseUrl": "https://4router.net/v1",
+                "model": "gpt-5.4",
+                "reasoningEffort": "medium",
+                "maxCompletionTokens": 16000,
+            },
             "searchLanes": [
                 {"id": "ai", "label": "AI", "familyHint": "ai", "query": "topic:ai"},
                 {"id": "design", "label": "设计", "familyHint": "design", "query": "topic:design"},
@@ -89,6 +95,18 @@ class DiscoveryTests(unittest.TestCase):
         self.assertGreaterEqual(result["excluded"]["already-known"], 1)
         self.assertGreaterEqual(result["excluded"]["archived"], 1)
         self.assertGreaterEqual(result["excluded"]["missing-license"], 1)
+
+    def test_rejects_unsafe_or_complete_ai_endpoint_urls(self) -> None:
+        for base_url in (
+            "http://4router.net/v1",
+            "https://user:password@4router.net/v1",
+            "https://4router.net/v1?key=secret",
+            "https://4router.net/v1/chat/completions",
+        ):
+            config = deepcopy(self.config)
+            config["aiProvider"]["baseUrl"] = base_url
+            with self.subTest(base_url=base_url), self.assertRaisesRegex(DiscoveryError, "aiProvider.baseUrl"):
+                validate_config(config)
 
     def test_round_robin_keeps_search_lanes_diverse(self) -> None:
         ai_items = [repository(10 + index, f"owner/ai-{index}", stars=1000 - index, topic="ai") for index in range(4)]

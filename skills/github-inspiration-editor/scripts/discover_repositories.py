@@ -61,8 +61,8 @@ def write_json(path: Path, value: object) -> None:
 
 
 def validate_config(value: object) -> dict[str, object]:
-    if not isinstance(value, dict) or value.get("schemaVersion") != 1:
-        raise DiscoveryError("config/discovery.json must use schemaVersion 1")
+    if not isinstance(value, dict) or value.get("schemaVersion") != 2:
+        raise DiscoveryError("config/discovery.json must use schemaVersion 2")
     integer_fields = {
         "maxSearchResultsPerQuery": (1, 100),
         "shortlistSize": (1, 200),
@@ -93,9 +93,35 @@ def validate_config(value: object) -> dict[str, object]:
             raise DiscoveryError(f"search lane {lane_id} has an invalid familyHint")
         if not isinstance(lane.get("query"), str) or not lane["query"].strip():
             raise DiscoveryError(f"search lane {lane_id} needs a query")
+    provider = value.get("aiProvider")
+    required_provider_fields = {"protocol", "baseUrl", "model", "reasoningEffort", "maxCompletionTokens"}
+    if not isinstance(provider, dict) or set(provider) != required_provider_fields:
+        raise DiscoveryError(f"aiProvider must contain exactly: {', '.join(sorted(required_provider_fields))}")
+    if provider.get("protocol") != "openai-chat-completions":
+        raise DiscoveryError("aiProvider.protocol must be openai-chat-completions")
+    parsed_base_url = urllib.parse.urlsplit(str(provider.get("baseUrl") or ""))
+    if (
+        parsed_base_url.scheme != "https"
+        or not parsed_base_url.hostname
+        or parsed_base_url.username is not None
+        or parsed_base_url.password is not None
+        or parsed_base_url.query
+        or parsed_base_url.fragment
+    ):
+        raise DiscoveryError("aiProvider.baseUrl must be a plain HTTPS URL without credentials, query, or fragment")
+    provider["baseUrl"] = str(provider["baseUrl"]).rstrip("/")
+    if not provider["baseUrl"]:
+        raise DiscoveryError("aiProvider.baseUrl must not be empty")
+    if urllib.parse.urlsplit(str(provider["baseUrl"])).path.rstrip("/").endswith("/chat/completions"):
+        raise DiscoveryError("aiProvider.baseUrl must stop at the API base path, not include /chat/completions")
     for field in ("model", "reasoningEffort"):
-        if not isinstance(value.get(field), str) or not str(value[field]).strip():
-            raise DiscoveryError(f"{field} must be a non-empty string")
+        if not isinstance(provider.get(field), str) or not str(provider[field]).strip():
+            raise DiscoveryError(f"aiProvider.{field} must be a non-empty string")
+    if provider["reasoningEffort"] not in {"minimal", "low", "medium", "high", "xhigh"}:
+        raise DiscoveryError("aiProvider.reasoningEffort must be minimal, low, medium, high, or xhigh")
+    max_completion_tokens = provider.get("maxCompletionTokens")
+    if not isinstance(max_completion_tokens, int) or isinstance(max_completion_tokens, bool) or not 512 <= max_completion_tokens <= 100_000:
+        raise DiscoveryError("aiProvider.maxCompletionTokens must be an integer between 512 and 100000")
     for field in ("excludedTopics", "excludedNameFragments"):
         items = value.get(field)
         if not isinstance(items, list) or not all(isinstance(item, str) and item for item in items):
@@ -120,6 +146,16 @@ def apply_environment_overrides(config: dict[str, object]) -> dict[str, object]:
         if not minimum <= value <= maximum:
             raise DiscoveryError(f"{environment_name} must be between {minimum} and {maximum}")
         updated[field] = value
+    provider = updated.get("aiProvider")
+    if isinstance(provider, dict):
+        provider = dict(provider)
+        base_url = os.environ.get("AI_API_BASE_URL")
+        model = os.environ.get("AI_MODEL")
+        if base_url:
+            provider["baseUrl"] = base_url
+        if model:
+            provider["model"] = model
+        updated["aiProvider"] = provider
     return validate_config(updated)
 
 

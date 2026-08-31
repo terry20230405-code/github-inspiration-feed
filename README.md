@@ -107,13 +107,13 @@ npm run discover:repositories
 npm run discover:repositories:write
 ```
 
-自动化在服务端继续读取 README、调用 OpenAI Responses API、生成项目/研究/质量三件套并创建一张候选审核 PR。它不会直接改页面：
+自动化在服务端继续读取 README，通过 OpenAI 兼容的 Chat Completions 接口调用 AI、生成项目/研究/质量三件套并创建一张候选审核 PR。当前默认服务地址是 `https://4router.net/v1`，模型是 `gpt-5.4`；这两个公开配置保存在 `config/discovery.json`，API Key 仍只放在 GitHub Secret 中。它不会直接改页面：
 
 - 合并候选 PR：明确批准整批，随后一次性写入四层产品数据并运行完整检查。
 - 关闭候选 PR：拒绝整批，正式页面不改变。
 - 发布中任一检查失败：四层页面数据全部恢复，不产生半成品。
 
-首次启用需要在 GitHub 仓库的 Actions Secrets 中添加 `OPENAI_API_KEY`，并允许 GitHub Actions 写入仓库和创建 Pull Request。`GITHUB_TOKEN` 由 Actions 自动提供，不要把任何 Token 写入代码或前端。完整搜索、授权和恢复边界见 [`discovery-workflow.md`](skills/github-inspiration-editor/references/discovery-workflow.md)。
+首次启用需要在 GitHub 仓库的 Actions Secrets 中添加 `OPENAI_API_KEY`（这个名字为兼容现有设置而保留，里面可以保存当前 4Router Key），并允许 GitHub Actions 写入仓库和创建 Pull Request。`GITHUB_TOKEN` 由 Actions 自动提供，不要把任何 Token 写入代码或前端。以后若更换兼容服务，可以在 Actions Variables 中设置 `AI_API_BASE_URL` 和 `AI_MODEL` 临时覆盖仓库默认值，不需要修改密钥读取代码。完整搜索、授权和恢复边界见 [`discovery-workflow.md`](skills/github-inspiration-editor/references/discovery-workflow.md)。
 
 ## 校验项目草稿
 

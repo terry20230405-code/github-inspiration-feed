@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "maxSearchResultsPerQuery": 20,
   "shortlistSize": 36,
   "aiAnalysisLimit": 12,
@@ -7,8 +7,13 @@
   "activeWithinDays": 365,
   "minimumStars": 30,
   "minimumReadmeCharacters": 800,
-  "model": "gpt-5.4",
-  "reasoningEffort": "medium",
+  "aiProvider": {
+    "protocol": "openai-chat-completions",
+    "baseUrl": "https://4router.net/v1",
+    "model": "gpt-5.4",
+    "reasoningEffort": "medium",
+    "maxCompletionTokens": 16000
+  },
   "searchLanes": [
     {
       "id": "ai-products",

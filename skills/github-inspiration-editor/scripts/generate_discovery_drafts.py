@@ -13,6 +13,7 @@ import ssl
 import sys
 import time
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -35,7 +36,6 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_CONFIG = PROJECT_ROOT / "config/discovery.json"
 DEFAULT_DISCOVERY = PROJECT_ROOT / "outputs/discovery/latest.json"
 GENERATED_ROOT = PROJECT_ROOT / "outputs/generated/discovery-batches"
-OPENAI_API = "https://api.openai.com/v1/responses"
 USER_AGENT = "github-inspiration-feed-draft-generator/1.0"
 CHECK_IDS = (
     "A1", "A2", "A3", "A4",
@@ -61,8 +61,8 @@ class DraftError(RuntimeError):
     """Raised when one automation stage cannot safely continue."""
 
 
-class OpenAIServiceError(DraftError):
-    """Raised when OpenAI cannot complete a request independent of candidate quality."""
+class AIServiceError(DraftError):
+    """Raised when the configured AI provider cannot complete a request."""
 
 
 def utc_now() -> datetime:
@@ -280,63 +280,100 @@ def quality_instructions() -> str:
 {read_reference('quality-rubric.md')}"""
 
 
-def extract_output_text(response: object) -> str:
-    if not isinstance(response, dict):
-        raise DraftError("OpenAI response is not a JSON object")
-    direct = response.get("output_text")
-    if isinstance(direct, str) and direct:
-        return direct
-    texts: list[str] = []
-    output = response.get("output")
-    if isinstance(output, list):
-        for item in output:
-            if not isinstance(item, dict) or not isinstance(item.get("content"), list):
-                continue
-            for content in item["content"]:
-                if isinstance(content, dict) and content.get("type") == "output_text" and isinstance(content.get("text"), str):
-                    texts.append(content["text"])
-    if not texts:
-        raise DraftError("OpenAI response did not contain output text")
-    return "\n".join(texts)
+def chat_completions_endpoint(provider: dict[str, object]) -> str:
+    return f"{str(provider['baseUrl']).rstrip('/')}/chat/completions"
 
 
-def call_openai(api_key: str, model: str, reasoning_effort: str, instructions: str, input_text: str, schema_name: str, schema: dict[str, object], *, attempts: int = 3) -> dict[str, object]:
-    payload = {
-        "model": model,
-        "instructions": instructions,
-        "input": input_text,
-        "reasoning": {"effort": reasoning_effort},
-        "text": {"format": {"type": "json_schema", "name": schema_name, "strict": True, "schema": schema}},
-        "max_output_tokens": 16000,
-        "store": False,
+def chat_completions_payload(provider: dict[str, object], instructions: str, input_text: str, schema_name: str, schema: dict[str, object]) -> dict[str, object]:
+    return {
+        "model": str(provider["model"]),
+        "messages": [
+            {"role": "system", "content": instructions},
+            {"role": "user", "content": input_text},
+        ],
+        "reasoning_effort": str(provider["reasoningEffort"]),
+        "response_format": {
+            "type": "json_schema",
+            "json_schema": {
+                "name": schema_name,
+                "strict": True,
+                "schema": schema,
+            },
+        },
+        "max_completion_tokens": int(provider["maxCompletionTokens"]),
     }
+
+
+def extract_chat_completion_text(response: object) -> str:
+    if not isinstance(response, dict):
+        raise DraftError("AI response is not a JSON object")
+    choices = response.get("choices")
+    if not isinstance(choices, list) or not choices or not isinstance(choices[0], dict):
+        raise DraftError("AI response did not contain a Chat Completions choice")
+    choice = choices[0]
+    finish_reason = choice.get("finish_reason")
+    if finish_reason == "length":
+        raise DraftError("AI output reached the token limit before the JSON was complete")
+    if finish_reason == "content_filter":
+        raise DraftError("AI provider filtered the output")
+    message = choice.get("message")
+    if not isinstance(message, dict):
+        raise DraftError("AI response choice did not contain a message")
+    refusal = message.get("refusal")
+    if isinstance(refusal, str) and refusal.strip():
+        raise DraftError(f"AI provider refused the structured request: {refusal[:300]}")
+    content = message.get("content")
+    if isinstance(content, str) and content.strip():
+        return content
+    if isinstance(content, list):
+        texts = [
+            str(item["text"])
+            for item in content
+            if isinstance(item, dict) and isinstance(item.get("text"), str) and item["text"]
+        ]
+        if texts:
+            return "\n".join(texts)
+    raise DraftError("AI response message did not contain text")
+
+
+def redact_service_detail(detail: str, api_key: str) -> str:
+    redacted = detail.replace(api_key, "[REDACTED]") if api_key else detail
+    return re.sub(r"\bsk-[A-Za-z0-9_-]{8,}\b", "sk-***", redacted)
+
+
+def call_ai(api_key: str, provider: dict[str, object], instructions: str, input_text: str, schema_name: str, schema: dict[str, object], *, attempts: int = 3) -> dict[str, object]:
+    if provider.get("protocol") != "openai-chat-completions":
+        raise AIServiceError("Unsupported AI protocol; expected openai-chat-completions")
+    endpoint = chat_completions_endpoint(provider)
+    payload = chat_completions_payload(provider, instructions, input_text, schema_name, schema)
     encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json", "User-Agent": USER_AGENT}
     for attempt in range(attempts):
-        request = urllib.request.Request(OPENAI_API, data=encoded, headers=headers, method="POST")
+        request = urllib.request.Request(endpoint, data=encoded, headers=headers, method="POST")
         try:
             with urllib.request.urlopen(request, timeout=300, context=SSL_CONTEXT) as response:
                 value = json.loads(response.read().decode("utf-8"))
-            result = json.loads(extract_output_text(value))
+            result = json.loads(extract_chat_completion_text(value))
             if not isinstance(result, dict):
-                raise DraftError("OpenAI structured output is not an object")
+                raise DraftError("AI structured output is not an object")
             return result
         except urllib.error.HTTPError as error:
-            detail = error.read().decode("utf-8", errors="replace")[:1000]
+            detail = redact_service_detail(error.read().decode("utf-8", errors="replace")[:1000], api_key)
             if error.code in {429, 500, 502, 503, 504} and attempt + 1 < attempts:
                 retry_after = error.headers.get("Retry-After")
                 wait_seconds = int(retry_after) if retry_after and retry_after.isdigit() else 2 ** attempt
                 time.sleep(min(wait_seconds, 30))
                 continue
-            raise OpenAIServiceError(f"OpenAI request failed ({error.code}): {detail}") from error
+            provider_host = urllib.parse.urlsplit(endpoint).hostname or "configured provider"
+            raise AIServiceError(f"AI provider {provider_host} request failed ({error.code}): {detail}") from error
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as error:
             if attempt + 1 < attempts:
                 time.sleep(2 ** attempt)
                 continue
-            raise OpenAIServiceError(f"OpenAI request failed: {error}") from error
+            raise AIServiceError(f"AI provider request failed: {error}") from error
         except DraftError as error:
-            raise OpenAIServiceError(f"OpenAI response could not be read: {error}") from error
-    raise OpenAIServiceError("OpenAI request failed after retries")
+            raise AIServiceError(f"AI provider response could not be read: {error}") from error
+    raise AIServiceError("AI provider request failed after retries")
 
 
 def source_records(evidence: dict[str, object], accessed_date: str) -> list[dict[str, str]]:
@@ -662,7 +699,7 @@ def batch_preview(batch_id: str, candidates: list[dict[str, object]], rejected: 
     return "\n".join(lines)
 
 
-def generate_batch(config: dict[str, object], discovery: dict[str, object], api_key: str, *, github_token: str | None = None, openai_call: Callable[..., dict[str, object]] = call_openai, evidence_fetcher: Callable[[str, str | None], dict[str, object]] = fetch_evidence, now: datetime | None = None, write: bool = True) -> dict[str, object]:
+def generate_batch(config: dict[str, object], discovery: dict[str, object], api_key: str, *, github_token: str | None = None, ai_call: Callable[..., dict[str, object]] = call_ai, evidence_fetcher: Callable[[str, str | None], dict[str, object]] = fetch_evidence, now: datetime | None = None, write: bool = True) -> dict[str, object]:
     current_time = now or utc_now()
     generated_at = iso_z(current_time)
     queue = discovery.get("aiQueue")
@@ -676,8 +713,9 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
     batch_dir = GENERATED_ROOT / batch_id
     accepted: list[dict[str, object]] = []
     rejected: list[dict[str, str]] = []
-    model = str(config["model"])
-    effort = str(config["reasoningEffort"])
+    provider = config.get("aiProvider")
+    if not isinstance(provider, dict):
+        raise DraftError("Discovery config does not contain a valid aiProvider")
 
     for candidate in queue[: int(config["aiAnalysisLimit"])]:
         if len(accepted) >= int(config["maxCandidatesPerRun"]):
@@ -691,14 +729,14 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
             if not isinstance(readme, str) or len(readme.strip()) < int(config["minimumReadmeCharacters"]):
                 raise DraftError("README 信息不足，无法支撑高质量页面")
             available_sources = {item["id"] for item in source_records(evidence, generated_at[:10])}
-            payload = openai_call(api_key, model, effort, generation_instructions(), evidence_input(evidence), "inspiration_project_draft", generation_schema())
+            payload = ai_call(api_key, provider, generation_instructions(), evidence_input(evidence), "inspiration_project_draft", generation_schema())
             if payload.get("eligible") is not True:
                 raise DraftError(str(payload.get("decisionReason") or "AI 判定不适合收录"))
             project_id = project_id_for(evidence, used_ids)
             project = build_project(payload, evidence, project_id, (previous_accent,), generated_at)
             research = research_markdown(payload, evidence, generated_at)
             structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
-            quality = openai_call(api_key, model, effort, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
+            quality = ai_call(api_key, provider, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
             quality_errors = validate_quality_payload(quality)
             if quality_errors:
                 structural_errors.extend(quality_errors)
@@ -707,13 +745,13 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
                 blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid quality blockers"]
                 if not structural_errors and not failed and not blockers:
                     break
-                payload = openai_call(api_key, model, effort, generation_instructions(), repair_input(evidence, payload, project, research, quality, structural_errors, repair_attempt), f"inspiration_project_repair_{repair_attempt}", generation_schema())
+                payload = ai_call(api_key, provider, generation_instructions(), repair_input(evidence, payload, project, research, quality, structural_errors, repair_attempt), f"inspiration_project_repair_{repair_attempt}", generation_schema())
                 if payload.get("eligible") is not True:
                     raise DraftError(str(payload.get("decisionReason") or "修复后仍不适合收录"))
                 project = build_project(payload, evidence, project_id, (previous_accent,), generated_at)
                 research = research_markdown(payload, evidence, generated_at)
                 structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
-                quality = openai_call(api_key, model, effort, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
+                quality = ai_call(api_key, provider, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
                 structural_errors.extend(validate_quality_payload(quality))
             failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
             blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid blockers"]
@@ -725,8 +763,8 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
             visual = project["visual"]
             assert isinstance(visual, dict)
             previous_accent = str(visual["accent"])
-        except OpenAIServiceError as error:
-            raise OpenAIServiceError(f"{full_name} 调用 OpenAI 时失败：{error}") from error
+        except AIServiceError as error:
+            raise AIServiceError(f"{full_name} 调用 AI 服务时失败：{error}") from error
         except (DraftError, DiscoveryError, ValueError, KeyError) as error:
             rejected.append({"fullName": full_name, "reason": str(error)})
 
@@ -822,6 +860,13 @@ def main() -> int:
         return 2
     try:
         config = apply_environment_overrides(validate_config(read_json(PROJECT_ROOT / args.config)))
+        provider = config["aiProvider"]
+        assert isinstance(provider, dict)
+        provider_host = urllib.parse.urlsplit(str(provider["baseUrl"])).hostname or "未知地址"
+        print(
+            f"AI 接口：{provider['protocol']} / {provider_host} / {provider['model']}",
+            file=sys.stderr,
+        )
         discovery = read_json(PROJECT_ROOT / args.discovery)
         if not isinstance(discovery, dict):
             raise DraftError("Discovery report must be a JSON object")
