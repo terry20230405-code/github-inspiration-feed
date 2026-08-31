@@ -16,6 +16,7 @@ PUBLICATION_WORKFLOW = PROJECT_ROOT / ".github/workflows/publish-discovery-batch
 class DiscoveryWorkflowContractTests(unittest.TestCase):
     def test_ci_dependencies_are_cross_platform(self) -> None:
         package = json.loads((PROJECT_ROOT / "package.json").read_text(encoding="utf-8"))
+        identity_test = (PROJECT_ROOT / "scripts/test-project-identity.mjs").read_text(encoding="utf-8")
         required = {
             **package.get("dependencies", {}),
             **package.get("devDependencies", {}),
@@ -26,6 +27,7 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
             package.get("optionalDependencies", {}).get("@terry/selector-dev"),
             "file:../plugins/selector-dev",
         )
+        self.assertIn("configFile: false", identity_test)
 
     def test_discovery_only_creates_review_batch(self) -> None:
         workflow = DISCOVERY_WORKFLOW.read_text(encoding="utf-8")

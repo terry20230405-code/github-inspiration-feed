@@ -2,7 +2,11 @@ import { renderToStaticMarkup } from 'react-dom/server'
 import { createServer } from 'vite'
 
 const motifs = ['orbit', 'network', 'wave', 'radial', 'stack', 'grid', 'path', 'polyline']
-const server = await createServer({ appType: 'custom', server: { middlewareMode: true } })
+const server = await createServer({
+  configFile: false,
+  appType: 'custom',
+  server: { middlewareMode: true },
+})
 
 try {
   const { ProjectIdentity } = await server.ssrLoadModule('/src/components/ProjectIdentity.tsx')
