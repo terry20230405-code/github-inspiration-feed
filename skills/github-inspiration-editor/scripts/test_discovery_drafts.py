@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import copy
 import tempfile
 import unittest
 from datetime import datetime, timezone
@@ -126,7 +127,83 @@ def evidence() -> dict[str, object]:
     }
 
 
+def quality_payload(*failed_ids: str) -> dict[str, object]:
+    failed = set(failed_ids)
+    return {
+        "items": [
+            {
+                "id": item,
+                "status": "fail" if item in failed else "pass",
+                "evidence": f"{item} 的具体审核证据：{'仍与来源存在无法消除的矛盾' if item in failed else '对应字段与证据已经一致'}。",
+            }
+            for item in drafts.CHECK_IDS
+        ],
+        "blockers": [],
+    }
+
+
 class DraftTests(unittest.TestCase):
+    def test_research_snapshot_keeps_raw_github_facts(self) -> None:
+        note = drafts.research_markdown(
+            generation_payload(),
+            evidence(),
+            "2026-08-30T00:00:00Z",
+        )
+        self.assertIn("- Repository full name: example/visual-map", note)
+        self.assertIn("- Stars at fetch time: 1500", note)
+        self.assertIn("- Forks at fetch time: 120", note)
+        self.assertIn("- Latest push at fetch time: 2026-08-20T00:00:00Z", note)
+        self.assertIn("- License: MIT License", note)
+        self.assertIn("captured facts from this fetch, not live values", note)
+
+    def test_a3_is_replaced_by_deterministic_github_check(self) -> None:
+        fetched_at = "2026-08-30T00:00:00Z"
+        project = {"repository": drafts.repository_layer(evidence(), fetched_at)}
+        ai_quality = quality_payload("A3")
+        checked = drafts.apply_deterministic_a3(ai_quality, project, evidence(), fetched_at)
+        a3 = next(item for item in checked["items"] if item["id"] == "A3")
+        self.assertEqual(a3["status"], "pass")
+        self.assertIn("程序已逐项核对", a3["evidence"])
+
+        tampered = copy.deepcopy(project)
+        tampered["repository"]["stars"] += 1
+        failed = drafts.deterministic_a3_item(tampered, evidence(), fetched_at)
+        self.assertEqual(failed["status"], "fail")
+        self.assertIn("repository.stars", failed["evidence"])
+
+    def test_a3_fixed_benchmark_snapshots_pass_and_tampering_fails(self) -> None:
+        published = drafts.read_json(drafts.PROJECT_ROOT / "src/data/repositories.json")
+        memos = drafts.read_json(drafts.PROJECT_ROOT / "outputs/generated/usememos-memos.project.json")["repository"]
+        benchmark = [published[key] for key in ("remotion", "excalidraw", "immich", "n8n")] + [memos]
+        for repository in benchmark:
+            with self.subTest(repository=repository["fullName"]):
+                source = {
+                    "repository": {
+                        "id": repository["githubId"],
+                        "full_name": repository["fullName"],
+                        "stargazers_count": repository["stars"],
+                        "forks_count": repository["forks"],
+                        "pushed_at": repository["pushedAt"],
+                        "license": {"name": repository["license"]},
+                        "archived": repository["state"] == "archived",
+                        "disabled": repository["state"] == "disabled",
+                    }
+                }
+                exact = drafts.deterministic_a3_item(
+                    {"repository": repository},
+                    source,
+                    repository["fetchedAt"],
+                )
+                self.assertEqual(exact["status"], "pass")
+                tampered = copy.deepcopy(repository)
+                tampered["forks"] += 1
+                mismatch = drafts.deterministic_a3_item(
+                    {"repository": tampered},
+                    source,
+                    repository["fetchedAt"],
+                )
+                self.assertEqual(mismatch["status"], "fail")
+
     def test_builds_chat_completions_request_contract(self) -> None:
         provider = ai_provider()
         schema = {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"], "additionalProperties": False}
@@ -248,10 +325,7 @@ class DraftTests(unittest.TestCase):
 
     def test_generates_valid_fingerprinted_batch_without_network(self) -> None:
         payload = generation_payload()
-        quality = {
-            "items": [{"id": item, "status": "pass", "evidence": f"{item} has concrete evidence in F1-F3 and the matching project field."} for item in drafts.CHECK_IDS],
-            "blockers": [],
-        }
+        quality = quality_payload()
         calls = iter([payload, quality])
 
         def fake_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
@@ -291,6 +365,48 @@ class DraftTests(unittest.TestCase):
                 self.assertEqual(drafts.validate_research(research_path.read_text(encoding="utf-8")), [])
             finally:
                 drafts.GENERATED_ROOT = original_root
+
+    def test_two_failed_repairs_preserve_a4_evidence_and_history(self) -> None:
+        first = generation_payload()
+        repair_one = copy.deepcopy(first)
+        repair_one["editorial"]["summary"] += " 第一轮只收窄了无法验证的表述。"
+        repair_two = copy.deepcopy(repair_one)
+        repair_two["editorial"]["summary"] = "第二轮从已验证的输入、操作与结果重新构造摘要。"
+        calls = iter([
+            first,
+            quality_payload("A3", "A4"),
+            repair_one,
+            quality_payload("A4"),
+            repair_two,
+            quality_payload("A4"),
+        ])
+
+        result = drafts.generate_batch(
+            {
+                "aiProvider": ai_provider(),
+                "minimumReadmeCharacters": 100,
+                "aiAnalysisLimit": 1,
+                "maxCandidatesPerRun": 1,
+            },
+            {"policySha256": "d" * 64, "aiQueue": [{"fullName": "example/visual-map"}]},
+            "test-key",
+            ai_call=lambda *_args, **_kwargs: next(calls),
+            evidence_fetcher=lambda _full_name, _token: evidence(),
+            now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
+            write=False,
+        )
+
+        self.assertEqual(result["status"], "no-candidates")
+        rejected = result["rejected"][0]
+        self.assertEqual(rejected["stage"], "两轮自动修复后质量复检")
+        self.assertEqual([item["id"] for item in rejected["failedChecks"]], ["A4"])
+        self.assertIn("仍与来源存在无法消除的矛盾", rejected["failedChecks"][0]["evidence"])
+        self.assertEqual(len(rejected["repairHistory"]), 3)
+        self.assertEqual(rejected["repairHistory"][0]["failedChecks"][0]["id"], "A4")
+        self.assertIn("editorial.summary", rejected["repairHistory"][1]["changedPaths"])
+        self.assertNotEqual(rejected["repairHistory"][1]["strategy"], rejected["repairHistory"][2]["strategy"])
+        self.assertIn("最终失败证据", result["preview"])
+        self.assertIn("A4", result["preview"])
 
 
 if __name__ == "__main__":

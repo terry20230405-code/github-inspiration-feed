@@ -39,6 +39,10 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("pull-requests: write", workflow)
         self.assertIn("gh pr create", workflow)
         self.assertIn("if: steps.drafts.outputs.candidate_count != '0'", workflow)
+        self.assertIn("uses: actions/upload-artifact@v4", workflow)
+        self.assertIn("name: discovery-audit-${{ github.run_id }}", workflow)
+        self.assertIn("outputs/discovery/draft-result.json", workflow)
+        self.assertIn("retention-days: 30", workflow)
         self.assertNotIn("publish_discovery_batch.py", workflow)
         self.assertNotIn("git add src/data", workflow)
 

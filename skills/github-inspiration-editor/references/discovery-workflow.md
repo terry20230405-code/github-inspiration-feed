@@ -10,7 +10,7 @@
 - AI 每次最多深读 12 个仓库。
 - 每次最多生成 8 个通过结构、证据和 19 项质量检查的候选。
 - 因此默认理论上每周最多产生 16 个候选，不保证每次达到上限。
-- 如果所有仓库都因证据或内容质量不足被拒绝，本轮正常结束并在运行摘要中逐仓库列出原因，不创建空的审核 PR。AI 提供商、GitHub 或网络服务错误则保持为失败，并显示具体服务错误，不能伪装成内容不合格。
+- 如果所有仓库都因证据或内容质量不足被拒绝，本轮正常结束，不创建空的审核 PR。运行摘要会逐仓库列出停止阶段、最终失败证据和两轮修复轨迹；同一份 JSON 审计结果作为 Actions Artifact 保留 30 天。AI 提供商、GitHub 或网络服务错误则保持为失败，并显示具体服务错误，不能伪装成内容不合格。
 
 频率定义在 `.github/workflows/discover-projects.yml`。数量和搜索范围定义在 `config/discovery.json`。手动运行工作流时可以临时覆盖 `aiAnalysisLimit` 和 `maxCandidatesPerRun`；候选上限不能高于 AI 深读上限。
 
@@ -38,10 +38,14 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README 和可选的最�
 3. 通过 OpenAI 兼容的 Chat Completions 接口和严格 JSON Schema 生成 `editorial`、事实、字段证据、推断和方向依据。请求使用 `messages` 发送规则与仓库证据，从 `choices[0].message.content` 读取结果。
 4. 脚本确定性写入 `repository` 层并生成相邻颜色避让后的 `visual` 层；AI不能改写 GitHub 数字或自行选择随机颜色。
 5. 运行项目结构和研究笔记校验。
-6. AI逐项检查 A1–E3；失败时最多进行两种定向修复。
-7. 仍失败、出现关键冲突或证据不足的仓库进入本轮拒绝记录，不成为发布候选。
+6. 程序逐项核对 A3 的 GitHub ID、完整仓库名、许可证、仓库状态、抓取时间、Star、Fork 和推送时间；这些完全相等才通过，AI 无权改判。
+7. AI 检查 A1–E3 中需要理解语义的项目，尤其严格判断 A4 的来源矛盾和不确定性；失败时最多进行两种范围受限且策略不同的定向修复。
+8. 每次复检只判断当前版本，不让已经修好的旧错误继续阻塞；同时把初检、两轮改动字段、修复策略和具体失败证据写入审计轨迹。
+9. 仍失败、出现关键冲突或证据不足的仓库进入本轮拒绝记录，不成为发布候选。
 
 每个合格仓库生成 `.project.json`、`.research.md` 和 `.quality.json`。同一轮候选保存在 `outputs/generated/discovery-batches/<batch-id>/`，并由 `manifest.json` 绑定所有文件指纹。
+
+无论有没有合格候选，Actions 都会上传 `discovery-audit-<run-id>`。其中 `draft-result.json` 是机器可读的完整结果，`latest.md` 是搜索摘要，`latest.json` 是本轮搜索数据。它只用于查看和排错，不代表批准发布。
 
 ## 审核 PR 就是人工批准
 

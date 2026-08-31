@@ -83,6 +83,17 @@ jobs:
           Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(result["preview"], encoding="utf-8")
           PY
 
+      - name: 保存本轮发现审计报告
+        uses: actions/upload-artifact@v4
+        with:
+          name: discovery-audit-${{ github.run_id }}
+          path: |
+            outputs/discovery/draft-result.json
+            outputs/discovery/latest.json
+            outputs/discovery/latest.md
+          if-no-files-found: error
+          retention-days: 30
+
       - name: 运行自动化测试
         run: |
           python skills/github-inspiration-editor/scripts/test_repository_discovery.py

@@ -14,11 +14,19 @@ Research mode: new | refresh
 ## Snapshot
 
 - Repository ID: number or 未知
+- Repository full name: owner/repo
+- Repository name: official name
+- Stars at fetch time: raw integer
+- Forks at fetch time: raw integer
+- Primary language: language or 未知
+- Latest push at fetch time: UTC ISO 8601 timestamp
+- License: verified label or 未知
 - Default branch: branch or 未知
 - README SHA: sha or 未知
 - Latest release: tag/date or 未知
 - Repository state: active | archived | disabled | unavailable
 - Fetched at: UTC ISO 8601 timestamp
+- Snapshot note: Star, Fork, and push values are captured facts from this fetch, not live values.
 
 ## Sources
 

@@ -113,6 +113,8 @@ npm run discover:repositories:write
 - 关闭候选 PR：拒绝整批，正式页面不改变。
 - 发布中任一检查失败：四层页面数据全部恢复，不产生半成品。
 
+其中 GitHub ID、仓库名、许可证、状态、抓取时间、Star、Fork 和推送时间由程序直接对照本轮 GitHub 快照，不再让 AI 判断。需要理解上下文的来源矛盾和不确定性仍由 AI 严格审核。即使一轮最终是 0 个候选，Actions 页面也会保留 30 天的 `discovery-audit-<run-id>` 审计文件，里面能看到每个仓库的具体失败证据和两轮修复轨迹。
+
 首次启用需要在 GitHub 仓库的 Actions Secrets 中添加 `OPENAI_API_KEY`（这个名字为兼容现有设置而保留，里面可以保存当前 4Router Key），并允许 GitHub Actions 写入仓库和创建 Pull Request。`GITHUB_TOKEN` 由 Actions 自动提供，不要把任何 Token 写入代码或前端。以后若更换兼容服务，可以在 Actions Variables 中设置 `AI_API_BASE_URL` 和 `AI_MODEL` 临时覆盖仓库默认值，不需要修改密钥读取代码。完整搜索、授权和恢复边界见 [`discovery-workflow.md`](skills/github-inspiration-editor/references/discovery-workflow.md)。
 
 ## 校验项目草稿
