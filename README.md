@@ -144,6 +144,8 @@ npm run test:identity-renderer
 
 格式校验通过只代表“资料没有漏填”，不代表文字已经写好。内容质量使用 19 个必要检查项，覆盖事实、原项目解释、技术表达层次、字段分工、单个改造方向和整组方向差异。每项只有“通过”或“失败”；全部通过才成为发布候选。
 
+自动候选还必须提供方向差异证明：逐个比较原项目与新方向的用户、输入、核心工作流和可见结果，并列出所有方向的两两对照。每个方向相对原项目、每一对方向之间都至少要有两项实质变化；已有 API、同一处理管线换文件类型或行业名称不能单独算新产品，整组最多保留一个真正成立的开发者基础设施方向。
+
 - [内容质量评分标准](skills/github-inspiration-editor/references/quality-rubric.md)
 - [内容质量自动修复闭环](skills/github-inspiration-editor/references/quality-repair-loop.md)
 - [固定质量测试仓库集](skills/github-inspiration-editor/references/benchmark-set.md)

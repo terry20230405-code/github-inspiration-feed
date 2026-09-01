@@ -22,6 +22,19 @@ Each direction must answer:
 
 If one of these cannot be answered concretely, narrow or reject the direction.
 
+## Prove that it is a new product
+
+For every direction, write the original repository workflow and the proposed workflow in the same form: `audience + input → core workflow → visible outcome`. Then compare these four axes:
+
+- Audience
+- Input
+- Core workflow
+- Visible outcome
+
+A direction must materially change at least two axes. Choosing only one file type, hiding configuration, renaming a preset, changing the industry label, or presenting an existing API as a separate service does not create a new product by itself.
+
+An end-user product gives a person a complete recurring experience and a visible result. A developer-infrastructure direction may appear only once in a set, and it still needs a concrete caller, repeated integration problem, input contract, processing workflow, and returned result that the original repository does not already provide. If the repository already exposes the same API, pipeline, plugin surface, or backend service, repackaging that interface is reuse documentation rather than a product direction.
+
 ## Diversity across the set
 
 The 3–5 directions should not be the same workflow with different professions inserted. Vary at least two of these dimensions across the set:
@@ -61,4 +74,4 @@ Any of these may be part of a valid direction, but it must also introduce a conc
 
 ## Final comparison
 
-Before delivery, compare every pair of directions across audience, input, core workflow, and visible outcome. Every pair must differ on at least two of those four dimensions; otherwise rewrite or remove the weaker one. A newcomer should be able to explain why each direction is a different product.
+Before delivery, create every unique pair and compare it across audience, input, core workflow, and visible outcome. Every pair must differ on at least two of those four dimensions; merely changing media type, profession, industry, interface, or output format around the same processing pipeline counts as one change, not several. Otherwise rewrite or remove the weaker direction. A newcomer should be able to explain why each direction is a different product without relying on its title.

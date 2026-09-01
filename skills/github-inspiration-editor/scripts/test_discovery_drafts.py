@@ -89,8 +89,33 @@ def generation_payload() -> dict[str, object]:
         "fieldEvidence": field_evidence,
         "inferences": [{"id": "I1", "statement": "这些能力适合改造成面向具体生活场景的关系工具。", "basis": ["F2", "F3"], "confidence": "high"}],
         "directionRationales": [
-            {"directionId": item["id"], "reusedCapability": "节点布局、连接查看与搜索", "evidenceIds": ["F2", "F3"], "audienceAndProblem": item["problem"], "inputAndOutcome": item["tagline"], "difference": item["difference"]}
+            {
+                "directionId": item["id"],
+                "reusedCapability": "节点布局、连接查看与搜索",
+                "evidenceIds": ["F2", "F3"],
+                "audienceAndProblem": item["problem"],
+                "inputAndOutcome": item["tagline"],
+                "originalWorkflow": "用户导入通用结构化资料，探索节点关系并导出关系图。",
+                "newWorkflow": f"{item['audience']}在具体场景中使用专门输入，经过收窄流程后得到{item['tagline']}。",
+                "changedAxes": ["audience", "input", "workflow", "outcome"],
+                "productForm": "end-user-product",
+                "productBoundary": "用户直接完成一条有明确输入和结果的专用流程，不是裸露节点 API 或通用画布。",
+                "difference": item["difference"],
+            }
             for item in directions
+        ],
+        "directionComparisons": [
+            {
+                "leftDirectionId": directions[left]["id"],
+                "rightDirectionId": directions[right]["id"],
+                "differentAxes": ["audience", "input", "workflow", "outcome"],
+                "comparison": (
+                    f"{directions[left]['name']}与{directions[right]['name']}面向不同用户，"
+                    "接收不同资料，完成不同流程并产生不同结果。"
+                ),
+            }
+            for left in range(len(directions))
+            for right in range(left + 1, len(directions))
         ],
         "uncertainty": ["没有扫描 Issues，因此不对市场需求作判断。"],
         "localizationDecisions": ["保留 JSON 与 SVG，因为它们帮助读者判断输入和输出形式。"],
@@ -129,6 +154,7 @@ def evidence() -> dict[str, object]:
 
 def quality_payload(*failed_ids: str) -> dict[str, object]:
     failed = set(failed_ids)
+    direction_ids = ["family-memory-map", "learning-path-board", "community-resource-map"]
     return {
         "items": [
             {
@@ -137,6 +163,26 @@ def quality_payload(*failed_ids: str) -> dict[str, object]:
                 "evidence": f"{item} 的具体审核证据：{'仍与来源存在无法消除的矛盾' if item in failed else '对应字段与证据已经一致'}。",
             }
             for item in drafts.CHECK_IDS
+        ],
+        "directionAudits": [
+            {
+                "directionId": direction_id,
+                "changedAxes": ["audience", "input", "workflow", "outcome"],
+                "status": "pass",
+                "evidence": f"{direction_id} 与原项目相比改变了用户、输入、流程和可见结果。",
+            }
+            for direction_id in direction_ids
+        ],
+        "directionPairAudits": [
+            {
+                "leftDirectionId": direction_ids[left],
+                "rightDirectionId": direction_ids[right],
+                "differentAxes": ["audience", "input", "workflow", "outcome"],
+                "status": "pass",
+                "evidence": "这一对方向的用户、输入、核心流程和可见结果均不同。",
+            }
+            for left in range(len(direction_ids))
+            for right in range(left + 1, len(direction_ids))
         ],
         "blockers": [],
     }
@@ -155,6 +201,51 @@ class DraftTests(unittest.TestCase):
         self.assertIn("- Latest push at fetch time: 2026-08-20T00:00:00Z", note)
         self.assertIn("- License: MIT License", note)
         self.assertIn("captured facts from this fetch, not live values", note)
+        self.assertIn("## Pairwise direction comparison", note)
+        self.assertIn("- Materially changed axes: audience, input, workflow, outcome", note)
+
+    def test_direction_reasoning_requires_real_transformation_matrix(self) -> None:
+        payload = generation_payload()
+        self.assertEqual(drafts.validate_generation_payload(payload, {"S1", "S2", "S3"}), [])
+
+        weak_change = copy.deepcopy(payload)
+        weak_change["directionRationales"][0]["changedAxes"] = ["audience"]
+        errors = drafts.validate_generation_payload(weak_change, {"S1", "S2", "S3"})
+        self.assertTrue(any("at least two unique changed axes" in error for error in errors))
+
+        too_much_infrastructure = copy.deepcopy(payload)
+        too_much_infrastructure["directionRationales"][0]["productForm"] = "developer-infrastructure"
+        too_much_infrastructure["directionRationales"][1]["productForm"] = "developer-infrastructure"
+        errors = drafts.validate_generation_payload(too_much_infrastructure, {"S1", "S2", "S3"})
+        self.assertIn("at most one direction may be developer infrastructure", errors)
+
+        missing_pair = copy.deepcopy(payload)
+        missing_pair["directionComparisons"].pop()
+        errors = drafts.validate_generation_payload(missing_pair, {"S1", "S2", "S3"})
+        self.assertIn("direction comparisons must contain every unique direction pair exactly once and in order", errors)
+
+    def test_quality_review_must_challenge_declared_direction_differences(self) -> None:
+        instructions = drafts.quality_instructions()
+        self.assertIn("Do not accept the generator's changedAxes declarations", instructions)
+        self.assertIn("exposing an already-existing API is not enough", instructions)
+        self.assertIn("At most one developer-infrastructure direction", instructions)
+
+        project = {"editorial": generation_payload()["editorial"]}
+        false_pass = quality_payload()
+        false_pass["directionAudits"][0]["status"] = "fail"
+        false_pass["directionAudits"][0]["changedAxes"] = ["audience"]
+        errors = drafts.validate_quality_payload(false_pass, project)
+        self.assertIn("D3 must fail when any direction audit fails", errors)
+        audit = drafts.quality_audit_entry(0, false_pass, errors, strategy="test", changed_paths=[])
+        self.assertEqual(audit["failedDirectionAudits"][0]["directionId"], "family-memory-map")
+
+        pair_false_pass = quality_payload()
+        pair_false_pass["directionPairAudits"][0]["status"] = "fail"
+        pair_false_pass["directionPairAudits"][0]["differentAxes"] = ["input"]
+        errors = drafts.validate_quality_payload(pair_false_pass, project)
+        self.assertIn("E1 must fail when any direction pair audit fails", errors)
+        audit = drafts.quality_audit_entry(0, pair_false_pass, errors, strategy="test", changed_paths=[])
+        self.assertEqual(audit["failedDirectionPairAudits"][0]["leftDirectionId"], "family-memory-map")
 
     def test_a3_is_replaced_by_deterministic_github_check(self) -> None:
         fetched_at = "2026-08-30T00:00:00Z"

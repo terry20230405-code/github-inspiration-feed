@@ -73,9 +73,22 @@ Research mode: new | refresh
 - Evidence: F4, F5
 - New audience and recurring problem: ...
 - Input and visible outcome: ...
+- Original workflow: audience + input → core workflow → visible outcome
+- New workflow: audience + input → core workflow → visible outcome
+- Materially changed axes: audience, input, workflow, outcome (at least two)
+- Product form: end-user-product | developer-infrastructure
+- Product boundary: explain the complete user or caller experience and why this is not a raw existing API/pipeline
 - Substantive difference: ...
 
 Repeat for every direction in the project record.
+
+## Pairwise direction comparison
+
+- Direction A vs Direction B
+  - Different axes: audience, input, workflow, outcome (at least two)
+  - Concrete comparison: explain the actual differences without relying on titles
+
+Repeat once for every unique direction pair.
 
 ## Uncertainty
 
@@ -106,6 +119,8 @@ Repeat for every direction in the project record.
 - Every factual repository or editorial field points to one or more `F` IDs.
 - Every inference uses an `I` ID, cites its factual basis, and states confidence.
 - Every direction has a `D` section and cites at least one verified capability.
+- Every direction records an original/new workflow comparison, at least two changed axes, and a product boundary; at most one direction may be developer infrastructure.
+- Every unique direction pair records at least two independently checkable differences.
 - Dynamic metadata records `fetchedAt` and must not be described as live.
 - `visual` needs no repository evidence because it is persisted product configuration. A capability-based motif choice is still not a repository field.
 - Missing evidence is `unknown`; it is not a reason to invent a replacement claim.
