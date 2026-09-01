@@ -39,7 +39,7 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("pull-requests: write", workflow)
         self.assertIn("gh pr create", workflow)
         self.assertIn("if: steps.drafts.outputs.candidate_count != '0'", workflow)
-        self.assertIn("uses: actions/upload-artifact@v4", workflow)
+        self.assertIn("uses: actions/upload-artifact@v7", workflow)
         self.assertIn("name: discovery-audit-${{ github.run_id }}", workflow)
         self.assertIn("outputs/discovery/draft-result.json", workflow)
         self.assertIn("retention-days: 30", workflow)
@@ -61,6 +61,14 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("REFRESH_EXIT_CODE: ${{ steps.published_refresh.outputs.exit_code }}", discovery)
         self.assertIn("group: github-inspiration-main-writes", discovery)
         self.assertIn("group: github-inspiration-main-writes", publication)
+
+        commit_step = discovery.split("- name: 提交安全的旧项目刷新结果", 1)[1].split(
+            "- name: 搜索并筛选 GitHub 仓库", 1
+        )[0]
+        self.assertIn("outputs/refresh", commit_step)
+        self.assertIn("outputs/generated/research-refresh", commit_step)
+        self.assertNotIn("outputs/automation", commit_step)
+        self.assertNotIn("outputs/versions", commit_step)
 
     def test_publication_requires_merged_discovery_pr(self) -> None:
         workflow = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")

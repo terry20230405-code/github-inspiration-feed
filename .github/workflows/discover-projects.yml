@@ -115,7 +115,7 @@ jobs:
 
       - name: 保存旧项目巡检审计
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: published-refresh-audit-${{ github.run_id }}
           path: |
@@ -136,11 +136,7 @@ jobs:
           git add -- \
             src/data/repositories.json \
             outputs/refresh \
-            outputs/generated/research-refresh \
-            outputs/automation/latest.json \
-            outputs/automation/runs \
-            outputs/versions/snapshots \
-            outputs/versions/transactions
+            outputs/generated/research-refresh
           if git diff --cached --quiet; then
             echo "旧项目没有需要提交的安全变化。"
           else
@@ -169,7 +165,7 @@ jobs:
           PY
 
       - name: 保存本轮发现审计报告
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: discovery-audit-${{ github.run_id }}
           path: |
