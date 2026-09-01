@@ -184,6 +184,8 @@ jobs:
           python skills/github-inspiration-editor/scripts/test_repository_discovery.py
           python skills/github-inspiration-editor/scripts/test_discovery_drafts.py
           python skills/github-inspiration-editor/scripts/test_discovery_batch_publication.py
+          npm run test:feed-data
+          npm run test:feed-window
           npm run test:visual-identity
           npm run test:identity-renderer
           npm run lint

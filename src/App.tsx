@@ -1,14 +1,16 @@
-import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, Check, ChevronRight, ExternalLink, Star } from 'lucide-react'
 import { ProjectIdentity } from './components/ProjectIdentity'
-import { formatRelativeDate, formatRepositoryCount, projects, repositoryUrl, type Direction, type Project } from './data'
+import { formatRelativeDate, formatRepositoryCount, repositoryUrl, type Direction, type Project } from './data'
+import { loadProject, loadProjectIndex, retainProjectCache, type ProjectIndexEntry } from './data/runtime'
+import { clampProjectIndex, progressIndicatorTargets, renderedProjectIndices, retainedProjectIndices } from './feed-window'
 
-function FeedCard({ project, index, active, onOpen }: { project: Project; index: number; active: boolean; onOpen: () => void }) {
+function FeedCard({ project, index, total, active, onOpen }: { project: Project; index: number; total: number; active: boolean; onOpen: () => void }) {
   const { repository, editorial, visual } = project
   return (
     <section className={`feed-card ${active ? 'is-active' : ''}`} data-index={index} style={{ '--project-accent': visual.accent, '--project-foreground': visual.foreground } as CSSProperties}>
       <div className="feed-inner">
-        <div className="eyebrow feed-index"><span>{String(index + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span></div>
+        <div className="eyebrow feed-index"><span>{String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span></div>
         <div className="project-heading">
           <h1>{repository.name}</h1>
           <p className="project-hook">{editorial.hook}</p>
@@ -26,6 +28,10 @@ function FeedCard({ project, index, active, onOpen }: { project: Project; index:
       </div>
     </section>
   )
+}
+
+function FeedPlaceholder({ entry, index }: { entry: ProjectIndexEntry; index: number }) {
+  return <section className="feed-card feed-card--loading" data-index={index} aria-busy="true" style={{ '--project-accent': entry.accent, '--project-foreground': entry.foreground } as CSSProperties}><span>正在准备下一个项目</span></section>
 }
 
 function DirectionCard({ direction, selected, revealed, onSelect }: { direction: Direction; selected: boolean; revealed: boolean; onSelect: () => void }) {
@@ -91,25 +97,80 @@ function Detail({ project, onBack }: { project: Project; onBack: () => void }) {
 }
 
 export default function App() {
+  const [projectIndex, setProjectIndex] = useState<readonly ProjectIndexEntry[]>([])
+  const [loadedProjects, setLoadedProjects] = useState<Map<string, Project>>(() => new Map())
+  const [loadError, setLoadError] = useState('')
   const [active, setActive] = useState(0)
   const [detail, setDetail] = useState<Project | null>(null)
   const feedRef = useRef<HTMLDivElement>(null)
+  const scrollFrame = useRef<number | null>(null)
   const restoreFeedPosition = useRef(false)
-  const goTo = (next: number) => feedRef.current?.children[Math.max(0, Math.min(projects.length - 1, next))]?.scrollIntoView({ behavior: 'smooth' })
+  const total = projectIndex.length
+  const renderIndices = useMemo(() => renderedProjectIndices(active, total), [active, total])
+  const indicatorTargets = useMemo(() => progressIndicatorTargets(active, total), [active, total])
+  const currentEntry = projectIndex[active]
+  const currentProject = currentEntry ? loadedProjects.get(currentEntry.id) : undefined
+  const goTo = useCallback((next: number) => {
+    const feed = feedRef.current
+    if (!feed || total === 0) return
+    feed.scrollTo({ top: clampProjectIndex(next, total) * feed.clientHeight, behavior: 'smooth' })
+  }, [total])
+
+  useEffect(() => {
+    let cancelled = false
+    loadProjectIndex()
+      .then(index => {
+        if (cancelled) return
+        setProjectIndex(index)
+        setLoadError('')
+      })
+      .catch(error => {
+        if (!cancelled) setLoadError(error instanceof Error ? error.message : '项目索引读取失败')
+      })
+    return () => { cancelled = true }
+  }, [])
+
+  useEffect(() => {
+    if (!total) return
+    let cancelled = false
+    const retainedIndices = retainedProjectIndices(active, total)
+    const retainedIds = new Set(retainedIndices.map(index => projectIndex[index].id))
+    retainProjectCache(retainedIds)
+    queueMicrotask(() => {
+      if (!cancelled) setLoadedProjects(previous => new Map([...previous].filter(([id]) => retainedIds.has(id))))
+    })
+
+    for (const index of retainedIndices) {
+      const id = projectIndex[index].id
+      loadProject(id)
+        .then(project => {
+          if (cancelled) return
+          setLoadedProjects(previous => {
+            const next = new Map([...previous].filter(([projectId]) => retainedIds.has(projectId)))
+            next.set(id, project)
+            return next
+          })
+          if (index === active) setLoadError('')
+        })
+        .catch(error => {
+          if (!cancelled && index === active && error instanceof Error && error.name !== 'AbortError') setLoadError(error.message)
+        })
+    }
+    return () => { cancelled = true }
+  }, [active, projectIndex, total])
 
   useLayoutEffect(() => {
-    if (detail || !restoreFeedPosition.current) return
+    if (detail || !restoreFeedPosition.current || !total) return
 
     const feed = feedRef.current
-    const card = feed?.children[active] as HTMLElement | undefined
-    if (feed && card) {
+    if (feed) {
       const scrollBehavior = feed.style.scrollBehavior
       feed.style.scrollBehavior = 'auto'
-      feed.scrollTop = card.offsetTop
+      feed.scrollTop = active * feed.clientHeight
       feed.style.scrollBehavior = scrollBehavior
     }
     restoreFeedPosition.current = false
-  }, [active, detail])
+  }, [active, detail, total])
 
   const closeDetail = () => {
     restoreFeedPosition.current = true
@@ -117,19 +178,52 @@ export default function App() {
   }
 
   useEffect(() => {
-    if (detail) return
-    const el = feedRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.index)) }), { root: el, threshold: .65 })
-    Array.from(el.children).forEach(child => observer.observe(child))
+    if (detail || !total) return
     const key = (e: KeyboardEvent) => { if (['ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); goTo(active + 1) } if (['ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); goTo(active - 1) } }
     window.addEventListener('keydown', key)
-    return () => { observer.disconnect(); window.removeEventListener('keydown', key) }
-  }, [active, detail])
+    return () => window.removeEventListener('keydown', key)
+  }, [active, detail, goTo, total])
+
+  useEffect(() => {
+    if (detail || !total) return
+    const resize = () => {
+      const feed = feedRef.current
+      if (feed) feed.scrollTop = active * feed.clientHeight
+    }
+    window.addEventListener('resize', resize)
+    return () => window.removeEventListener('resize', resize)
+  }, [active, detail, total])
+
+  const handleFeedScroll = () => {
+    if (scrollFrame.current !== null) return
+    scrollFrame.current = window.requestAnimationFrame(() => {
+      scrollFrame.current = null
+      const feed = feedRef.current
+      if (!feed || !feed.clientHeight) return
+      const next = clampProjectIndex(Math.round(feed.scrollTop / feed.clientHeight), total)
+      setActive(previous => previous === next ? previous : next)
+    })
+  }
+
+  if (!projectIndex.length) return <main className="app-loading"><span>{loadError || '正在准备灵感流'}</span></main>
   if (detail) return <Detail project={detail} onBack={closeDetail}/>
-  return <div className="app-shell" style={{ '--project-accent': projects[active].visual.accent, '--project-foreground': projects[active].visual.foreground } as CSSProperties}>
-    <header className="topbar"><a className="brand" href="#">灵感流<span>β</span></a><div className="progress">{projects.map((_, i) => <button key={i} className={i === active ? 'active' : ''} onClick={() => goTo(i)} aria-label={`前往第 ${i + 1} 个项目`}/>)}</div><span className="top-note">为你的下一个项目，找一个起点</span></header>
-    <div className="feed" ref={feedRef}>{projects.map((project, index) => <FeedCard key={project.id} project={project} index={index} active={index === active} onOpen={() => { setActive(index); setDetail(project) }}/>)}</div>
-    <div className="pager"><button onClick={() => goTo(active - 1)} disabled={active === 0}><ArrowUp size={18}/></button><span>{active + 1} / {projects.length}</span><button onClick={() => goTo(active + 1)} disabled={active === projects.length - 1}><ArrowDown size={18}/></button></div>
+  const theme = currentProject?.visual ?? currentEntry
+  const firstRendered = renderIndices[0] ?? 0
+  const lastRendered = renderIndices.at(-1) ?? -1
+  return <div className="app-shell" style={{ '--project-accent': theme.accent, '--project-foreground': theme.foreground } as CSSProperties}>
+    <header className="topbar"><a className="brand" href="#">灵感流<span>β</span></a><div className="progress">{indicatorTargets.map((target, slot) => <button key={slot} disabled={target === null} className={target === active ? 'active' : ''} onClick={() => target !== null && goTo(target)} aria-label={target === null ? '暂无项目' : `前往第 ${target + 1} 个项目`}/>)}</div><span className="top-note">为你的下一个项目，找一个起点</span></header>
+    <div className="feed" ref={feedRef} onScroll={handleFeedScroll}>
+      {firstRendered > 0 && <div className="feed-spacer" style={{ height: `${firstRendered * 100}dvh` }} aria-hidden="true"/>}
+      {renderIndices.map(index => {
+        const entry = projectIndex[index]
+        const project = loadedProjects.get(entry.id)
+        return project
+          ? <FeedCard key={entry.id} project={project} index={index} total={total} active={index === active} onOpen={() => { setActive(index); setDetail(project) }}/>
+          : <FeedPlaceholder key={entry.id} entry={entry} index={index}/>
+      })}
+      {lastRendered < total - 1 && <div className="feed-spacer" style={{ height: `${(total - lastRendered - 1) * 100}dvh` }} aria-hidden="true"/>}
+    </div>
+    <div className="pager"><button onClick={() => goTo(active - 1)} disabled={active === 0}><ArrowUp size={18}/></button><span>{active + 1} / {total}</span><button onClick={() => goTo(active + 1)} disabled={active === total - 1}><ArrowDown size={18}/></button></div>
+    {loadError && <div className="feed-error" role="status">{loadError}</div>}
   </div>
 }

@@ -9,3 +9,4 @@ __pycache__/
 outputs/automation/
 outputs/selector-legacy-backup/
 outputs/versions/
+/public/data/projects/

@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/generate-project-data.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/generate-project-data.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -31,6 +33,8 @@
     "publication:publish": "py -3.12 skills/github-inspiration-editor/scripts/manage_publication.py publish",
     "publication:recover": "py -3.12 skills/github-inspiration-editor/scripts/manage_publication.py recover",
     "test:identity-renderer": "node scripts/test-project-identity.mjs",
+    "test:feed-data": "node scripts/test-project-feed-data.mjs",
+    "test:feed-window": "node scripts/test-feed-window.mjs",
     "test:refresh-cycle": "python skills/github-inspiration-editor/scripts/test_refresh_cycle.py",
     "test:version-manager": "python skills/github-inspiration-editor/scripts/test_version_manager.py",
     "test:research-refresh": "python skills/github-inspiration-editor/scripts/test_research_refresh.py",

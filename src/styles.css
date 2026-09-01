@@ -10,9 +10,13 @@ button { color: inherit; }
 .topbar { position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 58px; padding: max(10px, env(safe-area-inset-top)) 18px 0; display: flex; align-items: center; justify-content: space-between; background: color-mix(in srgb, #f5f5f7 84%, transparent); backdrop-filter: blur(20px) saturate(160%); border-bottom: 1px solid rgba(0,0,0,.06); }
 .brand { color: #111; text-decoration: none; font-size: 17px; font-weight: 750; letter-spacing: -.04em; }.brand span { font: 500 8px/1 'DM Mono', monospace; vertical-align: top; color: var(--accent); margin-left: 3px; }
 .top-note { display: none; color: #77777c; font-size: 12px; }
-.progress { display: flex; gap: 5px; }.progress button { border: 0; width: 6px; height: 6px; padding: 0; border-radius: 9px; background: #c7c7ca; transition: .25s; }.progress button.active { width: 20px; background: var(--project-accent); }
+.progress { display: flex; gap: 5px; }.progress button { border: 0; width: 6px; height: 6px; padding: 0; border-radius: 9px; background: color-mix(in srgb, var(--project-accent) 26%, #c7c7ca); transition: .25s; }.progress button.active { width: 20px; background: var(--project-accent); }.progress button:disabled { opacity: .28; }
 .feed { height: 100dvh; overflow-y: auto; scroll-snap-type: y mandatory; scroll-behavior: smooth; scrollbar-width: none; }.feed::-webkit-scrollbar { display: none; }
-.feed-card { min-height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always; padding: 76px 18px 26px; display: flex; align-items: center; background: color-mix(in srgb, var(--project-accent) 3%, #f5f5f7); }
+.feed-spacer { width: 1px; pointer-events: none; }
+.feed-card { height: 100dvh; min-height: 100dvh; scroll-snap-align: start; scroll-snap-stop: always; padding: 76px 18px 26px; display: flex; align-items: center; background: color-mix(in srgb, var(--project-accent) 3%, #f5f5f7); }
+.feed-card--loading { justify-content: center; color: color-mix(in srgb, var(--project-accent) 48%, #77777c); font: 500 11px 'DM Mono', monospace; letter-spacing: .08em; }
+.app-loading { min-height: 100dvh; display: grid; place-items: center; color: #77777c; background: #f5f5f7; font: 500 11px 'DM Mono', monospace; letter-spacing: .08em; }
+.feed-error { position: fixed; z-index: 30; left: 50%; bottom: max(18px, env(safe-area-inset-bottom)); transform: translateX(-50%); max-width: calc(100vw - 36px); padding: 9px 12px; border: 1px solid #0001; border-radius: 999px; background: rgba(255,255,255,.9); color: #8b3028; box-shadow: 0 8px 30px #0001; font-size: 11px; }
 .feed-inner { width: 100%; max-width: 520px; margin: auto; }
 .feed-card .feed-index,
 .feed-card .project-heading h1,

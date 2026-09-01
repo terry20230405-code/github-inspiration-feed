@@ -1,17 +1,3 @@
-import { projectEditorial } from './data/editorial'
-import { projectIds } from './data/order'
-import { repositorySnapshots } from './data/repositories'
-import type { Project } from './data/types'
-import { projectVisuals } from './data/visuals'
-
-export const projects: Project[] = projectIds.map((id) => ({
-  schemaVersion: 2,
-  id,
-  repository: repositorySnapshots[id],
-  editorial: projectEditorial[id],
-  visual: projectVisuals[id],
-}))
-
 export function repositoryUrl(fullName: string) {
   return `https://github.com/${fullName}`
 }
