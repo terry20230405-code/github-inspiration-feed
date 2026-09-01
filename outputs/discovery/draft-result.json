@@ -1,25 +1,118 @@
 {
   "status": "awaiting-approval",
-  "batchId": "20260901T131532Z-9206d4d0",
-  "batchPath": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0",
+  "batchId": "20260901T150054Z-44a78a5d",
+  "batchPath": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d",
   "candidateCount": 1,
-  "rejectedCount": 1,
+  "rejectedCount": 4,
   "rejected": [
     {
-      "fullName": "activepieces/activepieces",
+      "fullName": "Pinvou/pinvou-agent",
+      "stage": "首轮修复无实质进展",
+      "reason": "首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3",
+      "failedChecks": [
+        {
+          "id": "D3",
+          "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
+        }
+      ],
+      "structuralErrors": [],
+      "blockers": [],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "`受控代码协作桌面` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。"
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "受控代码协作桌面",
+              "evidence": "F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "editorial.directions[0].id must be a lowercase kebab-case slug",
+            "editorial.directions[1].id must be a lowercase kebab-case slug",
+            "editorial.directions[2].id must be a lowercase kebab-case slug"
+          ],
+          "blockers": [
+            "D3: `受控代码协作桌面` 与原项目的 code mode 在 audience、input、workflow、outcome 上都不成立为实质新增；研究笔记 F14 已经写明可在真实项目或临时工作区里用 ACP 读写代码、运行命令，并显示 plan/tool steps/permission requests/file changes，方向只是收窄命名。"
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.opportunity",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience",
+                "input"
+              ],
+              "directionId": "hai-bao-gai-gao-tai",
+              "evidence": "F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [],
+          "blockers": []
+        }
+      ]
+    },
+    {
+      "fullName": "apache/superset",
+      "stage": "A3 程序校验",
+      "reason": "GitHub 客观数据未能与本轮快照完全对应",
+      "failedChecks": [
+        {
+          "id": "A3",
+          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
+        }
+      ],
+      "structuralErrors": [
+        "repository.pushedAt must not be later than repository.fetchedAt"
+      ],
+      "blockers": [],
+      "repairHistory": []
+    },
+    {
+      "fullName": "tldraw/tldraw",
       "stage": "两轮自动修复后质量复检",
       "reason": "两轮修复后仍未通过：A4",
       "failedChecks": [
         {
           "id": "A4",
-          "evidence": "`repository.license` is `Other` in the project JSON, but research note F7 and the `Uncertainty` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value."
+          "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
         }
       ],
-      "structuralErrors": [
-        "quality items must contain A1-E3 exactly once and in order"
-      ],
+      "structuralErrors": [],
       "blockers": [
-        "A4: `repository.license` is set to `Other` in the project JSON, but the research note marks license as `unknown` because `F7` shows GitHub metadata and README license text conflict; modify `repository.license` and the uncertainty handling. Repair result: failed."
+        "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
       ],
       "repairHistory": [
         {
@@ -29,21 +122,20 @@
           "changedPaths": [],
           "failedChecks": [
             {
-              "id": "A1",
-              "evidence": "repository.githubId/fullName/name/stars/forks/language/pushedAt/state all match research facts F1-F3; repository.license does not match F7 because the note marks it unknown."
+              "id": "A4",
+              "evidence": "research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。"
             },
             {
-              "id": "A4",
-              "evidence": "project JSON freezes repository.license as \"Other\" even though the research note says the license cannot be verified consistently and should stay unknown."
+              "id": "E3",
+              "evidence": "所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。"
             }
           ],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
-          "structuralErrors": [
-            "quality items must contain A1-E3 exactly once and in order"
-          ],
+          "structuralErrors": [],
           "blockers": [
-            "repository.license is uncertain/conflicted: research note F7 marks it as unknown due GitHub vs README mismatch, but project JSON sets repository.license to \"Other\"."
+            "A4：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解；修改字段：repository.license / editorial.summary；修复结果：需先澄清或补足许可事实后再发。",
+            "E3：三条方向的 audience 都是团队/内部工具/运营配置人（产品、设计和评审团队；内容团队和内部工具团队；运营、产品和自动化配置人员），没有一个主要服务于个人、家庭、学习、创作或社区；修改字段：至少一个 direction.audience / difference / approach；修复结果：补一条非商业或创作/学习取向方向。"
           ]
         },
         {
@@ -51,23 +143,26 @@
           "label": "第 1 轮修复后复检",
           "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
           "changedPaths": [
+            "editorial.directions",
+            "editorial.opportunity",
+            "editorial.summary",
             "decisionReason",
+            "fieldEvidence",
+            "inferences",
+            "directionRationales",
+            "directionComparisons",
+            "uncertainty",
             "localizationDecisions"
           ],
-          "failedChecks": [
-            {
-              "id": "A4",
-              "evidence": "project JSON sets repository.license to \"Other\", but the research note says repository.license is \"未知\" because GitHub metadata and README conflict, so the sources and artifact disagree."
-            }
-          ],
+          "failedChecks": [],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
           "structuralErrors": [
-            "quality items must contain A1-E3 exactly once and in order"
+            "direction comparisons must contain every unique direction pair exactly once and in order",
+            "quality items must contain A1-E3 exactly once and in order",
+            "direction pair audits must contain every unique project direction pair exactly once and in order"
           ],
-          "blockers": [
-            "A4: repository.license conflicts with the research note — project JSON says \"Other\", while the research note explicitly marks license as \"未知\" because GitHub metadata and README disagree."
-          ]
+          "blockers": []
         },
         {
           "round": 2,
@@ -75,222 +170,382 @@
           "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
           "changedPaths": [
             "decisionReason",
-            "fieldEvidence"
+            "directionComparisons"
           ],
           "failedChecks": [
             {
               "id": "A4",
-              "evidence": "`repository.license` is `Other` in the project JSON, but research note F7 and the `Uncertainty` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value."
+              "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
             }
           ],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
-          "structuralErrors": [
-            "quality items must contain A1-E3 exactly once and in order"
-          ],
+          "structuralErrors": [],
           "blockers": [
-            "A4: `repository.license` is set to `Other` in the project JSON, but the research note marks license as `unknown` because `F7` shows GitHub metadata and README license text conflict; modify `repository.license` and the uncertainty handling. Repair result: failed."
+            "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
           ]
         }
       ]
+    },
+    {
+      "fullName": "labring/FastGPT",
+      "stage": "A3 程序校验",
+      "reason": "GitHub 客观数据未能与本轮快照完全对应",
+      "failedChecks": [
+        {
+          "id": "A3",
+          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
+        }
+      ],
+      "structuralErrors": [
+        "fieldEvidence must contain every required field exactly once and in order",
+        "repository.pushedAt must not be later than repository.fetchedAt",
+        "page field evidence is missing `editorial.meaning`"
+      ],
+      "blockers": [],
+      "repairHistory": []
     }
   ],
-  "batchFingerprint": "a79eb43a837e411b9f634980f4e94efb9f3988c1e687b7f7a93b982732b2d472",
+  "batchFingerprint": "cd065eac51842fa4887592722eb0519a9ee500204951be6cadcd264f5b0987ea",
   "aiMetrics": {
     "maxConcurrentCandidates": 2,
-    "wallTimeSeconds": 685.7,
-    "logicalCallCount": 10,
-    "successfulCallCount": 10,
-    "providerUsageReportedCallCount": 10,
-    "summedRequestTimeSeconds": 1271.5,
-    "promptTokens": 207874,
-    "completionTokens": 66956,
-    "totalTokens": 274830,
-    "cachedPromptTokens": 30976,
-    "reasoningTokens": 39943,
+    "wallTimeSeconds": 1807.9,
+    "logicalCallCount": 18,
+    "successfulCallCount": 18,
+    "providerUsageReportedCallCount": 18,
+    "summedRequestTimeSeconds": 2623.0,
+    "promptTokens": 217310,
+    "completionTokens": 139749,
+    "totalTokens": 357059,
+    "cachedPromptTokens": 75520,
+    "reasoningTokens": 85589,
     "calls": [
       {
         "sequence": 1,
-        "candidate": "HKUDS/nanobot",
+        "candidate": "Pinvou/pinvou-agent",
         "stage": "inspiration_project_draft",
         "status": "success",
         "instructionCharacters": 34856,
-        "inputCharacters": 74979,
+        "inputCharacters": 14499,
         "schemaCharacters": 4689,
-        "durationSeconds": 180.2,
+        "durationSeconds": 227.6,
         "attempts": 1,
         "usage": {
-          "promptTokens": 30869,
-          "completionTokens": 9584,
-          "totalTokens": 40453,
+          "promptTokens": 13327,
+          "completionTokens": 12319,
+          "totalTokens": 25646,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 5679
+          "reasoningTokens": 8286
         }
       },
       {
         "sequence": 2,
-        "candidate": "activepieces/activepieces",
+        "candidate": "apache/maka",
         "stage": "inspiration_project_draft",
         "status": "success",
         "instructionCharacters": 34856,
-        "inputCharacters": 74701,
+        "inputCharacters": 16035,
         "schemaCharacters": 4689,
-        "durationSeconds": 224.0,
+        "durationSeconds": 206.1,
         "attempts": 1,
         "usage": {
-          "promptTokens": 32584,
-          "completionTokens": 11929,
-          "totalTokens": 44513,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 8269
+          "promptTokens": 13105,
+          "completionTokens": 11117,
+          "totalTokens": 24222,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 7586
         }
       },
       {
         "sequence": 3,
-        "candidate": "HKUDS/nanobot",
+        "candidate": "apache/maka",
         "stage": "inspiration_quality_review",
         "status": "success",
         "instructionCharacters": 4815,
-        "inputCharacters": 9863,
+        "inputCharacters": 9671,
         "schemaCharacters": 1670,
-        "durationSeconds": 181.8,
+        "durationSeconds": 121.5,
         "attempts": 1,
         "usage": {
-          "promptTokens": 7147,
-          "completionTokens": 9855,
-          "totalTokens": 17002,
+          "promptTokens": 6703,
+          "completionTokens": 6520,
+          "totalTokens": 13223,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 8034
+          "reasoningTokens": 4655
         }
       },
       {
         "sequence": 4,
-        "candidate": "activepieces/activepieces",
+        "candidate": "Pinvou/pinvou-agent",
         "stage": "inspiration_quality_review",
         "status": "success",
         "instructionCharacters": 4815,
-        "inputCharacters": 9422,
+        "inputCharacters": 9640,
         "schemaCharacters": 1670,
-        "durationSeconds": 96.6,
+        "durationSeconds": 126.7,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6896,
-          "completionTokens": 5161,
-          "totalTokens": 12057,
-          "cachedPromptTokens": 0,
-          "reasoningTokens": 3732
+          "promptTokens": 7162,
+          "completionTokens": 6782,
+          "totalTokens": 13944,
+          "cachedPromptTokens": 2304,
+          "reasoningTokens": 4821
         }
       },
       {
         "sequence": 5,
-        "candidate": "activepieces/activepieces",
+        "candidate": "apache/maka",
         "stage": "inspiration_project_repair_1",
         "status": "success",
         "instructionCharacters": 34856,
-        "inputCharacters": 85012,
+        "inputCharacters": 26656,
         "schemaCharacters": 4689,
-        "durationSeconds": 83.7,
+        "durationSeconds": 146.9,
         "attempts": 1,
         "usage": {
-          "promptTokens": 36896,
-          "completionTokens": 4190,
-          "totalTokens": 41086,
+          "promptTokens": 17328,
+          "completionTokens": 7832,
+          "totalTokens": 25160,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 516
+          "reasoningTokens": 4260
         }
       },
       {
         "sequence": 6,
-        "candidate": "HKUDS/nanobot",
+        "candidate": "Pinvou/pinvou-agent",
         "stage": "inspiration_project_repair_1",
         "status": "success",
         "instructionCharacters": 34856,
-        "inputCharacters": 86889,
+        "inputCharacters": 25419,
         "schemaCharacters": 4689,
-        "durationSeconds": 141.4,
+        "durationSeconds": 116.8,
         "attempts": 1,
         "usage": {
-          "promptTokens": 35741,
-          "completionTokens": 7405,
-          "totalTokens": 43146,
+          "promptTokens": 18186,
+          "completionTokens": 6095,
+          "totalTokens": 24281,
           "cachedPromptTokens": 8960,
-          "reasoningTokens": 3624
+          "reasoningTokens": 1960
         }
       },
       {
         "sequence": 7,
-        "candidate": "activepieces/activepieces",
+        "candidate": "Pinvou/pinvou-agent",
         "stage": "inspiration_quality_review",
         "status": "success",
         "instructionCharacters": 4815,
-        "inputCharacters": 9490,
+        "inputCharacters": 9709,
         "schemaCharacters": 1670,
-        "durationSeconds": 86.6,
+        "durationSeconds": 142.1,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6932,
-          "completionTokens": 4592,
-          "totalTokens": 11524,
-          "cachedPromptTokens": 6400,
-          "reasoningTokens": 3022
+          "promptTokens": 7172,
+          "completionTokens": 7387,
+          "totalTokens": 14559,
+          "cachedPromptTokens": 2816,
+          "reasoningTokens": 5565
         }
       },
       {
         "sequence": 8,
-        "candidate": "activepieces/activepieces",
-        "stage": "inspiration_project_repair_2",
+        "candidate": "apache/maka",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 84892,
-        "schemaCharacters": 4689,
-        "durationSeconds": 93.9,
+        "instructionCharacters": 4815,
+        "inputCharacters": 9534,
+        "schemaCharacters": 1670,
+        "durationSeconds": 91.1,
         "attempts": 1,
         "usage": {
-          "promptTokens": 36865,
-          "completionTokens": 4711,
-          "totalTokens": 41576,
-          "cachedPromptTokens": 0,
-          "reasoningTokens": 1034
+          "promptTokens": 6730,
+          "completionTokens": 4712,
+          "totalTokens": 11442,
+          "cachedPromptTokens": 2816,
+          "reasoningTokens": 3106
         }
       },
       {
         "sequence": 9,
-        "candidate": "HKUDS/nanobot",
-        "stage": "inspiration_quality_review",
+        "candidate": "apache/maka",
+        "stage": "inspiration_project_repair_2",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9977,
-        "schemaCharacters": 1670,
-        "durationSeconds": 83.0,
+        "instructionCharacters": 34856,
+        "inputCharacters": 26449,
+        "schemaCharacters": 4689,
+        "durationSeconds": 143.4,
         "attempts": 1,
         "usage": {
-          "promptTokens": 7016,
-          "completionTokens": 4371,
-          "totalTokens": 11387,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 2588
+          "promptTokens": 17304,
+          "completionTokens": 7592,
+          "totalTokens": 24896,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 3963
         }
       },
       {
         "sequence": 10,
-        "candidate": "activepieces/activepieces",
+        "candidate": "apache/maka",
         "stage": "inspiration_quality_review",
         "status": "success",
         "instructionCharacters": 4815,
-        "inputCharacters": 9484,
+        "inputCharacters": 9898,
         "schemaCharacters": 1670,
-        "durationSeconds": 100.3,
+        "durationSeconds": 95.5,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6928,
-          "completionTokens": 5158,
-          "totalTokens": 12086,
-          "cachedPromptTokens": 3840,
-          "reasoningTokens": 3445
+          "promptTokens": 6789,
+          "completionTokens": 5059,
+          "totalTokens": 11848,
+          "cachedPromptTokens": 2816,
+          "reasoningTokens": 3166
+        }
+      },
+      {
+        "sequence": 11,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 34856,
+        "inputCharacters": 11062,
+        "schemaCharacters": 4689,
+        "durationSeconds": 243.7,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 12546,
+          "completionTokens": 13223,
+          "totalTokens": 25769,
+          "cachedPromptTokens": 8960,
+          "reasoningTokens": 9527
+        }
+      },
+      {
+        "sequence": 12,
+        "candidate": "apache/superset",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 34856,
+        "inputCharacters": 27352,
+        "schemaCharacters": 4689,
+        "durationSeconds": 204.0,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 16655,
+          "completionTokens": 10923,
+          "totalTokens": 27578,
+          "cachedPromptTokens": 8960,
+          "reasoningTokens": 7545
+        }
+      },
+      {
+        "sequence": 13,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 4815,
+        "inputCharacters": 9830,
+        "schemaCharacters": 1670,
+        "durationSeconds": 116.5,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 6939,
+          "completionTokens": 6200,
+          "totalTokens": 13139,
+          "cachedPromptTokens": 2304,
+          "reasoningTokens": 4050
+        }
+      },
+      {
+        "sequence": 14,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 34856,
+        "inputCharacters": 21990,
+        "schemaCharacters": 4689,
+        "durationSeconds": 134.6,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 17061,
+          "completionTokens": 7133,
+          "totalTokens": 24194,
+          "cachedPromptTokens": 8960,
+          "reasoningTokens": 2588
+        }
+      },
+      {
+        "sequence": 15,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 4815,
+        "inputCharacters": 11408,
+        "schemaCharacters": 1670,
+        "durationSeconds": 95.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 7836,
+          "completionTokens": 5015,
+          "totalTokens": 12851,
+          "cachedPromptTokens": 2816,
+          "reasoningTokens": 2744
+        }
+      },
+      {
+        "sequence": 16,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_project_repair_2",
+        "status": "success",
+        "instructionCharacters": 34856,
+        "inputCharacters": 23361,
+        "schemaCharacters": 4689,
+        "durationSeconds": 100.8,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 17728,
+          "completionTokens": 5191,
+          "totalTokens": 22919,
+          "cachedPromptTokens": 8960,
+          "reasoningTokens": 653
+        }
+      },
+      {
+        "sequence": 17,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 4815,
+        "inputCharacters": 11431,
+        "schemaCharacters": 1670,
+        "durationSeconds": 104.8,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 7839,
+          "completionTokens": 5585,
+          "totalTokens": 13424,
+          "cachedPromptTokens": 5888,
+          "reasoningTokens": 3970
+        }
+      },
+      {
+        "sequence": 18,
+        "candidate": "labring/FastGPT",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 34856,
+        "inputCharacters": 19527,
+        "schemaCharacters": 4689,
+        "durationSeconds": 205.8,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 16900,
+          "completionTokens": 11064,
+          "totalTokens": 27964,
+          "cachedPromptTokens": 8960,
+          "reasoningTokens": 7144
         }
       }
     ]
   },
-  "preview": "# 自动候选审核：20260901T131532Z-9206d4d0\n\n- 生成时间：2026-09-01T13:15:32Z\n- 合格候选：1\n- 未通过深读：1\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. nanobot\n\n- 仓库：https://github.com/HKUDS/nanobot\n- Star：47606\n- 许可证：MIT License\n- 主题色：#b026c0\n- Hook：把聊天、文件和工具结果收成一条工作线\n- 介绍：nanobot 是用 Python 写的自托管个人 AI agent 框架，可在 WebUI、终端和聊天应用里接入模型、工具、长期记忆和 MCP。它会把对话、文件操作、工具调用和自动化结果留在同一条可回看的会话里，并可通过 OpenAI-compatible API 和 Python SDK 接到外部系统。\n- 改造方向：\n  - 任务交接包：把一段 agent 工作整理成可交接的记录\n  - 模型试配台：用同一问题对照多个模型输出\n  - 长期跟进管家：把一个目标拆成会持续提醒的自动化任务\n\n## 未进入候选的仓库\n\n### activepieces/activepieces\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A4\n- 最终失败证据：\n  - A4：\\`repository.license\\` is \\`Other\\` in the project JSON, but research note F7 and the \\`Uncertainty\\` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value.\n- 当前结构错误：\n  - quality items must contain A1-E3 exactly once and in order\n- 当前阻断项：\n  - A4: \\`repository.license\\` is set to \\`Other\\` in the project JSON, but the research note marks license as \\`unknown\\` because \\`F7\\` shows GitHub metadata and README license text conflict; modify \\`repository.license\\` and the uncertainty handling. Repair result: failed.\n- 修复轨迹：\n  - 初次检查：失败 A1, A4；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - A1 当轮证据：repository.githubId/fullName/name/stars/forks/language/pushedAt/state all match research facts F1-F3; repository.license does not match F7 because the note marks it unknown.\n    - A4 当轮证据：project JSON freezes repository.license as \"Other\" even though the research note says the license cannot be verified consistently and should stay unknown.\n  - 第 1 轮修复后复检：失败 A4；改动 decisionReason, localizationDecisions；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - A4 当轮证据：project JSON sets repository.license to \"Other\", but the research note says repository.license is \"未知\" because GitHub metadata and README conflict, so the sources and artifact disagree.\n  - 第 2 轮修复后复检：失败 A4；改动 decisionReason, fieldEvidence；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - A4 当轮证据：\\`repository.license\\` is \\`Other\\` in the project JSON, but research note F7 and the \\`Uncertainty\\` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value.\n\n\n\n## AI 执行统计\n\n- 候选并发上限：2\n- AI 逻辑调用：10\n- 深读阶段墙钟时间：685.7 秒\n- 各请求耗时合计：1271.5 秒（并发请求会重叠）\n- 返回 usage 的调用：10\n- 输入 Token：207874\n- 输出 Token：66956\n- 其中缓存输入 Token：30976\n- 其中推理 Token：39943\n",
+  "preview": "# 自动候选审核：20260901T150054Z-44a78a5d\n\n- 生成时间：2026-09-01T15:00:54Z\n- 合格候选：1\n- 未通过深读：4\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. maka\n\n- 仓库：https://github.com/apache/maka\n- Star：4391\n- 许可证：Apache License 2.0\n- 主题色：#bf5831\n- Hook：把 AI 代理做成可回放工作区\n- 介绍：它把本地项目、模型连接和权限设置接到同一个 AI agent 工作区里，让你在 Desktop、TUI/CLI 或 Eval 中发起任务、查看工具轨迹并接续中断的回合。模型消息、tool calls、tool results、权限决策和终止事件都会写成可回放的记录。\n- 改造方向：\n  - 会话复盘台：从历史会话里找出失败点并接着跑\n  - 权限审计台：先连模型和工具，再把越界动作关进审批\n  - 实验对照台：把评测结果和失败点放在一起看\n\n## 未进入候选的仓库\n\n### Pinvou/pinvou-agent\n\n- 停止阶段：首轮修复无实质进展\n- 结果：首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3\n- 最终失败证据：\n  - D3：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n- 修复轨迹：\n  - 初次检查：失败 D3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - D3 当轮证据：\\`受控代码协作桌面\\` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。\n    - 方向 受控代码协作桌面：变化轴 audience；F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。\n  - 第 1 轮修复后复检：失败 D3；改动 editorial.directions, editorial.opportunity, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - D3 当轮证据：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n    - 方向 hai-bao-gai-gao-tai：变化轴 audience, input；F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。\n\n### apache/superset\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - repository.pushedAt must not be later than repository.fetchedAt\n\n### tldraw/tldraw\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A4\n- 最终失败证据：\n  - A4：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n- 当前阻断项：\n  - License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other.\n- 修复轨迹：\n  - 初次检查：失败 A4, E3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - A4 当轮证据：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。\n    - E3 当轮证据：所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。\n  - 第 1 轮修复后复检：失败 无；改动 editorial.directions, editorial.opportunity, editorial.summary, decisionReason, fieldEvidence, inferences, directionRationales, directionComparisons, uncertainty, localizationDecisions；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n  - 第 2 轮修复后复检：失败 A4；改动 decisionReason, directionComparisons；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - A4 当轮证据：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n\n### labring/FastGPT\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - fieldEvidence must contain every required field exactly once and in order\n  - repository.pushedAt must not be later than repository.fetchedAt\n  - page field evidence is missing \\`editorial.meaning\\`\n\n\n\n## AI 执行统计\n\n- 候选并发上限：2\n- AI 逻辑调用：18\n- 深读阶段墙钟时间：1807.9 秒\n- 各请求耗时合计：2623.0 秒（并发请求会重叠）\n- 返回 usage 的调用：18\n- 输入 Token：217310\n- 输出 Token：139749\n- 其中缓存输入 Token：75520\n- 其中推理 Token：85589\n",
   "publicationAuthorized": false
 }
