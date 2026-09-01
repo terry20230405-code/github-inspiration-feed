@@ -10,7 +10,7 @@ from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
 
-from discover_repositories import DiscoveryError, discover, validate_config
+from discover_repositories import DiscoveryError, discover, generated_repositories, validate_config
 
 
 NOW = datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc)
@@ -118,6 +118,25 @@ class DiscoveryTests(unittest.TestCase):
         result = discover(self.config, request, None, now=NOW, project_root=self.root)
         first_two = [candidate["matchedLanes"][0]["id"] for candidate in result["aiQueue"][:2]]
         self.assertEqual(set(first_two), {"ai", "design"})
+
+    def test_revoked_batch_does_not_permanently_exclude_repository(self) -> None:
+        batch_root = self.root / "outputs/generated/discovery-batches"
+        for batch_id, status, github_id, full_name in (
+            ("20260901T030804Z-revoked1", "revoked", 20, "owner/retry-later"),
+            ("20260901T030804Z-waiting1", "awaiting-approval", 21, "owner/still-waiting"),
+        ):
+            directory = batch_root / batch_id
+            directory.mkdir(parents=True)
+            (directory / "manifest.json").write_text(json.dumps({"status": status}), encoding="utf-8")
+            (directory / f"{github_id}.project.json").write_text(json.dumps({
+                "repository": {"githubId": github_id, "fullName": full_name},
+            }), encoding="utf-8")
+
+        ids, names = generated_repositories(self.root)
+        self.assertNotIn(20, ids)
+        self.assertNotIn("owner/retry-later", names)
+        self.assertIn(21, ids)
+        self.assertIn("owner/still-waiting", names)
 
 
 if __name__ == "__main__":

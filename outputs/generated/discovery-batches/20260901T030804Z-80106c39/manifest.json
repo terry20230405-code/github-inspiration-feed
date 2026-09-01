@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "batchId": "20260901T030804Z-80106c39",
   "createdAt": "2026-09-01T03:08:04Z",
-  "status": "awaiting-approval",
+  "status": "revoked",
   "sourceDiscovery": "outputs/discovery/latest.json",
   "candidates": [
     {

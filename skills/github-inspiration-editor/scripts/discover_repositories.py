@@ -215,6 +215,19 @@ def generated_repositories(project_root: Path) -> tuple[set[int], set[str]]:
     for path in root.rglob("*.project.json"):
         if "published-baseline" in path.parts:
             continue
+        discovery_root = root / "discovery-batches"
+        try:
+            batch_relative = path.relative_to(discovery_root)
+        except ValueError:
+            batch_relative = None
+        if batch_relative is not None and len(batch_relative.parts) >= 2:
+            manifest_path = discovery_root / batch_relative.parts[0] / "manifest.json"
+            try:
+                manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError):
+                manifest = None
+            if isinstance(manifest, dict) and manifest.get("status") == "revoked":
+                continue
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):

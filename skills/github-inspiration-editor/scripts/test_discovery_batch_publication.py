@@ -111,7 +111,7 @@ class BatchPublicationTests(unittest.TestCase):
         self.assertTrue(approval["publicationAuthorized"])
 
     def test_valid_merged_batch_updates_all_layers_once(self) -> None:
-        batch_id = "20260830t000000z-cafebabe"
+        batch_id = "20260830T000000Z-cafebabe"
         directory = self.create_valid_batch(batch_id)
         result = batch.publish_batch(batch_id, "Terry", 42, write=True, run_checks=lambda _root: [{"command": "tests", "exitCode": 0}], now="2026-08-30T00:01:00Z")
         order = json.loads((self.root / "src/data/order.json").read_text(encoding="utf-8"))
@@ -119,6 +119,24 @@ class BatchPublicationTests(unittest.TestCase):
         self.assertEqual(result["status"], "published")
         approval = json.loads((directory / "approval.json").read_text(encoding="utf-8"))
         self.assertEqual(approval["sourcePullRequest"], 42)
+
+    def test_generated_uppercase_batch_id_is_accepted_but_path_escape_is_rejected(self) -> None:
+        batch_id = "20260901T030804Z-80106c39"
+        self.create_valid_batch(batch_id)
+        plan = batch.publish_batch(batch_id, "Terry", 1, write=False)
+        self.assertEqual(plan["batchId"], batch_id)
+        with self.assertRaisesRegex(batch.BatchPublicationError, "invalid batch ID"):
+            batch.publish_batch("../escape", "Terry", 1, write=False)
+
+    def test_revoked_batch_cannot_be_published(self) -> None:
+        batch_id = "20260901T030804Z-revoked1"
+        directory = self.create_valid_batch(batch_id)
+        manifest_path = directory / "manifest.json"
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        manifest["status"] = "revoked"
+        self.write_json(manifest_path, manifest)
+        with self.assertRaisesRegex(batch.BatchPublicationError, "cannot publish from status revoked"):
+            batch.publish_batch(batch_id, "Terry", 1, write=False)
 
     def test_failed_batch_check_restores_every_feed_layer(self) -> None:
         batch_id = "20260830t000000z-badcheck"

@@ -7,6 +7,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 import uuid
 from datetime import datetime, timezone
@@ -41,6 +42,7 @@ APPROVAL_FIELDS = {
     "schemaVersion", "batchId", "batchFingerprint", "approvedAt", "approvedBy",
     "approvalSource", "sourcePullRequest", "publicationAuthorized",
 }
+BATCH_ID_PATTERN = re.compile(r"[A-Za-z0-9_-]+")
 
 
 class BatchPublicationError(RuntimeError):
@@ -60,7 +62,7 @@ def sha256_value(value: object) -> str:
 
 
 def batch_directory(batch_id: str) -> Path:
-    if not batch_id or any(character not in "abcdefghijklmnopqrstuvwxyz0123456789-_" for character in batch_id):
+    if not BATCH_ID_PATTERN.fullmatch(batch_id):
         raise BatchPublicationError("invalid batch ID")
     directory = BATCH_ROOT / batch_id
     if not directory.is_dir():
