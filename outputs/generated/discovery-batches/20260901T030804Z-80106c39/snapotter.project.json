@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "snapotter",
+  "repository": {
+    "githubId": 1195367387,
+    "fullName": "snapotter-hq/SnapOtter",
+    "name": "SnapOtter",
+    "stars": 2399,
+    "forks": 118,
+    "language": "TypeScript",
+    "pushedAt": "2026-08-31T16:44:04Z",
+    "license": "GNU Affero General Public License v3.0",
+    "state": "active",
+    "fetchedAt": "2026-09-01T03:08:04Z"
+  },
+  "editorial": {
+    "audience": "需要在自己网络里批量处理图片、视频、音频、PDF 和通用文件的自托管管理员、团队和独立使用者",
+    "directions": [
+      {
+        "approach": "接收扫描件、图片和 PDF，先做 OCR，再按页拆分、合并、脱敏、加页码或签名，最后导出归档包。这里直接复用原项目的 PDF、OCR、UI 和自托管存储能力。",
+        "audience": "财务、行政、法务和档案人员",
+        "difference": "只处理文档归档，不做媒体编辑或通用开发者 API 产品。",
+        "id": "archive-tray",
+        "name": "档案整理台",
+        "problem": "每天都会收到一堆格式杂乱的扫描件和 PDF，手工整理、识别和留档很慢。",
+        "scope": [
+          "文件上传",
+          "OCR 识别",
+          "PDF 拆分/合并/脱敏",
+          "签名或页码处理",
+          "导出归档结果"
+        ],
+        "tagline": "把扫描件和 PDF 批量转成可归档文件"
+      },
+      {
+        "approach": "把图片、视频和音频的转换、压缩、裁剪、提取音轨、字幕和尺寸统一做成可复用 pipeline，用户只要上传一批素材就能按同一套步骤批量处理。这里复用原项目的多模态工具、pipeline 和批处理能力。",
+        "audience": "内容运营、剪辑和播客后期人员",
+        "difference": "只围绕媒体素材生产，不把文档处理或内部 API 作为主要场景。",
+        "id": "media-pipeline",
+        "name": "媒体批处理管线",
+        "problem": "素材经常要按固定规则反复转码、压缩和统一规格，手动点工具太碎。",
+        "scope": [
+          "批量上传",
+          "pipeline 编辑",
+          "预设输出格式",
+          "处理预览",
+          "导出结果"
+        ],
+        "tagline": "把一批图片、视频和音频按固定步骤处理好"
+      },
+      {
+        "approach": "把文件处理能力做成可调用的后端服务：内部系统通过 API key 发送文件，选择转换、OCR、转写或压缩工具，再拿回结果文件或 JSON 结果。这里复用原项目的 REST API、工具路由和 pipelines。",
+        "audience": "后端工程师和内部平台团队",
+        "difference": "主要是嵌入式服务，而不是给人直接操作的文件工作台。",
+        "id": "internal-file-api",
+        "name": "内网文件 API",
+        "problem": "很多业务系统都要文件处理，但不想单独接外部 SaaS 或拼接多个零散服务。",
+        "scope": [
+          "API key 认证",
+          "工具目录",
+          "文件提交与回传",
+          "任务状态查询",
+          "pipeline 调用"
+        ],
+        "tagline": "用 REST API 给内部系统接上文件处理能力"
+      }
+    ],
+    "features": [
+      "覆盖 image、video、audio、PDF 和 files 的多类处理工具",
+      "浏览器内 image editor",
+      "local AI 处理：去背景、放大、修复、OCR、转写等",
+      "pipelines 可串联工具并导入/导出 JSON",
+      "REST API，支持 API key 认证"
+    ],
+    "hook": "把文件处理搬进内网工厂",
+    "meaning": "它把格式转换、OCR、转写、局部编辑、local AI 和工作流编排拆成了可复用的能力块，适合从一整套大平台里拆出更小、更明确的产品。",
+    "opportunity": [
+      "可以把文档 OCR、拆分、脱敏和签名组合成只面向归档的内网台，减少人工整理。",
+      "可以把 image、video、audio 的批处理和 preset pipeline 拆成素材制作工具，专门服务内容团队。",
+      "可以把 REST API 和单工具能力独立成后端服务，给其他业务系统补上文件处理接口。"
+    ],
+    "stack": [
+      "TypeScript",
+      "Docker",
+      "Postgres 17",
+      "Redis 8",
+      "REST API",
+      "OpenID Connect"
+    ],
+    "summary": "SnapOtter 接收图片、视频、音频、PDF 和通用文件，在浏览器里提供 UI、REST API 和 pipelines，把转换、压缩、OCR、转写、去元数据和 local AI 集中到一套自托管服务里。处理结果留在你自己的网络中，适合要批量整理文件又不想把数据交给外部 SaaS 的场景。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "snapotter-hq/SnapOtter",
+    "accent": "#b54030",
+    "foreground": "#ffffff",
+    "motif": "network",
+    "variant": 1542165937
+  }
+}
