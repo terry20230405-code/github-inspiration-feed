@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "snapotter",
+  "projectPath": "outputs/generated/discovery-batches/20260901T030804Z-80106c39/snapotter.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260901T030804Z-80106c39/snapotter.research.md",
+  "projectSha256": "686383536f1acab1c529ca268bb2f490050910971c9593c5e7549296413bd1e6",
+  "researchSha256": "a35121045eb33b3fa42d97f5ceb506b205863e3ace148cb86eb2da455c1c0098",
+  "reviewedAt": "2026-09-01T03:08:04Z",
+  "items": [
+    {
+      "evidence": "repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state are all mapped in the research note’s Page field evidence table to F1/F2; editorial.summary, editorial.audience, editorial.features, and editorial.stack are likewise mapped to F3–F6.",
+      "id": "A1",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.hook, editorial.meaning, editorial.opportunity, and all three directions are marked inferred in the research note, each with basis facts F3–F6 and separate Direction rationale entries.",
+      "id": "A2",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "evidence": "No contradictions found between project JSON and research note: repository.state=active matches F1; license is the same AGPL-3.0/ GNU Affero General Public License v3.0 metadata family; unfetched/live values are avoided by the snapshot note stating stars/forks/push are captured facts, not live values.",
+      "id": "A4",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.hook is a concrete project trait phrase (“把文件处理搬进内网工厂”) grounded in F3/F4, not a generic praise claim.",
+      "id": "B1",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.summary states inputs (图片、视频、音频、PDF 和通用文件), core actions (UI、REST API、pipelines; 转换、压缩、OCR、转写、去元数据、local AI), and visible result (处理结果留在你自己的网络中).",
+      "id": "B2",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.summary plus editorial.features cover more than three verified capabilities: multi-type file handling (F4), image editor / OCR / transcribe / local AI / pipelines / REST API (F5).",
+      "id": "B3",
+      "status": "pass"
+    },
+    {
+      "evidence": "The summary keeps usable product terms like UI, REST API, pipelines, OCR, local AI, and self-hosted; it does not over-explain low-level implementation details.",
+      "id": "B4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook and summary are separated: hook is a short memory phrase, while summary carries the full product picture and does not repeat the hook sentence verbatim.",
+      "id": "C1",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.summary describes only SnapOtter’s current behavior; editorial.meaning stays at reuse value (“适合从一整套大平台里拆出更小、更明确的产品”) and does not present new features as existing ones.",
+      "id": "C2",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.meaning gives overall reuse value, and each editorial.opportunity item links validated capabilities (OCR / pipelines / REST API) to a concrete new product possibility and friction reduction.",
+      "id": "C3",
+      "status": "pass"
+    },
+    {
+      "evidence": "project.editorial.audience names original users; each direction has its own audience, approach, and scope, with approach describing the workflow and scope listing only the minimal supporting functions.",
+      "id": "C4",
+      "status": "pass"
+    },
+    {
+      "evidence": "archive-tray has a specific user group (财务、行政、法务和档案人员) and recurring problem (扫描件和 PDF 手工整理很慢), with input/output steps named in its approach.",
+      "id": "D1",
+      "status": "pass"
+    },
+    {
+      "evidence": "archive-tray’s approach names inputs (扫描件、图片和 PDF), core steps (OCR、拆分、合并、脱敏、加页码或签名), and output (导出归档包).",
+      "id": "D2",
+      "status": "pass"
+    },
+    {
+      "evidence": "archive-tray explicitly reuses OCR, PDF tools, UI, REST API, and self-hosted storage from F3/F4/F5/F6; its workflow/user/output differ from the base project by narrowing to document archiving only.",
+      "id": "D3",
+      "status": "pass"
+    },
+    {
+      "evidence": "archive-tray.scope has 5 items and is closed to the stated workflow: 上传、OCR、拆分/合并/脱敏、签名/页码、导出归档结果.",
+      "id": "D4",
+      "status": "pass"
+    },
+    {
+      "evidence": "archive-tray, media-pipeline, and internal-file-api differ on at least two of user/input/workflow/result (e.g., archive vs media vs API); they are not just rename-only variants.",
+      "id": "E1",
+      "status": "pass"
+    },
+    {
+      "evidence": "Each direction states a concrete benefit: archive reduces manual整理, media reduces碎片化工具操作, and API removes the need to stitch external SaaS together.",
+      "id": "E2",
+      "status": "pass"
+    },
+    {
+      "evidence": "At least one direction is non-commercial/creative by default: media-pipeline serves content creation and personal素材整理 rather than marketing/sales/赚钱 flows.",
+      "id": "E3",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

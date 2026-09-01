@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260901T030804Z-80106c39",
+  "createdAt": "2026-09-01T03:08:04Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "snapotter",
+      "fullName": "snapotter-hq/SnapOtter",
+      "githubId": 1195367387,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260901T030804Z-80106c39/snapotter.project.json",
+          "sha256": "686383536f1acab1c529ca268bb2f490050910971c9593c5e7549296413bd1e6"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260901T030804Z-80106c39/snapotter.research.md",
+          "sha256": "a35121045eb33b3fa42d97f5ceb506b205863e3ace148cb86eb2da455c1c0098"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260901T030804Z-80106c39/snapotter.quality.json",
+          "sha256": "39d822b4eeaff0e64a8e452f8a80ff8107469d3befc8fcb39ebea54f49bf1603"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "c056ec1242a8d779a0d0e86b2979f71550ae6abf54b97cbda1978e13b1f5b1bb",
+  "rejected": [
+    {
+      "fullName": "future-agi/future-agi",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：A4, B4",
+      "failedChecks": [
+        {
+          "id": "A4",
+          "evidence": "`research` 的 `Uncertainty` 写“未单独提供 fetchedAt”，但同一份 `research` 的 `Snapshot` 明确列出 `Fetched at: 2026-09-01T03:08:04Z`，且 `project.repository.fetchedAt` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。"
+        },
+        {
+          "id": "B4",
+          "evidence": "`editorial.summary` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。"
+        }
+      ],
+      "structuralErrors": [],
+      "blockers": [],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "A1",
+              "evidence": "`repository.githubId`, `repository.fullName`, `repository.license`, `repository.state`, `repository.pushedAt`, `editorial.summary`, `editorial.audience`, `editorial.features`, and `editorial.stack` all have matching research facts F1-F12; the only unsupported part is the Cloud phrase in `summary`."
+            },
+            {
+              "id": "A4",
+              "evidence": "`editorial.summary` says \"你可以自托管或使用 Cloud\", but the research note only verifies \"开源、可自托管\" in F4 and never verifies Cloud; the claim is not written as `未知` or removed."
+            }
+          ],
+          "structuralErrors": [],
+          "blockers": [
+            "`editorial.summary` claims \"you can self-host or use Cloud\", but the research notes only verify self-hosted/open-source in F4 and do not provide any fact ID for Cloud; remove or mark that claim as unknown."
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "editorial.summary"
+          ],
+          "failedChecks": [
+            {
+              "id": "E3",
+              "evidence": "`editorial.audience` 和三条方向的 `audience` 全部是工程团队/研究者/小团队，缺少一个主要面向个人、家庭、学习、创作或社区的方向。"
+            }
+          ],
+          "structuralErrors": [],
+          "blockers": [
+            "E3：3 个方向的 `audience` 分别是“独立开发者、研究者和小团队”“客服、语音和 RAG agent 团队”“负责模型入口、合规和流量治理的 backend 团队”，没有一个主要面向个人、家庭、学习、创作或社区。"
+          ]
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
+          "changedPaths": [
+            "editorial.directions",
+            "decisionReason",
+            "directionRationales"
+          ],
+          "failedChecks": [
+            {
+              "id": "A4",
+              "evidence": "`research` 的 `Uncertainty` 写“未单独提供 fetchedAt”，但同一份 `research` 的 `Snapshot` 明确列出 `Fetched at: 2026-09-01T03:08:04Z`，且 `project.repository.fetchedAt` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。"
+            },
+            {
+              "id": "B4",
+              "evidence": "`editorial.summary` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。"
+            }
+          ],
+          "structuralErrors": [],
+          "blockers": []
+        }
+      ]
+    }
+  ],
+  "publicationAuthorized": false
+}

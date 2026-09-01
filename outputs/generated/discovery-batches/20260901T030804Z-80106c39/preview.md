@@ -1,0 +1,40 @@
+# 自动候选审核：20260901T030804Z-80106c39
+
+- 生成时间：2026-09-01T03:08:04Z
+- 合格候选：1
+- 未通过深读：1
+- 当前状态：等待人工审核
+- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。
+
+## 1. SnapOtter
+
+- 仓库：https://github.com/snapotter-hq/SnapOtter
+- Star：2399
+- 许可证：GNU Affero General Public License v3.0
+- 主题色：#b54030
+- Hook：把文件处理搬进内网工厂
+- 介绍：SnapOtter 接收图片、视频、音频、PDF 和通用文件，在浏览器里提供 UI、REST API 和 pipelines，把转换、压缩、OCR、转写、去元数据和 local AI 集中到一套自托管服务里。处理结果留在你自己的网络中，适合要批量整理文件又不想把数据交给外部 SaaS 的场景。
+- 改造方向：
+  - 档案整理台：把扫描件和 PDF 批量转成可归档文件
+  - 媒体批处理管线：把一批图片、视频和音频按固定步骤处理好
+  - 内网文件 API：用 REST API 给内部系统接上文件处理能力
+
+## 未进入候选的仓库
+
+### future-agi/future-agi
+
+- 停止阶段：两轮自动修复后质量复检
+- 结果：两轮修复后仍未通过：A4, B4
+- 最终失败证据：
+  - A4：\`research\` 的 \`Uncertainty\` 写“未单独提供 fetchedAt”，但同一份 \`research\` 的 \`Snapshot\` 明确列出 \`Fetched at: 2026-09-01T03:08:04Z\`，且 \`project.repository.fetchedAt\` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。
+  - B4：\`editorial.summary\` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。
+- 修复轨迹：
+  - 初次检查：失败 A1, A4；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。
+    - A1 当轮证据：\`repository.githubId\`, \`repository.fullName\`, \`repository.license\`, \`repository.state\`, \`repository.pushedAt\`, \`editorial.summary\`, \`editorial.audience\`, \`editorial.features\`, and \`editorial.stack\` all have matching research facts F1-F12; the only unsupported part is the Cloud phrase in \`summary\`.
+    - A4 当轮证据：\`editorial.summary\` says "你可以自托管或使用 Cloud", but the research note only verifies "开源、可自托管" in F4 and never verifies Cloud; the claim is not written as \`未知\` or removed.
+  - 第 1 轮修复后复检：失败 E3；改动 editorial.summary；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。
+    - E3 当轮证据：\`editorial.audience\` 和三条方向的 \`audience\` 全部是工程团队/研究者/小团队，缺少一个主要面向个人、家庭、学习、创作或社区的方向。
+  - 第 2 轮修复后复检：失败 A4, B4；改动 editorial.directions, decisionReason, directionRationales；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。
+    - A4 当轮证据：\`research\` 的 \`Uncertainty\` 写“未单独提供 fetchedAt”，但同一份 \`research\` 的 \`Snapshot\` 明确列出 \`Fetched at: 2026-09-01T03:08:04Z\`，且 \`project.repository.fetchedAt\` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。
+    - B4 当轮证据：\`editorial.summary\` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。
+

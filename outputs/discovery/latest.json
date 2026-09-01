@@ -1,0 +1,1942 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-01T03:07:54Z",
+  "policySha256": "334b31434e3721248f54ea2ade6725bdd68ec01a672adcb11fc8be3796326af7",
+  "authentication": "authenticated",
+  "searchedLaneCount": 12,
+  "configuredLaneCount": 12,
+  "limits": {
+    "shortlistSize": 36,
+    "aiAnalysisLimit": 2,
+    "maxCandidatesPerRun": 2
+  },
+  "counts": {
+    "uniqueEligible": 190,
+    "shortlisted": 36,
+    "queuedForAI": 2
+  },
+  "excluded": {
+    "already-known": 2,
+    "excluded-name": 6,
+    "missing-description": 1,
+    "missing-license": 25
+  },
+  "queries": [
+    {
+      "laneId": "ai-products",
+      "label": "AI 与智能助手",
+      "received": 20,
+      "acceptedBeforeDedupe": 19
+    },
+    {
+      "laneId": "automation",
+      "label": "自动化与工作流",
+      "received": 20,
+      "acceptedBeforeDedupe": 15
+    },
+    {
+      "laneId": "design",
+      "label": "设计与创作",
+      "received": 8,
+      "acceptedBeforeDedupe": 5
+    },
+    {
+      "laneId": "video-audio",
+      "label": "视频与音频",
+      "received": 20,
+      "acceptedBeforeDedupe": 18
+    },
+    {
+      "laneId": "photo-media",
+      "label": "照片与个人媒体",
+      "received": 20,
+      "acceptedBeforeDedupe": 16
+    },
+    {
+      "laneId": "knowledge",
+      "label": "知识与笔记",
+      "received": 20,
+      "acceptedBeforeDedupe": 17
+    },
+    {
+      "laneId": "productivity",
+      "label": "个人效率",
+      "received": 20,
+      "acceptedBeforeDedupe": 15
+    },
+    {
+      "laneId": "data-tools",
+      "label": "数据工具",
+      "received": 20,
+      "acceptedBeforeDedupe": 19
+    },
+    {
+      "laneId": "self-hosted",
+      "label": "自托管与隐私",
+      "received": 20,
+      "acceptedBeforeDedupe": 18
+    },
+    {
+      "laneId": "learning",
+      "label": "学习与教育",
+      "received": 20,
+      "acceptedBeforeDedupe": 17
+    },
+    {
+      "laneId": "creator-tools",
+      "label": "创作者工具",
+      "received": 20,
+      "acceptedBeforeDedupe": 16
+    },
+    {
+      "laneId": "developer-products",
+      "label": "可视化开发者产品",
+      "received": 20,
+      "acceptedBeforeDedupe": 19
+    }
+  ],
+  "aiQueue": [
+    {
+      "githubId": 1219087723,
+      "fullName": "future-agi/future-agi",
+      "url": "https://github.com/future-agi/future-agi",
+      "name": "future-agi",
+      "description": "Open-source, end-to-end platform for evaluating, observing, and improving LLM and AI agent applications. Tracing · Evals · Simulations · Datasets · Gateway · Guardrails. Self-hostable. Apache 2.0.",
+      "stars": 1882,
+      "forks": 567,
+      "language": "Python",
+      "pushedAt": "2026-09-01T03:04:43Z",
+      "createdAt": "2026-04-23T14:11:31Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "main",
+      "topics": [
+        "ai-agents",
+        "ai-evals",
+        "ai-gateway",
+        "ai-optimization",
+        "ai-simulations",
+        "evaluation-framework",
+        "guardrails",
+        "hallucination-detection",
+        "llm",
+        "llm-evaluation",
+        "llm-observability",
+        "llmops",
+        "model-evaluation",
+        "observability",
+        "opentelemetry",
+        "rag",
+        "rag-evaluation",
+        "simulation",
+        "telemetry",
+        "tracing"
+      ],
+      "openIssues": 766,
+      "maturity": "new",
+      "score": 82.08,
+      "reasons": [
+        "1,882 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "ai-products",
+          "label": "AI 与智能助手",
+          "familyHint": "ai",
+          "query": "ai agent in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "ai"
+    },
+    {
+      "githubId": 1195367387,
+      "fullName": "snapotter-hq/SnapOtter",
+      "url": "https://github.com/snapotter-hq/SnapOtter",
+      "name": "SnapOtter",
+      "description": "Open-source, self-hosted file-processing tool. Convert, compress, OCR, transcribe & run local AI across image, video, audio, PDF & documents, via UI, REST API & pipelines. Your files never leave your network.",
+      "stars": 2398,
+      "forks": 118,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T16:44:04Z",
+      "createdAt": "2026-03-29T15:33:21Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "ai",
+        "airgap",
+        "audio-processing",
+        "compliance",
+        "docker",
+        "file-conversion",
+        "file-processing",
+        "homelab",
+        "image-editor",
+        "image-processing",
+        "media-processing",
+        "on-premise",
+        "open-source",
+        "pdf",
+        "privacy",
+        "rest-api",
+        "self-hosted",
+        "typescript",
+        "video",
+        "video-processing"
+      ],
+      "openIssues": 96,
+      "maturity": "new",
+      "score": 81.22,
+      "reasons": [
+        "2,398 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "self-hosted",
+          "label": "自托管与隐私",
+          "familyHint": "automation",
+          "query": "self hosted privacy in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    }
+  ],
+  "shortlist": [
+    {
+      "githubId": 1219087723,
+      "fullName": "future-agi/future-agi",
+      "url": "https://github.com/future-agi/future-agi",
+      "name": "future-agi",
+      "description": "Open-source, end-to-end platform for evaluating, observing, and improving LLM and AI agent applications. Tracing · Evals · Simulations · Datasets · Gateway · Guardrails. Self-hostable. Apache 2.0.",
+      "stars": 1882,
+      "forks": 567,
+      "language": "Python",
+      "pushedAt": "2026-09-01T03:04:43Z",
+      "createdAt": "2026-04-23T14:11:31Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "main",
+      "topics": [
+        "ai-agents",
+        "ai-evals",
+        "ai-gateway",
+        "ai-optimization",
+        "ai-simulations",
+        "evaluation-framework",
+        "guardrails",
+        "hallucination-detection",
+        "llm",
+        "llm-evaluation",
+        "llm-observability",
+        "llmops",
+        "model-evaluation",
+        "observability",
+        "opentelemetry",
+        "rag",
+        "rag-evaluation",
+        "simulation",
+        "telemetry",
+        "tracing"
+      ],
+      "openIssues": 766,
+      "maturity": "new",
+      "score": 82.08,
+      "reasons": [
+        "1,882 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "ai-products",
+          "label": "AI 与智能助手",
+          "familyHint": "ai",
+          "query": "ai agent in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "ai"
+    },
+    {
+      "githubId": 1195367387,
+      "fullName": "snapotter-hq/SnapOtter",
+      "url": "https://github.com/snapotter-hq/SnapOtter",
+      "name": "SnapOtter",
+      "description": "Open-source, self-hosted file-processing tool. Convert, compress, OCR, transcribe & run local AI across image, video, audio, PDF & documents, via UI, REST API & pipelines. Your files never leave your network.",
+      "stars": 2398,
+      "forks": 118,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T16:44:04Z",
+      "createdAt": "2026-03-29T15:33:21Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "ai",
+        "airgap",
+        "audio-processing",
+        "compliance",
+        "docker",
+        "file-conversion",
+        "file-processing",
+        "homelab",
+        "image-editor",
+        "image-processing",
+        "media-processing",
+        "on-premise",
+        "open-source",
+        "pdf",
+        "privacy",
+        "rest-api",
+        "self-hosted",
+        "typescript",
+        "video",
+        "video-processing"
+      ],
+      "openIssues": 96,
+      "maturity": "new",
+      "score": 81.22,
+      "reasons": [
+        "2,398 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "self-hosted",
+          "label": "自托管与隐私",
+          "familyHint": "automation",
+          "query": "self hosted privacy in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 1250907197,
+      "fullName": "snownico0722/PaperTodo",
+      "url": "https://github.com/snownico0722/PaperTodo",
+      "name": "PaperTodo",
+      "description": "极简 Windows 桌面便签工具。让桌面上有几张安静、可用、不会打扰人的纸。WPF 原生，支持待办与 Markdown。——A minimalist Windows desktop sticky note tool. It puts a few quiet, usable, and unobtrusive sheets of paper on your desktop. Native WPF, with support for to-dos and Markdown.",
+      "stars": 2190,
+      "forks": 110,
+      "language": "C#",
+      "pushedAt": "2026-09-01T02:36:08Z",
+      "createdAt": "2026-05-27T04:28:22Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "avalonedit",
+        "csharp",
+        "desktop",
+        "markdown",
+        "minimalist",
+        "note-taking",
+        "notes",
+        "productivity",
+        "sticky-notes",
+        "todo",
+        "windows",
+        "wpf"
+      ],
+      "openIssues": 16,
+      "maturity": "new",
+      "score": 80.83,
+      "reasons": [
+        "2,190 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "productivity",
+          "label": "个人效率",
+          "familyHint": "general",
+          "query": "productivity tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 1310758816,
+      "fullName": "Pinvou/pinvou-agent",
+      "url": "https://github.com/Pinvou/pinvou-agent",
+      "name": "pinvou-agent",
+      "description": "Open-source desktop AI agent for tools, files, knowledge, workflows, and real deliverables.",
+      "stars": 1542,
+      "forks": 225,
+      "language": "Rust",
+      "pushedAt": "2026-09-01T03:07:10Z",
+      "createdAt": "2026-07-24T07:28:41Z",
+      "license": "MIT License",
+      "defaultBranch": "main",
+      "topics": [
+        "ai-agent",
+        "automation",
+        "desktop-app",
+        "llm",
+        "local-first",
+        "mcp",
+        "open-source",
+        "react",
+        "rust",
+        "tauri"
+      ],
+      "openIssues": 24,
+      "maturity": "new",
+      "score": 80.39,
+      "reasons": [
+        "1,542 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "automation",
+          "label": "自动化与工作流",
+          "familyHint": "automation",
+          "query": "workflow automation in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 1301135370,
+      "fullName": "0xsline/OpenChatCut",
+      "url": "https://github.com/0xsline/OpenChatCut",
+      "name": "OpenChatCut",
+      "description": "Open-source, local-first conversational AI video editor with a professional multi-track timeline, Agent Skills, MCP integration, and Remotion rendering.",
+      "stars": 1508,
+      "forks": 214,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T11:27:34Z",
+      "createdAt": "2026-07-15T02:49:42Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "agent-skills",
+        "agentic-ai",
+        "ai-agent",
+        "ai-video-editor",
+        "capcut",
+        "chatcut",
+        "claude-code",
+        "codex",
+        "desktop-app",
+        "electron",
+        "ffmpeg",
+        "local-first",
+        "mcp",
+        "open-source",
+        "openchatcut",
+        "remotion",
+        "text-based-video-editing",
+        "timeline-editor",
+        "video-editing",
+        "video-editor"
+      ],
+      "openIssues": 30,
+      "maturity": "new",
+      "score": 80.25,
+      "reasons": [
+        "1,508 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "video-audio",
+          "label": "视频与音频",
+          "familyHint": "video",
+          "query": "video editor in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "video"
+    },
+    {
+      "githubId": 39464018,
+      "fullName": "apache/superset",
+      "url": "https://github.com/apache/superset",
+      "name": "superset",
+      "description": "Apache Superset is a Data Visualization and Data Exploration Platform",
+      "stars": 74566,
+      "forks": 18206,
+      "language": "Python",
+      "pushedAt": "2026-09-01T01:24:23Z",
+      "createdAt": "2015-07-21T18:55:34Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "master",
+      "topics": [
+        "analytics",
+        "apache",
+        "apache-superset",
+        "asf",
+        "bi",
+        "business-analytics",
+        "business-intelligence",
+        "data-analysis",
+        "data-analytics",
+        "data-engineering",
+        "data-science",
+        "data-visualization",
+        "data-viz",
+        "flask",
+        "python",
+        "react",
+        "sql-editor",
+        "superset"
+      ],
+      "openIssues": 613,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "74,566 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "data-tools",
+          "label": "数据工具",
+          "familyHint": "data",
+          "query": "data visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 365739812,
+      "fullName": "tldraw/tldraw",
+      "url": "https://github.com/tldraw/tldraw",
+      "name": "tldraw",
+      "description": "Build infinite canvas apps in React with the tldraw SDK. World's best, top-most agent recommended #1 five star SDK.",
+      "stars": 50058,
+      "forks": 3494,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T18:35:47Z",
+      "createdAt": "2021-05-09T11:48:37Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "canvas",
+        "collaboration",
+        "design",
+        "diagram",
+        "drawing",
+        "infinite",
+        "multiplayer",
+        "react",
+        "sdk",
+        "sketch",
+        "sync",
+        "whiteboard"
+      ],
+      "openIssues": 689,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "50,058 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "design",
+          "label": "设计与创作",
+          "familyHint": "design",
+          "query": "whiteboard design in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    },
+    {
+      "githubId": 605673387,
+      "fullName": "labring/FastGPT",
+      "url": "https://github.com/labring/FastGPT",
+      "name": "FastGPT",
+      "description": "FastGPT is a knowledge-based platform built on the LLMs, offers a comprehensive suite of out-of-the-box capabilities such as data processing, RAG retrieval, and visual AI workflow orchestration, letting you easily develop and deploy complex question-answering systems without the need for extensive setup or configuration.",
+      "stars": 29524,
+      "forks": 7290,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T22:47:19Z",
+      "createdAt": "2023-02-23T16:53:25Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "agent",
+        "claude",
+        "deepseek",
+        "llm",
+        "mcp",
+        "nextjs",
+        "openai",
+        "qwen",
+        "rag",
+        "workflow"
+      ],
+      "openIssues": 178,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "29,524 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "knowledge",
+          "label": "知识与笔记",
+          "familyHint": "data",
+          "query": "knowledge base in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 787908531,
+      "fullName": "TagStudioDev/TagStudio",
+      "url": "https://github.com/TagStudioDev/TagStudio",
+      "name": "TagStudio",
+      "description": "A User-Focused Photo & File Management System",
+      "stars": 7162,
+      "forks": 465,
+      "language": "Python",
+      "pushedAt": "2026-08-30T21:49:41Z",
+      "createdAt": "2024-04-17T12:14:41Z",
+      "license": "GNU General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "document-management-system",
+        "file-manager",
+        "metadata",
+        "organizer",
+        "photo-gallery",
+        "photo-organizer",
+        "tagger",
+        "tagging",
+        "tags"
+      ],
+      "openIssues": 280,
+      "maturity": "established",
+      "score": 77.57,
+      "reasons": [
+        "7,162 Star，属于成熟项目池",
+        "最近 1 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "photo-media",
+          "label": "照片与个人媒体",
+          "familyHint": "photo",
+          "query": "photo management in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "photo"
+    },
+    {
+      "githubId": 933963452,
+      "fullName": "bytedance/flowgram.ai",
+      "url": "https://github.com/bytedance/flowgram.ai",
+      "name": "flowgram.ai",
+      "description": "FlowGram is an extensible workflow development framework with built-in canvas, form, variable, and materials that helps developers build AI workflow platforms faster and simpler.",
+      "stars": 8405,
+      "forks": 766,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-20T04:16:09Z",
+      "createdAt": "2025-02-17T03:33:58Z",
+      "license": "MIT License",
+      "defaultBranch": "main",
+      "topics": [
+        "ai",
+        "automation",
+        "coze",
+        "data-flow",
+        "diagram",
+        "flow",
+        "flowchart",
+        "graph",
+        "integration-framework",
+        "javascript",
+        "no-code",
+        "node-based-ui",
+        "react",
+        "typescript",
+        "typescript-library",
+        "visualization",
+        "workflow",
+        "workflow-automation"
+      ],
+      "openIssues": 94,
+      "maturity": "established",
+      "score": 77.11,
+      "reasons": [
+        "8,405 Star，属于成熟项目池",
+        "最近 11 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "developer-products",
+          "label": "可视化开发者产品",
+          "familyHint": "automation",
+          "query": "developer visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 1180445240,
+      "fullName": "Haozhe-Xing/agent_learning",
+      "url": "https://github.com/Haozhe-Xing/agent_learning",
+      "name": "agent_learning",
+      "description": "A systematic AI Agent development tutorial covering LLM agents, RAG, tool use, memory systems, multi-agent systems, LangChain, LangGraph, MCP, and agentic RL.｜从零开始学 AI Agent 开发 | 系统、全面、实战导向的 Agent 开发教程 | 每日自动追踪 arXiv 最新论文 | Learn AI Agent Development from Scratch",
+      "stars": 476,
+      "forks": 74,
+      "language": "HTML",
+      "pushedAt": "2026-08-31T13:51:48Z",
+      "createdAt": "2026-03-13T03:39:55Z",
+      "license": "MIT License",
+      "defaultBranch": "main",
+      "topics": [
+        "agent-learning",
+        "agentic-workflow",
+        "ai-agent",
+        "ai-agent-tutorial",
+        "dspy",
+        "grpo",
+        "langchain",
+        "large-language-models",
+        "llm",
+        "mcp",
+        "memory-system",
+        "multi-agents",
+        "rag"
+      ],
+      "openIssues": 3,
+      "maturity": "new",
+      "score": 75.09,
+      "reasons": [
+        "476 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "learning",
+          "label": "学习与教育",
+          "familyHint": "general",
+          "query": "learning tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 103692141,
+      "fullName": "vkohaupt/vokoscreenNG",
+      "url": "https://github.com/vkohaupt/vokoscreenNG",
+      "name": "vokoscreenNG",
+      "description": "vokoscreenNG is a powerful screencast creator in many languages to record the screen, an area or a window. Recording of audio from multiple sources is supported. With the built-in camera support, you can make your video more personal. Other tools such as systray, magnifying glass, countdown, timer, Showclick and Halo support will help ",
+      "stars": 1497,
+      "forks": 110,
+      "language": "C++",
+      "pushedAt": "2026-08-31T20:35:51Z",
+      "createdAt": "2017-09-15T19:06:59Z",
+      "license": "GNU General Public License v2.0",
+      "defaultBranch": "3.0",
+      "topics": [
+        "capture",
+        "linux",
+        "opensource",
+        "oss",
+        "record",
+        "screen-capture",
+        "screen-recorder",
+        "screencast",
+        "screenshot",
+        "windows"
+      ],
+      "openIssues": 166,
+      "maturity": "growing",
+      "score": 71.51,
+      "reasons": [
+        "1,497 Star，属于成长项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "creator-tools",
+          "label": "创作者工具",
+          "familyHint": "design",
+          "query": "creator tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    },
+    {
+      "githubId": 626805178,
+      "fullName": "langgenius/dify",
+      "url": "https://github.com/langgenius/dify",
+      "name": "dify",
+      "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+      "stars": 154040,
+      "forks": 24340,
+      "language": "TypeScript",
+      "pushedAt": "2026-09-01T03:05:33Z",
+      "createdAt": "2023-04-12T07:40:24Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "agentic-framework",
+        "agentic-workflow",
+        "ai",
+        "automation",
+        "claude",
+        "deepseek",
+        "genai",
+        "gpt",
+        "llm",
+        "low-code",
+        "mcp",
+        "nextjs",
+        "no-code",
+        "openai",
+        "python",
+        "skills",
+        "workflow"
+      ],
+      "openIssues": 1013,
+      "maturity": "established",
+      "score": 82.0,
+      "reasons": [
+        "154,040 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 2 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "ai-products",
+          "label": "AI 与智能助手",
+          "familyHint": "ai",
+          "query": "ai agent in:name,description,topics"
+        },
+        {
+          "id": "automation",
+          "label": "自动化与工作流",
+          "familyHint": "automation",
+          "query": "workflow automation in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "ai"
+    },
+    {
+      "githubId": 291438522,
+      "fullName": "siyuan-note/siyuan",
+      "url": "https://github.com/siyuan-note/siyuan",
+      "name": "siyuan",
+      "description": "An open-source, privacy-first, self-hosted knowledge workspace where humans and AI agents work together 开源、隐私优先、自托管的知识工作空间，让人与智能体在此协作",
+      "stars": 46084,
+      "forks": 2974,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T23:57:08Z",
+      "createdAt": "2020-08-30T09:21:35Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "master",
+      "topics": [
+        "agentic-ai",
+        "ai-agent",
+        "digital-garden",
+        "electron",
+        "knowledge-base",
+        "knowledge-graph",
+        "local-first",
+        "markdown",
+        "mcp",
+        "note-taking",
+        "notebook",
+        "notes-app",
+        "pdf",
+        "pkm",
+        "s3",
+        "self-hosted",
+        "siyuan",
+        "webdav",
+        "wiki"
+      ],
+      "openIssues": 53,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "46,084 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "self-hosted",
+          "label": "自托管与隐私",
+          "familyHint": "automation",
+          "query": "self hosted privacy in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 285864199,
+      "fullName": "zeromicro/go-zero",
+      "url": "https://github.com/zeromicro/go-zero",
+      "name": "go-zero",
+      "description": "A cloud-native Go microservices framework with cli tool for productivity.",
+      "stars": 33298,
+      "forks": 4318,
+      "language": "Go",
+      "pushedAt": "2026-08-31T19:54:34Z",
+      "createdAt": "2020-08-07T15:37:57Z",
+      "license": "MIT License",
+      "defaultBranch": "master",
+      "topics": [
+        "ai-native",
+        "ai-native-development",
+        "cloud-native",
+        "code-generation",
+        "framework",
+        "gateway",
+        "go",
+        "golang",
+        "grpc-gateway",
+        "microservice",
+        "microservice-framework",
+        "microservices",
+        "microservices-architecture",
+        "rest-api",
+        "restful",
+        "restful-api",
+        "rpc",
+        "rpc-framework",
+        "spec-driven-development",
+        "web-framework"
+      ],
+      "openIssues": 259,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "33,298 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "productivity",
+          "label": "个人效率",
+          "familyHint": "general",
+          "query": "productivity tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 573661753,
+      "fullName": "activepieces/activepieces",
+      "url": "https://github.com/activepieces/activepieces",
+      "name": "activepieces",
+      "description": "AI Agents & MCPs & AI Workflow Automation • (~400 MCP servers for AI agents) • AI Automation / AI Agent with MCPs • AI Workflows & AI Agents • MCPs for AI Agents",
+      "stars": 24155,
+      "forks": 4119,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T22:54:38Z",
+      "createdAt": "2022-12-03T02:52:46Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "ai-agent",
+        "ai-agent-tools",
+        "ai-agents",
+        "ai-agents-framework",
+        "mcp",
+        "mcp-server",
+        "mcp-tools",
+        "mcps",
+        "n8n-alternative",
+        "no-code-automation",
+        "workflow",
+        "workflow-automation",
+        "workflows"
+      ],
+      "openIssues": 511,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "24,155 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "automation",
+          "label": "自动化与工作流",
+          "familyHint": "automation",
+          "query": "workflow automation in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 36648301,
+      "fullName": "OpenShot/openshot-qt",
+      "url": "https://github.com/OpenShot/openshot-qt",
+      "name": "openshot-qt",
+      "description": "OpenShot Video Editor is an award-winning free and open-source video editor for Linux, Mac, and Windows, and is dedicated to delivering high quality video editing and animation solutions to the world.",
+      "stars": 6321,
+      "forks": 778,
+      "language": "Python",
+      "pushedAt": "2026-08-31T23:15:39Z",
+      "createdAt": "2015-06-01T08:39:27Z",
+      "license": "Other",
+      "defaultBranch": "develop",
+      "topics": [
+        "c-plus-plus",
+        "ffmpeg",
+        "gplv3",
+        "openshot",
+        "python",
+        "qt5",
+        "video",
+        "video-editing",
+        "video-production"
+      ],
+      "openIssues": 414,
+      "maturity": "established",
+      "score": 78.23,
+      "reasons": [
+        "6,321 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "video-audio",
+          "label": "视频与音频",
+          "familyHint": "video",
+          "query": "video editor in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "video"
+    },
+    {
+      "githubId": 13926404,
+      "fullName": "getredash/redash",
+      "url": "https://github.com/getredash/redash",
+      "name": "redash",
+      "description": "Make Your Company Data Driven. Connect to any data source, easily visualize, dashboard and share your data.",
+      "stars": 28772,
+      "forks": 4629,
+      "language": "Python",
+      "pushedAt": "2026-09-01T01:06:40Z",
+      "createdAt": "2013-10-28T13:19:39Z",
+      "license": "BSD 2-Clause \"Simplified\" License",
+      "defaultBranch": "master",
+      "topics": [
+        "analytics",
+        "athena",
+        "bi",
+        "bigquery",
+        "business-intelligence",
+        "dashboard",
+        "databricks",
+        "hacktoberfest",
+        "javascript",
+        "mariadb",
+        "mysql",
+        "postgresql",
+        "python",
+        "redash",
+        "redshift",
+        "snowflake",
+        "spark",
+        "spark-sql",
+        "visualization"
+      ],
+      "openIssues": 803,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "28,772 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "data-tools",
+          "label": "数据工具",
+          "familyHint": "data",
+          "query": "data visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 1276025294,
+      "fullName": "hyscaler/HyCanvas",
+      "url": "https://github.com/hyscaler/HyCanvas",
+      "name": "HyCanvas",
+      "description": "Free, self-hostable, AI-native design software for creating graphics, social posts, and more, with no paywalls or watermarks.",
+      "stars": 178,
+      "forks": 29,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T00:23:44Z",
+      "createdAt": "2026-06-21T12:55:24Z",
+      "license": "Other",
+      "defaultBranch": "development",
+      "topics": [
+        "bring-your-own-key",
+        "canva-alternative",
+        "collaboration",
+        "design-editor",
+        "design-platform",
+        "design-tool",
+        "generative-ai",
+        "golang",
+        "graphic-design",
+        "image-editor",
+        "nextjs",
+        "open-source",
+        "presentations",
+        "react",
+        "self-hosted",
+        "templates",
+        "typescript",
+        "vector-graphics",
+        "video-editor",
+        "whiteboard"
+      ],
+      "openIssues": 3,
+      "maturity": "new",
+      "score": 70.56,
+      "reasons": [
+        "178 Star，属于新锐项目池",
+        "最近 1 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "design",
+          "label": "设计与创作",
+          "familyHint": "design",
+          "query": "whiteboard design in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    },
+    {
+      "githubId": 59435364,
+      "fullName": "outline/outline",
+      "url": "https://github.com/outline/outline",
+      "name": "outline",
+      "description": "The fastest knowledge base for growing teams. Beautiful, realtime collaborative, feature packed, and markdown compatible.",
+      "stars": 40393,
+      "forks": 3528,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T23:00:43Z",
+      "createdAt": "2016-05-22T21:31:47Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "docker",
+        "javascript",
+        "mobx",
+        "nodejs",
+        "react",
+        "slack",
+        "wiki"
+      ],
+      "openIssues": 96,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "40,393 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "knowledge",
+          "label": "知识与笔记",
+          "familyHint": "data",
+          "query": "knowledge base in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 312112440,
+      "fullName": "LibrePhotos/librephotos",
+      "url": "https://github.com/LibrePhotos/librephotos",
+      "name": "librephotos",
+      "description": "A self-hosted open source photo management service. ",
+      "stars": 8058,
+      "forks": 388,
+      "language": "Python",
+      "pushedAt": "2026-08-31T10:52:43Z",
+      "createdAt": "2020-11-11T23:08:19Z",
+      "license": "MIT License",
+      "defaultBranch": "dev",
+      "topics": [
+        "django",
+        "exif",
+        "hacktoberfest",
+        "machine-learning",
+        "photo",
+        "python",
+        "selfhosted"
+      ],
+      "openIssues": 149,
+      "maturity": "established",
+      "score": 77.47,
+      "reasons": [
+        "8,058 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "photo-media",
+          "label": "照片与个人媒体",
+          "familyHint": "photo",
+          "query": "photo management in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "photo"
+    },
+    {
+      "githubId": 384111310,
+      "fullName": "apache/devlake",
+      "url": "https://github.com/apache/devlake",
+      "name": "devlake",
+      "description": "Apache DevLake is an open-source dev data platform to ingest, analyze, and visualize the fragmented data from DevOps tools, extracting insights for engineering excellence, developer experience, and community growth.",
+      "stars": 3117,
+      "forks": 807,
+      "language": "Go",
+      "pushedAt": "2026-08-31T04:24:51Z",
+      "createdAt": "2021-07-08T12:06:09Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "main",
+      "topics": [
+        "dashboard-friendly",
+        "data",
+        "data-analysis",
+        "data-engineering",
+        "data-integration",
+        "data-transfers",
+        "devops",
+        "domain-layer",
+        "dora",
+        "etl",
+        "golang",
+        "hacktoberfest",
+        "integration",
+        "jira",
+        "open-source",
+        "user-friendly"
+      ],
+      "openIssues": 48,
+      "maturity": "growing",
+      "score": 76.22,
+      "reasons": [
+        "3,117 Star，属于成长项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "developer-products",
+          "label": "可视化开发者产品",
+          "familyHint": "automation",
+          "query": "developer visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 123055424,
+      "fullName": "SciML/ModelingToolkit.jl",
+      "url": "https://github.com/SciML/ModelingToolkit.jl",
+      "name": "ModelingToolkit.jl",
+      "description": "An acausal modeling framework for automatically parallelized scientific machine learning (SciML) in Julia. A computer algebra system for integrated symbolics for physics-informed machine learning and automated transformations of differential equations",
+      "stars": 1664,
+      "forks": 267,
+      "language": "Julia",
+      "pushedAt": "2026-08-31T22:02:01Z",
+      "createdAt": "2018-02-27T01:36:26Z",
+      "license": "Other",
+      "defaultBranch": "master",
+      "topics": [
+        "acausal",
+        "computer-algebra",
+        "dae",
+        "dde",
+        "delay-differential-equations",
+        "differential-equations",
+        "equation-based",
+        "julia",
+        "nonlinear-programming",
+        "ode",
+        "optimization",
+        "ordinary-differential-equations",
+        "pde",
+        "scientific-machine-learning",
+        "sciml",
+        "sde",
+        "stochastic-differential-equations",
+        "symbolic",
+        "symbolic-computation",
+        "symbolic-numerics"
+      ],
+      "openIssues": 646,
+      "maturity": "growing",
+      "score": 72.84,
+      "reasons": [
+        "1,664 Star，属于成长项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "learning",
+          "label": "学习与教育",
+          "familyHint": "general",
+          "query": "learning tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 450394616,
+      "fullName": "markusmoenig/Eldiron",
+      "url": "https://github.com/markusmoenig/Eldiron",
+      "name": "Eldiron",
+      "description": "Create cross-platform classic RPGs in 2D and 3D with powerful built-in world editing tools.",
+      "stars": 805,
+      "forks": 39,
+      "language": "Rust",
+      "pushedAt": "2026-08-30T04:55:10Z",
+      "createdAt": "2022-01-21T07:27:30Z",
+      "license": "MIT License",
+      "defaultBranch": "master",
+      "topics": [
+        "classic",
+        "creator",
+        "eldiron",
+        "game-development",
+        "game-engine",
+        "gamedev",
+        "pixel-art",
+        "procedural",
+        "retro",
+        "rpg",
+        "ultima"
+      ],
+      "openIssues": 10,
+      "maturity": "growing",
+      "score": 68.12,
+      "reasons": [
+        "805 Star，属于成长项目池",
+        "最近 1 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "creator-tools",
+          "label": "创作者工具",
+          "familyHint": "design",
+          "query": "creator tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    },
+    {
+      "githubId": 1144115288,
+      "fullName": "manaflow-ai/cmux",
+      "url": "https://github.com/manaflow-ai/cmux",
+      "name": "cmux",
+      "description": "Open source Ghostty-based macOS terminal with vertical tabs and notifications for AI coding agents. Built for multitasking, organization, and programmability.",
+      "stars": 26635,
+      "forks": 2288,
+      "language": "Swift",
+      "pushedAt": "2026-09-01T03:07:34Z",
+      "createdAt": "2026-01-28T10:03:24Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "amp",
+        "claude-code",
+        "cli",
+        "codex",
+        "coding-agents",
+        "gemini",
+        "ghostty",
+        "macos",
+        "multiplexer",
+        "multitasking",
+        "opencode",
+        "organization",
+        "parallel-agents",
+        "programmability",
+        "terminal",
+        "terminal-multiplexer",
+        "tmux",
+        "workspace-manager"
+      ],
+      "openIssues": 4677,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "26,635 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "ai-products",
+          "label": "AI 与智能助手",
+          "familyHint": "ai",
+          "query": "ai agent in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "ai"
+    },
+    {
+      "githubId": 1180780252,
+      "fullName": "bulwarkmail/webmail",
+      "url": "https://github.com/bulwarkmail/webmail",
+      "name": "webmail",
+      "description": "Self-hosted JMAP webmail for Stalwart Mail Server. Mail, calendar, contacts, and files in one client.",
+      "stars": 1098,
+      "forks": 162,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T21:54:18Z",
+      "createdAt": "2026-03-13T12:01:48Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "calendar",
+        "contacts",
+        "docker",
+        "email",
+        "email-client",
+        "groupware",
+        "jmap",
+        "mail",
+        "nextjs",
+        "privacy",
+        "pwa",
+        "react",
+        "self-hosted",
+        "stalwart",
+        "tailwindcss",
+        "typescript",
+        "webmail"
+      ],
+      "openIssues": 135,
+      "maturity": "new",
+      "score": 78.85,
+      "reasons": [
+        "1,098 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "self-hosted",
+          "label": "自托管与隐私",
+          "familyHint": "automation",
+          "query": "self hosted privacy in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 475337801,
+      "fullName": "massCodeIO/massCode",
+      "url": "https://github.com/massCodeIO/massCode",
+      "name": "massCode",
+      "description": "A free, open-source developer workspace. Snippets, notes, HTTP requests, calculations, and dev tools in one local-first app.",
+      "stars": 6973,
+      "forks": 264,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-31T13:42:47Z",
+      "createdAt": "2022-03-29T07:54:21Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "api-client",
+        "code-snippets",
+        "developer-tools",
+        "electron",
+        "http-client",
+        "knowledge-base",
+        "linux",
+        "local-first",
+        "macos",
+        "markdown",
+        "note-taking",
+        "notes",
+        "productivity",
+        "snippets",
+        "snippets-manager",
+        "vue",
+        "windows"
+      ],
+      "openIssues": 3,
+      "maturity": "established",
+      "score": 77.05,
+      "reasons": [
+        "6,973 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "productivity",
+          "label": "个人效率",
+          "familyHint": "general",
+          "query": "productivity tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 912559512,
+      "fullName": "simstudioai/sim",
+      "url": "https://github.com/simstudioai/sim",
+      "name": "sim",
+      "description": "Sim is the collaborative workspace to build, deploy, and monitor AI agents and workflows. Used by 100,000+ builders.",
+      "stars": 29502,
+      "forks": 3805,
+      "language": "TypeScript",
+      "pushedAt": "2026-09-01T03:07:50Z",
+      "createdAt": "2025-01-05T22:47:49Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "main",
+      "topics": [
+        "agent-workflow",
+        "agentic-workflow",
+        "agents",
+        "ai",
+        "aiagents",
+        "anthropic",
+        "artificial-intelligence",
+        "automation",
+        "chatbot",
+        "deepseek",
+        "gemini",
+        "low-code",
+        "nextjs",
+        "no-code",
+        "openai",
+        "rag",
+        "react",
+        "typescript"
+      ],
+      "openIssues": 290,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "29,502 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "automation",
+          "label": "自动化与工作流",
+          "familyHint": "automation",
+          "query": "workflow automation in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 1313215450,
+      "fullName": "wassgha/rescript",
+      "url": "https://github.com/wassgha/rescript",
+      "name": "rescript",
+      "description": "🎬 Open source, transcript-based video/audio editor that lives in the browser.",
+      "stars": 843,
+      "forks": 91,
+      "language": "TypeScript",
+      "pushedAt": "2026-09-01T00:20:04Z",
+      "createdAt": "2026-07-26T22:43:11Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "audio",
+        "media",
+        "media-editing",
+        "media-editor",
+        "transcribe",
+        "transcription",
+        "video",
+        "video-editing",
+        "video-editor",
+        "video-processing"
+      ],
+      "openIssues": 3,
+      "maturity": "new",
+      "score": 77.3,
+      "reasons": [
+        "843 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "video-audio",
+          "label": "视频与音频",
+          "familyHint": "video",
+          "query": "video editor in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "video"
+    },
+    {
+      "githubId": 75413130,
+      "fullName": "isl-org/Open3D",
+      "url": "https://github.com/isl-org/Open3D",
+      "name": "Open3D",
+      "description": "Open3D: A Modern Library for 3D Data Processing",
+      "stars": 13929,
+      "forks": 2613,
+      "language": "C++",
+      "pushedAt": "2026-08-31T21:20:16Z",
+      "createdAt": "2016-12-02T16:40:38Z",
+      "license": "Other",
+      "defaultBranch": "main",
+      "topics": [
+        "3d",
+        "3d-perception",
+        "arm",
+        "computer-graphics",
+        "cpp",
+        "cuda",
+        "gpu",
+        "gui",
+        "machine-learning",
+        "mesh-processing",
+        "odometry",
+        "opengl",
+        "pointcloud",
+        "python",
+        "pytorch",
+        "reconstruction",
+        "registration",
+        "rendering",
+        "tensorflow",
+        "visualization"
+      ],
+      "openIssues": 1306,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "13,929 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "data-tools",
+          "label": "数据工具",
+          "familyHint": "data",
+          "query": "data visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 1141764273,
+      "fullName": "kosuke55/drawtonomy",
+      "url": "https://github.com/kosuke55/drawtonomy",
+      "name": "drawtonomy",
+      "description": "Whiteboard for Driving Scenarios🚗",
+      "stars": 102,
+      "forks": 8,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-29T14:50:28Z",
+      "createdAt": "2026-01-25T11:47:40Z",
+      "license": "Apache License 2.0",
+      "defaultBranch": "main",
+      "topics": [
+        "autonomous-driving",
+        "autonomous-vehicles",
+        "autoware",
+        "canvas",
+        "carla",
+        "design",
+        "diagram",
+        "drawing",
+        "esmini",
+        "figure",
+        "infinity",
+        "lanelet2",
+        "opendrive",
+        "openscenario",
+        "roadrunner",
+        "robotics",
+        "self-driving",
+        "self-driving-car",
+        "sketch",
+        "whiteboard"
+      ],
+      "openIssues": 3,
+      "maturity": "growing",
+      "score": 59.13,
+      "reasons": [
+        "102 Star，属于成长项目池",
+        "最近 2 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "design",
+          "label": "设计与创作",
+          "familyHint": "design",
+          "query": "whiteboard design in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    },
+    {
+      "githubId": 92111509,
+      "fullName": "TriliumNext/Trilium",
+      "url": "https://github.com/TriliumNext/Trilium",
+      "name": "Trilium",
+      "description": "Build your personal knowledge base with Trilium Notes",
+      "stars": 37653,
+      "forks": 2530,
+      "language": "TypeScript",
+      "pushedAt": "2026-09-01T00:31:59Z",
+      "createdAt": "2017-05-23T00:30:20Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "electron",
+        "electron-app",
+        "knowledge-base",
+        "knowledge-graph",
+        "knowledge-management",
+        "knowledge-management-graph",
+        "local-first",
+        "note-managment",
+        "note-taker",
+        "note-taking",
+        "notebook",
+        "notes",
+        "notes-app",
+        "personal-knowledge-base",
+        "personal-wiki",
+        "scriptable",
+        "self-hosted",
+        "self-hosting",
+        "wiki"
+      ],
+      "openIssues": 703,
+      "maturity": "established",
+      "score": 79.0,
+      "reasons": [
+        "37,653 Star，属于成熟项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "knowledge",
+          "label": "知识与笔记",
+          "familyHint": "data",
+          "query": "knowledge base in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "data"
+    },
+    {
+      "githubId": 143975804,
+      "fullName": "LycheeOrg/Lychee",
+      "url": "https://github.com/LycheeOrg/Lychee",
+      "name": "Lychee",
+      "description": "A great looking and easy-to-use photo-management-system you can run on your server, to manage and share photos.",
+      "stars": 4267,
+      "forks": 376,
+      "language": "PHP",
+      "pushedAt": "2026-08-31T21:46:02Z",
+      "createdAt": "2018-08-08T07:19:08Z",
+      "license": "MIT License",
+      "defaultBranch": "master",
+      "topics": [
+        "gallery",
+        "hacktoberfest",
+        "photo-gallery",
+        "photo-gallery-application",
+        "photo-management",
+        "photos",
+        "php",
+        "typescript",
+        "vuejs"
+      ],
+      "openIssues": 44,
+      "maturity": "growing",
+      "score": 76.48,
+      "reasons": [
+        "4,267 Star，属于成长项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "photo-media",
+          "label": "照片与个人媒体",
+          "familyHint": "photo",
+          "query": "photo management in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "photo"
+    },
+    {
+      "githubId": 277645425,
+      "fullName": "microsoft/responsible-ai-toolbox",
+      "url": "https://github.com/microsoft/responsible-ai-toolbox",
+      "name": "responsible-ai-toolbox",
+      "description": "Responsible AI Toolbox is a suite of tools providing model and data exploration and assessment user interfaces and libraries that enable a better understanding of AI systems. These interfaces and libraries empower developers and stakeholders of AI systems to develop and monitor AI more responsibly, and take better data-driven actions.",
+      "stars": 1828,
+      "forks": 494,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-28T18:15:23Z",
+      "createdAt": "2020-07-06T20:46:53Z",
+      "license": "MIT License",
+      "defaultBranch": "main",
+      "topics": [
+        "data-analysis",
+        "data-science",
+        "data-visualization",
+        "error-analysis",
+        "explainability",
+        "explainable-ai",
+        "explainable-ml",
+        "fairness",
+        "fairness-ai",
+        "fairness-ml",
+        "interpretability",
+        "jupyter",
+        "machine-learning",
+        "machinelearning",
+        "ml",
+        "responsible-ai",
+        "ui",
+        "visualization",
+        "widget",
+        "widgets"
+      ],
+      "openIssues": 96,
+      "maturity": "growing",
+      "score": 73.53,
+      "reasons": [
+        "1,828 Star，属于成长项目池",
+        "最近 3 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "developer-products",
+          "label": "可视化开发者产品",
+          "familyHint": "automation",
+          "query": "developer visualization in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "automation"
+    },
+    {
+      "githubId": 1254695975,
+      "fullName": "REBEL-ROOT/omni-browser",
+      "url": "https://github.com/REBEL-ROOT/omni-browser",
+      "name": "omni-browser",
+      "description": "Omni Browser is a secure, open-source Android browser by RebelRoot. Built on Mozilla GeckoView, it features native WebExtension support, aggressive media stream interception, a private encrypted locker, and on-device machine learning tools.",
+      "stars": 311,
+      "forks": 18,
+      "language": "Kotlin",
+      "pushedAt": "2026-08-31T21:11:51Z",
+      "createdAt": "2026-05-30T22:29:52Z",
+      "license": "GNU General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [
+        "adblock",
+        "android",
+        "android-application",
+        "android-browser",
+        "app",
+        "browser",
+        "browser-extension",
+        "encryption",
+        "geckoview",
+        "jetpack-compose",
+        "kotlin",
+        "manga",
+        "ml",
+        "omni",
+        "qr",
+        "superapp",
+        "vault",
+        "video-player",
+        "vpn",
+        "wallpapaer"
+      ],
+      "openIssues": 30,
+      "maturity": "new",
+      "score": 72.08,
+      "reasons": [
+        "311 Star，属于新锐项目池",
+        "最近 0 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "learning",
+          "label": "学习与教育",
+          "familyHint": "general",
+          "query": "learning tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "general"
+    },
+    {
+      "githubId": 1153780962,
+      "fullName": "MemeCalculate/moyin-creator",
+      "url": "https://github.com/MemeCalculate/moyin-creator",
+      "name": "moyin-creator",
+      "description": "AI 影视生产级工具 | 支持 Seedance 2.0 | 剧本到成片全流程批量化 | AI-powered film production tool with Seedance 2.0 support",
+      "stars": 4450,
+      "forks": 909,
+      "language": "TypeScript",
+      "pushedAt": "2026-08-27T09:06:44Z",
+      "createdAt": "2026-02-09T17:01:11Z",
+      "license": "GNU Affero General Public License v3.0",
+      "defaultBranch": "main",
+      "topics": [],
+      "openIssues": 34,
+      "maturity": "growing",
+      "score": 67.18,
+      "reasons": [
+        "4,450 Star，属于成长项目池",
+        "最近 4 天内有代码推送",
+        "命中 1 条搜索路线"
+      ],
+      "matchedLanes": [
+        {
+          "id": "creator-tools",
+          "label": "创作者工具",
+          "familyHint": "design",
+          "query": "creator tool in:name,description,topics"
+        }
+      ],
+      "suggestedFamilyHint": "design"
+    }
+  ],
+  "publicationAuthorized": false
+}
