@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260901T131532Z-9206d4d0",
+  "createdAt": "2026-09-01T13:15:32Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "nanobot",
+      "fullName": "HKUDS/nanobot",
+      "githubId": 1147094660,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0/nanobot.project.json",
+          "sha256": "c6614d05a9ee196179ca21924b43d722befcd6317b7d13920ca78847f69750cd"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0/nanobot.research.md",
+          "sha256": "ffc7851811159b0c3169897fe47ffe88dc7574d97e1a8022e8b0b36c7db651c3"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0/nanobot.quality.json",
+          "sha256": "5a390c9701a647425aba313a6fbb3341424fe0cc7a877d17085d3c9a9c90c86c"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "a79eb43a837e411b9f634980f4e94efb9f3988c1e687b7f7a93b982732b2d472",
+  "rejected": [
+    {
+      "fullName": "activepieces/activepieces",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：A4",
+      "failedChecks": [
+        {
+          "id": "A4",
+          "evidence": "`repository.license` is `Other` in the project JSON, but research note F7 and the `Uncertainty` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value."
+        }
+      ],
+      "structuralErrors": [
+        "quality items must contain A1-E3 exactly once and in order"
+      ],
+      "blockers": [
+        "A4: `repository.license` is set to `Other` in the project JSON, but the research note marks license as `unknown` because `F7` shows GitHub metadata and README license text conflict; modify `repository.license` and the uncertainty handling. Repair result: failed."
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "A1",
+              "evidence": "repository.githubId/fullName/name/stars/forks/language/pushedAt/state all match research facts F1-F3; repository.license does not match F7 because the note marks it unknown."
+            },
+            {
+              "id": "A4",
+              "evidence": "project JSON freezes repository.license as \"Other\" even though the research note says the license cannot be verified consistently and should stay unknown."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "quality items must contain A1-E3 exactly once and in order"
+          ],
+          "blockers": [
+            "repository.license is uncertain/conflicted: research note F7 marks it as unknown due GitHub vs README mismatch, but project JSON sets repository.license to \"Other\"."
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "decisionReason",
+            "localizationDecisions"
+          ],
+          "failedChecks": [
+            {
+              "id": "A4",
+              "evidence": "project JSON sets repository.license to \"Other\", but the research note says repository.license is \"未知\" because GitHub metadata and README conflict, so the sources and artifact disagree."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "quality items must contain A1-E3 exactly once and in order"
+          ],
+          "blockers": [
+            "A4: repository.license conflicts with the research note — project JSON says \"Other\", while the research note explicitly marks license as \"未知\" because GitHub metadata and README disagree."
+          ]
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
+          "changedPaths": [
+            "decisionReason",
+            "fieldEvidence"
+          ],
+          "failedChecks": [
+            {
+              "id": "A4",
+              "evidence": "`repository.license` is `Other` in the project JSON, but research note F7 and the `Uncertainty` section say the license is conflicting/unknown; the artifact does not preserve that uncertainty in the field value."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "quality items must contain A1-E3 exactly once and in order"
+          ],
+          "blockers": [
+            "A4: `repository.license` is set to `Other` in the project JSON, but the research note marks license as `unknown` because `F7` shows GitHub metadata and README license text conflict; modify `repository.license` and the uncertainty handling. Repair result: failed."
+          ]
+        }
+      ]
+    }
+  ],
+  "publicationAuthorized": false
+}

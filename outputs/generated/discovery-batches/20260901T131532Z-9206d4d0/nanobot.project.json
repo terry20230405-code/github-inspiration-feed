@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 2,
+  "id": "nanobot",
+  "repository": {
+    "githubId": 1147094660,
+    "fullName": "HKUDS/nanobot",
+    "name": "nanobot",
+    "stars": 47606,
+    "forks": 8404,
+    "language": "Python",
+    "pushedAt": "2026-09-01T12:19:34Z",
+    "license": "MIT License",
+    "state": "active",
+    "fetchedAt": "2026-09-01T13:15:32Z"
+  },
+  "editorial": {
+    "audience": "想把个人 AI agent 自托管到 WebUI、终端或聊天应用里的人",
+    "directions": [
+      {
+        "approach": "用户先把一个 topic 里的聊天、文件和工具痕迹放进同一工作区，再借助文件 diff、可见 agent activity 和 workspace 控制整理成可导出的交接包。",
+        "audience": "经常要把一段 agent 工作交给别人，或留给自己以后接着做的人",
+        "difference": "原项目是通用 agent 运行时，这里收窄成任务交接包，只解决整理和导出。",
+        "id": "handoff-packet",
+        "name": "任务交接包",
+        "problem": "对话、文件改动和工具结果散在多个窗口里，交接时很难说明已经做过什么。",
+        "scope": [
+          "topic 汇总",
+          "文件与 diff 预览",
+          "工具痕迹整理",
+          "交接摘要导出",
+          "workspace 切换"
+        ],
+        "tagline": "把一段 agent 工作整理成可交接的记录"
+      },
+      {
+        "approach": "用户输入同一提示词并挑几组 model preset，系统借用 model routing、session 级切换和 fallback 跑出对照结果，再让用户保存偏好配置。",
+        "audience": "要在真正开始工作前先挑对模型的人",
+        "difference": "原项目把模型路由用在单个 agent 任务里，这里收窄成模型试配和对照。",
+        "id": "model-tryout-studio",
+        "name": "模型试配台",
+        "problem": "不同 provider 和 preset 的差异不容易直接看出来，选错后要反复重配。",
+        "scope": [
+          "提示词输入",
+          "多 preset 对照",
+          "结果并排查看",
+          "fallback 标记",
+          "偏好保存"
+        ],
+        "tagline": "用同一问题对照多个模型输出"
+      },
+      {
+        "approach": "用户输入长期目标、截止时间和上下文，系统借用 goals、Dream 和 cron 反复检查进度并发送提醒，直到完成或取消。",
+        "audience": "要替家人、课程或个人项目持续跟进的人",
+        "difference": "原项目处理即时对话，这里收窄成单目标的持续跟进。",
+        "id": "goal-followup-agent",
+        "name": "长期跟进管家",
+        "problem": "很多事不是一次聊完就结束，而是要隔几天继续推进、提醒和补记录。",
+        "scope": [
+          "目标创建",
+          "提醒规则",
+          "进度记录",
+          "定时检查",
+          "完成通知"
+        ],
+        "tagline": "把一个目标拆成会持续提醒的自动化任务"
+      }
+    ],
+    "features": [
+      "可在 WebUI、终端和聊天应用里运行",
+      "接入 tools、MCP、web search、web fetch、cron、image generation 和 subagents",
+      "通过 Dream 保留会话历史和长期记忆",
+      "支持长航程目标和定时自动化",
+      "提供 OpenAI-compatible API",
+      "提供 Python SDK，并支持模型路由与 fallback"
+    ],
+    "hook": "把聊天、文件和工具结果收成一条工作线",
+    "meaning": "它把聊天、工具、记忆和自动化放进同一个可持久运行的核心里，适合拆成更专注的前台入口或专用流程，而不是从零重做整套 agent 运行时。",
+    "opportunity": [
+      "WebUI 已经有 persistent topics、temporary chats、文件 diff、visible agent activity 和 workspace controls，适合做任务交接包。",
+      "model routing、session 级 preset 切换和 fallback 已经存在，适合做同题对照的模型试配台。",
+      "Dream、cron 和长航程 goals 已经连在一起，适合做持续跟进、提醒和状态回报。"
+    ],
+    "stack": [
+      "Python",
+      "WebUI",
+      "MCP",
+      "OpenAI-compatible API"
+    ],
+    "summary": "nanobot 是用 Python 写的自托管个人 AI agent 框架，可在 WebUI、终端和聊天应用里接入模型、工具、长期记忆和 MCP。它会把对话、文件操作、工具调用和自动化结果留在同一条可回看的会话里，并可通过 OpenAI-compatible API 和 Python SDK 接到外部系统。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "HKUDS/nanobot",
+    "accent": "#b026c0",
+    "foreground": "#ffffff",
+    "motif": "network",
+    "variant": 997577253
+  }
+}
