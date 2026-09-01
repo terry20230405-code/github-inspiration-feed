@@ -46,5 +46,13 @@
     "foreground": "#ffffff",
     "motif": "stack",
     "variant": 1445089626
+  },
+  "nanobot": {
+    "generatorVersion": 2,
+    "seed": "HKUDS/nanobot",
+    "accent": "#b026c0",
+    "foreground": "#ffffff",
+    "motif": "network",
+    "variant": 997577253
   }
 }
