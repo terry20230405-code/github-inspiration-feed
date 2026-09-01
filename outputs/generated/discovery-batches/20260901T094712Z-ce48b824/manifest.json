@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "batchId": "20260901T094712Z-ce48b824",
   "createdAt": "2026-09-01T09:47:12Z",
-  "status": "awaiting-approval",
+  "status": "published",
   "sourceDiscovery": "outputs/discovery/latest.json",
   "candidates": [
     {
@@ -175,5 +175,5 @@
       ]
     }
   ],
-  "publicationAuthorized": false
+  "publicationAuthorized": true
 }

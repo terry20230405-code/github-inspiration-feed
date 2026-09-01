@@ -38,5 +38,13 @@
     "foreground": "#ffffff",
     "motif": "stack",
     "variant": 4159244231
+  },
+  "papertodo": {
+    "generatorVersion": 2,
+    "seed": "snownico0722/PaperTodo",
+    "accent": "#777718",
+    "foreground": "#ffffff",
+    "motif": "stack",
+    "variant": 1445089626
   }
 }

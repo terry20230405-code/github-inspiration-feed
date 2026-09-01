@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260901T094712Z-ce48b824",
+  "batchFingerprint": "ce95eaf08abbff9595eb8ea3aebdc9cb94b15155f0c8289df7005e034c407e36",
+  "approvedAt": "2026-09-01T10:30:26Z",
+  "approvedBy": "terry20230405-code",
+  "approvalSource": "merged-review-pull-request",
+  "sourcePullRequest": 2,
+  "publicationAuthorized": true
+}
