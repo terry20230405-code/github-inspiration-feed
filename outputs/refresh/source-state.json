@@ -19,15 +19,15 @@
         "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d"
       },
       "latestRelease": {
-        "id": 379615362,
-        "tagName": "v4.0.519",
-        "name": "v4.0.519",
-        "publishedAt": "2026-08-31T08:46:39Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.519",
-        "bodySha256": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145"
+        "id": 380399134,
+        "tagName": "v4.0.520",
+        "name": "v4.0.520",
+        "publishedAt": "2026-09-01T10:19:50Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.520",
+        "bodySha256": "cbcb40948bead228fbd7dceb2210c34d61d81371df92acf74e0e911e5d2b160a"
       },
-      "capturedAt": "2026-09-01T09:46:49Z",
-      "fingerprint": "6efc2a85145fab1a01b49c47ca9792e7ce08cb54e79847e8daaf28728c16167a"
+      "capturedAt": "2026-09-01T13:15:12Z",
+      "fingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0"
     },
     "immich": {
       "githubId": 455229168,
@@ -54,10 +54,10 @@
         "videos"
       ],
       "readme": {
-        "sha": "02ae01857e52955e07cdb4d83a3d8f1d45e29e53",
+        "sha": "ba774d44cdd7b9e9baed4cc4166d4c317e3ebae8",
         "path": "README.md",
         "htmlUrl": "https://github.com/immich-app/immich/blob/main/README.md",
-        "contentSha256": "03a9c05673a43119eae0813eaac8bacc2167bb2ffd962fe6436648c506ea75ac"
+        "contentSha256": "27b511ae6ee3be2295c4c1e0674dd0ac5b0c6023d9fdd9187869b1605ff56fad"
       },
       "latestRelease": {
         "id": 360659796,
@@ -67,8 +67,8 @@
         "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
         "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
       },
-      "capturedAt": "2026-09-01T09:46:49Z",
-      "fingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b"
+      "capturedAt": "2026-09-01T13:15:12Z",
+      "fingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619"
     },
     "n8n": {
       "githubId": 193215554,
@@ -112,7 +112,7 @@
         "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.9",
         "bodySha256": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6"
       },
-      "capturedAt": "2026-09-01T09:46:49Z",
+      "capturedAt": "2026-09-01T13:15:12Z",
       "fingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb"
     },
     "excalidraw": {
@@ -189,7 +189,7 @@
         "htmlUrl": "https://github.com/tt-a1i/archify/releases/tag/v2.16.0",
         "bodySha256": "b20a59bf9c87ce81efb75806a391cbc87d910c6f1857c52cfc4bfe0a57d3803a"
       },
-      "capturedAt": "2026-09-01T09:46:49Z",
+      "capturedAt": "2026-09-01T13:15:12Z",
       "fingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f"
     }
   }

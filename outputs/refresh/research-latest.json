@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T09:46:49Z",
+  "generatedAt": "2026-09-01T13:15:12Z",
   "mode": "write",
   "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
-    "checked": 5,
-    "updated": 3,
+    "checked": 4,
+    "updated": 2,
     "refreshed": 2,
-    "semanticReviewPending": 3,
+    "semanticReviewPending": 2,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
@@ -22,118 +22,87 @@
       "changes": [
         {
           "field": "latestRelease.id",
-          "before": 377334450,
-          "after": 379615362,
+          "before": 379615362,
+          "after": 380399134,
           "level": "release"
         },
         {
           "field": "latestRelease.tagName",
-          "before": "v4.0.518",
-          "after": "v4.0.519",
+          "before": "v4.0.519",
+          "after": "v4.0.520",
           "level": "release"
         },
         {
           "field": "latestRelease.publishedAt",
-          "before": "2026-08-26T18:26:09Z",
-          "after": "2026-08-31T08:46:39Z",
+          "before": "2026-08-31T08:46:39Z",
+          "after": "2026-09-01T10:19:50Z",
           "level": "release"
         },
         {
           "field": "latestRelease.bodySha256",
-          "before": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668",
-          "after": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
+          "before": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
+          "after": "cbcb40948bead228fbd7dceb2210c34d61d81371df92acf74e0e911e5d2b160a",
           "level": "release"
         }
       ],
-      "sourceFingerprint": "6efc2a85145fab1a01b49c47ca9792e7ce08cb54e79847e8daaf28728c16167a",
+      "sourceFingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4984",
+      "rateLimitRemaining": "4995",
       "reasons": [
         "sourceFingerprint does not match the current source snapshot"
       ]
     },
     {
-      "id": "excalidraw",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d",
-      "semanticReviewStatus": "complete",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4983",
-      "reasons": []
-    },
-    {
       "id": "immich",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b",
-      "semanticReviewStatus": "complete",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4982",
-      "reasons": []
-    },
-    {
-      "id": "n8n",
       "status": "updated",
       "observation": "source-changed",
       "changes": [
         {
-          "field": "latestRelease.id",
-          "before": 376408911,
-          "after": 379592100,
-          "level": "release"
+          "field": "readme.sha",
+          "before": "02ae01857e52955e07cdb4d83a3d8f1d45e29e53",
+          "after": "ba774d44cdd7b9e9baed4cc4166d4c317e3ebae8",
+          "level": "readme"
         },
         {
-          "field": "latestRelease.tagName",
-          "before": "n8n@2.36.7",
-          "after": "n8n@2.36.9",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.publishedAt",
-          "before": "2026-08-25T13:02:22Z",
-          "after": "2026-08-31T08:01:15Z",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89",
-          "after": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
-          "level": "release"
+          "field": "readme.contentSha256",
+          "before": "03a9c05673a43119eae0813eaac8bacc2167bb2ffd962fe6436648c506ea75ac",
+          "after": "27b511ae6ee3be2295c4c1e0674dd0ac5b0c6023d9fdd9187869b1605ff56fad",
+          "level": "readme"
         }
       ],
-      "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
+      "sourceFingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4981",
+      "rateLimitRemaining": "4994",
       "reasons": [
         "sourceFingerprint does not match the current source snapshot"
       ]
     },
     {
-      "id": "archify",
-      "status": "updated",
-      "observation": "baseline",
-      "changes": [
-        {
-          "field": "sourceBaseline",
-          "before": null,
-          "after": "created",
-          "level": "baseline"
-        }
-      ],
-      "sourceFingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f",
-      "semanticReviewStatus": "pending",
+      "id": "n8n",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
+      "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4980",
+      "rateLimitRemaining": "4993",
+      "reasons": []
+    },
+    {
+      "id": "archify",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f",
+      "semanticReviewStatus": "not-needed",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4992",
       "reasons": []
     }
   ]

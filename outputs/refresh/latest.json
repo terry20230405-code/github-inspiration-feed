@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T09:46:44Z",
+  "generatedAt": "2026-09-01T13:15:08Z",
   "mode": "write",
   "dataFile": "src/data/repositories.json",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
-    "checked": 5,
-    "updated": 5,
+    "checked": 6,
+    "updated": 6,
     "refreshed": 0,
     "reviewRequired": 0,
     "failed": 0,
-    "researchRefreshRecommended": 5,
+    "researchRefreshRecommended": 4,
     "contentReviewRecommended": 0
   },
   "repositories": [
@@ -19,26 +19,26 @@
       "id": "remotion",
       "requestedFullName": "remotion-dev/remotion",
       "httpStatus": 200,
-      "rateLimitRemaining": "4972",
+      "rateLimitRemaining": "4993",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 57479,
-          "after": 57939,
+          "before": 57939,
+          "after": 57949,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 4346,
-          "after": 4402,
+          "before": 4402,
+          "after": 4403,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-08-27T11:04:01Z",
-          "after": "2026-09-01T09:34:24Z",
+          "before": "2026-09-01T09:34:24Z",
+          "after": "2026-09-01T13:12:15Z",
           "level": "activity"
         }
       ],
@@ -50,30 +50,24 @@
       "id": "excalidraw",
       "requestedFullName": "excalidraw/excalidraw",
       "httpStatus": 200,
-      "rateLimitRemaining": "4971",
+      "rateLimitRemaining": "4992",
       "status": "updated",
-      "changeLevel": "activity",
+      "changeLevel": "statistics",
       "changes": [
         {
           "field": "stars",
-          "before": 130621,
-          "after": 130908,
+          "before": 130908,
+          "after": 130919,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 15022,
-          "after": 15096,
+          "before": 15096,
+          "after": 15101,
           "level": "statistics"
-        },
-        {
-          "field": "pushedAt",
-          "before": "2026-08-27T01:44:31Z",
-          "after": "2026-09-01T09:27:06Z",
-          "level": "activity"
         }
       ],
-      "researchRefreshRecommended": true,
+      "researchRefreshRecommended": false,
       "contentReviewRecommended": false,
       "reviewReasons": []
     },
@@ -81,26 +75,26 @@
       "id": "immich",
       "requestedFullName": "immich-app/immich",
       "httpStatus": 200,
-      "rateLimitRemaining": "4970",
+      "rateLimitRemaining": "4991",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 112773,
-          "after": 113130,
+          "before": 113130,
+          "after": 113148,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 6738,
-          "after": 6792,
+          "before": 6792,
+          "after": 6796,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-08-27T11:02:12Z",
-          "after": "2026-09-01T09:00:01Z",
+          "before": "2026-09-01T09:00:01Z",
+          "after": "2026-09-01T13:02:43Z",
           "level": "activity"
         }
       ],
@@ -112,26 +106,26 @@
       "id": "n8n",
       "requestedFullName": "n8n-io/n8n",
       "httpStatus": 200,
-      "rateLimitRemaining": "4969",
+      "rateLimitRemaining": "4990",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 202574,
-          "after": 203002,
+          "before": 203002,
+          "after": 203016,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 60416,
-          "after": 60481,
+          "before": 60481,
+          "after": 60488,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-08-27T11:03:20Z",
-          "after": "2026-09-01T09:45:00Z",
+          "before": "2026-09-01T09:45:00Z",
+          "after": "2026-09-01T13:14:58Z",
           "level": "activity"
         }
       ],
@@ -143,30 +137,49 @@
       "id": "archify",
       "requestedFullName": "tt-a1i/archify",
       "httpStatus": 200,
-      "rateLimitRemaining": "4968",
+      "rateLimitRemaining": "4989",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 31514,
-          "after": 40559,
+          "before": 40559,
+          "after": 40999,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 1956,
-          "after": 2564,
+          "before": 2564,
+          "after": 2602,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-08-29T17:13:30Z",
-          "after": "2026-09-01T09:45:49Z",
+          "before": "2026-09-01T09:45:49Z",
+          "after": "2026-09-01T12:12:10Z",
           "level": "activity"
         }
       ],
       "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "papertodo",
+      "requestedFullName": "snownico0722/PaperTodo",
+      "httpStatus": 200,
+      "rateLimitRemaining": "4988",
+      "status": "updated",
+      "changeLevel": "statistics",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 2192,
+          "after": 2193,
+          "level": "statistics"
+        }
+      ],
+      "researchRefreshRecommended": false,
       "contentReviewRecommended": false,
       "reviewReasons": []
     }
