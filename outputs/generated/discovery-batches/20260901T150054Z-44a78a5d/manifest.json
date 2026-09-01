@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260901T150054Z-44a78a5d",
+  "createdAt": "2026-09-01T15:00:54Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "maka",
+      "fullName": "apache/maka",
+      "githubId": 1251460378,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d/maka.project.json",
+          "sha256": "e4d8c1a0e4fe38680b01151de745917798652e8eb151e768395b3b22913d4b56"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d/maka.research.md",
+          "sha256": "bc83ff8e78623ed986ba4f63ffe28b7e33fd53534db1dddf2fdc0d2016a79614"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d/maka.quality.json",
+          "sha256": "5e8644288e5df06ca1a92d40d906ccc31c1fa9324c48eefa3e9d07e20ce77756"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "cd065eac51842fa4887592722eb0519a9ee500204951be6cadcd264f5b0987ea",
+  "rejected": [
+    {
+      "fullName": "Pinvou/pinvou-agent",
+      "stage": "首轮修复无实质进展",
+      "reason": "首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3",
+      "failedChecks": [
+        {
+          "id": "D3",
+          "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
+        }
+      ],
+      "structuralErrors": [],
+      "blockers": [],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "`受控代码协作桌面` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。"
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "受控代码协作桌面",
+              "evidence": "F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "editorial.directions[0].id must be a lowercase kebab-case slug",
+            "editorial.directions[1].id must be a lowercase kebab-case slug",
+            "editorial.directions[2].id must be a lowercase kebab-case slug"
+          ],
+          "blockers": [
+            "D3: `受控代码协作桌面` 与原项目的 code mode 在 audience、input、workflow、outcome 上都不成立为实质新增；研究笔记 F14 已经写明可在真实项目或临时工作区里用 ACP 读写代码、运行命令，并显示 plan/tool steps/permission requests/file changes，方向只是收窄命名。"
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.opportunity",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience",
+                "input"
+              ],
+              "directionId": "hai-bao-gai-gao-tai",
+              "evidence": "F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [],
+          "blockers": []
+        }
+      ]
+    },
+    {
+      "fullName": "apache/superset",
+      "stage": "A3 程序校验",
+      "reason": "GitHub 客观数据未能与本轮快照完全对应",
+      "failedChecks": [
+        {
+          "id": "A3",
+          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
+        }
+      ],
+      "structuralErrors": [
+        "repository.pushedAt must not be later than repository.fetchedAt"
+      ],
+      "blockers": [],
+      "repairHistory": []
+    },
+    {
+      "fullName": "tldraw/tldraw",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：A4",
+      "failedChecks": [
+        {
+          "id": "A4",
+          "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
+        }
+      ],
+      "structuralErrors": [],
+      "blockers": [
+        "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "A4",
+              "evidence": "research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。"
+            },
+            {
+              "id": "E3",
+              "evidence": "所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。"
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [],
+          "blockers": [
+            "A4：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解；修改字段：repository.license / editorial.summary；修复结果：需先澄清或补足许可事实后再发。",
+            "E3：三条方向的 audience 都是团队/内部工具/运营配置人（产品、设计和评审团队；内容团队和内部工具团队；运营、产品和自动化配置人员），没有一个主要服务于个人、家庭、学习、创作或社区；修改字段：至少一个 direction.audience / difference / approach；修复结果：补一条非商业或创作/学习取向方向。"
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.opportunity",
+            "editorial.summary",
+            "decisionReason",
+            "fieldEvidence",
+            "inferences",
+            "directionRationales",
+            "directionComparisons",
+            "uncertainty",
+            "localizationDecisions"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "direction comparisons must contain every unique direction pair exactly once and in order",
+            "quality items must contain A1-E3 exactly once and in order",
+            "direction pair audits must contain every unique project direction pair exactly once and in order"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
+          "changedPaths": [
+            "decisionReason",
+            "directionComparisons"
+          ],
+          "failedChecks": [
+            {
+              "id": "A4",
+              "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [],
+          "blockers": [
+            "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
+          ]
+        }
+      ]
+    },
+    {
+      "fullName": "labring/FastGPT",
+      "stage": "A3 程序校验",
+      "reason": "GitHub 客观数据未能与本轮快照完全对应",
+      "failedChecks": [
+        {
+          "id": "A3",
+          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
+        }
+      ],
+      "structuralErrors": [
+        "fieldEvidence must contain every required field exactly once and in order",
+        "repository.pushedAt must not be later than repository.fetchedAt",
+        "page field evidence is missing `editorial.meaning`"
+      ],
+      "blockers": [],
+      "repairHistory": []
+    }
+  ],
+  "publicationAuthorized": false
+}

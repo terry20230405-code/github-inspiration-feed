@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "maka",
+  "projectPath": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d/maka.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d/maka.research.md",
+  "projectSha256": "e4d8c1a0e4fe38680b01151de745917798652e8eb151e768395b3b22913d4b56",
+  "researchSha256": "bc83ff8e78623ed986ba4f63ffe28b7e33fd53534db1dddf2fdc0d2016a79614",
+  "reviewedAt": "2026-09-01T15:00:54Z",
+  "items": [
+    {
+      "evidence": "research note 的 Page field evidence 表把 repository.githubId/fullName/name、editorial.summary、editorial.audience、editorial.features、editorial.stack 分别映射到 F1、F4-F9。",
+      "id": "A1",
+      "status": "pass"
+    },
+    {
+      "evidence": "research note 将 verified facts（F4-F9）与 inferred claims（Page field evidence 中 status=inferred、Product inferences、Direction rationale）分开；hook/meaning/opportunity/每个 direction 都有对应 evidence。",
+      "id": "A2",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "evidence": "project.repository.license=Apache License 2.0，与 research note 的许可信息（Snapshot 和 F3 里的 Apache-2.0 / Apache License 2.0）一致；repository.state=active、fetchedAt 为快照时间，stars/forks/pushedAt 也都按抓取值保存而非实时值。",
+      "id": "A4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook“把 AI 代理做成可回放工作区”直接借用了 F4-F7 的 append-only log、回放、分支与恢复能力，而不是空泛评价词。",
+      "id": "B1",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 明确了接收本地项目/模型连接/权限设置，用户在 Desktop、TUI/CLI 或 Eval 发起任务、查看工具轨迹并接续中断回合，最后得到可回放记录。",
+      "id": "B2",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 与 features 合并覆盖了至少三项核心能力：多入口共享 Runtime Host、append-only log、内置工具与沙箱审批、会话恢复、声明式评测。",
+      "id": "B3",
+      "status": "pass"
+    },
+    {
+      "evidence": "Electron、React、SQLite、Runtime Host、MCP、TUI/CLI/Eval、tool calls 等术语都直接服务于理解产品工作方式或复用方式，没有把关键技术能力抹平成失真的大白话。",
+      "id": "B4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook 只留下“可回放工作区”这个记忆点；summary 才展开本地工作区、模型连接、权限设置、多入口和回放记录的完整画面。",
+      "id": "C1",
+      "status": "pass"
+    },
+    {
+      "evidence": "meaning 只解释可追溯执行记录和共享 Runtime Host 为什么适合作为复用底座，没有把会话复盘台、权限审计台或实验对照台写成现有功能。",
+      "id": "C2",
+      "status": "pass"
+    },
+    {
+      "evidence": "meaning 给出总体复用价值；opportunity 逐条把 append-only log/branch-recovery、permission decisions/sandbox boundary、immutable attempts/result kernel 对应到三种具体新产品与摩擦。",
+      "id": "C3",
+      "status": "pass"
+    },
+    {
+      "evidence": "project.editorial.audience 只描述原项目用户（本地使用 AI agent 的开发者和测试者）；三条 directions 的 audience 分别改成复盘失败、治理配置、评测审查的人群，scope 也都只保留支撑各自流程的最小功能。",
+      "id": "C4",
+      "status": "pass"
+    },
+    {
+      "evidence": "D1-D4 检查中，该方向明确写了面向“需要排查 AI agent 失败原因的个人开发者和支持人员”，并给出历史会话→时间线→搜索→分支继续的可演示流程，且与原项目在输入、工作流和可见结果上都不同。",
+      "id": "D1",
+      "status": "pass"
+    },
+    {
+      "evidence": "D1-D4 检查中，该方向把输入定义为旧会话日志，核心步骤是查看 messages/tool calls/tool results/permission decisions/termination point 并继续后续 turn，结果是可搜索复盘和接续执行。",
+      "id": "D2",
+      "status": "pass"
+    },
+    {
+      "evidence": "与原项目 F4-F7 比较：原项目在工作区中发起任务并继续执行；该方向以历史会话为输入，输出是失败定位与可继续分支。用户、输入、工作流、结果至少四项实质变化，且不是简单暴露已有 API。",
+      "id": "D3",
+      "status": "pass"
+    },
+    {
+      "evidence": "scope 仅包含会话列表、时间线查看、事件搜索、权限与结果检查、分支继续、恢复回放，足以完成复盘流程，没有混入路线图或装饰项。",
+      "id": "D4",
+      "status": "pass"
+    },
+    {
+      "evidence": "D1-D4 检查中，该方向面向平台/安全负责人，输入是连接、sandbox 与审批规则，工作流是测试连接→设定规则→审计状态，结果是可签核的治理配置。",
+      "id": "E1",
+      "status": "pass"
+    },
+    {
+      "evidence": "D1-D4 检查中，该方向的价值是把分散的模型接入、工具放行和越界审批收拢到可复用治理配置，减少团队反复沟通和遗漏。",
+      "id": "E2",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向集合里至少有一个非商业主题：会话复盘台与实验对照台都主要服务个人排障、评测和 QA，而不是营销或赚钱流程。",
+      "id": "E3",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}
