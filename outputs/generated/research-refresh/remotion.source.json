@@ -1,27 +1,45 @@
 {
   "schemaVersion": 1,
   "projectId": "remotion",
-  "generatedAt": "2026-08-27T13:36:31Z",
-  "sourceFingerprint": "ac177f65a23445eb58ffdf47c6444330195773be73fedefdbee2bbb3d1a2328c",
+  "generatedAt": "2026-09-01T09:46:49Z",
+  "sourceFingerprint": "6efc2a85145fab1a01b49c47ca9792e7ce08cb54e79847e8daaf28728c16167a",
   "repository": {
     "githubId": 274495425,
     "fullName": "remotion-dev/remotion",
     "name": "Remotion",
-    "stars": 57479,
-    "forks": 4346,
+    "stars": 57939,
+    "forks": 4402,
     "language": "TypeScript",
-    "pushedAt": "2026-08-27T11:04:01Z",
+    "pushedAt": "2026-09-01T09:34:24Z",
     "license": "Remotion License",
     "state": "active",
-    "fetchedAt": "2026-08-27T11:05:43Z"
+    "fetchedAt": "2026-09-01T09:46:44Z"
   },
-  "observation": "baseline",
+  "observation": "source-changed",
   "changes": [
     {
-      "field": "sourceBaseline",
-      "before": null,
-      "after": "created",
-      "level": "baseline"
+      "field": "latestRelease.id",
+      "before": 377334450,
+      "after": 379615362,
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.tagName",
+      "before": "v4.0.518",
+      "after": "v4.0.519",
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.publishedAt",
+      "before": "2026-08-26T18:26:09Z",
+      "after": "2026-08-31T08:46:39Z",
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.bodySha256",
+      "before": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668",
+      "after": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
+      "level": "release"
     }
   ],
   "sources": [
@@ -45,28 +63,21 @@
     {
       "id": "S2",
       "kind": "readme",
-      "retrievalStatus": "fetched",
-      "content": {
-        "sha": "3eb05612d3c1322dcdf7e84cf75195a1d334e06c",
-        "path": "README.md",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/blob/main/README.md",
-        "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d",
-        "content": "<p align=\"center\">\n  <a href=\"https://github.com/remotion-dev/logo\">\n    <picture>\n      <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-dark.apng\">\n      <img alt=\"Animated Remotion Logo\" src=\"https://github.com/remotion-dev/logo/raw/main/animated-logo-banner-light.gif\">\n    </picture>\n  </a>\n</p>\n\n[![Discord Shield](https://img.shields.io/discord/809501355504959528?color=000000&label=Discord&logo=fdgssdf)](https://remotion.dev/discord)\n[![NPM Version](https://img.shields.io/npm/v/remotion.svg?style=flat&color=black)](https://www.npmjs.org/package/remotion)\n[![NPM Downloads](https://img.shields.io/npm/dm/remotion.svg?style=flat&color=black&label=Downloads)](https://npmcharts.com/compare/remotion?minimal=true)\n<a href=\"https://twitter.com/remotion\"><img src=\"https://img.shields.io/twitter/follow/remotion?label=Twitter&color=black\" alt=\"Twitter\"></a>\n\nVideo tools for the agent era.\n\n## Video Creation\n\n- **Make videos agentically**: Turn your idea into a video using your coding agent.\n- **Make videos interactively**: Edit and animate using drag and drop.\n- **Make videos programmatically**: Connect to data, and manage complexity with code.\n\nReact Code is the source of truth. Switch your workflow at any point.\n\n## Video Automation\n\n- **Design systems**: Create a library of animated assets for your organization.\n- **Batch rendering**: Render millions of videos on your own infrastructure.\n- **Applications**: Publish a simple tool or a complex video editor.\n\n## Get started\n\nIf you already have Node.JS installed, type\n\n```console\nnpx create-video@latest\n```\n\nto get started. Otherwise, read the [installation page](https://www.remotion.dev/docs/) in the documentation.\n\n## Discover Remotion\n\nRemotion is extensively documented over more than 1000 pages.\n\n- Get Started\n  - [Installation](https://remotion.dev/docs)\n  - [Agent Skills](https://www.remotion.dev/docs/ai/skills)\n  - [Prompts](https://www.remotion.dev/prompts)\n  - [Templates](https://remotion.dev/templates)\n- Components\n  - [Elements](https://remotion.dev/elements)\n  - [Effects](https://remotion.dev/effects)\n  - [Shapes](https://remotion.dev/docs/shapes)\n  - [Transitions](https://remotion.dev/transitions)\n  - [Sound Effects](https://remotion.dev/docs/sfx)\n  - [Captions](https://remotion.dev/docs/captions)\n  - [Fonts](https://remotion.dev/docs/fonts)\n- Rendering\n  - [Node.js APIs](https://www.remotion.dev/docs/ssr)\n  - [Lambda](https://www.remotion.dev/docs/lambda)\n  - [Vercel](https://www.remotion.dev/docs/vercel-sandbox)\n  - [Client-side rendering](https://www.remotion.dev/docs/client-side-rendering/)\n  - [Comparison of options](https://remotion.dev/docs/compare-ssr)\n- Making apps\n  - [Player](https://remotion.dev/docs/player)\n  - [Editor Starter](https://remotion.dev/editor-starter)\n  - [Mediabunny](https://remotion.dev/docs/mediabunny)\n- Community\n  - [Discord](https://remotion.dev/discord)\n  - [Experts](https://remotion.dev/experts)\n  - [Resources](https://remotion.dev/resources)\n  - [Contributing](https://remotion.dev/contributing)\n  - Follow us on [X](https://x.com/remotion), [YouTube](https://youtube.com/@remotion_dev), [Instagram](https://instagram.com/remotion), [LinkedIn](https://linkedin.com/company/remotion)\n- Commercial\n  - [License](https://remotion.dev/license)\n  - [Store](https://remotion.pro/store)\n  - [About Remotion](https://remotion.dev/about)\n  - [Showcase](https://remotion.dev/showcase)\n- Help\n  - [Support](https://remotion.dev/support)\n  - [Discord](https://remotion.dev/discord)\n  - [Search](https://remotion.dev/search)\n  - [Ask AI](https://remotion.dev/ai)\n  - [GitHub Issues](https://remotion.dev/issues)\n\n## Documentation\n\nDocumentation: [**remotion.dev/docs**](https://www.remotion.dev/docs)  \nAPI Reference: [**remotion.dev/api**](https://www.remotion.dev/api)\n\n## License\n\nBe aware of that Remotion has a special license and requires obtaining a company license in some cases. Read the [LICENSE](LICENSE.md) page for more information.\n\n## Contributing\n\nPlease read [CONTRIBUTING.md](CONTRIBUTING.md) to learn about contributing to this project.\n",
-        "contentTruncated": false
-      }
+      "retrievalStatus": "not-modified",
+      "content": null
     },
     {
       "id": "S3",
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 377334450,
-        "tagName": "v4.0.518",
-        "name": "v4.0.518",
-        "publishedAt": "2026-08-26T18:26:09Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.518",
-        "bodySha256": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668",
-        "body": "## What's Changed\n\n- [`@remotion/whisper-webgpu`: **New package!**](https://remotion.dev/docs/whisper-webgpu) by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10812\n- [`@remotion/studio`: **Add WebMCP tools**](https://remotion.dev/docs/ai/webmcp) by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10827\n- `@remotion/captions`: Add forced page breaks by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10805\n- `@remotion/media`: Use Mediabunny retry defaults by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10826\n- `@remotion/lambda`: Allow single-concurrency Lambda renders by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10797\n- `@remotion/studio`: Add explorer header actions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10831\n- `@remotion/studio`: Preserve sidebar order and refine asset actions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10830\n- `@remotion/studio`: Remove asset inspector quick action scrollbar by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10850\n- `@remotion/studio`: Add Copy context for agents to composition menu by @YUHAO-corn in https://github.com/remotion-dev/remotion/pull/10828\n- [`@remotion/studio-protocol`: Add `isInsideStudio()`](https://remotion.dev/docs/studio-protocol/is-inside-studio) by @samohovets in https://github.com/remotion-dev/remotion/pull/10836\n- [`@remotion/studio-protocol`: Add Element catalogs to Studio via `addElementLibraryToStudio()`](https://remotion.dev/docs/studio-protocol/add-element-library-to-studio) by @samohovets in https://github.com/remotion-dev/remotion/pull/10843\n\n## Elements\n\n- Add Social Safe Zones overlay by @samohovets in https://github.com/remotion-dev/remotion/pull/10781\n- Add mirrored audio spectrum by @samohovets in https://github.com/remotion-dev/remotion/pull/10816\n- Add audio oscilloscope by @samohovets in https://github.com/remotion-dev/remotion/pull/10821\n- Remove audio oscilloscope background by @samohovets in https://github.com/remotion-dev/remotion/pull/10833\n- Refine on-screen messages element by @samohovets in https://github.com/remotion-dev/remotion/pull/10842\n- Stabilize product collection title wrapping by @samohovets in https://github.com/remotion-dev/remotion/pull/10832\n- Require hosted preview URLs by @samohovets in https://github.com/remotion-dev/remotion/pull/10822\n\n## Internal and experimental\n\n- `@remotion/canvas`: Add outline calculation interface by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10806\n- `@remotion/browser-studio`: Add Studio loading progress bar by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10818\n- `@remotion/promo-pages`: Fix HLS video playback in Chrome by @samohovets in https://github.com/remotion-dev/remotion/pull/10819\n- Stabilize Studio canvas E2E tests by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10840\n- Expand templates in queued commit messages for `pi` by @samohovets in https://github.com/remotion-dev/remotion/pull/10820\n\n**Full Changelog**: https://github.com/remotion-dev/remotion/compare/v4.0.517...v4.0.518\n",
+        "id": 379615362,
+        "tagName": "v4.0.519",
+        "name": "v4.0.519",
+        "publishedAt": "2026-08-31T08:46:39Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.519",
+        "bodySha256": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
+        "body": "## What's Changed\n\n- `@remotion/three`: Fix canvases under `scale(0)` ancestors by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10927\n- `@remotion/studio`: Add option to sort compositions alphabetically by @naoyashiga in https://github.com/remotion-dev/remotion/pull/10813\n- `@remotion/studio`: Add folder selection when creating compositions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10877\n- `@remotion/studio`: Add inspector section titles by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10899\n- `@remotion/studio`: Add translation while rotating by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10930\n- `@remotion/studio`: Redesign error overlay actions and stack frames by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10937\n- `@remotion/studio`: Change design of image layer by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10894\n- `@remotion/studio`: Move updates into Settings by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10936\n- `@remotion/studio`: Keep Effects section expanded by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10885\n- `@remotion/studio`: Keep input mode when tabbing between number inputs by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10872\n- `@remotion/studio`: Show source locations in read-only Studio by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10875\n- `@remotion/studio`: Add license confirmation to Browser Studio project download by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10878\n- `@remotion/studio`: Avoid `/events` request in read-only Studio by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10911\n- `@remotion/studio`: Fix quick switcher autofocus on touchscreens by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10868\n- `@remotion/studio`: Fix added keyframe values with outer frame clock by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10876\n- `@remotion/studio`: Fix negative-start sequence frame info by @YUHAO-corn in https://github.com/remotion-dev/remotion/pull/10892\n- `@remotion/studio`: Fix connected compositions after Fast Refresh by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10895\n- `@remotion/studio`: Fix Explorer item hover states and actions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10901\n- `@remotion/studio`: Fix media asset previews in Browser Studio by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10913\n- `@remotion/studio`: Fix Browser Studio canvas state URLs by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10915\n- `@remotion/studio`: Fix outline update loop in read-only mode by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10916\n- `@remotion/studio`: Fix context actions for multiple selected sequences by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10931\n- `@remotion/studio`: Fix sequence state after JSX structure edits by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10935\n- `@remotion/studio`: Move outline derivation back to Studio by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10903\n- `@remotion/studio-codemods`: Preserve source formatting when inserting JSX by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10929\n- `@remotion/studio-server`: Log busy ports during Studio startup by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10922\n- `@remotion/studio-server`: Fix Zed source files opening in new windows by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10925\n- `remotion`: Fix `allowTail` interpolation continuity by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10869\n- `@remotion/player`: Resume keep-alive audio after buffering by @Octember in https://github.com/remotion-dev/remotion/pull/10902\n- remotion.dev/convert: Add caption and Whisper output downloads by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10887\n- remotion.dev/convert: Add language selection for transcription by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10910\n\n## Elements\n\n- Add audio waveform progress element by @samohovets in https://github.com/remotion-dev/remotion/pull/10907\n- Add new composition destination to Studio installs by @samohovets in https://github.com/remotion-dev/remotion/pull/10890\n- Keep installed Elements visible at the playhead by @samohovets in https://github.com/remotion-dev/remotion/pull/10891\n- Lock Social Safe Zones to 1080×1920 by @samohovets in https://github.com/remotion-dev/remotion/pull/10874\n- Prevent Drag into Studio action flash by @samohovets in https://github.com/remotion-dev/remotion/pull/10889\n- Fix visibility toggles for caption Elements by @samohovets in https://github.com/remotion-dev/remotion/pull/10857\n- Fix audio oscilloscope when shifted in timeline by @samohovets in https://github.com/remotion-dev/remotion/pull/10946\n\n## Docs\n\n- Use Docusaurus Faster on Vercel by @samohovets in https://github.com/remotion-dev/remotion/pull/10940\n- Remove shared Twoslash cache by @samohovets in https://github.com/remotion-dev/remotion/pull/10944\n- Redeploy brand changes on Vercel by @samohovets in https://github.com/remotion-dev/remotion/pull/10945\n\n## Internal and experimental\n\n- `@remotion/canvas-capture-extension`: Redesign by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10886\n- remotion.dev/brand: Add WebMCP promo video by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10861\n- remotion.dev/brand: Add Canvas Capture announcement timeline by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10941\n- remotion.dev/brand: Add portrait Canvas Capture short by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/10943\n- Run Twoslash prewarming inside the docs build by @samohovets in https://github.com/remotion-dev/remotion/pull/10924\n- Balance API specificity with context in PR titles by @samohovets in https://github.com/remotion-dev/remotion/pull/10855\n\n**Full Changelog**: https://github.com/remotion-dev/remotion/compare/v4.0.518...v4.0.519\n",
         "bodyTruncated": false
       }
     }

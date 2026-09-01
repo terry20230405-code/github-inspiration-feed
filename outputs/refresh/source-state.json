@@ -19,15 +19,15 @@
         "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d"
       },
       "latestRelease": {
-        "id": 377334450,
-        "tagName": "v4.0.518",
-        "name": "v4.0.518",
-        "publishedAt": "2026-08-26T18:26:09Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.518",
-        "bodySha256": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668"
+        "id": 379615362,
+        "tagName": "v4.0.519",
+        "name": "v4.0.519",
+        "publishedAt": "2026-08-31T08:46:39Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.519",
+        "bodySha256": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145"
       },
-      "capturedAt": "2026-08-27T13:38:39Z",
-      "fingerprint": "ac177f65a23445eb58ffdf47c6444330195773be73fedefdbee2bbb3d1a2328c"
+      "capturedAt": "2026-09-01T09:46:49Z",
+      "fingerprint": "6efc2a85145fab1a01b49c47ca9792e7ce08cb54e79847e8daaf28728c16167a"
     },
     "immich": {
       "githubId": 455229168,
@@ -67,7 +67,7 @@
         "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
         "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
       },
-      "capturedAt": "2026-08-27T13:38:39Z",
+      "capturedAt": "2026-09-01T09:46:49Z",
       "fingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b"
     },
     "n8n": {
@@ -105,15 +105,15 @@
         "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
       },
       "latestRelease": {
-        "id": 376408911,
-        "tagName": "n8n@2.36.7",
-        "name": "n8n@2.36.7",
-        "publishedAt": "2026-08-25T13:02:22Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.7",
-        "bodySha256": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89"
+        "id": 379592100,
+        "tagName": "n8n@2.36.9",
+        "name": "n8n@2.36.9",
+        "publishedAt": "2026-08-31T08:01:15Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.9",
+        "bodySha256": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6"
       },
-      "capturedAt": "2026-08-27T13:38:39Z",
-      "fingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65"
+      "capturedAt": "2026-09-01T09:46:49Z",
+      "fingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb"
     },
     "excalidraw": {
       "githubId": 231283452,
@@ -144,8 +144,53 @@
         "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
         "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
       },
-      "capturedAt": "2026-08-30T03:42:47Z",
+      "capturedAt": "2026-09-01T09:46:49Z",
       "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
+    },
+    "archify": {
+      "githubId": 1211139949,
+      "fullName": "tt-a1i/archify",
+      "defaultBranch": "main",
+      "description": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+      "homepage": "https://tt-a1i.github.io/archify/",
+      "topics": [
+        "agent-skills",
+        "architecture-as-code",
+        "architecture-diagram",
+        "claude-skill",
+        "code-visualization",
+        "codex",
+        "coding-agents",
+        "data-flow-diagram",
+        "deepseek-harness",
+        "developer-tools",
+        "diagram-as-code",
+        "diagrams",
+        "diagrams-as-code",
+        "dsh-plugin",
+        "mermaid-alternative",
+        "opencode",
+        "sequence-diagram",
+        "software-architecture",
+        "system-design",
+        "text-to-diagram"
+      ],
+      "readme": {
+        "sha": "ffbb93e6f50522a353a92ddf07589e6b4a5379ed",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/tt-a1i/archify/blob/main/README.md",
+        "contentSha256": "64e7f80d64e88536c6f5cb56b736b9eb4d2e57bbd341139af220cf4542d5dbfe"
+      },
+      "latestRelease": {
+        "id": 379259141,
+        "tagName": "v2.16.0",
+        "name": "v2.16.0",
+        "publishedAt": "2026-08-30T11:17:04Z",
+        "htmlUrl": "https://github.com/tt-a1i/archify/releases/tag/v2.16.0",
+        "bodySha256": "b20a59bf9c87ce81efb75806a391cbc87d910c6f1857c52cfc4bfe0a57d3803a"
+      },
+      "capturedAt": "2026-09-01T09:46:49Z",
+      "fingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f"
     }
   }
 }

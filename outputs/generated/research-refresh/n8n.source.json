@@ -1,27 +1,45 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-08-27T13:36:31Z",
-  "sourceFingerprint": "9c596571ae56ad8a1bc5ea4e2b86ced3cf30993b88fa0cac9eaa95b1172e9b65",
+  "generatedAt": "2026-09-01T09:46:49Z",
+  "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 202574,
-    "forks": 60416,
+    "stars": 203002,
+    "forks": 60481,
     "language": "TypeScript",
-    "pushedAt": "2026-08-27T11:03:20Z",
+    "pushedAt": "2026-09-01T09:45:00Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-08-27T11:05:43Z"
+    "fetchedAt": "2026-09-01T09:46:44Z"
   },
-  "observation": "baseline",
+  "observation": "source-changed",
   "changes": [
     {
-      "field": "sourceBaseline",
-      "before": null,
-      "after": "created",
-      "level": "baseline"
+      "field": "latestRelease.id",
+      "before": 376408911,
+      "after": 379592100,
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.tagName",
+      "before": "n8n@2.36.7",
+      "after": "n8n@2.36.9",
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.publishedAt",
+      "before": "2026-08-25T13:02:22Z",
+      "after": "2026-08-31T08:01:15Z",
+      "level": "release"
+    },
+    {
+      "field": "latestRelease.bodySha256",
+      "before": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89",
+      "after": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+      "level": "release"
     }
   ],
   "sources": [
@@ -62,28 +80,21 @@
     {
       "id": "S2",
       "kind": "readme",
-      "retrievalStatus": "fetched",
-      "content": {
-        "sha": "21909fae00cbad4f18af84d2948752445051a915",
-        "path": "README.md",
-        "htmlUrl": "https://github.com/n8n-io/n8n/blob/master/README.md",
-        "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242",
-        "content": "![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)\n\n# n8n – The Platform for AI Agents and Workflow Automation\n\nFair-code platform to build and deploy AI agents and workflows. Combine a visual canvas with custom code, run it self-hosted or in the [cloud](https://app.n8n.cloud/login), and connect to 1500+ integrations. AI automation you can trust with real work, from prototype to production.\n\n![n8n.io - Screenshot](https://raw.githubusercontent.com/n8n-io/n8n/master/assets/n8n-screenshot-readme.png)\n\n## Key Capabilities\n\n- **AI-Native Automation Platform**: Build and operationalize AI workflows and multi-step agents using your own data, models, and tools\n- **Model Flexibility, No Lock-In**: Connect to OpenAI, Anthropic, Google, or open-source models and switch providers without changing your architecture\n- **From Prototype to Production**: Design multi-step AI workflows with logic, tool use, human approvals, and full observability\n- **Code When You Need It**: Combine visual building with JavaScript, Python, and npm packages for advanced AI workflows\n- **Enterprise-Ready AI**: Self-host or deploy securely with role-based access, audit trails, and support for sensitive data\n- **Leverage What Already Exists**: 1500+ integrations and 9,000+ workflow [templates](https://n8n.io/workflows) to connect AI with your existing systems\n\n## Quick Start\n\nTry n8n instantly with our install script (requires [Docker](https://www.docker.com/)):\n\n```sh\ncurl -fsSL https://get.n8n.io | sh\n```\n\nOr deploy manually with [Docker](https://docs.n8n.io/hosting/installation/docker/):\n\n```\ndocker volume create n8n_data\ndocker run -it --rm --name n8n -p 5678:5678 -v n8n_data:/home/node/.n8n docker.n8n.io/n8nio/n8n\n```\n\nAccess the editor at http://localhost:5678\n\n## Resources\n\n- 📚 [Documentation](https://docs.n8n.io)\n- 🔧 [1500+ Integrations](https://n8n.io/integrations)\n- 💡 [Example Workflows](https://n8n.io/workflows)\n- 🤖 [AI & LangChain Guide](https://docs.n8n.io/advanced-ai/)\n- 👥 [Community Forum](https://community.n8n.io)\n- 📖 [Community Tutorials](https://community.n8n.io/c/tutorials/28)\n\n## Support\n\nNeed help? Our community forum is the place to get support and connect with other users:\n[community.n8n.io](https://community.n8n.io)\n\n## License\n\nn8n is [fair-code](https://faircode.io) distributed under the [Sustainable Use License](https://github.com/n8n-io/n8n/blob/master/LICENSE.md) and [n8n Enterprise License](https://github.com/n8n-io/n8n/blob/master/LICENSE_EE.md).\n\n- **Source Available**: Always visible source code\n- **Self-Hostable**: Deploy anywhere\n- **Extensible**: Add your own nodes and functionality\n\n[Enterprise Licenses](mailto:license@n8n.io) available for additional features and support.\n\nAdditional information about the license model can be found in the [docs](https://docs.n8n.io/sustainable-use-license/).\n\n## Contributing\n\nFound a bug 🐛 or have a feature idea ✨? Check our [Contributing Guide](https://github.com/n8n-io/n8n/blob/master/CONTRIBUTING.md) for a setup guide & best practices.\n\n## Join the Team\n\nWant to shape the future of automation? Check out our [job posts](https://n8n.io/careers) and join our team!\n\n## What does n8n mean?\n\n**Short answer:** It means \"nodemation\" and is pronounced as n-eight-n.\n\n**Long answer:** \"I get that question quite often (more often than I expected) so I decided it is probably best to answer it here. While looking for a good name for the project with a free domain I realized very quickly that all the good ones I could think of were already taken. So, in the end, I chose nodemation. 'node-' in the sense that it uses a Node-View and that it uses Node.js and '-mation' for 'automation' which is what the project is supposed to help with. However, I did not like how long the name was and I could not imagine writing something that long every time in the CLI. That is when I then ended up on 'n8n'.\" - **Jan Oberhauser, Founder and CEO, n8n.io**\n",
-        "contentTruncated": false
-      }
+      "retrievalStatus": "not-modified",
+      "content": null
     },
     {
       "id": "S3",
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 376408911,
-        "tagName": "n8n@2.36.7",
-        "name": "n8n@2.36.7",
-        "publishedAt": "2026-08-25T13:02:22Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.7",
-        "bodySha256": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89",
-        "body": "## [2.36.7](https://github.com/n8n-io/n8n/compare/n8n@2.36.6...n8n@2.36.7) (2026-08-25)\n\n\n### Bug Fixes\n\n* **API:** Adapt binary data endpoint ([#36994](https://github.com/n8n-io/n8n/issues/36994)) ([f6f237c](https://github.com/n8n-io/n8n/commit/f6f237c58d4dd9620c7f5106f081724552e1ba8b))\n* **API:** Require a JSON content type on decorator routes that take a body ([#36958](https://github.com/n8n-io/n8n/issues/36958)) ([bf90b05](https://github.com/n8n-io/n8n/commit/bf90b05e0e161b6cbb8765da01632eb29ee29895))\n* **core:** Reconcile license auto-renewal on startup leader takeover ([#36937](https://github.com/n8n-io/n8n/issues/36937)) ([d98d300](https://github.com/n8n-io/n8n/commit/d98d300a4a7db824b1ca2f9cf9dabb60c215a71c))\n* **core:** Route OAuth2 token requests through environment proxies in every process ([#37009](https://github.com/n8n-io/n8n/issues/37009)) ([97f9252](https://github.com/n8n-io/n8n/commit/97f92526628aba06fe1cce1a1ff9d6a8337ad6ab))\n\n\n### Features\n\n* **API:** Remove offset query param from list workflow history endpoint ([#36952](https://github.com/n8n-io/n8n/issues/36952)) ([08331e1](https://github.com/n8n-io/n8n/commit/08331e162dd8a57e229b527eb4b8ad7fb4ff6e55))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37028?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 379592100,
+        "tagName": "n8n@2.36.9",
+        "name": "n8n@2.36.9",
+        "publishedAt": "2026-08-31T08:01:15Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.9",
+        "bodySha256": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+        "body": "## [2.36.9](https://github.com/n8n-io/n8n/compare/n8n@2.36.8...n8n@2.36.9) (2026-08-31)\n\n\n### Bug Fixes\n\n* **core:** Apply proxy environment variables consistently across packages and processes ([#37258](https://github.com/n8n-io/n8n/issues/37258)) ([a3e3b6a](https://github.com/n8n-io/n8n/commit/a3e3b6a8c03df7c2f1f0c33201cb926cb8932b69))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37381?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }

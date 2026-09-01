@@ -1,20 +1,59 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-30T03:42:47Z",
+  "generatedAt": "2026-09-01T09:46:49Z",
   "mode": "write",
-  "selectedBy": "only",
+  "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
-  "authenticated": false,
+  "authenticated": true,
   "summary": {
-    "checked": 1,
-    "updated": 0,
-    "refreshed": 1,
-    "semanticReviewPending": 0,
+    "checked": 5,
+    "updated": 3,
+    "refreshed": 2,
+    "semanticReviewPending": 3,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
   },
   "repositories": [
+    {
+      "id": "remotion",
+      "status": "updated",
+      "observation": "source-changed",
+      "changes": [
+        {
+          "field": "latestRelease.id",
+          "before": 377334450,
+          "after": 379615362,
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.tagName",
+          "before": "v4.0.518",
+          "after": "v4.0.519",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.publishedAt",
+          "before": "2026-08-26T18:26:09Z",
+          "after": "2026-08-31T08:46:39Z",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.bodySha256",
+          "before": "6c777cfd47fb9f4925f0a857a8fac61963033f8365feb275f9a93e442021c668",
+          "after": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
+          "level": "release"
+        }
+      ],
+      "sourceFingerprint": "6efc2a85145fab1a01b49c47ca9792e7ce08cb54e79847e8daaf28728c16167a",
+      "semanticReviewStatus": "pending",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4984",
+      "reasons": [
+        "sourceFingerprint does not match the current source snapshot"
+      ]
+    },
     {
       "id": "excalidraw",
       "status": "refreshed",
@@ -24,7 +63,77 @@
       "semanticReviewStatus": "complete",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "42",
+      "rateLimitRemaining": "4983",
+      "reasons": []
+    },
+    {
+      "id": "immich",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "cf6b139a5e51140fac6c957acb4529bb40f912f2ab08809c40317b5b82a1481b",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4982",
+      "reasons": []
+    },
+    {
+      "id": "n8n",
+      "status": "updated",
+      "observation": "source-changed",
+      "changes": [
+        {
+          "field": "latestRelease.id",
+          "before": 376408911,
+          "after": 379592100,
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.tagName",
+          "before": "n8n@2.36.7",
+          "after": "n8n@2.36.9",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.publishedAt",
+          "before": "2026-08-25T13:02:22Z",
+          "after": "2026-08-31T08:01:15Z",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.bodySha256",
+          "before": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89",
+          "after": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+          "level": "release"
+        }
+      ],
+      "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
+      "semanticReviewStatus": "pending",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4981",
+      "reasons": [
+        "sourceFingerprint does not match the current source snapshot"
+      ]
+    },
+    {
+      "id": "archify",
+      "status": "updated",
+      "observation": "baseline",
+      "changes": [
+        {
+          "field": "sourceBaseline",
+          "before": null,
+          "after": "created",
+          "level": "baseline"
+        }
+      ],
+      "sourceFingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f",
+      "semanticReviewStatus": "pending",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4980",
       "reasons": []
     }
   ]
