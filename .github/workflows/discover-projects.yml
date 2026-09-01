@@ -18,7 +18,7 @@ on:
         type: string
 
 concurrency:
-  group: github-inspiration-discovery
+  group: github-inspiration-main-writes
   cancel-in-progress: false
 
 permissions:
@@ -61,6 +61,91 @@ jobs:
           if [ -z "$OPENAI_API_KEY" ]; then
             echo "缺少 OPENAI_API_KEY。请在仓库 Settings → Secrets and variables → Actions 中添加。" >&2
             exit 2
+          fi
+
+      - name: 安全巡检已发布项目
+        id: published_refresh
+        run: |
+          set +e
+          python skills/github-inspiration-editor/scripts/run_refresh_cycle.py --write
+          refresh_exit_code=$?
+          set -e
+          echo "exit_code=${refresh_exit_code}" >> "$GITHUB_OUTPUT"
+
+      - name: 汇总旧项目巡检结果
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          report_path = Path("outputs/automation/latest.json")
+          summary_path = Path(os.environ["GITHUB_STEP_SUMMARY"])
+          if not report_path.exists():
+              with summary_path.open("a", encoding="utf-8") as output:
+                  output.write("## 旧项目巡检\n\n未生成巡检报告，请查看工作流日志。\n")
+              raise SystemExit(0)
+
+          report = json.loads(report_path.read_text(encoding="utf-8"))
+          stage_six = report.get("stageSix") or {}
+          stage_seven = report.get("stageSeven") or {}
+          metadata = stage_six.get("summary") or {}
+          sources = stage_seven.get("summary") or {}
+          lines = [
+              "## 旧项目巡检",
+              "",
+              f"- 总体状态：{report.get('status', 'unknown')}",
+              f"- 已检查旧项目：{metadata.get('checked', 0)}",
+              f"- 仓库数字或元数据已更新：{metadata.get('updated', 0)}",
+              f"- 无实质变化：{metadata.get('refreshed', 0)}",
+              f"- 建议深查 README / Release：{metadata.get('researchRefreshRecommended', 0)}",
+              f"- 等待语义复审：{sources.get('semanticReviewPending', 0)}",
+              f"- 需要人工决定：{metadata.get('reviewRequired', 0) + sources.get('humanDecisionRequired', 0)}",
+              f"- 技术失败：{metadata.get('failed', 0) + sources.get('failed', 0)}",
+              f"- 下一位处理者：{report.get('nextActor', 'unknown')}",
+              f"- 下一步：{report.get('nextAction', 'unknown')}",
+              "",
+              "Star、Fork、pushedAt 等安全快照可自动写入；中文介绍、改造方向和视觉身份不会被本步骤修改。",
+              "",
+          ]
+          with summary_path.open("a", encoding="utf-8") as output:
+              output.write("\n".join(lines))
+          PY
+
+      - name: 保存旧项目巡检审计
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-refresh-audit-${{ github.run_id }}
+          path: |
+            outputs/automation/latest.json
+            outputs/automation/runs
+            outputs/refresh
+            outputs/generated/research-refresh/*.source.json
+            outputs/versions/snapshots
+            outputs/versions/transactions
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: 提交安全的旧项目刷新结果
+        if: steps.published_refresh.outputs.exit_code == '0'
+        run: |
+          git config user.name "github-inspiration-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -- \
+            src/data/repositories.json \
+            outputs/refresh \
+            outputs/generated/research-refresh \
+            outputs/automation/latest.json \
+            outputs/automation/runs \
+            outputs/versions/snapshots \
+            outputs/versions/transactions
+          if git diff --cached --quiet; then
+            echo "旧项目没有需要提交的安全变化。"
+          else
+            git commit -m "Refresh published repository snapshots"
+            git push origin HEAD:main
           fi
 
       - name: 搜索并筛选 GitHub 仓库
@@ -137,3 +222,22 @@ jobs:
             --head "$branch" \
             --title "自动候选：${BATCH_ID}（${CANDIDATE_COUNT} 个项目）" \
             --body-file "$body_file"
+
+      - name: 确认旧项目巡检状态
+        if: always()
+        env:
+          REFRESH_EXIT_CODE: ${{ steps.published_refresh.outputs.exit_code }}
+        run: |
+          case "$REFRESH_EXIT_CODE" in
+            0)
+              echo "旧项目巡检完成。"
+              ;;
+            2)
+              echo "旧项目巡检发现仓库身份、许可证或状态等关键变化，需要人工确认。" >&2
+              exit 2
+              ;;
+            *)
+              echo "旧项目巡检发生技术失败，请查看 published-refresh-audit。" >&2
+              exit 1
+              ;;
+          esac

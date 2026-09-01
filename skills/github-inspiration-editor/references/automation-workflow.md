@@ -84,6 +84,8 @@ AI不能因为一次定时任务而获得发布权限。把候选草稿加入 `s
 
 阶段六至阶段十继续负责维护已经发布的项目。新项目搜索、AI 草稿、候选审核 PR 和合并后批量发布由 [discovery-workflow.md](discovery-workflow.md) 负责。
 
-自动发现已经设定每周二、周五的 GitHub Actions 时间，但不会把“定时运行”解释成无限发布权限。生成任务只创建指纹绑定的候选批次；用户合并对应审核 PR 后，独立发布工作流才获得该批次的一次性授权。
+自动发现已经设定每周二、周五的 GitHub Actions 时间。每次搜索新项目之前，工作流会先执行一次 `run_refresh_cycle.py --write`，用阶段八快照保护旧项目刷新：安全的 Star、Fork、`pushedAt` 和普通元数据变化可以提交到 `main`，README 与 Release 变化只生成来源证据，关键身份、许可证或仓库状态变化会回滚并在 Actions 中要求人工决定。旧项目巡检失败不会扩大成内容发布权限，也不会自动改写 `editorial`、`visual` 或项目顺序。
+
+旧项目刷新和候选批次发布都会写入 `main`，因此两个 GitHub Actions 工作流必须共用 `github-inspiration-main-writes` 并发组，禁止同时推送。生成任务仍只创建指纹绑定的候选批次；用户合并对应审核 PR 后，独立发布工作流才获得该批次的一次性授权。
 
 当前仍未接入公网托管平台，因此 GitHub 仓库数据会自动更新，公网网页是否随 `main` 更新仍取决于后续部署配置。Token 不写入项目：`GITHUB_TOKEN` 由 Actions 提供，`OPENAI_API_KEY` 只从仓库 Secret 注入。

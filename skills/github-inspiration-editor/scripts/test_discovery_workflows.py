@@ -44,7 +44,23 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("outputs/discovery/draft-result.json", workflow)
         self.assertIn("retention-days: 30", workflow)
         self.assertNotIn("publish_discovery_batch.py", workflow)
-        self.assertNotIn("git add src/data", workflow)
+        self.assertNotIn("src/data/editorial.json", workflow)
+        self.assertNotIn("src/data/visuals.json", workflow)
+        self.assertNotIn("src/data/order.json", workflow)
+
+    def test_discovery_safely_refreshes_published_repository_snapshots(self) -> None:
+        discovery = DISCOVERY_WORKFLOW.read_text(encoding="utf-8")
+        publication = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("run_refresh_cycle.py --write", discovery)
+        self.assertIn("id: published_refresh", discovery)
+        self.assertIn("src/data/repositories.json", discovery)
+        self.assertIn("outputs/refresh", discovery)
+        self.assertIn("outputs/versions/snapshots", discovery)
+        self.assertIn("name: published-refresh-audit-${{ github.run_id }}", discovery)
+        self.assertIn("if: steps.published_refresh.outputs.exit_code == '0'", discovery)
+        self.assertIn("REFRESH_EXIT_CODE: ${{ steps.published_refresh.outputs.exit_code }}", discovery)
+        self.assertIn("group: github-inspiration-main-writes", discovery)
+        self.assertIn("group: github-inspiration-main-writes", publication)
 
     def test_publication_requires_merged_discovery_pr(self) -> None:
         workflow = PUBLICATION_WORKFLOW.read_text(encoding="utf-8")

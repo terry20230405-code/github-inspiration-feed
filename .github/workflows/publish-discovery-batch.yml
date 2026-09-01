@@ -5,7 +5,7 @@ on:
     types: [closed]
 
 concurrency:
-  group: github-inspiration-publication
+  group: github-inspiration-main-writes
   cancel-in-progress: false
 
 permissions:
