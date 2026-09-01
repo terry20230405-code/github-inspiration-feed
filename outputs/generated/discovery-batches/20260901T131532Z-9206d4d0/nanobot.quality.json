@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "nanobot",
+  "projectPath": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0/nanobot.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260901T131532Z-9206d4d0/nanobot.research.md",
+  "projectSha256": "c6614d05a9ee196179ca21924b43d722befcd6317b7d13920ca78847f69750cd",
+  "researchSha256": "ffc7851811159b0c3169897fe47ffe88dc7574d97e1a8022e8b0b36c7db651c3",
+  "reviewedAt": "2026-09-01T13:15:32Z",
+  "items": [
+    {
+      "evidence": "project.repository.* 事实与 editorial.summary/audience/features/stack 在研究笔记的 Page field evidence 表中分别指向 F1-F9；例如 repository.githubId→F1，summary→F4/F5/F6/F7/F9，features→F5/F6/F7/F8/F9。",
+      "id": "A1",
+      "status": "pass"
+    },
+    {
+      "evidence": "editorial.hook、editorial.meaning、editorial.opportunity 以及三条 directions 都在研究笔记的 Page field evidence 与 Direction rationale 中标为 inferred，并分别引用了 F4-F9；研究笔记把推断和原始事实分开写明。",
+      "id": "A2",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "evidence": "research notes 与 project JSON 一致：未归档/非 fork/active、MIT 许可、stars/forks/pushedAt/fetchedAt 都以固定抓取值保存，且 snapshot note 明确写了不是 live values。",
+      "id": "A4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook“把聊天、文件和工具结果收成一条工作线”直接用了 F5/F7 的聊天应用、文件、工具结果与可见会话痕迹，没有用空泛评价词。",
+      "id": "B1",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 明确写出接入什么（WebUI/终端/聊天应用、模型、工具、长期记忆、MCP、API/SDK）、用户做什么（接入并使用）、得到什么可见结果（同一条可回看的会话）。",
+      "id": "B2",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary + features 至少覆盖 WebUI/终端/聊天入口、tools/MCP/web search/web fetch/cron/image generation/subagents、长期记忆与长航程目标、OpenAI-compatible API、Python SDK 与 model routing。",
+      "id": "B3",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 保留了 WebUI、终端、聊天应用、MCP、OpenAI-compatible API、Python SDK 这些能帮助理解产品和复用方式的基础技术词，没有把关键能力抹平。",
+      "id": "B4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook 只建立记忆点，没有列功能清单；summary 才完整说明原项目如何接入模型、工具、记忆和外部系统，两者分工清楚。",
+      "id": "C1",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 只描述 nanobot 的原项目能力；meaning 只解释这些能力适合拆成更专注的前台入口或专用流程，没有把新方向写成现有功能。",
+      "id": "C2",
+      "status": "pass"
+    },
+    {
+      "evidence": "meaning 给出总体复用价值；opportunity 逐条把 F7/F8/F9 中已验证的能力连接到交接包、试配台、长期跟进三种新可能性。",
+      "id": "C3",
+      "status": "pass"
+    },
+    {
+      "evidence": "项目 audience 描述的是原项目用户；三条方向的 audience 分别描述新产品用户，scope 也分别只保留支撑各自流程的最小功能集合。",
+      "id": "C4",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向文案把原本的通用 agent runtime 改成“整理 topic 聊天/文件/工具痕迹并导出交接包”，同时改变了 audience、input、workflow 和 outcome。",
+      "id": "D1",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向明确写出输入是 topic 内的聊天/文件/工具痕迹，核心步骤是文件 diff、visible agent activity、workspace control 整理，结果是可导出的交接包。",
+      "id": "D2",
+      "status": "pass"
+    },
+    {
+      "evidence": "复用点对应 F7 的 persistent topics/visible agent activity/files diff/workspace controls；与原项目相比，用户、输入、核心工作流和可见结果都发生实质变化。",
+      "id": "D3",
+      "status": "pass"
+    },
+    {
+      "evidence": "scope 的 5 项——topic 汇总、文件与 diff 预览、工具痕迹整理、交接摘要导出、workspace 切换——足以闭合交接流程，没有混入路线图。",
+      "id": "D4",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向文案把原项目的 model routing/session preset/fallback 变成同题多 preset 对照与偏好保存，用户、输入、工作流和结果都不同。",
+      "id": "E1",
+      "status": "pass"
+    },
+    {
+      "evidence": "scope 的 5 项——提示词输入、多 preset 对照、结果并排查看、fallback 标记、偏好保存——足以完成模型试配流程，没有额外装饰功能。",
+      "id": "E2",
+      "status": "pass"
+    },
+    {
+      "evidence": "三条方向里有“长期跟进管家”，主要服务个人/家庭/课程/项目的持续跟进，不是纯营销或赚钱流程。",
+      "id": "E3",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}
