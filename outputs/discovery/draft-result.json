@@ -1,26 +1,26 @@
 {
   "status": "awaiting-approval",
-  "batchId": "20260901T030804Z-80106c39",
-  "batchPath": "outputs/generated/discovery-batches/20260901T030804Z-80106c39",
+  "batchId": "20260901T094712Z-ce48b824",
+  "batchPath": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824",
   "candidateCount": 1,
   "rejectedCount": 1,
   "rejected": [
     {
-      "fullName": "future-agi/future-agi",
+      "fullName": "Pinvou/pinvou-agent",
       "stage": "两轮自动修复后质量复检",
-      "reason": "两轮修复后仍未通过：A4, B4",
+      "reason": "两轮修复后仍未通过：D3",
       "failedChecks": [
         {
-          "id": "A4",
-          "evidence": "`research` 的 `Uncertainty` 写“未单独提供 fetchedAt”，但同一份 `research` 的 `Snapshot` 明确列出 `Fetched at: 2026-09-01T03:08:04Z`，且 `project.repository.fetchedAt` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。"
-        },
-        {
-          "id": "B4",
-          "evidence": "`editorial.summary` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。"
+          "id": "D3",
+          "evidence": "D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome."
         }
       ],
-      "structuralErrors": [],
-      "blockers": [],
+      "structuralErrors": [
+        "quality items must contain A1-E3 exactly once and in order"
+      ],
+      "blockers": [
+        "D3 failed: all three directions mostly restate existing F3/F5/F6 capabilities; compared with the original repo, each direction only materially changes audience and does not add a new recurring workflow/outcome beyond the current workspace, design mode, or ACP code mode."
+      ],
       "repairHistory": [
         {
           "round": 0,
@@ -29,17 +29,27 @@
           "changedPaths": [],
           "failedChecks": [
             {
-              "id": "A1",
-              "evidence": "`repository.githubId`, `repository.fullName`, `repository.license`, `repository.state`, `repository.pushedAt`, `editorial.summary`, `editorial.audience`, `editorial.features`, and `editorial.stack` all have matching research facts F1-F12; the only unsupported part is the Cloud phrase in `summary`."
-            },
-            {
-              "id": "A4",
-              "evidence": "`editorial.summary` says \"你可以自托管或使用 Cloud\", but the research note only verifies \"开源、可自托管\" in F4 and never verifies Cloud; the claim is not written as `未知` or removed."
+              "id": "D3",
+              "evidence": "`acp-coding-session` is not a new product boundary: F6 already says the repo supports ACP, real projects/temp workspaces, commands, plan/permission requests, file tracking, and restartable sessions; the direction only narrows the audience and repeats the same workflow/outcome."
             }
           ],
-          "structuralErrors": [],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "acp-coding-session",
+              "evidence": "Direction `acp-coding-session` repeats F6 almost verbatim: the original repo already supports ACP-based read/write on real projects or temp workspaces, command execution, plan/permission display, file-change tracking, and resume-after-restart. The direction only shifts the audience toward developers, so it does not reach two material changedAxes.",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.meaning`"
+          ],
           "blockers": [
-            "`editorial.summary` claims \"you can self-host or use Cloud\", but the research notes only verify self-hosted/open-source in F4 and do not provide any fact ID for Cloud; remove or mark that claim as unknown."
+            "D3: `acp-coding-session` only repackages F6 already-existing ACP code mode; compared with the original repo it changes audience but not input, core workflow, or visible outcome enough to count as a new product."
           ]
         },
         {
@@ -47,17 +57,44 @@
           "label": "第 1 轮修复后复检",
           "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
           "changedPaths": [
-            "editorial.summary"
+            "editorial.directions",
+            "editorial.features",
+            "editorial.meaning",
+            "editorial.opportunity",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
           ],
           "failedChecks": [
             {
-              "id": "E3",
-              "evidence": "`editorial.audience` 和三条方向的 `audience` 全部是工程团队/研究者/小团队，缺少一个主要面向个人、家庭、学习、创作或社区的方向。"
+              "id": "D3",
+              "evidence": "editable-design-studio 与 local-ai-ops-console 仅复用原项目已存在的 Design mode、运行监控、GitHub Releases 更新与模型切换能力；至少两项实质变化没有成立，因此这一项失败。"
             }
           ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "editable-design-studio",
+              "evidence": "F5 已经写明 Design mode 可以用自然语言创建海报和数据可视化，并在画布里直接选中元素修改文案、字体、颜色、尺寸和布局；该方向的 input、workflow、outcome 与原功能基本相同，只是把使用者改成内容运营/活动设计者等。",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience",
+                "outcome"
+              ],
+              "directionId": "local-ai-ops-console",
+              "evidence": "F7/F8 已经包含运行监控、GitHub Releases 更新、本地 vLLM、OpenAI-compatible API 和按会话切换模型；该方向只是把这些现成能力收缩成巡检台，没有新增原项目没有提供的重复集成流程或结果。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
           "structuralErrors": [],
           "blockers": [
-            "E3：3 个方向的 `audience` 分别是“独立开发者、研究者和小团队”“客服、语音和 RAG agent 团队”“负责模型入口、合规和流量治理的 backend 团队”，没有一个主要面向个人、家庭、学习、创作或社区。"
+            "D3：editable-design-studio 主要只是复用 F5 的 Design mode（自然语言生成海报/数据可视化、直接选中元素修改、继续迭代），local-ai-ops-console 主要只是复用 F7/F8 的运行监控、GitHub Releases 更新、本地 vLLM/OpenAI-compatible API 和模型切换；两者都缺少至少两项实质变化和原项目没有的新重复集成流程/结果。"
           ]
         },
         {
@@ -66,26 +103,57 @@
           "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
           "changedPaths": [
             "editorial.directions",
+            "editorial.meaning",
+            "editorial.opportunity",
             "decisionReason",
-            "directionRationales"
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
           ],
           "failedChecks": [
             {
-              "id": "A4",
-              "evidence": "`research` 的 `Uncertainty` 写“未单独提供 fetchedAt”，但同一份 `research` 的 `Snapshot` 明确列出 `Fetched at: 2026-09-01T03:08:04Z`，且 `project.repository.fetchedAt` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。"
-            },
-            {
-              "id": "B4",
-              "evidence": "`editorial.summary` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。"
+              "id": "D3",
+              "evidence": "D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome."
             }
           ],
-          "structuralErrors": [],
-          "blockers": []
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "deliverable-workspace",
+              "evidence": "Compared with F3/F4/F7, this direction still uses the same attachments/knowledge base/Skills/MCP/workflows → artifact panel/Markdown path and the same file-delivery outcome; only the audience narrows to researchers, ops, project coordinators, and knowledge workers.",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "editable-design-studio",
+              "evidence": "Compared with F2 and F5, this direction repeats the same natural-language/data → design mode → element editing → iterative visual result workflow; the only clear change is the audience (content ops, event designers, teachers, creators).",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "code-handoff-workbench",
+              "evidence": "Compared with F6/F7/F8, this direction repeats the same ACP repo/workspace access, command execution, plan/permission requests, change tracking, and resume-after-restart workflow; the only clear change is the audience (developers and small teams).",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "quality items must contain A1-E3 exactly once and in order"
+          ],
+          "blockers": [
+            "D3 failed: all three directions mostly restate existing F3/F5/F6 capabilities; compared with the original repo, each direction only materially changes audience and does not add a new recurring workflow/outcome beyond the current workspace, design mode, or ACP code mode."
+          ]
         }
       ]
     }
   ],
-  "batchFingerprint": "c056ec1242a8d779a0d0e86b2979f71550ae6abf54b97cbda1978e13b1f5b1bb",
-  "preview": "# 自动候选审核：20260901T030804Z-80106c39\n\n- 生成时间：2026-09-01T03:08:04Z\n- 合格候选：1\n- 未通过深读：1\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. SnapOtter\n\n- 仓库：https://github.com/snapotter-hq/SnapOtter\n- Star：2399\n- 许可证：GNU Affero General Public License v3.0\n- 主题色：#b54030\n- Hook：把文件处理搬进内网工厂\n- 介绍：SnapOtter 接收图片、视频、音频、PDF 和通用文件，在浏览器里提供 UI、REST API 和 pipelines，把转换、压缩、OCR、转写、去元数据和 local AI 集中到一套自托管服务里。处理结果留在你自己的网络中，适合要批量整理文件又不想把数据交给外部 SaaS 的场景。\n- 改造方向：\n  - 档案整理台：把扫描件和 PDF 批量转成可归档文件\n  - 媒体批处理管线：把一批图片、视频和音频按固定步骤处理好\n  - 内网文件 API：用 REST API 给内部系统接上文件处理能力\n\n## 未进入候选的仓库\n\n### future-agi/future-agi\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A4, B4\n- 最终失败证据：\n  - A4：\\`research\\` 的 \\`Uncertainty\\` 写“未单独提供 fetchedAt”，但同一份 \\`research\\` 的 \\`Snapshot\\` 明确列出 \\`Fetched at: 2026-09-01T03:08:04Z\\`，且 \\`project.repository.fetchedAt\\` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。\n  - B4：\\`editorial.summary\\` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。\n- 修复轨迹：\n  - 初次检查：失败 A1, A4；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - A1 当轮证据：\\`repository.githubId\\`, \\`repository.fullName\\`, \\`repository.license\\`, \\`repository.state\\`, \\`repository.pushedAt\\`, \\`editorial.summary\\`, \\`editorial.audience\\`, \\`editorial.features\\`, and \\`editorial.stack\\` all have matching research facts F1-F12; the only unsupported part is the Cloud phrase in \\`summary\\`.\n    - A4 当轮证据：\\`editorial.summary\\` says \"你可以自托管或使用 Cloud\", but the research note only verifies \"开源、可自托管\" in F4 and never verifies Cloud; the claim is not written as \\`未知\\` or removed.\n  - 第 1 轮修复后复检：失败 E3；改动 editorial.summary；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - E3 当轮证据：\\`editorial.audience\\` 和三条方向的 \\`audience\\` 全部是工程团队/研究者/小团队，缺少一个主要面向个人、家庭、学习、创作或社区的方向。\n  - 第 2 轮修复后复检：失败 A4, B4；改动 editorial.directions, decisionReason, directionRationales；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - A4 当轮证据：\\`research\\` 的 \\`Uncertainty\\` 写“未单独提供 fetchedAt”，但同一份 \\`research\\` 的 \\`Snapshot\\` 明确列出 \\`Fetched at: 2026-09-01T03:08:04Z\\`，且 \\`project.repository.fetchedAt\\` 也有该值；研究笔记内部与项目 JSON 对同一状态描述不一致。\n    - B4 当轮证据：\\`editorial.summary\\` 直接堆叠了 “tracing、evaluations、simulations、guardrails、OpenAI-compatible gateway” 多个专业词；虽然这些词与产品有关，但摘要没有逐一用一句短作用解释，目标读者不读代码时难以仅凭摘要理解这些术语各自在产品里做什么。\n\n",
+  "batchFingerprint": "ce95eaf08abbff9595eb8ea3aebdc9cb94b15155f0c8289df7005e034c407e36",
+  "preview": "# 自动候选审核：20260901T094712Z-ce48b824\n\n- 生成时间：2026-09-01T09:47:12Z\n- 合格候选：1\n- 未通过深读：1\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. PaperTodo\n\n- 仓库：https://github.com/snownico0722/PaperTodo\n- Star：2192\n- 许可证：Other\n- 主题色：#777718\n- Hook：把便签变成安静的桌面纸片\n- 介绍：PaperTodo 是一款 Windows 桌面便签工具，把待办纸和笔记纸做成独立窗口，直接放在桌面上。它支持勾选、拖排、Markdown、本地图片和自动保存，还能折成胶囊贴到屏幕边缘，减少打扰。\n- 改造方向：\n  - 收工清单纸：粘贴收尾事项，生成只留未完成项的桌面清单\n  - 贴边资料架：把截图和短摘录收进屏幕边缘，随用随开\n  - 任务说明纸：把待办和说明页绑在一起，点任务就能打开背景说明\n\n## 未进入候选的仓库\n\n### Pinvou/pinvou-agent\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：D3\n- 最终失败证据：\n  - D3：D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome.\n- 当前结构错误：\n  - quality items must contain A1-E3 exactly once and in order\n- 当前阻断项：\n  - D3 failed: all three directions mostly restate existing F3/F5/F6 capabilities; compared with the original repo, each direction only materially changes audience and does not add a new recurring workflow/outcome beyond the current workspace, design mode, or ACP code mode.\n- 修复轨迹：\n  - 初次检查：失败 D3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - D3 当轮证据：\\`acp-coding-session\\` is not a new product boundary: F6 already says the repo supports ACP, real projects/temp workspaces, commands, plan/permission requests, file tracking, and restartable sessions; the direction only narrows the audience and repeats the same workflow/outcome.\n    - 方向 acp-coding-session：变化轴 audience；Direction \\`acp-coding-session\\` repeats F6 almost verbatim: the original repo already supports ACP-based read/write on real projects or temp workspaces, command execution, plan/permission display, file-change tracking, and resume-after-restart. The direction only shifts the audience toward developers, so it does not reach two material changedAxes.\n  - 第 1 轮修复后复检：失败 D3；改动 editorial.directions, editorial.features, editorial.meaning, editorial.opportunity, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - D3 当轮证据：editable-design-studio 与 local-ai-ops-console 仅复用原项目已存在的 Design mode、运行监控、GitHub Releases 更新与模型切换能力；至少两项实质变化没有成立，因此这一项失败。\n    - 方向 editable-design-studio：变化轴 audience；F5 已经写明 Design mode 可以用自然语言创建海报和数据可视化，并在画布里直接选中元素修改文案、字体、颜色、尺寸和布局；该方向的 input、workflow、outcome 与原功能基本相同，只是把使用者改成内容运营/活动设计者等。\n    - 方向 local-ai-ops-console：变化轴 audience, outcome；F7/F8 已经包含运行监控、GitHub Releases 更新、本地 vLLM、OpenAI-compatible API 和按会话切换模型；该方向只是把这些现成能力收缩成巡检台，没有新增原项目没有提供的重复集成流程或结果。\n  - 第 2 轮修复后复检：失败 D3；改动 editorial.directions, editorial.meaning, editorial.opportunity, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - D3 当轮证据：D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome.\n    - 方向 deliverable-workspace：变化轴 audience；Compared with F3/F4/F7, this direction still uses the same attachments/knowledge base/Skills/MCP/workflows → artifact panel/Markdown path and the same file-delivery outcome; only the audience narrows to researchers, ops, project coordinators, and knowledge workers.\n    - 方向 editable-design-studio：变化轴 audience；Compared with F2 and F5, this direction repeats the same natural-language/data → design mode → element editing → iterative visual result workflow; the only clear change is the audience (content ops, event designers, teachers, creators).\n    - 方向 code-handoff-workbench：变化轴 audience；Compared with F6/F7/F8, this direction repeats the same ACP repo/workspace access, command execution, plan/permission requests, change tracking, and resume-after-restart workflow; the only clear change is the audience (developers and small teams).\n\n",
   "publicationAuthorized": false
 }

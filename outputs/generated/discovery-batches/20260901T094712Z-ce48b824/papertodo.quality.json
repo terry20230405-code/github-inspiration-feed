@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "papertodo",
+  "projectPath": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824/papertodo.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824/papertodo.research.md",
+  "projectSha256": "b87e60a35edb661438aee79b1e9a5845f602d9cfb2991afc608dbe3e475b666d",
+  "researchSha256": "9708aafe58a5c7d78656c278c1b33e7523e39920a7fa2411c6be96d2f8798a20",
+  "reviewedAt": "2026-09-01T09:47:12Z",
+  "items": [
+    {
+      "evidence": "研究笔记的 Page field evidence 表把 repository.githubId→F1、repository.fullName→F2、repository.name→F3、repository.stars/forks/language/pushedAt→F4、repository.license/state→F5；editorial.summary/audience/features/stack 分别映射到 F6-F10，且 F1-F10 都引用了 S1-S3。",
+      "id": "A1",
+      "status": "pass"
+    },
+    {
+      "evidence": "Page field evidence 将 hook/meaning/opportunity 明确标为 inferred，并限定为 F6-F10；三个方向块也分别写了 Reused capability / Evidence / New workflow / Substantive difference，把推断和原项目事实分开。",
+      "id": "A2",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "evidence": "project.repository 的 githubId、fullName、license、state 与研究笔记 F1/F2/F5 一致，pushedAt/fetchedAt 保留为抓取时刻；research note 也明确写了“Star, Fork, and push values are captured facts from this fetch, not live values”。",
+      "id": "A4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook“把便签变成安静的桌面纸片”依托 F6-F9 的桌面纸片、独立窗口、贴边胶囊等真实能力，不是泛泛的“强大/创新”评价词。",
+      "id": "B1",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 说清了接入的是 Windows 桌面便签工具，用户做的核心操作是处理待办纸和笔记纸、勾选/拖排/写 Markdown/放本地图片/自动保存，最后得到的是桌面上可折叠到边缘的独立纸片。",
+      "id": "B2",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 与 features 合起来覆盖了至少三项核心能力：待办纸的勾选/拖排/清理完成项，笔记纸的 Markdown 与本地图片，胶囊模式与自动贴边，以及本地自动保存。",
+      "id": "B3",
+      "status": "pass"
+    },
+    {
+      "evidence": "stack 保留的是会影响复用判断的实现层词（WPF、.NET 10、LMDB、AvalonEdit、Hardcodet.NotifyIcon.Wpf、Vortice.DirectComposition），并且这些能力在 research notes 的 F7-F10 中已经对应到产品形态与存储方式。",
+      "id": "B4",
+      "status": "pass"
+    },
+    {
+      "evidence": "hook 只负责建立“桌面纸片”记忆点，没有列出功能清单；真正的功能画面放在 summary 和 features 里。",
+      "id": "C1",
+      "status": "pass"
+    },
+    {
+      "evidence": "summary 只描述原项目（桌面便签、待办纸、笔记纸、自动保存、胶囊贴边），meaning 只解释这些已验证能力为什么可拆成更窄的复用方向，没有把新方向写成现有功能。",
+      "id": "C2",
+      "status": "pass"
+    },
+    {
+      "evidence": "meaning 给出总体复用价值，opportunity 则逐条把 F7-F10 连接到“收工清单、贴边资料架、任务说明跳转纸”三个具体机会，符合“能力/限制→摩擦→新可能性”的分工。",
+      "id": "C3",
+      "status": "pass"
+    },
+    {
+      "evidence": "project.audience 讲的是原项目的 Windows 桌面个人用户；三个方向的 audience 都各自指向新产品用户；每个 scope 只列支撑该方向流程的最小功能，没有混入路线图或额外产品线。",
+      "id": "C4",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向面向每天要核对收尾事项的个人用户，问题是聊天、便签和脑中的事项容易散掉；approach 明确了粘贴、勾选、拖排、清理、自动保存的演示流程；scope 的 5 项功能足够闭环。",
+      "id": "D1",
+      "status": "pass"
+    },
+    {
+      "evidence": "approach 说明了从输入到结果的完整链条：粘贴收尾事项→勾选/拖排→清理已完成→保留未完成项；用户能看到的是一张只剩未完成项的桌面清单。",
+      "id": "D2",
+      "status": "pass"
+    },
+    {
+      "evidence": "原项目是通用桌面便签/待办/笔记工具（F6-F8），这个方向则把已验证的待办纸能力收窄到日终收尾清单；用户、输入、工作流、可见结果都发生了实质变化，而不是只换个界面。",
+      "id": "D3",
+      "status": "pass"
+    },
+    {
+      "evidence": "scope 只有粘贴或逐条新增、勾选、拖动排序、清理已完成、自动保存 5 项，足以完成日终收尾清单流程，没有混入装饰功能。",
+      "id": "D4",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向面向需要边做事边暂存参考资料的人，问题是截图和短摘录想留在手边但不占主屏；approach 写清了新建、折叠成胶囊、自动贴边、多屏队列、展开/收回的流程。",
+      "id": "E1",
+      "status": "pass"
+    },
+    {
+      "evidence": "方向的价值很具体：把碎截图和摘录收进边缘，既保留可达性又不挡主屏；scope 的 5 项功能足以把这一桌面边缘资料架跑起来。",
+      "id": "E2",
+      "status": "pass"
+    },
+    {
+      "evidence": "这是一个明显的个人/工作效率方向，不是纯商业主题；它服务的是需要临时保存资料的人，而不是营销、销售或赚钱流程。",
+      "id": "E3",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

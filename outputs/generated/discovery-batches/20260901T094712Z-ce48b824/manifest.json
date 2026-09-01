@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260901T094712Z-ce48b824",
+  "createdAt": "2026-09-01T09:47:12Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "papertodo",
+      "fullName": "snownico0722/PaperTodo",
+      "githubId": 1250907197,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824/papertodo.project.json",
+          "sha256": "b87e60a35edb661438aee79b1e9a5845f602d9cfb2991afc608dbe3e475b666d"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824/papertodo.research.md",
+          "sha256": "9708aafe58a5c7d78656c278c1b33e7523e39920a7fa2411c6be96d2f8798a20"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260901T094712Z-ce48b824/papertodo.quality.json",
+          "sha256": "b81c2e37f92237d35e59f1866a07387511aa68904c6dffa8a0d385f59b583956"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "ce95eaf08abbff9595eb8ea3aebdc9cb94b15155f0c8289df7005e034c407e36",
+  "rejected": [
+    {
+      "fullName": "Pinvou/pinvou-agent",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：D3",
+      "failedChecks": [
+        {
+          "id": "D3",
+          "evidence": "D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome."
+        }
+      ],
+      "structuralErrors": [
+        "quality items must contain A1-E3 exactly once and in order"
+      ],
+      "blockers": [
+        "D3 failed: all three directions mostly restate existing F3/F5/F6 capabilities; compared with the original repo, each direction only materially changes audience and does not add a new recurring workflow/outcome beyond the current workspace, design mode, or ACP code mode."
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "`acp-coding-session` is not a new product boundary: F6 already says the repo supports ACP, real projects/temp workspaces, commands, plan/permission requests, file tracking, and restartable sessions; the direction only narrows the audience and repeats the same workflow/outcome."
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "acp-coding-session",
+              "evidence": "Direction `acp-coding-session` repeats F6 almost verbatim: the original repo already supports ACP-based read/write on real projects or temp workspaces, command execution, plan/permission display, file-change tracking, and resume-after-restart. The direction only shifts the audience toward developers, so it does not reach two material changedAxes.",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.meaning`"
+          ],
+          "blockers": [
+            "D3: `acp-coding-session` only repackages F6 already-existing ACP code mode; compared with the original repo it changes audience but not input, core workflow, or visible outcome enough to count as a new product."
+          ]
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.features",
+            "editorial.meaning",
+            "editorial.opportunity",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "editable-design-studio 与 local-ai-ops-console 仅复用原项目已存在的 Design mode、运行监控、GitHub Releases 更新与模型切换能力；至少两项实质变化没有成立，因此这一项失败。"
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "editable-design-studio",
+              "evidence": "F5 已经写明 Design mode 可以用自然语言创建海报和数据可视化，并在画布里直接选中元素修改文案、字体、颜色、尺寸和布局；该方向的 input、workflow、outcome 与原功能基本相同，只是把使用者改成内容运营/活动设计者等。",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience",
+                "outcome"
+              ],
+              "directionId": "local-ai-ops-console",
+              "evidence": "F7/F8 已经包含运行监控、GitHub Releases 更新、本地 vLLM、OpenAI-compatible API 和按会话切换模型；该方向只是把这些现成能力收缩成巡检台，没有新增原项目没有提供的重复集成流程或结果。",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [],
+          "blockers": [
+            "D3：editable-design-studio 主要只是复用 F5 的 Design mode（自然语言生成海报/数据可视化、直接选中元素修改、继续迭代），local-ai-ops-console 主要只是复用 F7/F8 的运行监控、GitHub Releases 更新、本地 vLLM/OpenAI-compatible API 和模型切换；两者都缺少至少两项实质变化和原项目没有的新重复集成流程/结果。"
+          ]
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.meaning",
+            "editorial.opportunity",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "failedChecks": [
+            {
+              "id": "D3",
+              "evidence": "D3 failed because the directions only narrow existing capabilities from F3/F5/F6 instead of creating a new recurring workflow/outcome."
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "deliverable-workspace",
+              "evidence": "Compared with F3/F4/F7, this direction still uses the same attachments/knowledge base/Skills/MCP/workflows → artifact panel/Markdown path and the same file-delivery outcome; only the audience narrows to researchers, ops, project coordinators, and knowledge workers.",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "editable-design-studio",
+              "evidence": "Compared with F2 and F5, this direction repeats the same natural-language/data → design mode → element editing → iterative visual result workflow; the only clear change is the audience (content ops, event designers, teachers, creators).",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "code-handoff-workbench",
+              "evidence": "Compared with F6/F7/F8, this direction repeats the same ACP repo/workspace access, command execution, plan/permission requests, change tracking, and resume-after-restart workflow; the only clear change is the audience (developers and small teams).",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "quality items must contain A1-E3 exactly once and in order"
+          ],
+          "blockers": [
+            "D3 failed: all three directions mostly restate existing F3/F5/F6 capabilities; compared with the original repo, each direction only materially changes audience and does not add a new recurring workflow/outcome beyond the current workspace, design mode, or ACP code mode."
+          ]
+        }
+      ]
+    }
+  ],
+  "publicationAuthorized": false
+}
