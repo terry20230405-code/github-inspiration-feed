@@ -68,6 +68,7 @@ def validate_config(value: object) -> dict[str, object]:
         "shortlistSize": (1, 200),
         "aiAnalysisLimit": (1, 50),
         "maxCandidatesPerRun": (1, 20),
+        "maxConcurrentCandidates": (1, 2),
         "activeWithinDays": (30, 1825),
         "minimumStars": (0, 1_000_000),
         "minimumReadmeCharacters": (100, 100_000),
@@ -429,6 +430,7 @@ def discover(config: dict[str, object], request_json: Callable[[str, str | None]
             "shortlistSize": config["shortlistSize"],
             "aiAnalysisLimit": config["aiAnalysisLimit"],
             "maxCandidatesPerRun": config["maxCandidatesPerRun"],
+            "maxConcurrentCandidates": config["maxConcurrentCandidates"],
         },
         "counts": {
             "uniqueEligible": len(candidates),
@@ -457,6 +459,7 @@ def report_markdown(result: dict[str, object]) -> str:
         f"- 初选仓库：{counts['shortlisted']}",
         f"- 等待 AI 深读：{counts['queuedForAI']}",
         f"- 本轮最多生成候选：{limits['maxCandidatesPerRun']}",
+        f"- 候选并发上限：{limits['maxConcurrentCandidates']}",
         "- 发布授权：否",
         "",
         "## AI 深读队列",

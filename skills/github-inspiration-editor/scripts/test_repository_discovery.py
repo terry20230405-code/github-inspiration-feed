@@ -56,6 +56,7 @@ class DiscoveryTests(unittest.TestCase):
             "shortlistSize": 5,
             "aiAnalysisLimit": 4,
             "maxCandidatesPerRun": 3,
+            "maxConcurrentCandidates": 2,
             "activeWithinDays": 365,
             "minimumStars": 30,
             "minimumReadmeCharacters": 800,

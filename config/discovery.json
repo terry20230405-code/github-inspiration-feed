@@ -4,6 +4,7 @@
   "shortlistSize": 36,
   "aiAnalysisLimit": 12,
   "maxCandidatesPerRun": 8,
+  "maxConcurrentCandidates": 2,
   "activeWithinDays": 365,
   "minimumStars": 30,
   "minimumReadmeCharacters": 800,

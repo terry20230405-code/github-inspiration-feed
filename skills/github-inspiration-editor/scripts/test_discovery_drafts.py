@@ -6,6 +6,8 @@ from __future__ import annotations
 import json
 import copy
 import tempfile
+import threading
+import time
 import unittest
 from datetime import datetime, timezone
 from pathlib import Path
@@ -330,6 +332,13 @@ class DraftTests(unittest.TestCase):
                         "finish_reason": "stop",
                         "message": {"role": "assistant", "content": '{"ok":true}'},
                     }],
+                    "usage": {
+                        "prompt_tokens": 120,
+                        "completion_tokens": 30,
+                        "total_tokens": 150,
+                        "prompt_tokens_details": {"cached_tokens": 80},
+                        "completion_tokens_details": {"reasoning_tokens": 10},
+                    },
                 }).encode("utf-8")
 
         schema = {"type": "object", "properties": {"ok": {"type": "boolean"}}, "required": ["ok"], "additionalProperties": False}
@@ -337,6 +346,9 @@ class DraftTests(unittest.TestCase):
             result = drafts.call_ai("sk-test-secret", ai_provider(), "rules", "evidence", "test_schema", schema)
 
         self.assertEqual(result, {"ok": True})
+        self.assertIsInstance(result, drafts.AIResult)
+        self.assertEqual(result.telemetry["usage"]["totalTokens"], 150)
+        self.assertEqual(result.telemetry["usage"]["cachedPromptTokens"], 80)
         request = urlopen.call_args.args[0]
         self.assertEqual(request.full_url, "https://4router.net/v1/chat/completions")
         self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-secret")
@@ -361,6 +373,21 @@ class DraftTests(unittest.TestCase):
         redacted = drafts.redact_service_detail(detail, key)
         self.assertNotIn(key, redacted)
         self.assertNotIn("sk-anothersecretvalue", redacted)
+
+    def test_repair_input_omits_deterministic_duplicate_artifacts(self) -> None:
+        encoded = drafts.repair_input(
+            evidence(),
+            generation_payload(),
+            quality_payload("B4"),
+            ["fieldEvidence is incomplete"],
+            1,
+        )
+        value = json.loads(encoded)
+        self.assertIn("primaryEvidence", value)
+        self.assertIn("previousGeneration", value)
+        self.assertNotIn("previousProject", value)
+        self.assertNotIn("previousResearch", value)
+        self.assertIn("deterministic derivatives", value["derivedArtifactsOmitted"])
 
     def test_zero_candidates_is_a_reported_normal_result(self) -> None:
         config = {
@@ -498,6 +525,101 @@ class DraftTests(unittest.TestCase):
         self.assertNotEqual(rejected["repairHistory"][1]["strategy"], rejected["repairHistory"][2]["strategy"])
         self.assertIn("最终失败证据", result["preview"])
         self.assertIn("A4", result["preview"])
+
+    def test_direction_failure_without_measurable_progress_stops_after_one_repair(self) -> None:
+        first = generation_payload()
+        repaired = copy.deepcopy(first)
+        repaired["editorial"]["directions"][0]["name"] = "仍未形成差异的家庭地图"
+        calls = iter([
+            first,
+            quality_payload("D3"),
+            repaired,
+            quality_payload("D3"),
+        ])
+        call_count = 0
+
+        def fake_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
+            nonlocal call_count
+            call_count += 1
+            return next(calls)
+
+        result = drafts.generate_batch(
+            {
+                "aiProvider": ai_provider(),
+                "minimumReadmeCharacters": 100,
+                "aiAnalysisLimit": 1,
+                "maxCandidatesPerRun": 1,
+            },
+            {"policySha256": "e" * 64, "aiQueue": [{"fullName": "example/visual-map"}]},
+            "test-key",
+            ai_call=fake_ai,
+            evidence_fetcher=lambda _full_name, _token: evidence(),
+            now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
+            write=False,
+        )
+
+        self.assertEqual(call_count, 4)
+        rejected = result["rejected"][0]
+        self.assertEqual(rejected["stage"], "首轮修复无实质进展")
+        self.assertEqual(len(rejected["repairHistory"]), 2)
+        self.assertIn("D3", rejected["reason"])
+
+    def test_two_candidates_run_concurrently_but_results_keep_queue_order(self) -> None:
+        active = 0
+        max_active = 0
+        lock = threading.Lock()
+
+        def fake_ai(*args: object, **_kwargs: object) -> dict[str, object]:
+            nonlocal active, max_active
+            schema_name = str(args[4])
+            with lock:
+                active += 1
+                max_active = max(max_active, active)
+            time.sleep(0.03)
+            with lock:
+                active -= 1
+            return copy.deepcopy(generation_payload() if schema_name == "inspiration_project_draft" else quality_payload())
+
+        def candidate_evidence(full_name: str, _token: str | None) -> dict[str, object]:
+            value = evidence()
+            repository = value["repository"]
+            assert isinstance(repository, dict)
+            owner, name = full_name.split("/", 1)
+            repository["id"] = 1000 if owner == "first" else 1001
+            repository["full_name"] = full_name
+            repository["name"] = name
+            repository["owner"] = {"login": owner}
+            value["readmeUrl"] = f"https://github.com/{full_name}/blob/main/README.md"
+            return value
+
+        result = drafts.generate_batch(
+            {
+                "aiProvider": ai_provider(),
+                "minimumReadmeCharacters": 100,
+                "aiAnalysisLimit": 2,
+                "maxCandidatesPerRun": 2,
+                "maxConcurrentCandidates": 2,
+            },
+            {
+                "policySha256": "f" * 64,
+                "aiQueue": [{"fullName": "first/shared"}, {"fullName": "second/shared"}],
+            },
+            "test-key",
+            ai_call=fake_ai,
+            evidence_fetcher=candidate_evidence,
+            now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
+            write=False,
+        )
+
+        self.assertGreaterEqual(max_active, 2)
+        self.assertEqual(result["candidateCount"], 2)
+        self.assertEqual(result["aiMetrics"]["maxConcurrentCandidates"], 2)
+        self.assertEqual(result["aiMetrics"]["logicalCallCount"], 4)
+        self.assertEqual(
+            {call["candidate"] for call in result["aiMetrics"]["calls"]},
+            {"first/shared", "second/shared"},
+        )
+        self.assertLess(result["preview"].index("first/shared"), result["preview"].index("second/shared"))
 
 
 if __name__ == "__main__":

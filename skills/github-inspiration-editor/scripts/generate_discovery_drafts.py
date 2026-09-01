@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import argparse
 import base64
+import concurrent.futures
 import hashlib
 import json
 import os
 import re
 import ssl
 import sys
+import threading
 import time
 import urllib.error
 import urllib.parse
@@ -65,6 +67,69 @@ class DraftError(RuntimeError):
 
 class AIServiceError(DraftError):
     """Raised when the configured AI provider cannot complete a request."""
+
+
+class AIResult(dict[str, object]):
+    """Dictionary-compatible AI payload carrying non-content request telemetry."""
+
+    def __init__(self, value: dict[str, object], telemetry: dict[str, object]) -> None:
+        super().__init__(value)
+        self.telemetry = telemetry
+
+
+class AIMetricsCollector:
+    """Thread-safe recorder for logical AI calls without retaining prompts or secrets."""
+
+    def __init__(self) -> None:
+        self._lock = threading.Lock()
+        self._next_sequence = 1
+        self._entries: dict[int, dict[str, object]] = {}
+
+    def reserve(self, candidate: str, stage: str, instructions: str, input_text: str, schema: dict[str, object]) -> int:
+        with self._lock:
+            sequence = self._next_sequence
+            self._next_sequence += 1
+            self._entries[sequence] = {
+                "sequence": sequence,
+                "candidate": candidate,
+                "stage": stage,
+                "status": "running",
+                "instructionCharacters": len(instructions),
+                "inputCharacters": len(input_text),
+                "schemaCharacters": len(json.dumps(schema, ensure_ascii=False)),
+            }
+            return sequence
+
+    def finish(self, sequence: int, *, status: str, duration_seconds: float, attempts: int | None, usage: dict[str, int] | None) -> None:
+        with self._lock:
+            entry = self._entries[sequence]
+            entry.update({
+                "status": status,
+                "durationSeconds": round(duration_seconds, 1),
+                "attempts": attempts,
+                "usage": usage,
+            })
+
+    def report(self, *, wall_time_seconds: float, max_concurrency: int) -> dict[str, object]:
+        with self._lock:
+            calls = [dict(self._entries[key]) for key in sorted(self._entries)]
+        successful = [item for item in calls if item.get("status") == "success"]
+        reported = [item["usage"] for item in successful if isinstance(item.get("usage"), dict)]
+        token_fields = ("promptTokens", "completionTokens", "totalTokens", "cachedPromptTokens", "reasoningTokens")
+        totals = {
+            field: sum(int(usage.get(field, 0)) for usage in reported)
+            for field in token_fields
+        }
+        return {
+            "maxConcurrentCandidates": max_concurrency,
+            "wallTimeSeconds": round(wall_time_seconds, 1),
+            "logicalCallCount": len(calls),
+            "successfulCallCount": len(successful),
+            "providerUsageReportedCallCount": len(reported),
+            "summedRequestTimeSeconds": round(sum(float(item.get("durationSeconds", 0)) for item in calls), 1),
+            **totals,
+            "calls": calls,
+        }
 
 
 def utc_now() -> datetime:
@@ -406,6 +471,26 @@ def redact_service_detail(detail: str, api_key: str) -> str:
     return re.sub(r"\bsk-[A-Za-z0-9_-]{8,}\b", "sk-***", redacted)
 
 
+def normalized_usage(response: object) -> dict[str, int] | None:
+    if not isinstance(response, dict) or not isinstance(response.get("usage"), dict):
+        return None
+    usage = response["usage"]
+    assert isinstance(usage, dict)
+    prompt_details = usage.get("prompt_tokens_details")
+    completion_details = usage.get("completion_tokens_details")
+
+    def integer(value: object) -> int:
+        return int(value) if isinstance(value, int) and not isinstance(value, bool) else 0
+
+    return {
+        "promptTokens": integer(usage.get("prompt_tokens")),
+        "completionTokens": integer(usage.get("completion_tokens")),
+        "totalTokens": integer(usage.get("total_tokens")),
+        "cachedPromptTokens": integer(prompt_details.get("cached_tokens")) if isinstance(prompt_details, dict) else 0,
+        "reasoningTokens": integer(completion_details.get("reasoning_tokens")) if isinstance(completion_details, dict) else 0,
+    }
+
+
 def call_ai(api_key: str, provider: dict[str, object], instructions: str, input_text: str, schema_name: str, schema: dict[str, object], *, attempts: int = 3) -> dict[str, object]:
     if provider.get("protocol") != "openai-chat-completions":
         raise AIServiceError("Unsupported AI protocol; expected openai-chat-completions")
@@ -413,6 +498,7 @@ def call_ai(api_key: str, provider: dict[str, object], instructions: str, input_
     payload = chat_completions_payload(provider, instructions, input_text, schema_name, schema)
     encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json", "User-Agent": USER_AGENT}
+    logical_started_at = time.monotonic()
     for attempt in range(attempts):
         request = urllib.request.Request(endpoint, data=encoded, headers=headers, method="POST")
         started_at = time.monotonic()
@@ -424,7 +510,11 @@ def call_ai(api_key: str, provider: dict[str, object], instructions: str, input_
             if not isinstance(result, dict):
                 raise DraftError("AI structured output is not an object")
             print(f"[AI] {schema_name}：完成，用时 {time.monotonic() - started_at:.1f} 秒", file=sys.stderr, flush=True)
-            return result
+            return AIResult(result, {
+                "attempts": attempt + 1,
+                "durationSeconds": time.monotonic() - logical_started_at,
+                "usage": normalized_usage(value),
+            })
         except urllib.error.HTTPError as error:
             detail = redact_service_detail(error.read().decode("utf-8", errors="replace")[:1000], api_key)
             if error.code in {429, 500, 502, 503, 504} and attempt + 1 < attempts:
@@ -444,6 +534,41 @@ def call_ai(api_key: str, provider: dict[str, object], instructions: str, input_
         except DraftError as error:
             raise AIServiceError(f"AI provider response could not be read: {error}") from error
     raise AIServiceError("AI provider request failed after retries")
+
+
+def invoke_ai(
+    ai_call: Callable[..., dict[str, object]],
+    collector: AIMetricsCollector,
+    candidate: str,
+    api_key: str,
+    provider: dict[str, object],
+    instructions: str,
+    input_text: str,
+    schema_name: str,
+    schema: dict[str, object],
+) -> dict[str, object]:
+    sequence = collector.reserve(candidate, schema_name, instructions, input_text, schema)
+    started_at = time.monotonic()
+    try:
+        result = ai_call(api_key, provider, instructions, input_text, schema_name, schema)
+    except Exception:
+        collector.finish(
+            sequence,
+            status="error",
+            duration_seconds=time.monotonic() - started_at,
+            attempts=None,
+            usage=None,
+        )
+        raise
+    telemetry = result.telemetry if isinstance(result, AIResult) else {}
+    collector.finish(
+        sequence,
+        status="success",
+        duration_seconds=float(telemetry.get("durationSeconds", time.monotonic() - started_at)),
+        attempts=int(telemetry["attempts"]) if isinstance(telemetry.get("attempts"), int) else 1,
+        usage=telemetry.get("usage") if isinstance(telemetry.get("usage"), dict) else None,
+    )
+    return dict(result)
 
 
 def source_records(evidence: dict[str, object], accessed_date: str) -> list[dict[str, str]]:
@@ -920,19 +1045,57 @@ def repair_strategy(attempt: int) -> str:
     return "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。"
 
 
-def repair_input(evidence: dict[str, object], payload: dict[str, object], project: dict[str, object], research: str, quality: dict[str, object], structural_errors: list[str], attempt: int) -> str:
+def repair_input(evidence: dict[str, object], payload: dict[str, object], quality: dict[str, object], structural_errors: list[str], attempt: int) -> str:
     failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
     return json.dumps({
         "task": f"Targeted repair attempt {attempt}. Change only fields implicated by failures. Preserve all already-passing content. Return the complete generation object.",
         "repairStrategy": repair_strategy(attempt),
         "primaryEvidence": json.loads(evidence_input(evidence)),
         "previousGeneration": payload,
-        "previousProject": project,
-        "previousResearch": research,
+        "derivedArtifactsOmitted": "previousProject and previousResearch are deterministic derivatives of primaryEvidence and previousGeneration; do not infer missing facts.",
         "structuralErrors": structural_errors,
         "failedQualityItems": failed,
         "blockers": quality.get("blockers", []),
     }, ensure_ascii=False)
+
+
+def failed_check_ids(quality: dict[str, object]) -> set[str]:
+    items = quality.get("items")
+    if not isinstance(items, list):
+        return set()
+    return {
+        str(item.get("id"))
+        for item in items
+        if isinstance(item, dict) and item.get("status") == "fail"
+    }
+
+
+def passing_audit_count(quality: dict[str, object], field: str) -> int:
+    audits = quality.get(field)
+    if not isinstance(audits, list):
+        return 0
+    return sum(1 for audit in audits if isinstance(audit, dict) and audit.get("status") == "pass")
+
+
+def semantic_no_progress_reason(before: dict[str, object], after: dict[str, object]) -> str | None:
+    """Stop expensive discovery repair only when structured direction evidence did not improve."""
+    before_failed = failed_check_ids(before)
+    after_failed = failed_check_ids(after)
+    checks = (
+        ("D3", "directionAudits", "单个方向与原项目的实质差异"),
+        ("E1", "directionPairAudits", "方向之间的实质差异"),
+    )
+    stalled: list[str] = []
+    for check_id, audit_field, label in checks:
+        if check_id not in before_failed or check_id not in after_failed:
+            continue
+        before_passes = passing_audit_count(before, audit_field)
+        after_passes = passing_audit_count(after, audit_field)
+        if after_passes <= before_passes:
+            stalled.append(f"{check_id}（{label}通过数 {before_passes}→{after_passes}）")
+    if not stalled:
+        return None
+    return "；".join(stalled)
 
 
 def current_published_ids_and_last_accent() -> tuple[set[str], str]:
@@ -1118,7 +1281,189 @@ def batch_preview(batch_id: str, candidates: list[dict[str, object]], rejected: 
     return "\n".join(lines)
 
 
+def ai_metrics_preview(metrics: dict[str, object]) -> str:
+    usage_count = int(metrics.get("providerUsageReportedCallCount", 0))
+    lines = [
+        "## AI 执行统计",
+        "",
+        f"- 候选并发上限：{metrics.get('maxConcurrentCandidates', 1)}",
+        f"- AI 逻辑调用：{metrics.get('logicalCallCount', 0)}",
+        f"- 深读阶段墙钟时间：{metrics.get('wallTimeSeconds', 0)} 秒",
+        f"- 各请求耗时合计：{metrics.get('summedRequestTimeSeconds', 0)} 秒（并发请求会重叠）",
+    ]
+    if usage_count:
+        lines.extend([
+            f"- 返回 usage 的调用：{usage_count}",
+            f"- 输入 Token：{metrics.get('promptTokens', 0)}",
+            f"- 输出 Token：{metrics.get('completionTokens', 0)}",
+            f"- 其中缓存输入 Token：{metrics.get('cachedPromptTokens', 0)}",
+            f"- 其中推理 Token：{metrics.get('reasoningTokens', 0)}",
+        ])
+    else:
+        lines.append("- 当前中转接口未返回 usage；已保留每次调用的耗时和输入字符数。")
+    return "\n".join(lines)
+
+
+def process_candidate(
+    candidate: dict[str, object],
+    config: dict[str, object],
+    api_key: str,
+    github_token: str | None,
+    provider: dict[str, object],
+    published_ids: set[str],
+    last_accent: str,
+    generated_at: str,
+    generation_rules: str,
+    quality_rules: str,
+    collector: AIMetricsCollector,
+    ai_call: Callable[..., dict[str, object]],
+    evidence_fetcher: Callable[[str, str | None], dict[str, object]],
+) -> dict[str, object]:
+    full_name = str(candidate["fullName"])
+    stage = "候选初始化"
+    repair_history: list[dict[str, object]] = []
+    structural_errors: list[str] = []
+    quality: dict[str, object] = {"items": [], "blockers": []}
+    early_stop_reason: str | None = None
+    print(f"[候选] {full_name}：开始重新取证与深读", file=sys.stderr, flush=True)
+    try:
+        stage = "重新获取 GitHub 证据"
+        evidence = evidence_fetcher(full_name, github_token)
+        readme = evidence.get("readme")
+        if not isinstance(readme, str) or len(readme.strip()) < int(config["minimumReadmeCharacters"]):
+            raise DraftError("README 信息不足，无法支撑高质量页面")
+        available_sources = {item["id"] for item in source_records(evidence, generated_at[:10])}
+        stage = "生成首版候选"
+        payload = invoke_ai(
+            ai_call, collector, full_name, api_key, provider,
+            generation_rules, evidence_input(evidence),
+            "inspiration_project_draft", generation_schema(),
+        )
+        if payload.get("eligible") is not True:
+            raise DraftError(str(payload.get("decisionReason") or "AI 判定不适合收录"))
+        provisional_id = project_id_for(evidence, set(published_ids))
+        project = build_project(payload, evidence, provisional_id, (last_accent,), generated_at)
+        research = research_markdown(payload, evidence, generated_at)
+        structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
+        a3_check = deterministic_a3_item(project, evidence, generated_at)
+        if a3_check["status"] != "pass":
+            print(f"[候选] {full_name}：A3 程序校验失败，停止 AI 修文", file=sys.stderr, flush=True)
+            return {"status": "rejected", "rejected": {
+                "fullName": full_name,
+                "stage": "A3 程序校验",
+                "reason": "GitHub 客观数据未能与本轮快照完全对应",
+                "failedChecks": [{"id": "A3", "evidence": a3_check["evidence"]}],
+                "structuralErrors": list(structural_errors),
+                "blockers": [],
+                "repairHistory": [],
+            }}
+        stage = "初次质量检查"
+        quality = invoke_ai(
+            ai_call, collector, full_name, api_key, provider,
+            quality_rules, quality_review_input(project, research),
+            "inspiration_quality_review", quality_schema(),
+        )
+        quality = apply_deterministic_a3(quality, project, evidence, generated_at)
+        structural_errors.extend(validate_quality_payload(quality, project))
+        repair_history.append(quality_audit_entry(
+            0,
+            quality,
+            structural_errors,
+            strategy="生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+            changed_paths=[],
+        ))
+        for repair_attempt in (1, 2):
+            failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
+            blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid quality blockers"]
+            if not structural_errors and not failed and not blockers:
+                break
+            stage = f"第 {repair_attempt} 轮定向修复"
+            previous_payload = payload
+            previous_quality = quality
+            payload = invoke_ai(
+                ai_call, collector, full_name, api_key, provider,
+                generation_rules,
+                repair_input(evidence, payload, quality, structural_errors, repair_attempt),
+                f"inspiration_project_repair_{repair_attempt}",
+                generation_schema(),
+            )
+            if payload.get("eligible") is not True:
+                raise DraftError(str(payload.get("decisionReason") or "修复后仍不适合收录"))
+            project = build_project(payload, evidence, provisional_id, (last_accent,), generated_at)
+            research = research_markdown(payload, evidence, generated_at)
+            structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
+            a3_check = deterministic_a3_item(project, evidence, generated_at)
+            if a3_check["status"] != "pass":
+                structural_errors.append(a3_check["evidence"])
+            stage = f"第 {repair_attempt} 轮修复后质量复检"
+            quality = invoke_ai(
+                ai_call, collector, full_name, api_key, provider,
+                quality_rules, quality_review_input(project, research),
+                "inspiration_quality_review", quality_schema(),
+            )
+            quality = apply_deterministic_a3(quality, project, evidence, generated_at)
+            structural_errors.extend(validate_quality_payload(quality, project))
+            repair_history.append(quality_audit_entry(
+                repair_attempt,
+                quality,
+                structural_errors,
+                strategy=repair_strategy(repair_attempt),
+                changed_paths=changed_generation_paths(previous_payload, payload),
+            ))
+            if repair_attempt == 1:
+                early_stop_reason = semantic_no_progress_reason(previous_quality, quality)
+                if early_stop_reason:
+                    print(
+                        f"[候选] {full_name}：首轮修复在结构化语义检查上无实质进展，跳过第二轮（{early_stop_reason}）",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                    break
+        failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
+        blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid blockers"]
+        if structural_errors or failed or blockers:
+            failure_ids = ", ".join(str(item.get("id")) for item in failed) or "; ".join(structural_errors[:3]) or "; ".join(str(item) for item in blockers)
+            stop_stage = "首轮修复无实质进展" if early_stop_reason else "两轮自动修复后质量复检"
+            reason = (
+                f"首轮修复后方向差异没有可测量改善，停止无效第二轮：{early_stop_reason}；仍未通过：{failure_ids}"
+                if early_stop_reason
+                else f"两轮修复后仍未通过：{failure_ids}"
+            )
+            print(f"[候选] {full_name}：{reason}", file=sys.stderr, flush=True)
+            return {"status": "rejected", "rejected": {
+                "fullName": full_name,
+                "stage": stop_stage,
+                "reason": reason,
+                "failedChecks": failed_quality_items(quality),
+                "structuralErrors": list(structural_errors),
+                "blockers": [str(item) for item in blockers],
+                "repairHistory": repair_history,
+            }}
+        print(f"[候选] {full_name}：通过全部检查，等待顺序化生成视觉身份", file=sys.stderr, flush=True)
+        return {
+            "status": "accepted",
+            "fullName": full_name,
+            "payload": payload,
+            "evidence": evidence,
+            "qualityPayload": quality,
+        }
+    except AIServiceError as error:
+        raise AIServiceError(f"{full_name} 调用 AI 服务时失败：{error}") from error
+    except (DraftError, DiscoveryError, ValueError, KeyError) as error:
+        print(f"[候选] {full_name}：在“{stage}”停止：{error}", file=sys.stderr, flush=True)
+        return {"status": "rejected", "rejected": {
+            "fullName": full_name,
+            "stage": stage,
+            "reason": str(error),
+            "failedChecks": failed_quality_items(quality),
+            "structuralErrors": list(structural_errors),
+            "blockers": [str(item) for item in quality.get("blockers", [])] if isinstance(quality.get("blockers"), list) else [],
+            "repairHistory": repair_history,
+        }}
+
+
 def generate_batch(config: dict[str, object], discovery: dict[str, object], api_key: str, *, github_token: str | None = None, ai_call: Callable[..., dict[str, object]] = call_ai, evidence_fetcher: Callable[[str, str | None], dict[str, object]] = fetch_evidence, now: datetime | None = None, write: bool = True) -> dict[str, object]:
+    batch_started_at = time.monotonic()
     current_time = now or utc_now()
     generated_at = iso_z(current_time)
     queue = discovery.get("aiQueue")
@@ -1131,125 +1476,84 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
     batch_id = f"{current_time.strftime('%Y%m%dT%H%M%SZ')}-{sha256_bytes(batch_seed.encode('utf-8'))[:8]}"
     batch_dir = GENERATED_ROOT / batch_id
     accepted: list[dict[str, object]] = []
+    accepted_payloads: list[dict[str, object]] = []
     rejected: list[dict[str, object]] = []
     provider = config.get("aiProvider")
     if not isinstance(provider, dict):
         raise DraftError("Discovery config does not contain a valid aiProvider")
+    max_concurrency = max(1, min(2, int(config.get("maxConcurrentCandidates", 1))))
+    max_candidates = int(config["maxCandidatesPerRun"])
+    candidates = [
+        candidate
+        for candidate in queue[: int(config["aiAnalysisLimit"])]
+        if isinstance(candidate, dict) and isinstance(candidate.get("fullName"), str)
+    ]
+    collector = AIMetricsCollector()
+    generation_rules = generation_instructions()
+    quality_rules = quality_instructions()
+    cursor = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_concurrency, thread_name_prefix="discovery") as executor:
+        while cursor < len(candidates) and len(accepted_payloads) < max_candidates:
+            remaining_slots = max_candidates - len(accepted_payloads)
+            batch_size = min(max_concurrency, remaining_slots, len(candidates) - cursor)
+            batch = candidates[cursor:cursor + batch_size]
+            cursor += batch_size
+            futures = [
+                executor.submit(
+                    process_candidate,
+                    candidate,
+                    config,
+                    api_key,
+                    github_token,
+                    provider,
+                    published_ids,
+                    last_accent,
+                    generated_at,
+                    generation_rules,
+                    quality_rules,
+                    collector,
+                    ai_call,
+                    evidence_fetcher,
+                )
+                for candidate in batch
+            ]
+            for future in futures:
+                outcome = future.result()
+                if outcome.get("status") == "accepted":
+                    accepted_payloads.append(outcome)
+                else:
+                    rejected_item = outcome.get("rejected")
+                    if isinstance(rejected_item, dict):
+                        rejected.append(rejected_item)
 
-    for candidate in queue[: int(config["aiAnalysisLimit"])]:
-        if len(accepted) >= int(config["maxCandidatesPerRun"]):
-            break
-        if not isinstance(candidate, dict) or not isinstance(candidate.get("fullName"), str):
-            continue
-        full_name = candidate["fullName"]
-        stage = "候选初始化"
-        repair_history: list[dict[str, object]] = []
-        structural_errors: list[str] = []
-        quality: dict[str, object] = {"items": [], "blockers": []}
-        print(f"[候选] {full_name}：开始重新取证与深读", file=sys.stderr, flush=True)
-        try:
-            stage = "重新获取 GitHub 证据"
-            evidence = evidence_fetcher(full_name, github_token)
-            readme = evidence.get("readme")
-            if not isinstance(readme, str) or len(readme.strip()) < int(config["minimumReadmeCharacters"]):
-                raise DraftError("README 信息不足，无法支撑高质量页面")
-            available_sources = {item["id"] for item in source_records(evidence, generated_at[:10])}
-            stage = "生成首版候选"
-            payload = ai_call(api_key, provider, generation_instructions(), evidence_input(evidence), "inspiration_project_draft", generation_schema())
-            if payload.get("eligible") is not True:
-                raise DraftError(str(payload.get("decisionReason") or "AI 判定不适合收录"))
-            project_id = project_id_for(evidence, used_ids)
-            project = build_project(payload, evidence, project_id, (previous_accent,), generated_at)
-            research = research_markdown(payload, evidence, generated_at)
-            structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
-            a3_check = deterministic_a3_item(project, evidence, generated_at)
-            if a3_check["status"] != "pass":
-                rejected.append({
-                    "fullName": full_name,
-                    "stage": "A3 程序校验",
-                    "reason": "GitHub 客观数据未能与本轮快照完全对应",
-                    "failedChecks": [{"id": "A3", "evidence": a3_check["evidence"]}],
-                    "structuralErrors": list(structural_errors),
-                    "blockers": [],
-                    "repairHistory": [],
-                })
-                print(f"[候选] {full_name}：A3 程序校验失败，停止 AI 修文", file=sys.stderr, flush=True)
-                continue
-            stage = "初次质量检查"
-            quality = ai_call(api_key, provider, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
-            quality = apply_deterministic_a3(quality, project, evidence, generated_at)
-            structural_errors.extend(validate_quality_payload(quality, project))
-            repair_history.append(quality_audit_entry(
-                0,
-                quality,
-                structural_errors,
-                strategy="生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
-                changed_paths=[],
-            ))
-            for repair_attempt in (1, 2):
-                failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
-                blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid quality blockers"]
-                if not structural_errors and not failed and not blockers:
-                    break
-                stage = f"第 {repair_attempt} 轮定向修复"
-                previous_payload = payload
-                payload = ai_call(api_key, provider, generation_instructions(), repair_input(evidence, payload, project, research, quality, structural_errors, repair_attempt), f"inspiration_project_repair_{repair_attempt}", generation_schema())
-                if payload.get("eligible") is not True:
-                    raise DraftError(str(payload.get("decisionReason") or "修复后仍不适合收录"))
-                project = build_project(payload, evidence, project_id, (previous_accent,), generated_at)
-                research = research_markdown(payload, evidence, generated_at)
-                structural_errors = validate_generation_payload(payload, available_sources) + validate_project(project) + validate_research(research)
-                a3_check = deterministic_a3_item(project, evidence, generated_at)
-                if a3_check["status"] != "pass":
-                    structural_errors.append(a3_check["evidence"])
-                stage = f"第 {repair_attempt} 轮修复后质量复检"
-                quality = ai_call(api_key, provider, quality_instructions(), quality_review_input(project, research), "inspiration_quality_review", quality_schema())
-                quality = apply_deterministic_a3(quality, project, evidence, generated_at)
-                structural_errors.extend(validate_quality_payload(quality, project))
-                repair_history.append(quality_audit_entry(
-                    repair_attempt,
-                    quality,
-                    structural_errors,
-                    strategy=repair_strategy(repair_attempt),
-                    changed_paths=changed_generation_paths(previous_payload, payload),
-                ))
-            failed = [item for item in quality.get("items", []) if isinstance(item, dict) and item.get("status") == "fail"]
-            blockers = quality.get("blockers") if isinstance(quality.get("blockers"), list) else ["invalid blockers"]
-            if structural_errors or failed or blockers:
-                failure_ids = ", ".join(str(item.get("id")) for item in failed) or "; ".join(structural_errors[:3]) or "; ".join(str(item) for item in blockers)
-                rejected.append({
-                    "fullName": full_name,
-                    "stage": "两轮自动修复后质量复检",
-                    "reason": f"两轮修复后仍未通过：{failure_ids}",
-                    "failedChecks": failed_quality_items(quality),
-                    "structuralErrors": list(structural_errors),
-                    "blockers": [str(item) for item in blockers],
-                    "repairHistory": repair_history,
-                })
-                print(f"[候选] {full_name}：两轮修复后仍未通过 {failure_ids}", file=sys.stderr, flush=True)
-                continue
-            accepted.append({"project": project, "research": research, "qualityPayload": quality, "fullName": full_name})
-            used_ids.add(project_id)
-            visual = project["visual"]
-            assert isinstance(visual, dict)
-            previous_accent = str(visual["accent"])
-            print(f"[候选] {full_name}：通过全部检查，进入人工审核批次", file=sys.stderr, flush=True)
-        except AIServiceError as error:
-            raise AIServiceError(f"{full_name} 调用 AI 服务时失败：{error}") from error
-        except (DraftError, DiscoveryError, ValueError, KeyError) as error:
-            rejected.append({
-                "fullName": full_name,
-                "stage": stage,
-                "reason": str(error),
-                "failedChecks": failed_quality_items(quality),
-                "structuralErrors": list(structural_errors),
-                "blockers": [str(item) for item in quality.get("blockers", [])] if isinstance(quality.get("blockers"), list) else [],
-                "repairHistory": repair_history,
-            })
-            print(f"[候选] {full_name}：在“{stage}”停止：{error}", file=sys.stderr, flush=True)
+    for item in accepted_payloads:
+        payload = item["payload"]
+        evidence = item["evidence"]
+        quality = item["qualityPayload"]
+        assert isinstance(payload, dict) and isinstance(evidence, dict) and isinstance(quality, dict)
+        project_id = project_id_for(evidence, used_ids)
+        project = build_project(payload, evidence, project_id, (previous_accent,), generated_at)
+        research = research_markdown(payload, evidence, generated_at)
+        final_errors = validate_project(project) + validate_research(research) + validate_quality_payload(quality, project)
+        a3_check = deterministic_a3_item(project, evidence, generated_at)
+        if a3_check["status"] != "pass":
+            final_errors.append(a3_check["evidence"])
+        if final_errors:
+            raise DraftError(f"{item['fullName']} 顺序化生成最终项目时校验失败：{'; '.join(final_errors[:3])}")
+        accepted.append({"project": project, "research": research, "qualityPayload": quality, "fullName": item["fullName"]})
+        used_ids.add(project_id)
+        visual = project["visual"]
+        assert isinstance(visual, dict)
+        previous_accent = str(visual["accent"])
+        print(f"[候选] {item['fullName']}：顺序化视觉身份完成，进入人工审核批次", file=sys.stderr, flush=True)
+
+    ai_metrics = collector.report(
+        wall_time_seconds=time.monotonic() - batch_started_at,
+        max_concurrency=max_concurrency,
+    )
 
     if not accepted:
-        preview = batch_preview(batch_id, [], rejected, generated_at)
+        preview = f"{batch_preview(batch_id, [], rejected, generated_at)}\n\n{ai_metrics_preview(ai_metrics)}\n"
         return {
             "status": "no-candidates",
             "batchId": batch_id,
@@ -1258,6 +1562,7 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
             "rejectedCount": len(rejected),
             "rejected": rejected,
             "batchFingerprint": None,
+            "aiMetrics": ai_metrics,
             "preview": preview,
             "publicationAuthorized": False,
         }
@@ -1311,7 +1616,7 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
         "rejected": rejected,
         "publicationAuthorized": False,
     }
-    preview = batch_preview(batch_id, written, rejected, generated_at)
+    preview = f"{batch_preview(batch_id, written, rejected, generated_at)}\n\n{ai_metrics_preview(ai_metrics)}\n"
     if write:
         write_json(batch_dir / "manifest.json", manifest)
         (batch_dir / "preview.md").write_text(preview, encoding="utf-8")
@@ -1323,6 +1628,7 @@ def generate_batch(config: dict[str, object], discovery: dict[str, object], api_
         "rejectedCount": len(rejected),
         "rejected": rejected,
         "batchFingerprint": batch_fingerprint,
+        "aiMetrics": ai_metrics,
         "preview": preview,
         "publicationAuthorized": False,
     }
