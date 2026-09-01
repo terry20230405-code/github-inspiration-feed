@@ -22,9 +22,10 @@ export function retainedProjectIndices(active: number, total: number) {
 export function progressIndicatorTargets(active: number, total: number) {
   if (total <= 0) return Array.from({ length: indicatorCount }, () => null)
   const current = clampProjectIndex(active, total)
-  const windowSize = Math.min(indicatorCount, total)
-  const start = Math.max(0, Math.min(current - Math.floor(windowSize / 2), total - windowSize))
-  const targets: Array<number | null> = Array.from({ length: windowSize }, (_, offset) => start + offset)
-  while (targets.length < indicatorCount) targets.push(null)
-  return targets
+  const groupStart = current - current % indicatorCount
+  return Array.from({ length: indicatorCount }, (_, slot) => {
+    let target = groupStart + slot
+    while (target >= total) target -= indicatorCount
+    return target >= 0 ? target : null
+  })
 }

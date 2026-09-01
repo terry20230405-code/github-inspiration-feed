@@ -19,10 +19,16 @@ try {
   equal(renderedProjectIndices(9, 10), [8, 9], 'last project render window')
   equal(retainedProjectIndices(9, 10), [8, 9], 'last project preload window')
   equal(progressIndicatorTargets(0, 10), [0, 1, 2, 3, 4], 'first indicator window')
-  equal(progressIndicatorTargets(5, 10), [3, 4, 5, 6, 7], 'middle indicator window')
-  equal(progressIndicatorTargets(9, 10), [5, 6, 7, 8, 9], 'last indicator window')
+  equal(progressIndicatorTargets(5, 10), [5, 6, 7, 8, 9], 'second indicator cycle')
+  equal(progressIndicatorTargets(9, 10), [5, 6, 7, 8, 9], 'end of second indicator cycle')
+  equal(progressIndicatorTargets(5, 6), [5, 1, 2, 3, 4], 'partial indicator cycle stays full')
+  equal(progressIndicatorTargets(10, 12), [10, 11, 7, 8, 9], 'final partial indicator cycle')
+  for (let active = 0; active < 12; active += 1) {
+    const targets = progressIndicatorTargets(active, 12)
+    if (targets.indexOf(active) !== active % indicatorCount) throw new Error(`indicator did not advance cyclically for project ${active + 1}`)
+  }
   if (progressIndicatorTargets(5, 1000).length !== indicatorCount) throw new Error('indicator count is not fixed')
-  console.log('OK: feed keeps previous/current/next, preloads one more, and always exposes five indicators')
+  console.log('OK: feed window is bounded and the five-dot indicator advances cyclically')
 } finally {
   await server.close()
 }
