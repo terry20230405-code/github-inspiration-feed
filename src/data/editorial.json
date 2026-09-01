@@ -495,5 +495,85 @@
       "OpenAI-compatible API"
     ],
     "summary": "nanobot 是用 Python 写的自托管个人 AI agent 框架，可在 WebUI、终端和聊天应用里接入模型、工具、长期记忆和 MCP。它会把对话、文件操作、工具调用和自动化结果留在同一条可回看的会话里，并可通过 OpenAI-compatible API 和 Python SDK 接到外部系统。"
+  },
+  "maka": {
+    "audience": "在本地机器上使用 AI agent 的开发者和测试者，尤其是需要把任务、模型连接和权限放在同一工作区里的人。",
+    "directions": [
+      {
+        "approach": "先打开历史会话，再按时间线查看消息、tool calls、tool results、权限决策和终止点；用搜索找出异常步骤，必要时从某个分支继续生成后续回合。复用的是 append-only execution log、search、branching 和 recovery。",
+        "audience": "需要排查 AI agent 失败原因的个人开发者和支持人员",
+        "difference": "原项目是“在工作区里做事”，这里是“在结束后看清这件事是怎么失败的”。",
+        "id": "session-forensics",
+        "name": "会话复盘台",
+        "problem": "agent 任务失败后，很难快速定位是哪一步工具调用、权限判断或模型输出出了问题。",
+        "scope": [
+          "会话列表",
+          "时间线查看",
+          "事件搜索",
+          "权限与结果检查",
+          "分支继续",
+          "恢复回放"
+        ],
+        "tagline": "从历史会话里找出失败点并接着跑"
+      },
+      {
+        "approach": "先测试模型连接，再设定 sandbox 和哪些工具需要批准；把 send-ready 状态、审批规则和越界动作整理成可审计的配置，再让团队按这份配置运行任务。复用的是模型连接、权限决策和 sandbox boundary。",
+        "audience": "给团队配置 agent 连接和沙箱边界的平台或安全负责人",
+        "difference": "原项目以执行任务为中心，这里以配置和签核为中心。",
+        "id": "policy-console",
+        "name": "权限审计台",
+        "problem": "模型接入、工具放行和越界审批常常分散在不同地方，难以形成一份可复用的治理配置。",
+        "scope": [
+          "连接测试",
+          "默认模型选择",
+          "权限规则配置",
+          "sandbox 预设",
+          "审批记录",
+          "状态审计"
+        ],
+        "tagline": "先连模型和工具，再把越界动作关进审批"
+      },
+      {
+        "approach": "先打开一组已经完成的 multi-arm experiment，再按 task、repetition、subject 和 cell 查看 attempts、score、usage、duration、status、failure reason；把异常项标出来，帮助决定保留哪条配置。复用的是 declarative multi-arm experiments、immutable per-cell attempts 和 result kernel。",
+        "audience": "需要审查模型或 subject 结果的评测工程师和 QA 人员",
+        "difference": "原项目负责把实验跑出来，这里只负责把已完成的结果看清楚并对照。",
+        "id": "experiment-review",
+        "name": "实验对照台",
+        "problem": "每次改模型、改工具或改参数后，都要手工对照一组评测 cell，才能知道哪些结果真的变了。",
+        "scope": [
+          "实验列表",
+          "cell 对照",
+          "attempt 详情",
+          "按 score/usage/duration/status 过滤",
+          "失败原因标注",
+          "异常项高亮"
+        ],
+        "tagline": "把评测结果和失败点放在一起看"
+      }
+    ],
+    "features": [
+      "Desktop / TUI / CLI / Eval 四个入口共享 Runtime Host",
+      "模型消息、tool calls、tool results、权限决策和终止事件写成 append-only log",
+      "内置 Read、Write、Edit、Bash、Glob、Grep 工具",
+      "沙箱外操作需要批准，运行可中止，失败可分类",
+      "会话可搜索、分支、恢复和重试",
+      "声明式评测支持 multi-arm experiments 和 result kernel"
+    ],
+    "hook": "把 AI 代理做成可回放工作区",
+    "meaning": "这类可追溯的执行记录适合做需要复盘、审计和恢复的产品底座；同一套 Runtime Host 还能同时支撑 Desktop、CLI 和评测，不必把控制面、执行面和实验面拆成三套系统。",
+    "opportunity": [
+      "把 append-only log 和 branch/recovery 单独拿出来，可做给调试 agent 的会话复盘台，输入一段旧会话，输出可搜索的时间线和可继续的后续 turn。",
+      "把模型连接、permission decisions 和 sandbox boundary 整理成治理界面，可做给团队的权限审计台，输入模型/API 和规则，输出可签核的运行配置。",
+      "把 immutable per-cell attempts 和 result kernel 单独拿出来，可做实验对照台，输入已经完成的评测结果，输出按 score、usage、duration、status 和 failure reason 对照的结果面板。"
+    ],
+    "stack": [
+      "TypeScript",
+      "Electron",
+      "React",
+      "SQLite",
+      "Runtime Host",
+      "Model Context Protocol (MCP)"
+    ],
+    "summary": "它把本地项目、模型连接和权限设置接到同一个 AI agent 工作区里，让你在 Desktop、TUI/CLI 或 Eval 中发起任务、查看工具轨迹并接续中断的回合。模型消息、tool calls、tool results、权限决策和终止事件都会写成可回放的记录。"
   }
 }

@@ -54,5 +54,13 @@
     "foreground": "#ffffff",
     "motif": "network",
     "variant": 997577253
+  },
+  "maka": {
+    "generatorVersion": 2,
+    "seed": "apache/maka",
+    "accent": "#bf5831",
+    "foreground": "#000000",
+    "motif": "orbit",
+    "variant": 1287818385
   }
 }
