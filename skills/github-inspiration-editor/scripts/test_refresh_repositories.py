@@ -52,6 +52,62 @@ class RepositoryRefreshTests(unittest.TestCase):
     def test_standard_license_uses_spdx_identifier(self) -> None:
         self.assertEqual(reliable_license(payload(license={"spdx_id": "MIT", "name": "MIT License"}), "未知"), "MIT")
 
+    def test_equivalent_github_license_labels_preserve_reviewed_display_value(self) -> None:
+        cases = [
+            ("MIT License", "MIT", "MIT License", "mit"),
+            ("Apache License 2.0", "Apache-2.0", "Apache License 2.0", "apache-2.0"),
+            ("GNU General Public License v3.0", "GPL-3.0", "GNU General Public License v3.0", "gpl-3.0"),
+            ("GNU Affero General Public License v3.0", "AGPL-3.0", "GNU Affero General Public License v3.0", "agpl-3.0"),
+            ("GNU Lesser General Public License v3.0", "LGPL-3.0", "GNU Lesser General Public License v3.0", "lgpl-3.0"),
+            ('BSD 3-Clause "New" or "Revised" License', "BSD-3-Clause", 'BSD 3-Clause "New" or "Revised" License', "bsd-3-clause"),
+            ("Mozilla Public License 2.0", "MPL-2.0", "Mozilla Public License 2.0", "mpl-2.0"),
+            ("Eclipse Public License 2.0", "EPL-2.0", "Eclipse Public License 2.0", "epl-2.0"),
+            ("ISC License", "ISC", "ISC License", "isc"),
+            ("The Unlicense", "Unlicense", "The Unlicense", "unlicense"),
+        ]
+        for current, spdx_id, name, key in cases:
+            with self.subTest(current=current):
+                value = reliable_license(
+                    payload(license={"spdx_id": spdx_id, "name": name, "key": key}),
+                    current,
+                )
+                self.assertEqual(value, current)
+
+    def test_spdx_and_standard_name_are_equivalent_in_both_directions(self) -> None:
+        apache = {"spdx_id": "Apache-2.0", "name": "Apache License 2.0", "key": "apache-2.0"}
+        self.assertEqual(reliable_license(payload(license=apache), "Apache-2.0"), "Apache-2.0")
+        self.assertEqual(reliable_license(payload(license=apache), "Apache License 2.0"), "Apache License 2.0")
+
+    def test_nanobot_mit_display_name_does_not_trigger_critical_change(self) -> None:
+        current = {**copy.deepcopy(CURRENT), "license": "MIT License"}
+        candidate = build_candidate(
+            current,
+            payload(license={"spdx_id": "MIT", "name": "MIT License", "key": "mit"}),
+            "2026-08-27T11:00:00Z",
+        )
+        license_changes = [change for change in compare_snapshots(current, candidate) if change["field"] == "license"]
+        self.assertEqual(candidate["license"], "MIT License")
+        self.assertEqual(license_changes, [])
+
+    def test_genuine_standard_license_change_still_requires_review(self) -> None:
+        dataset = {"sample": {**copy.deepcopy(CURRENT), "license": "MIT License"}}
+        response = FetchResult(
+            200,
+            payload(license={"spdx_id": "Apache-2.0", "name": "Apache License 2.0", "key": "apache-2.0"}),
+            '"etag"',
+            "59",
+        )
+        updated, _, results = refresh_dataset(
+            dataset,
+            {"schemaVersion": 1, "repositories": {}},
+            ["sample"],
+            lambda _name, _etag: response,
+            "2026-08-27T11:00:00Z",
+        )
+        self.assertEqual(updated, dataset)
+        self.assertEqual(results[0]["status"], "review-required")
+        self.assertIn("license changed", results[0]["reviewReasons"])
+
     def test_activity_and_statistics_are_classified_separately(self) -> None:
         candidate = build_candidate(CURRENT, payload(), "2026-08-27T11:00:00Z")
         changes = compare_snapshots(CURRENT, candidate)

@@ -388,6 +388,58 @@ class DraftTests(unittest.TestCase):
         self.assertNotIn("previousProject", value)
         self.assertNotIn("previousResearch", value)
         self.assertIn("deterministic derivatives", value["derivedArtifactsOmitted"])
+        self.assertEqual(value["repairMode"], "complete-unit-rewrite")
+        self.assertEqual(len(value["passingQualityConstraints"]), len(drafts.CHECK_IDS) - 1)
+
+    def test_b1_failure_routes_to_whole_hook_rewrite(self) -> None:
+        value = json.loads(drafts.repair_input(
+            evidence(),
+            generation_payload(),
+            quality_payload("B1"),
+            [],
+            1,
+        ))
+
+        guidance = value["targetedRepairRequirements"]
+        self.assertEqual(len(guidance), 1)
+        self.assertIn("editorial.hook", guidance[0]["scope"])
+        self.assertIn("整句重写", guidance[0]["action"])
+
+        unrelated = json.loads(drafts.repair_input(
+            evidence(),
+            generation_payload(),
+            quality_payload("B4"),
+            [],
+            1,
+        ))
+        self.assertFalse(any("editorial.hook" in item["scope"] for item in unrelated["targetedRepairRequirements"]))
+
+    def test_second_repair_rebuilds_failed_direction_and_receives_audits(self) -> None:
+        review = quality_payload("D3", "E1")
+        review["directionAudits"][0] = {
+            "directionId": "family-memory-map",
+            "changedAxes": ["audience"],
+            "status": "fail",
+            "evidence": "只更换了用户，输入、流程和结果仍与原项目相同。",
+        }
+        review["directionPairAudits"][0] = {
+            "leftDirectionId": "family-memory-map",
+            "rightDirectionId": "learning-path-board",
+            "differentAxes": ["audience"],
+            "status": "fail",
+            "evidence": "两个方向只更换了人群，核心流程仍相同。",
+        }
+
+        value = json.loads(drafts.repair_input(evidence(), generation_payload(), review, [], 2))
+
+        self.assertEqual(value["repairMode"], "replacement-rebuild")
+        self.assertEqual(value["failedDirectionAudits"][0]["directionId"], "family-memory-map")
+        self.assertEqual(value["failedDirectionPairAudits"][0]["leftDirectionId"], "family-memory-map")
+        direction_requirement = next(
+            item for item in value["targetedRepairRequirements"] if "D3" in item["checks"]
+        )
+        self.assertIn("删除审核中仍失败的方向", direction_requirement["action"])
+        self.assertTrue(any(scope.startswith("directionRationales[") for scope in direction_requirement["scope"]))
 
     def test_zero_candidates_is_a_reported_normal_result(self) -> None:
         config = {
@@ -526,15 +578,19 @@ class DraftTests(unittest.TestCase):
         self.assertIn("最终失败证据", result["preview"])
         self.assertIn("A4", result["preview"])
 
-    def test_direction_failure_without_measurable_progress_stops_after_one_repair(self) -> None:
+    def test_direction_failure_without_first_round_progress_gets_replacement_rebuild(self) -> None:
         first = generation_payload()
-        repaired = copy.deepcopy(first)
-        repaired["editorial"]["directions"][0]["name"] = "仍未形成差异的家庭地图"
+        repair_one = copy.deepcopy(first)
+        repair_one["editorial"]["directions"][0]["name"] = "仍未形成差异的家庭地图"
+        repair_two = copy.deepcopy(first)
+        repair_two["editorial"]["directions"][0]["name"] = "重新构造的不同产品"
         calls = iter([
             first,
             quality_payload("D3"),
-            repaired,
+            repair_one,
             quality_payload("D3"),
+            repair_two,
+            quality_payload(),
         ])
         call_count = 0
 
@@ -558,11 +614,9 @@ class DraftTests(unittest.TestCase):
             write=False,
         )
 
-        self.assertEqual(call_count, 4)
-        rejected = result["rejected"][0]
-        self.assertEqual(rejected["stage"], "首轮修复无实质进展")
-        self.assertEqual(len(rejected["repairHistory"]), 2)
-        self.assertIn("D3", rejected["reason"])
+        self.assertEqual(call_count, 6)
+        self.assertEqual(result["candidateCount"], 1)
+        self.assertEqual(result["rejectedCount"], 0)
 
     def test_two_candidates_run_concurrently_but_results_keep_queue_order(self) -> None:
         active = 0

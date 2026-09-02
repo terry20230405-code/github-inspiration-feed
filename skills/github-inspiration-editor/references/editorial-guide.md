@@ -12,8 +12,13 @@ Use this guide after reading [content-contract.md](content-contract.md). Write f
 - Use roughly 10–24 Chinese characters.
 - Do not end with punctuation.
 - Avoid empty excitement such as “重新定义未来”, “释放无限可能”, or “一站式解决方案”.
+- Write a sentence fragment that sounds native when read on its own. Every verb must naturally take its object, every modifier must clearly point to a noun, and adjacent nouns must have an obvious relationship.
+- Do not coin an abstract Chinese phrase merely to compress several README concepts. Avoid literal translations, unexplained noun stacks, and metaphors whose intended action or result has to be guessed.
+- Prefer one recognizable input, action, or outcome over squeezing every capability into the hook. If shortening the line makes it awkward, keep fewer ideas rather than inventing a new expression.
 
 A useful shape is `让/把 + familiar thing + unexpected capability or result`.
+
+Before accepting the hook, expand it into an ordinary sentence and read it without the repository name. A target reader should be able to say what each noun refers to and what the verb actually does. If the expanded sentence needs an explanation to sound logical, rewrite the complete hook from the underlying product fact instead of swapping one synonym.
 
 ### Dense introduction (`summary`)
 
@@ -53,4 +58,4 @@ Weak: `AI 旅行助手 — 用 AI 提升旅行体验`
 
 ## Final pass
 
-Remove repeated ideas across the hook, summary, meaning, and directions. If the hook could describe many unrelated repositories, rewrite it. If the summary leaves the reader asking “具体能做哪些事”, add verified functions. If a direction cannot be described as a single user journey, narrow it. Replace literal translation artifacts and check that the directions describe concrete improvements to people's lives rather than defaulting to commercial outcomes.
+Remove repeated ideas across the hook, summary, meaning, and directions. If the hook could describe many unrelated repositories, rewrite it. If its words are individually understandable but their combination is not something a Chinese speaker would naturally say, rewrite it from the intended input, action, and result. If the summary leaves the reader asking “具体能做哪些事”, add verified functions. If a direction cannot be described as a single user journey, narrow it. Replace literal translation artifacts and check that the directions describe concrete improvements to people's lives rather than defaulting to commercial outcomes.

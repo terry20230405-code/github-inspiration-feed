@@ -221,7 +221,7 @@ jobs:
             --title "自动候选：${BATCH_ID}（${CANDIDATE_COUNT} 个项目）" \
             --body-file "$body_file"
 
-      - name: 确认旧项目巡检状态
+      - name: 报告旧项目巡检状态
         if: always()
         env:
           REFRESH_EXIT_CODE: ${{ steps.published_refresh.outputs.exit_code }}
@@ -231,8 +231,9 @@ jobs:
               echo "旧项目巡检完成。"
               ;;
             2)
-              echo "旧项目巡检发现仓库身份、许可证或状态等关键变化，需要人工确认。" >&2
-              exit 2
+              message="旧项目巡检发现仓库身份、许可证或状态等关键变化，需要人工确认；新项目发现结果和候选 PR 保持有效。"
+              echo "::warning title=旧项目巡检需要人工确认::${message}"
+              printf '%s\n' "## 旧项目待人工确认" "" "${message}" "" >> "$GITHUB_STEP_SUMMARY"
               ;;
             *)
               echo "旧项目巡检发生技术失败，请查看 published-refresh-audit。" >&2

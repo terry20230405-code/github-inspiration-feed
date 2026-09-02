@@ -20,6 +20,8 @@ The target reader understands basic Vibe Coding concepts such as frontend, backe
 5. When a term is important but potentially unfamiliar, introduce it once as `中文术语（English term）`, then use the Chinese term afterward.
 6. Record consequential or uncertain translation choices in the research notes under `Localization decisions`.
 
+Translation is not complete when every English word has a Chinese counterpart. Check the resulting collocation: the chosen verb and object must normally go together in Chinese, stacked nouns must express a clear relationship, and an abstract source term must not be turned into a newly invented Chinese product phrase. When the source has no natural one-to-one equivalent, describe its concrete role or visible result instead of forcing a short literal translation.
+
 ## Context-sensitive examples
 
 The same English word can require different Chinese translations:
@@ -48,5 +50,7 @@ These examples are guidance, not a blind replacement dictionary. Check the surro
 - Has a useful basic technical term been removed and replaced by less accurate everyday language?
 - Does every specialized term change the reader's understanding of a capability, constraint, or reuse path?
 - Has an established term been replaced by an awkward literal translation?
+- Are the verb-object pairings, modifiers, and noun relationships natural in Chinese rather than merely grammatically possible?
+- Can the reader identify what an abstract noun refers to without reconstructing the English source phrase?
 - Is English retained only where it improves accuracy or recognition?
 - Does the final Chinese copy read as original Chinese writing rather than a translated README?

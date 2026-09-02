@@ -59,6 +59,13 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("name: published-refresh-audit-${{ github.run_id }}", discovery)
         self.assertIn("if: steps.published_refresh.outputs.exit_code == '0'", discovery)
         self.assertIn("REFRESH_EXIT_CODE: ${{ steps.published_refresh.outputs.exit_code }}", discovery)
+        refresh_status_step = discovery.split("- name: 报告旧项目巡检状态", 1)[1]
+        self.assertIn("::warning title=旧项目巡检需要人工确认::", refresh_status_step)
+        self.assertIn("新项目发现结果和候选 PR 保持有效", refresh_status_step)
+        review_required_branch = refresh_status_step.split("2)", 1)[1].split(";;", 1)[0]
+        self.assertNotIn("exit 2", review_required_branch)
+        technical_failure_branch = refresh_status_step.split("*)", 1)[1]
+        self.assertIn("exit 1", technical_failure_branch)
         self.assertIn("group: github-inspiration-main-writes", discovery)
         self.assertIn("group: github-inspiration-main-writes", publication)
 

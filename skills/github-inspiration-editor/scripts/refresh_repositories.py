@@ -7,6 +7,7 @@ import argparse
 import copy
 import json
 import os
+import re
 import ssl
 import sys
 import tempfile
@@ -35,6 +36,24 @@ CRITICAL_FIELDS = {"githubId", "fullName", "license", "state"}
 ACTIVITY_FIELDS = {"pushedAt"}
 METADATA_FIELDS = {"name", "language"}
 STATISTIC_FIELDS = {"stars", "forks"}
+UNKNOWN_LICENSE_LABELS = {"", "other", "other license", "noassertion", "unknown", "未知"}
+LICENSE_NAME_TO_SPDX = {
+    "mit license": "mit",
+    "apache license 2 0": "apache 2 0",
+    "gnu general public license v2 0": "gpl 2 0",
+    "gnu general public license v3 0": "gpl 3 0",
+    "gnu affero general public license v3 0": "agpl 3 0",
+    "gnu lesser general public license v2 1": "lgpl 2 1",
+    "gnu lesser general public license v3 0": "lgpl 3 0",
+    "bsd 2 clause simplified license": "bsd 2 clause",
+    "bsd 3 clause new or revised license": "bsd 3 clause",
+    "boost software license 1 0": "bsl 1 0",
+    "creative commons zero v1 0 universal": "cc0 1 0",
+    "eclipse public license 2 0": "epl 2 0",
+    "mozilla public license 2 0": "mpl 2 0",
+    "isc license": "isc",
+    "the unlicense": "unlicense",
+}
 
 
 @dataclass(frozen=True)
@@ -84,15 +103,36 @@ def validate_snapshot(snapshot: object, project_id: str) -> dict[str, object]:
     return snapshot
 
 
+def normalized_license_identity(value: object) -> str | None:
+    if not isinstance(value, str):
+        return None
+    normalized = re.sub(r"[^a-z0-9]+", " ", value.casefold()).strip()
+    if normalized in UNKNOWN_LICENSE_LABELS:
+        return None
+    return LICENSE_NAME_TO_SPDX.get(normalized, normalized)
+
+
+def license_identities(license_value: dict[str, object]) -> set[str]:
+    identities: set[str] = set()
+    for field in ("spdx_id", "name", "key"):
+        identity = normalized_license_identity(license_value.get(field))
+        if identity:
+            identities.add(identity)
+    return identities
+
+
 def reliable_license(payload: dict[str, object], current_license: str) -> str:
     license_value = payload.get("license")
     if not isinstance(license_value, dict):
         return current_license
+    current_identity = normalized_license_identity(current_license)
+    if current_identity and current_identity in license_identities(license_value):
+        return current_license
     spdx_id = license_value.get("spdx_id")
     name = license_value.get("name")
-    if isinstance(spdx_id, str) and spdx_id.upper() not in {"", "NOASSERTION", "OTHER"}:
-        return spdx_id
-    if isinstance(name, str) and name.strip().lower() not in {"", "other", "other license"}:
+    if normalized_license_identity(spdx_id):
+        return str(spdx_id).strip()
+    if normalized_license_identity(name):
         return name.strip()
     return current_license
 
