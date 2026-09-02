@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-01T09:46:49Z",
-  "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
+  "generatedAt": "2026-09-02T14:59:40Z",
+  "sourceFingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203002,
-    "forks": 60481,
+    "stars": 203137,
+    "forks": 60511,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T09:45:00Z",
+    "pushedAt": "2026-09-02T14:59:29Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-01T09:46:44Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 376408911,
-      "after": 379592100,
+      "before": 379592100,
+      "after": 381094367,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.36.7",
-      "after": "n8n@2.36.9",
+      "before": "n8n@2.36.9",
+      "after": "n8n@2.37.7",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-08-25T13:02:22Z",
-      "after": "2026-08-31T08:01:15Z",
+      "before": "2026-08-31T08:01:15Z",
+      "after": "2026-09-02T08:41:33Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "51c9119ea5515023aebb31d9ad75f87913853cc1d11ec06f49aaf6da6043cf89",
-      "after": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+      "before": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+      "after": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 379592100,
-        "tagName": "n8n@2.36.9",
-        "name": "n8n@2.36.9",
-        "publishedAt": "2026-08-31T08:01:15Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.36.9",
-        "bodySha256": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
-        "body": "## [2.36.9](https://github.com/n8n-io/n8n/compare/n8n@2.36.8...n8n@2.36.9) (2026-08-31)\n\n\n### Bug Fixes\n\n* **core:** Apply proxy environment variables consistently across packages and processes ([#37258](https://github.com/n8n-io/n8n/issues/37258)) ([a3e3b6a](https://github.com/n8n-io/n8n/commit/a3e3b6a8c03df7c2f1f0c33201cb926cb8932b69))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37381?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 381094367,
+        "tagName": "n8n@2.37.7",
+        "name": "n8n@2.37.7",
+        "publishedAt": "2026-09-02T08:41:33Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.7",
+        "bodySha256": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
+        "body": "## [2.37.7](https://github.com/n8n-io/n8n/compare/n8n@2.37.6...n8n@2.37.7) (2026-09-02)\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37609?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }

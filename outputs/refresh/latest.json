@@ -1,17 +1,17 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T13:15:08Z",
+  "generatedAt": "2026-09-02T14:59:30Z",
   "mode": "write",
   "dataFile": "src/data/repositories.json",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
-    "checked": 6,
-    "updated": 6,
+    "checked": 8,
+    "updated": 8,
     "refreshed": 0,
     "reviewRequired": 0,
     "failed": 0,
-    "researchRefreshRecommended": 4,
+    "researchRefreshRecommended": 8,
     "contentReviewRecommended": 0
   },
   "repositories": [
@@ -19,26 +19,26 @@
       "id": "remotion",
       "requestedFullName": "remotion-dev/remotion",
       "httpStatus": 200,
-      "rateLimitRemaining": "4993",
+      "rateLimitRemaining": "4991",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 57939,
-          "after": 57949,
+          "before": 57949,
+          "after": 58103,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 4402,
-          "after": 4403,
+          "before": 4403,
+          "after": 4417,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-01T09:34:24Z",
-          "after": "2026-09-01T13:12:15Z",
+          "before": "2026-09-01T13:12:15Z",
+          "after": "2026-09-02T14:42:00Z",
           "level": "activity"
         }
       ],
@@ -50,24 +50,30 @@
       "id": "excalidraw",
       "requestedFullName": "excalidraw/excalidraw",
       "httpStatus": 200,
-      "rateLimitRemaining": "4992",
+      "rateLimitRemaining": "4990",
       "status": "updated",
-      "changeLevel": "statistics",
+      "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 130908,
-          "after": 130919,
+          "before": 130919,
+          "after": 131000,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 15096,
-          "after": 15101,
+          "before": 15101,
+          "after": 15117,
           "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-09-01T09:27:06Z",
+          "after": "2026-09-01T13:43:08Z",
+          "level": "activity"
         }
       ],
-      "researchRefreshRecommended": false,
+      "researchRefreshRecommended": true,
       "contentReviewRecommended": false,
       "reviewReasons": []
     },
@@ -75,26 +81,26 @@
       "id": "immich",
       "requestedFullName": "immich-app/immich",
       "httpStatus": 200,
-      "rateLimitRemaining": "4991",
+      "rateLimitRemaining": "4989",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 113130,
-          "after": 113148,
+          "before": 113148,
+          "after": 113254,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 6792,
-          "after": 6796,
+          "before": 6796,
+          "after": 6801,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-01T09:00:01Z",
-          "after": "2026-09-01T13:02:43Z",
+          "before": "2026-09-01T13:02:43Z",
+          "after": "2026-09-02T14:51:42Z",
           "level": "activity"
         }
       ],
@@ -106,26 +112,26 @@
       "id": "n8n",
       "requestedFullName": "n8n-io/n8n",
       "httpStatus": 200,
-      "rateLimitRemaining": "4990",
+      "rateLimitRemaining": "4988",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 203002,
-          "after": 203016,
+          "before": 203016,
+          "after": 203137,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 60481,
-          "after": 60488,
+          "before": 60488,
+          "after": 60511,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-01T09:45:00Z",
-          "after": "2026-09-01T13:14:58Z",
+          "before": "2026-09-01T13:14:58Z",
+          "after": "2026-09-02T14:59:29Z",
           "level": "activity"
         }
       ],
@@ -137,26 +143,26 @@
       "id": "archify",
       "requestedFullName": "tt-a1i/archify",
       "httpStatus": 200,
-      "rateLimitRemaining": "4989",
+      "rateLimitRemaining": "4987",
       "status": "updated",
       "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 40559,
-          "after": 40999,
+          "before": 40999,
+          "after": 43351,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 2564,
-          "after": 2602,
+          "before": 2602,
+          "after": 2772,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-01T09:45:49Z",
-          "after": "2026-09-01T12:12:10Z",
+          "before": "2026-09-01T12:12:10Z",
+          "after": "2026-09-02T01:24:50Z",
           "level": "activity"
         }
       ],
@@ -168,18 +174,92 @@
       "id": "papertodo",
       "requestedFullName": "snownico0722/PaperTodo",
       "httpStatus": 200,
-      "rateLimitRemaining": "4988",
+      "rateLimitRemaining": "4986",
       "status": "updated",
-      "changeLevel": "statistics",
+      "changeLevel": "activity",
       "changes": [
         {
           "field": "stars",
-          "before": 2192,
-          "after": 2193,
+          "before": 2193,
+          "after": 2209,
           "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 110,
+          "after": 112,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-09-01T04:57:48Z",
+          "after": "2026-09-02T04:27:04Z",
+          "level": "activity"
         }
       ],
-      "researchRefreshRecommended": false,
+      "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "nanobot",
+      "requestedFullName": "HKUDS/nanobot",
+      "httpStatus": 200,
+      "rateLimitRemaining": "4985",
+      "status": "updated",
+      "changeLevel": "activity",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 47606,
+          "after": 47653,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 8404,
+          "after": 8409,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-09-01T12:19:34Z",
+          "after": "2026-09-02T10:05:55Z",
+          "level": "activity"
+        }
+      ],
+      "researchRefreshRecommended": true,
+      "contentReviewRecommended": false,
+      "reviewReasons": []
+    },
+    {
+      "id": "maka",
+      "requestedFullName": "apache/maka",
+      "httpStatus": 200,
+      "rateLimitRemaining": "4984",
+      "status": "updated",
+      "changeLevel": "activity",
+      "changes": [
+        {
+          "field": "stars",
+          "before": 4391,
+          "after": 4535,
+          "level": "statistics"
+        },
+        {
+          "field": "forks",
+          "before": 407,
+          "after": 420,
+          "level": "statistics"
+        },
+        {
+          "field": "pushedAt",
+          "before": "2026-09-01T14:58:14Z",
+          "after": "2026-09-02T14:51:50Z",
+          "level": "activity"
+        }
+      ],
+      "researchRefreshRecommended": true,
       "contentReviewRecommended": false,
       "reviewReasons": []
     }

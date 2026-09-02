@@ -3,96 +3,96 @@
     "githubId": 274495425,
     "fullName": "remotion-dev/remotion",
     "name": "Remotion",
-    "stars": 57949,
-    "forks": 4403,
+    "stars": 58103,
+    "forks": 4417,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T13:12:15Z",
+    "pushedAt": "2026-09-02T14:42:00Z",
     "license": "Remotion License",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "excalidraw": {
     "githubId": 231283452,
     "fullName": "excalidraw/excalidraw",
     "name": "Excalidraw",
-    "stars": 130919,
-    "forks": 15101,
+    "stars": 131000,
+    "forks": 15117,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T09:27:06Z",
+    "pushedAt": "2026-09-01T13:43:08Z",
     "license": "MIT",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "immich": {
     "githubId": 455229168,
     "fullName": "immich-app/immich",
     "name": "Immich",
-    "stars": 113148,
-    "forks": 6796,
+    "stars": 113254,
+    "forks": 6801,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T13:02:43Z",
+    "pushedAt": "2026-09-02T14:51:42Z",
     "license": "AGPL-3.0",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "n8n": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203016,
-    "forks": 60488,
+    "stars": 203137,
+    "forks": 60511,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T13:14:58Z",
+    "pushedAt": "2026-09-02T14:59:29Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "archify": {
     "githubId": 1211139949,
     "fullName": "tt-a1i/archify",
     "name": "Archify",
-    "stars": 40999,
-    "forks": 2602,
+    "stars": 43351,
+    "forks": 2772,
     "language": "JavaScript",
-    "pushedAt": "2026-09-01T12:12:10Z",
+    "pushedAt": "2026-09-02T01:24:50Z",
     "license": "MIT",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "papertodo": {
     "githubId": 1250907197,
     "fullName": "snownico0722/PaperTodo",
     "name": "PaperTodo",
-    "stars": 2193,
-    "forks": 110,
+    "stars": 2209,
+    "forks": 112,
     "language": "C#",
-    "pushedAt": "2026-09-01T04:57:48Z",
+    "pushedAt": "2026-09-02T04:27:04Z",
     "license": "Other",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:08Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "nanobot": {
     "githubId": 1147094660,
     "fullName": "HKUDS/nanobot",
     "name": "nanobot",
-    "stars": 47606,
-    "forks": 8404,
+    "stars": 47653,
+    "forks": 8409,
     "language": "Python",
-    "pushedAt": "2026-09-01T12:19:34Z",
+    "pushedAt": "2026-09-02T10:05:55Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-01T13:15:32Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   },
   "maka": {
     "githubId": 1251460378,
     "fullName": "apache/maka",
     "name": "maka",
-    "stars": 4391,
-    "forks": 407,
+    "stars": 4535,
+    "forks": 420,
     "language": "TypeScript",
-    "pushedAt": "2026-09-01T14:58:14Z",
+    "pushedAt": "2026-09-02T14:51:50Z",
     "license": "Apache License 2.0",
     "state": "active",
-    "fetchedAt": "2026-09-01T15:00:54Z"
+    "fetchedAt": "2026-09-02T14:59:30Z"
   }
 }

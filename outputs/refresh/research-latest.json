@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-01T13:15:12Z",
+  "generatedAt": "2026-09-02T14:59:40Z",
   "mode": "write",
   "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
-    "checked": 4,
-    "updated": 2,
-    "refreshed": 2,
-    "semanticReviewPending": 2,
+    "checked": 8,
+    "updated": 5,
+    "refreshed": 3,
+    "semanticReviewPending": 5,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
@@ -17,92 +17,159 @@
   "repositories": [
     {
       "id": "remotion",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0",
+      "semanticReviewStatus": "not-needed",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4991",
+      "reasons": []
+    },
+    {
+      "id": "excalidraw",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4990",
+      "reasons": []
+    },
+    {
+      "id": "immich",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619",
+      "semanticReviewStatus": "not-needed",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4989",
+      "reasons": []
+    },
+    {
+      "id": "n8n",
       "status": "updated",
       "observation": "source-changed",
       "changes": [
         {
           "field": "latestRelease.id",
-          "before": 379615362,
-          "after": 380399134,
+          "before": 379592100,
+          "after": 381094367,
           "level": "release"
         },
         {
           "field": "latestRelease.tagName",
-          "before": "v4.0.519",
-          "after": "v4.0.520",
+          "before": "n8n@2.36.9",
+          "after": "n8n@2.37.7",
           "level": "release"
         },
         {
           "field": "latestRelease.publishedAt",
-          "before": "2026-08-31T08:46:39Z",
-          "after": "2026-09-01T10:19:50Z",
+          "before": "2026-08-31T08:01:15Z",
+          "after": "2026-09-02T08:41:33Z",
           "level": "release"
         },
         {
           "field": "latestRelease.bodySha256",
-          "before": "a5877ee5a1e719874845a96b237cfd5f6ba2bdb86f7274748cf028a0646cf145",
-          "after": "cbcb40948bead228fbd7dceb2210c34d61d81371df92acf74e0e911e5d2b160a",
+          "before": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
+          "after": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
           "level": "release"
         }
       ],
-      "sourceFingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0",
+      "sourceFingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4995",
+      "rateLimitRemaining": "4988",
       "reasons": [
         "sourceFingerprint does not match the current source snapshot"
       ]
     },
     {
-      "id": "immich",
+      "id": "archify",
       "status": "updated",
       "observation": "source-changed",
       "changes": [
         {
           "field": "readme.sha",
-          "before": "02ae01857e52955e07cdb4d83a3d8f1d45e29e53",
-          "after": "ba774d44cdd7b9e9baed4cc4166d4c317e3ebae8",
+          "before": "ffbb93e6f50522a353a92ddf07589e6b4a5379ed",
+          "after": "5983178b956d2d31ec3229510cfe315108c8bafd",
           "level": "readme"
         },
         {
           "field": "readme.contentSha256",
-          "before": "03a9c05673a43119eae0813eaac8bacc2167bb2ffd962fe6436648c506ea75ac",
-          "after": "27b511ae6ee3be2295c4c1e0674dd0ac5b0c6023d9fdd9187869b1605ff56fad",
+          "before": "64e7f80d64e88536c6f5cb56b736b9eb4d2e57bbd341139af220cf4542d5dbfe",
+          "after": "55c3a1323906a910b38151935f2159ef13adddf295e43b9d2c4f7e646889396f",
           "level": "readme"
         }
       ],
-      "sourceFingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619",
+      "sourceFingerprint": "28845976be5b8f4754c3a7868d1f35281eb5a8bbb87ba00a0032888476943a1b",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4994",
-      "reasons": [
-        "sourceFingerprint does not match the current source snapshot"
-      ]
-    },
-    {
-      "id": "n8n",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "91210a20cd5bbf4e90f005f820296d1d63475bf8ebc847e84da34a39eb9964bb",
-      "semanticReviewStatus": "not-needed",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4993",
+      "rateLimitRemaining": "4987",
       "reasons": []
     },
     {
-      "id": "archify",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "958331d7431a921a64184e9c56a98a3c03480e4ceb92776b7872651031573f4f",
-      "semanticReviewStatus": "not-needed",
+      "id": "papertodo",
+      "status": "updated",
+      "observation": "baseline",
+      "changes": [
+        {
+          "field": "sourceBaseline",
+          "before": null,
+          "after": "created",
+          "level": "baseline"
+        }
+      ],
+      "sourceFingerprint": "95d947ac85fda9b6b93065c05bc2c0affc94919f1bf2b7e500059c8bdf868ead",
+      "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4992",
+      "rateLimitRemaining": "4986",
+      "reasons": []
+    },
+    {
+      "id": "nanobot",
+      "status": "updated",
+      "observation": "baseline",
+      "changes": [
+        {
+          "field": "sourceBaseline",
+          "before": null,
+          "after": "created",
+          "level": "baseline"
+        }
+      ],
+      "sourceFingerprint": "2a3d2d2ac2d6368d4599406ab2f8ae2eda33ac4c5a62ed849d8d71182f5d743a",
+      "semanticReviewStatus": "pending",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4985",
+      "reasons": []
+    },
+    {
+      "id": "maka",
+      "status": "updated",
+      "observation": "baseline",
+      "changes": [
+        {
+          "field": "sourceBaseline",
+          "before": null,
+          "after": "created",
+          "level": "baseline"
+        }
+      ],
+      "sourceFingerprint": "839843aca463ead8ef13903e6eefb7909eed70246236bdcdefbe12e23861ad64",
+      "semanticReviewStatus": "pending",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4984",
       "reasons": []
     }
   ]
