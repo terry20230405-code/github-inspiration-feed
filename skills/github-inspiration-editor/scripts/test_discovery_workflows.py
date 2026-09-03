@@ -40,6 +40,7 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
         self.assertIn("OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}", workflow)
         self.assertIn("AI_API_BASE_URL: ${{ vars.AI_API_BASE_URL }}", workflow)
         self.assertIn("AI_MODEL: ${{ vars.AI_MODEL }}", workflow)
+        self.assertIn("AI_STREAM: ${{ vars.AI_STREAM }}", workflow)
         self.assertIn("pull-requests: write", workflow)
         self.assertIn("gh pr create", workflow)
         self.assertIn("if: steps.drafts.outputs.candidate_count != '0'", workflow)

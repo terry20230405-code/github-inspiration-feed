@@ -12,10 +12,12 @@ import time
 import unittest
 from datetime import datetime, timezone
 from contextlib import redirect_stderr, redirect_stdout
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import generate_discovery_drafts as drafts
+import ai_stream
 import publish_discovery_batch as publisher
 
 
@@ -27,6 +29,23 @@ def ai_provider() -> dict[str, object]:
         "reasoningEffort": "medium",
         "maxCompletionTokens": 16000,
     }
+
+
+class StreamResponse(io.BytesIO):
+    def __init__(self, body: bytes, content_type: str = "text/event-stream; charset=utf-8") -> None:
+        super().__init__(body)
+        self.headers = {"Content-Type": content_type}
+
+
+def sse_event(value: object) -> bytes:
+    data = value if isinstance(value, str) else json.dumps(value, ensure_ascii=False)
+    return f"data: {data}\r\n\r\n".encode("utf-8")
+
+
+def sse_choice(content: str | None = None, *, reason: str | None = None, **delta: object) -> bytes:
+    if content is not None:
+        delta["content"] = content
+    return sse_event({"choices": [{"index": 0, "delta": delta, "finish_reason": reason}]})
 
 
 def generation_payload() -> dict[str, object]:
@@ -149,6 +168,7 @@ def generation_payload() -> dict[str, object]:
 
 def evidence() -> dict[str, object]:
     return {
+        "fetchedAt": "2026-08-30T00:00:00Z",
         "repository": {
             "id": 987654321,
             "full_name": "example/visual-map",
@@ -479,6 +499,160 @@ class DraftTests(unittest.TestCase):
         self.assertEqual(request.get_header("Authorization"), "Bearer sk-test-secret")
         sent = json.loads(request.data.decode("utf-8"))
         self.assertEqual(sent["response_format"]["type"], "json_schema")
+
+    def test_stream_keeps_strict_schema_and_assembles_chinese_and_usage(self) -> None:
+        body = b": heartbeat\r\n\r\n"
+        body += sse_choice(role="assistant")
+        body += sse_choice(reasoning_content="not part of the JSON")
+        for piece in ('{"句子":', '"流式', '接收完整结果"}'):
+            body += sse_choice(piece)
+        body += sse_choice(reason="stop")
+        body += sse_event({"choices": [], "usage": {"prompt_tokens": 100, "completion_tokens": 30, "total_tokens": 130}})
+        body += sse_event("[DONE]")
+        provider = {**ai_provider(), "stream": True}
+        schema = drafts.generation_schema()
+        with patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(body)) as urlopen:
+            result = drafts.call_ai("test-key", provider, "rules", "evidence", "stream_test", schema)
+        self.assertEqual(result, {"句子": "流式接收完整结果"})
+        self.assertEqual(result.telemetry["usage"]["totalTokens"], 130)
+        self.assertEqual(result.telemetry["transport"]["responseMode"], "stream")
+        self.assertIsNotNone(result.telemetry["transport"]["firstEventSeconds"])
+        sent = json.loads(urlopen.call_args.args[0].data)
+        ordinary = drafts.chat_completions_payload(ai_provider(), "rules", "evidence", "stream_test", schema)
+        self.assertEqual(sent.pop("stream_options"), {"include_usage": True})
+        self.assertIs(sent.pop("stream"), True)
+        self.assertEqual(sent, ordinary)
+
+    def test_stream_without_usage_is_not_reported_as_zero_usage(self) -> None:
+        body = sse_choice('{"ok":true}') + sse_choice(reason="stop") + sse_event("[DONE]")
+        with patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(body)):
+            result = drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertIsNone(result.telemetry["usage"])
+
+    def test_real_urllib_reads_chunked_sse_with_split_utf8_bytes(self) -> None:
+        body = sse_choice('{"句子":"完整结果"}') + sse_choice(reason="stop") + sse_event("[DONE]")
+        received: list[dict[str, object]] = []
+
+        class Handler(BaseHTTPRequestHandler):
+            protocol_version = "HTTP/1.1"
+
+            def log_message(self, *_args: object) -> None:
+                pass
+
+            def do_POST(self) -> None:
+                received.append(json.loads(self.rfile.read(int(self.headers["Content-Length"]))))
+                self.send_response(200)
+                self.send_header("Content-Type", "text/event-stream")
+                self.send_header("Transfer-Encoding", "chunked")
+                self.end_headers()
+                # Split every byte, including within Chinese UTF-8 sequences.
+                for byte in body:
+                    self.wfile.write(b"1\r\n" + bytes([byte]) + b"\r\n")
+                self.wfile.write(b"0\r\n\r\n")
+                self.wfile.flush()
+
+        with HTTPServer(("127.0.0.1", 0), Handler) as server:
+            server.timeout = 2
+            worker = threading.Thread(target=server.handle_request, daemon=True)
+            worker.start()
+            try:
+                endpoint = f"http://127.0.0.1:{server.server_port}/chat/completions"
+                with patch.object(drafts, "chat_completions_endpoint", return_value=endpoint):
+                    result = drafts.call_ai("local-test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {}, attempts=1)
+                self.assertEqual(result, {"句子": "完整结果"})
+                self.assertTrue(received[0]["stream"])
+                self.assertTrue(received[0]["response_format"]["json_schema"]["strict"])
+            finally:
+                worker.join(timeout=3)
+            self.assertFalse(worker.is_alive())
+
+    def test_stream_multiline_data_and_bom(self) -> None:
+        body = b'\xef\xbb\xbfdata: {"choices":\r\ndata: [{"index":0,"delta":{"content":"{\\"ok\\":true}"},"finish_reason":"stop"}]}\r\n\r\n'
+        body += sse_event("[DONE]")
+        result = ai_stream.read_chat_stream(StreamResponse(body), started_at=time.monotonic(), on_first_event=lambda: None)
+        self.assertEqual(drafts.extract_chat_completion_text(result), '{"ok":true}')
+
+    def test_complete_json_without_stream_terminator_retries_and_discards_partial(self) -> None:
+        incomplete = sse_choice('{"wrong":true}') + sse_choice(reason="stop")
+        complete = sse_choice('{"ok":true}') + sse_choice(reason="stop") + sse_event("[DONE]")
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=[StreamResponse(incomplete), StreamResponse(complete)]) as urlopen, patch.object(drafts.time, "sleep"):
+            result = drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(result.telemetry["attempts"], 2)
+        self.assertEqual(urlopen.call_args_list[0].args[0].data, urlopen.call_args_list[1].args[0].data)
+
+    def test_stream_failures_keep_attempt_count_in_metrics(self) -> None:
+        collector = drafts.AIMetricsCollector()
+        broken = sse_choice('{"ok":true}') + sse_choice(reason="stop")
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=lambda *_args, **_kwargs: StreamResponse(broken)) as urlopen, patch.object(drafts.time, "sleep"):
+            with self.assertRaisesRegex(drafts.AIServiceError, "StreamInterrupted"):
+                drafts.invoke_ai(drafts.call_ai, collector, "example/test", "test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+        self.assertEqual(urlopen.call_count, 3)
+        report = collector.report(wall_time_seconds=1, max_concurrency=1)
+        self.assertEqual(report["calls"][0]["attempts"], 3)
+        self.assertEqual(report["calls"][0]["transport"]["responseMode"], "stream")
+        self.assertIsNone(report["calls"][0]["usage"])
+        self.assertEqual(report["successfulCallCount"], 0)
+
+    def test_stream_rejects_missing_stop_even_with_done_and_valid_json(self) -> None:
+        body = sse_choice('{"ok":true}') + sse_event("[DONE]")
+        with self.assertRaises(ai_stream.StreamInterrupted):
+            ai_stream.read_chat_stream(StreamResponse(body), started_at=time.monotonic(), on_first_event=lambda: None)
+
+    def test_stream_rejects_refusal_limit_filter_tool_calls_and_wrong_choice(self) -> None:
+        bodies = [
+            sse_choice(reason="length"), sse_choice(reason="content_filter"),
+            sse_choice(refusal="sk-private-provider-key"),
+            sse_choice(tool_calls=[{"name": "unexpected"}]),
+            sse_event({"choices": [{"index": 1, "delta": {}, "finish_reason": "stop"}]}),
+            sse_event({"error": {"message": "sk-private-provider-key"}}),
+            sse_choice('{"ok":true}', reason="stop") + sse_choice("more text"),
+        ]
+        for body in bodies:
+            with self.subTest(body=body), patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(body + sse_event("[DONE]"))) as urlopen:
+                with self.assertRaises(drafts.AIServiceError) as raised:
+                    drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+                self.assertEqual(urlopen.call_count, 1)
+                self.assertNotIn("sk-private-provider-key", str(raised.exception))
+
+    def test_stream_rejects_malformed_event_and_structured_json(self) -> None:
+        bodies = [sse_event("{not-json"), sse_choice("{not-json", reason="stop") + sse_event("[DONE]")]
+        for body in bodies:
+            with self.subTest(body=body), patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(body)):
+                with self.assertRaisesRegex(drafts.AIServiceError, "JSONDecodeError"):
+                    drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {}, attempts=1)
+
+    def test_stream_reader_has_size_and_elapsed_time_budgets(self) -> None:
+        with patch.object(ai_stream, "MAX_LINE_BYTES", 8):
+            with self.assertRaisesRegex(ai_stream.StreamProtocolError, "size budget"):
+                ai_stream.read_chat_stream(StreamResponse(b"data: too long\n"), started_at=time.monotonic(), on_first_event=lambda: None)
+        with patch.object(ai_stream, "MAX_RESPONSE_BYTES", 10):
+            with self.assertRaisesRegex(ai_stream.StreamProtocolError, "size budget"):
+                ai_stream.read_chat_stream(StreamResponse(b":ping\n" * 3), started_at=time.monotonic(), on_first_event=lambda: None)
+        with patch.object(ai_stream.time, "monotonic", side_effect=[0, 1, 2, 601]):
+            with self.assertRaisesRegex(ai_stream.StreamInterrupted, "read budget"):
+                ai_stream.read_chat_stream(StreamResponse(b":ping\n" * 3), started_at=0, on_first_event=lambda: None)
+
+    def test_stream_request_accepts_complete_json_when_gateway_ignores_stream(self) -> None:
+        body = json.dumps({"choices": [{"finish_reason": "stop", "message": {"content": '{"ok":true}'}}]}).encode()
+        with patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(body, "application/json")) as urlopen:
+            result = drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(result.telemetry["transport"]["responseMode"], "json")
+        self.assertEqual(urlopen.call_count, 1)
+
+    def test_stream_does_not_retry_unsupported_parameters_or_accept_html(self) -> None:
+        error = drafts.urllib.error.HTTPError("https://example.test", 400, "Bad Request", {}, io.BytesIO(b"stream unsupported"))
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=error) as urlopen:
+            with self.assertRaises(drafts.AIServiceError) as raised:
+                drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
+        self.assertTrue(raised.exception.fatal)
+        self.assertEqual(raised.exception.telemetry["attempts"], 1)
+        self.assertEqual(urlopen.call_count, 1)
+        with patch.object(drafts.urllib.request, "urlopen", return_value=StreamResponse(b"<html>error</html>", "text/html")):
+            with self.assertRaisesRegex(drafts.AIServiceError, "compatibility"):
+                drafts.call_ai("test-key", {**ai_provider(), "stream": True}, "rules", "evidence", "test", {})
 
     def test_reads_chat_completion_content_and_rejects_truncation(self) -> None:
         response = {
@@ -825,6 +999,65 @@ class DraftTests(unittest.TestCase):
             finally:
                 drafts.GENERATED_ROOT = original_root
 
+    def test_acquisition_timestamp_is_recorded_by_fetcher_not_github(self) -> None:
+        captured = datetime(2026, 9, 4, 3, 2, 1, tzinfo=timezone.utc)
+
+        def request(url: str, _token: str | None, **_kwargs: object) -> object:
+            if url.endswith("/readme"):
+                return {"content": drafts.base64.b64encode(b"Official README").decode(), "sha": "abc"}
+            if url.endswith("/releases/latest") or url.endswith("/license"):
+                return None
+            return {**evidence()["repository"], "fetchedAt": "untrusted upstream field"}
+
+        with patch.object(drafts, "utc_now", return_value=captured):
+            snapshot = drafts.fetch_evidence("example/visual-map", None, request=request)
+        self.assertEqual(snapshot["fetchedAt"], "2026-09-04T03:02:01Z")
+        supplied = json.loads(drafts.evidence_input(snapshot))
+        self.assertEqual(supplied["orchestratorContext"]["fetchedAt"], snapshot["fetchedAt"])
+        self.assertNotIn("fetchedAt", supplied["metadata"])
+
+    def test_missing_or_invalid_acquisition_time_is_a_technical_error(self) -> None:
+        for timestamp in (None, "未知", "2026-02-31T00:00:00Z", "2026-09-04T00:00:00+00:00"):
+            with self.subTest(timestamp=timestamp):
+                snapshot = evidence()
+                snapshot["fetchedAt"] = timestamp
+                with self.assertRaises(drafts.RepositoryServiceError):
+                    drafts.evidence_input(snapshot)
+
+    def test_same_timestamp_reaches_generation_both_repairs_reviews_and_frozen_batch(self) -> None:
+        timestamp = "2026-09-04T03:02:01Z"
+        snapshot = evidence()
+        snapshot["fetchedAt"] = timestamp
+        captured_inputs: list[tuple[str, dict[str, object]]] = []
+        replies = iter([generation_payload(), quality_payload("B1"), generation_payload(), quality_payload("B1"), generation_payload(), quality_payload()])
+
+        def fake_ai(_key: str, _provider: object, _rules: str, input_text: str, stage: str, _schema: object) -> dict[str, object]:
+            supplied = json.loads(input_text)
+            captured_inputs.append((stage, supplied))
+            if stage == "inspiration_project_draft":
+                self.assertEqual(supplied["orchestratorContext"]["fetchedAt"], timestamp)
+            elif "repair" in stage:
+                self.assertEqual(supplied["primaryEvidence"]["orchestratorContext"]["fetchedAt"], timestamp)
+            else:
+                self.assertEqual(supplied["project"]["repository"]["fetchedAt"], timestamp)
+                self.assertIn(f"- Fetched at: {timestamp}", supplied["research"])
+            return next(replies)
+
+        with tempfile.TemporaryDirectory(dir=drafts.PROJECT_ROOT / "outputs/generated") as temporary, patch.object(drafts, "GENERATED_ROOT", Path(temporary) / "batches"):
+            result = drafts.generate_batch(
+                {"aiProvider": ai_provider(), "minimumReadmeCharacters": 100, "aiAnalysisLimit": 1, "maxCandidatesPerRun": 1},
+                {"policySha256": "b" * 64, "aiQueue": [{"fullName": "example/visual-map"}]},
+                "test-key", ai_call=fake_ai, evidence_fetcher=lambda *_args: snapshot,
+                now=datetime(2026, 9, 4, 3, 0, 0, tzinfo=timezone.utc), write=True,
+            )
+            self.assertEqual(result["candidateCount"], 1)
+            self.assertEqual(len(captured_inputs), 6)
+            batch = drafts.PROJECT_ROOT / result["batchPath"]
+            project = drafts.read_json(next(batch.glob("*.project.json")))
+            self.assertEqual(project["repository"]["fetchedAt"], timestamp)
+            self.assertIn(f"- Fetched at: {timestamp}", next(batch.glob("*.research.md")).read_text(encoding="utf-8"))
+            self.assertEqual(drafts.deterministic_a3_item(project, snapshot, timestamp)["status"], "pass")
+
     def test_two_failed_repairs_preserve_a4_evidence_and_history(self) -> None:
         first = generation_payload()
         repair_one = copy.deepcopy(first)
@@ -972,6 +1205,7 @@ class DraftTests(unittest.TestCase):
         first_generation_finished = threading.Event()
         third_started_before_first_finished = False
         lock = threading.Lock()
+        timestamps = {f"{owner}/shared": f"2026-09-03T00:00:0{index}Z" for index, owner in enumerate(("first", "second", "third"), 1)}
 
         def fake_ai(*args: object, **_kwargs: object) -> dict[str, object]:
             nonlocal third_started_before_first_finished
@@ -979,8 +1213,10 @@ class DraftTests(unittest.TestCase):
             schema_name = str(args[4])
             if schema_name == "inspiration_project_draft":
                 full_name = str(input_value["metadata"]["full_name"])
+                self.assertEqual(input_value["orchestratorContext"]["fetchedAt"], timestamps[full_name])
             else:
                 full_name = str(input_value["project"]["repository"]["fullName"])
+                self.assertEqual(input_value["project"]["repository"]["fetchedAt"], timestamps[full_name])
             if full_name == "first/shared" and schema_name == "inspiration_project_draft":
                 time.sleep(0.20)
                 first_generation_finished.set()
@@ -997,6 +1233,7 @@ class DraftTests(unittest.TestCase):
             assert isinstance(repository, dict)
             owner, name = full_name.split("/", 1)
             repository["id"] = {"first": 2001, "second": 2002, "third": 2003}[owner]
+            value["fetchedAt"] = timestamps[full_name]
             repository["full_name"] = full_name
             repository["name"] = name
             repository["owner"] = {"login": owner}

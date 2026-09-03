@@ -4,13 +4,15 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from copy import deepcopy
 from datetime import datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
-from discover_repositories import DiscoveryError, discover, generated_repositories, validate_config
+from discover_repositories import DiscoveryError, apply_environment_overrides, discover, generated_repositories, validate_config
 
 
 NOW = datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc)
@@ -77,6 +79,28 @@ class DiscoveryTests(unittest.TestCase):
 
     def tearDown(self) -> None:
         self.temp.cleanup()
+
+    def test_optional_streaming_setting_is_strictly_boolean(self) -> None:
+        for enabled in (True, False):
+            config = deepcopy(self.config)
+            config["aiProvider"]["stream"] = enabled
+            self.assertIs(validate_config(config)["aiProvider"]["stream"], enabled)
+        self.assertNotIn("stream", validate_config(deepcopy(self.config))["aiProvider"])
+        for invalid in ("true", 1, None):
+            config = deepcopy(self.config)
+            config["aiProvider"]["stream"] = invalid
+            with self.assertRaises(DiscoveryError):
+                validate_config(config)
+
+    def test_stream_environment_override_does_not_mutate_config(self) -> None:
+        for raw, expected in (("true", True), ("false", False)):
+            with patch.dict(os.environ, {"AI_STREAM": raw}, clear=True):
+                updated = apply_environment_overrides(self.config)
+                self.assertIs(updated["aiProvider"]["stream"], expected)
+                self.assertNotIn("stream", self.config["aiProvider"])
+        with patch.dict(os.environ, {"AI_STREAM": "yes"}, clear=True):
+            with self.assertRaisesRegex(DiscoveryError, "AI_STREAM"):
+                apply_environment_overrides(self.config)
 
     def test_filters_known_archived_and_missing_license(self) -> None:
         items = [

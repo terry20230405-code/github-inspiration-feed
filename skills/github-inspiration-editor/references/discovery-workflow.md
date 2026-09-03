@@ -16,6 +16,14 @@
 
 网络故障和内容质量失败必须分开：断线、连接重置、响应截断等临时读取故障最多尝试三次，重试使用同一份严格结构请求，不消耗内容修复轮次；密钥、权限、地址或接口参数等确定性错误不盲目重试，并停止向剩余候选发起新任务。已在执行的候选会完成各自检查。重试可能重复计费，因此不能无限重试。
 
+AI 请求默认启用 `aiProvider.stream: true`，通过 Chat Completions SSE 分段接收 `choices[0].delta.content`，请求 `stream_options.include_usage`。这只改变传输方式，不改变模型、推理强度、输出上限、严格 JSON Schema 或 19 项质量要求。程序必须收到正常的 `finish_reason: stop` 和 `data: [DONE]`，拼接结果还须通过完整 JSON 解析及现有校验；缺结束标记、断线、截断、拒答、过滤或接口错误均不能产生可发布候选。重试从空缓冲重新开始，不拼接前一次失败结果。
+
+协议字段依据 [OpenAI Chat Completions 官方参考](https://developers.openai.com/api/reference/resources/chat)；这不代表第三方服务已经通过兼容性实测。
+
+流式读取设有单次读取 300 秒空闲超时、累计 600 秒读取预算（在每次阻塞读取前后检查，因此最长还可能等待一次空闲超时）和 32 MiB 响应大小上限。心跳不能使请求无限运行。日志记录首个数据事件到达和最终完成，不打印生成正文或内部推理。普通 JSON 响应也必须明确以 `stop` 正常结束，输出超限不能通过。
+
+第三方接口是否真正支持流式由运行时响应确认，不能仅凭“OpenAI 兼容”宣称支持。如果它忽略流式参数而返回完整 `application/json`，保留该响应并进行同样的严格校验，不额外调用一次 AI；日志明确显示未采用流式。如果它以 HTTP 400/422 拒绝参数，不盲目重试，也不退回无结构文本。可通过 Actions Variable `AI_STREAM=false` 切回原来的普通 JSON 接收，或在配置中设置 `stream: false`。未指定该可选字段的旧配置仍使用普通 JSON。流式可能缓解等待整包响应时的网关断线，但无法保证修复服务商的固定总时限或上游故障。
+
 一个候选遇到服务故障不能清空其他候选。合格项仍生成正常的指纹批次并可创建审核 PR；技术故障单独记录在 `errors` / `errorCount`，不计入质量拒绝数量。CLI 输出完整结果后以非零状态退出，Actions 先保存报告和合格批次、运行验证、创建合格候选的审核 PR，再报告整轮技术失败。该 PR 合并仍只批准其中已验证的候选；失败项不进入批次。没有合格项时不创建 PR。进程被强制终止或主机丢失不属于这一候选级隔离机制的恢复保证。
 
 旧项目巡检与新项目发现共享同一个定时触发，但权限边界不同。巡检只能自动修改 `src/data/repositories.json` 及阶段六至阶段八规定的刷新状态、证据、报告和快照；绝不能修改 `src/data/editorial.json`、`src/data/visuals.json` 或 `src/data/order.json`。来源语义发生变化时只留下待复审证据，不能把“本次定时运行”解释为自动重写或发布旧项目内容。
@@ -45,7 +53,7 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README、官方 LICENSE
 
 1. 重新检查仓库身份、公开状态、Fork、归档和禁用，并额外读取 GitHub 官方 LICENSE 端点。标准许可证以 SPDX 身份核对，非标准许可证尝试从正式许可证文件标题保存准确名称；两个正式来源确实冲突时才停止人工确认。
 2. README 少于配置字数时停止，不用猜测补内容。
-3. 通过 OpenAI 兼容的 Chat Completions 接口和严格 JSON Schema 生成 `editorial`、事实、字段证据、推断和方向依据。每个仓库先生成五个完整候选方向以及十组两两比较，为淘汰弱方向留下余量。请求使用 `messages` 发送规则与仓库证据，从 `choices[0].message.content` 读取结果。
+3. 通过 OpenAI 兼容的 Chat Completions 接口和严格 JSON Schema 生成 `editorial`、事实、字段证据、推断和方向依据。每个仓库先生成五个完整候选方向以及十组两两比较，为淘汰弱方向留下余量。请求使用 `messages` 发送规则与仓库证据；流式拼接 `choices[0].delta.content`，普通模式读取 `choices[0].message.content`，两种模式都只在结果完整后进入下一阶段。
 4. 脚本确定性写入 `repository` 层并生成相邻颜色避让后的 `visual` 层；AI不能改写 GitHub 数字或自行选择随机颜色。
 5. 运行项目结构和研究笔记校验。
 6. 程序逐项核对 A3 的 GitHub ID、完整仓库名、许可证、仓库状态、抓取时间、Star、Fork 和推送时间；这些完全相等才通过，AI 无权改判。
@@ -59,7 +67,11 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README、官方 LICENSE
 
 修复请求只传一份一手证据和上一版生成对象，不重复传送可确定性派生的项目 JSON 与研究笔记；同时传入当前失败项、失败的单方向审核、失败的方向组合审核、结构错误和已经通过的质量约束。第一轮允许同步更新失败语义单元的直接依赖字段，第二轮必须舍弃已被证明无效的方案；修复后仍须重新生成并完成结构、A3 和语义复检。
 
+每个仓库完成本轮取证时，由程序记录 UTC `fetchedAt`。首次生成通过 `orchestratorContext.fetchedAt` 接收这个真实时间；两轮修复的 `primaryEvidence` 携带同一字段；审核 JSON、研究笔记 Snapshot、A3 程序核验和最终冻结文件全部复用同一个值，不使用批次开始时间、GitHub `updated_at` 或修复时的当前时间代替。抓取时间不属于 GitHub 自身发布的事实，不能要求 README 为它提供证据。采集程序若未提供有效时间，按技术错误停止，不要求 AI 猜测或误判为仓库内容不合格。批次 `createdAt` 仍表示本轮开始时间，质量记录 `reviewedAt` 表示该候选审核完成时间。
+
 每轮 `draft-result.json` 和 Actions 摘要记录候选并发上限、每次 AI 调用阶段、耗时、输入字符数、重试次数，以及中转接口实际返回时的 Token 用量。统计不得保存提示词正文、API Key 或其他密钥。
+
+失败请求同样保留已尝试次数。每次调用的 `transport` 记录请求模式、最终尝试实际响应模式与首个数据事件耗时；缺失 usage 保留为未知，不当作零费用。汇总 Token 仅包括成功返回的 usage，不能覆盖未返回用量的失败尝试，实际计费以服务商账单为准。
 
 每个合格仓库生成 `.project.json`、`.research.md` 和 `.quality.json`。同一轮候选保存在 `outputs/generated/discovery-batches/<batch-id>/`，并由 `manifest.json` 绑定所有文件指纹。
 
@@ -95,6 +107,7 @@ AI 只接收重新核对后的 GitHub 元数据、官方 README、官方 LICENSE
 - `OPENAI_API_KEY` 必须由仓库所有者保存在 GitHub Actions Secret 中，只允许服务端工作流读取。名称为兼容现有设置而保留，当前保存的是 4Router Key。
 - 默认 AI 协议、Base URL、模型、推理强度和输出上限保存在 `config/discovery.json` 的 `aiProvider` 中。当前是 `openai-chat-completions`、`https://4router.net/v1` 和 `gpt-5.4`。
 - 如需临时切换兼容服务，可在 GitHub Actions Variables 中设置 `AI_API_BASE_URL` 和 `AI_MODEL`；地址必须是无账号、密码、查询参数和片段的 HTTPS URL。
+- `AI_STREAM` 可设为 `true` 或 `false` 覆盖配置中的流式开关；留空则按配置执行。该变量不是密钥，无须更换 `OPENAI_API_KEY`。
 - 仓库 Actions 设置需要允许工作流读写仓库内容并创建 Pull Request。
 
 缺少密钥、接口限流、网络失败、服务不支持严格 JSON Schema 或 API 返回无效结构时，工作流停止并保留日志，不自动退回到不受约束的普通文本模式，也不降低标准继续发布。错误日志会遮盖疑似 API Key。

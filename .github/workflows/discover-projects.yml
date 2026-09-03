@@ -33,6 +33,7 @@ jobs:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       AI_API_BASE_URL: ${{ vars.AI_API_BASE_URL }}
       AI_MODEL: ${{ vars.AI_MODEL }}
+      AI_STREAM: ${{ vars.AI_STREAM }}
       DISCOVERY_AI_ANALYSIS_LIMIT: ${{ inputs.ai_analysis_limit }}
       DISCOVERY_MAX_CANDIDATES: ${{ inputs.max_candidates }}
 

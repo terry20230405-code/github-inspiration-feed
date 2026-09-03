@@ -96,8 +96,10 @@ def validate_config(value: object) -> dict[str, object]:
             raise DiscoveryError(f"search lane {lane_id} needs a query")
     provider = value.get("aiProvider")
     required_provider_fields = {"protocol", "baseUrl", "model", "reasoningEffort", "maxCompletionTokens"}
-    if not isinstance(provider, dict) or set(provider) != required_provider_fields:
-        raise DiscoveryError(f"aiProvider must contain exactly: {', '.join(sorted(required_provider_fields))}")
+    if not isinstance(provider, dict) or not required_provider_fields.issubset(provider) or set(provider) - required_provider_fields - {"stream"}:
+        raise DiscoveryError(f"aiProvider must contain: {', '.join(sorted(required_provider_fields))}; only stream is optional")
+    if "stream" in provider and not isinstance(provider["stream"], bool):
+        raise DiscoveryError("aiProvider.stream must be a boolean")
     if provider.get("protocol") != "openai-chat-completions":
         raise DiscoveryError("aiProvider.protocol must be openai-chat-completions")
     parsed_base_url = urllib.parse.urlsplit(str(provider.get("baseUrl") or ""))
@@ -156,6 +158,11 @@ def apply_environment_overrides(config: dict[str, object]) -> dict[str, object]:
             provider["baseUrl"] = base_url
         if model:
             provider["model"] = model
+        stream = os.environ.get("AI_STREAM", "").strip().lower()
+        if stream:
+            if stream not in {"true", "false"}:
+                raise DiscoveryError("AI_STREAM must be true or false")
+            provider["stream"] = stream == "true"
         updated["aiProvider"] = provider
     return validate_config(updated)
 
