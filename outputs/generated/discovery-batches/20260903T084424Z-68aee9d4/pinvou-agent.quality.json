@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "pinvou-agent",
+  "projectPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/pinvou-agent.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/pinvou-agent.research.md",
+  "projectSha256": "a8be69acb54aac9ca24241b83cbdc5597f0bdb1af64137877ce662ca995e6449",
+  "researchSha256": "ee3b80bf42644fc5e9755c3d0f4b9ce5d1e6d84c5fc56a982cdfa5a6b46a602a",
+  "reviewedAt": "2026-09-03T08:44:24Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "repository.githubId/fullName/name/stars/forks/language/state 与 research 的 F1/F2/F4 对齐；editorial.summary、editorial.audience、editorial.features、editorial.stack 分别对应研究笔记中的 F5–F14 与 Page field evidence，字段到事实 ID 的映射清楚。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "research notes 把推断和原始事实分开：editorial.hook、meaning、opportunity、audience 都标为 inferred，并在 Direction rationale 中为每个方向列出 reused capability、Evidence、New audience/problem、workflow 和 Substantive difference。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "repository.license 为 MIT License，research 的 F4 同时引用 S1 与官方 LICENSE 文件 S4，未见 README badge 或其它来源与官方 LICENSE 的冲突。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook“把聊天窗口变成能交付文件的桌面助手”是自然中文；“变成”与“桌面助手”搭配顺，宾语“能交付文件”明确，不是英文直译或抽象堆词。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 交代了接入什么（本地模型或兼容 OpenAI 的 API）、用户做什么（把附件、知识库和工具放进同一会话里）、最后得到什么（可继续修改的文件产物、视觉稿或代码改动）。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary 与 features 共同覆盖了至少三项核心能力：附件/产物管理、知识库检索与来源追踪、设计模式的可编辑视觉结果、代码模式的真实项目协作。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "summary 保留了 Rust、Tauri、React、Vite、ACP、MCP、OpenAI-compatible API 等会影响理解和复用的基础技术词，并说明了它们在桌面应用、模型接入和工具协作中的作用。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只建立记忆点，没有列功能清单；summary 另外展开了附件、知识库、设计、代码与产物流，不是重复 hook 句子。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "summary 只描述原项目现有能力；meaning 解释这些能力为何可复用到更窄产品，没有把新方向写成既成事实。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "opportunity 每条都把已验证能力或限制（附件/知识库/设计编辑/工作区绑定/本地数据流）连接到具体摩擦与新产品可能性，没有停留在“可以加 AI”。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "editorial.audience 只描述原项目的桌面用户；每个方向的 audience 只写新产品用户，approach 说明完整流程，scope 只列支撑该流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "选定的 contract-review-assistant、family-archive-qna、chat-action-digest 都写明了具体人群和重复场景：合同协调人反复比对条款、家庭成员反复找资料、团队协调人反复整理群聊纪要。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "三个入选方向都写清了输入、步骤和结果：例如合同文件→挂载知识集→生成条款摘要/问题清单→Markdown 审阅包；家庭资料→本地知识集→按主题查询→带来源问答；群聊消息与附件→整理纪要/待办→可转发文件。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "三个入选方向都复用到明确事实 ID：contract-review-assistant 复用 F9/F10；family-archive-qna 复用 F10/F13；chat-action-digest 复用 F9/F11/F6。它们相对原项目在用户、输入、工作流、结果上至少有两项实质变化。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "三个入选方向的 scope 都控制在 5 项左右，且仅包含完成流程所需功能：导入/挂载、检索或整理、生成产物、保存/导出、统一查看，没有路线图或装饰项。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "三项入选方向两两比较都至少有两项实质不同：合同审阅 vs 家庭档案、合同审阅 vs 群聊纪要、家庭档案 vs 群聊纪要，均在 audience/input/workflow/outcome 上差异明显，不是仅换文件类型或界面。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "每个入选方向都说明了具体价值：合同方向减少反复摘录与改写，家庭方向减少找资料和担心隐私的麻烦，群聊方向减少会后人工提炼和漏项。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "入选三项中包含 family-archive-qna，主要服务于个人/家庭场景，满足“至少一个非商业方向”的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

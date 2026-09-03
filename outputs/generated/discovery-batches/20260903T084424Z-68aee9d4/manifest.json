@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260903T084424Z-68aee9d4",
+  "createdAt": "2026-09-03T08:44:24Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "snapotter",
+      "fullName": "snapotter-hq/SnapOtter",
+      "githubId": 1195367387,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/snapotter.project.json",
+          "sha256": "51620affb0d43682bfeae3d318d03c0b91dde27fc1e6d6266d59578637c70743"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/snapotter.research.md",
+          "sha256": "883235214c0a5569a6e5a4d0a9b05eff5183c6a501025979c3d97b5d89ca6674"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/snapotter.quality.json",
+          "sha256": "280b0f105fad46bccc08f8fcf6cd8ab476917204670a03865c3bebd0103da739"
+        }
+      }
+    },
+    {
+      "projectId": "pinvou-agent",
+      "fullName": "Pinvou/pinvou-agent",
+      "githubId": 1310758816,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/pinvou-agent.project.json",
+          "sha256": "a8be69acb54aac9ca24241b83cbdc5597f0bdb1af64137877ce662ca995e6449"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/pinvou-agent.research.md",
+          "sha256": "ee3b80bf42644fc5e9755c3d0f4b9ce5d1e6d84c5fc56a982cdfa5a6b46a602a"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/pinvou-agent.quality.json",
+          "sha256": "cf66462e440585a0d5e93e5809815d5b7c3b07d0e46ddfe1775190858d93f2a5"
+        }
+      }
+    },
+    {
+      "projectId": "ffmpeg-webcli",
+      "fullName": "tejaswigowda/ffmpeg-webCLI",
+      "githubId": 1254696756,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/ffmpeg-webcli.project.json",
+          "sha256": "80e039cdfedbf3d72bd18f04bd933b0966237e1a92fa36d9937c4ade9c42ea0b"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/ffmpeg-webcli.research.md",
+          "sha256": "05a1a1aa619475c420c4eef596357a14af0fae55bba8993401978bdde336dadd"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/ffmpeg-webcli.quality.json",
+          "sha256": "07b811a13300fc7a50535101ddf5176e48fe81d27b376762ac832173805a662b"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "b7cc3d8cd758a599f6291565323932758bcd9df1ca0e287243bbb74d49192cc1",
+  "rejected": [
+    {
+      "fullName": "larashero3-dotcom/lieflat-charts",
+      "stage": "生成首版候选",
+      "reason": "可从 README、最新 release 与许可证文件较准确地说明项目能力，也能提出至少五个彼此有明显差异的更窄产品方向；但当前证据缺少 S1 所要求的 repository.fetchedAt 精确采集时间，且 README 内部对部分模板数量表述不一致，因此这份草稿适合继续评审与补证，不适合直接作为完整发布记录。",
+      "failedChecks": [],
+      "structuralErrors": [],
+      "blockers": [],
+      "repairHistory": []
+    }
+  ],
+  "publicationAuthorized": false
+}
