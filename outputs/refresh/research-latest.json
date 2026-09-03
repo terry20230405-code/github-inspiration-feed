@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T02:06:36Z",
+  "generatedAt": "2026-09-03T08:44:00Z",
   "mode": "write",
   "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
     "checked": 6,
-    "updated": 1,
-    "refreshed": 5,
-    "semanticReviewPending": 1,
+    "updated": 0,
+    "refreshed": 6,
+    "semanticReviewPending": 0,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
@@ -53,24 +53,11 @@
     },
     {
       "id": "papertodo",
-      "status": "updated",
-      "observation": "source-changed",
-      "changes": [
-        {
-          "field": "readme.sha",
-          "before": "51dcb4cca8c39f135244b2f4eda325b7627e5bc4",
-          "after": "8c836f3d2e571980506b823fe4b796267f74d1f5",
-          "level": "readme"
-        },
-        {
-          "field": "readme.contentSha256",
-          "before": "090a5b29fd4d24277b399f095e4d31487ff5c0794dfd759a5dfb837434c07ecc",
-          "after": "65023b113a82f1cd5ae67af3c579b174a2e58daaae97abaf9880fefe8b08336e",
-          "level": "readme"
-        }
-      ],
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
       "sourceFingerprint": "2bfbe90ab7f4a7b1849f73a766d161520fed63281b5a39986e7648b813f6293a",
-      "semanticReviewStatus": "pending",
+      "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
       "rateLimitRemaining": "4990",

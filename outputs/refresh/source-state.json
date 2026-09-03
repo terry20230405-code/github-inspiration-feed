@@ -26,7 +26,7 @@
         "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.520",
         "bodySha256": "cbcb40948bead228fbd7dceb2210c34d61d81371df92acf74e0e911e5d2b160a"
       },
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0"
     },
     "immich": {
@@ -67,7 +67,7 @@
         "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
         "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
       },
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619"
     },
     "n8n": {
@@ -112,7 +112,7 @@
         "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.7",
         "bodySha256": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8"
       },
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf"
     },
     "excalidraw": {
@@ -226,7 +226,7 @@
         "htmlUrl": "https://github.com/snownico0722/PaperTodo/releases/tag/v3.31",
         "bodySha256": "6efdd5c402b4becc1a87fb5d86f51c160211a2b02fdb2edcd8735970e3e594d9"
       },
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "2bfbe90ab7f4a7b1849f73a766d161520fed63281b5a39986e7648b813f6293a"
     },
     "nanobot": {
@@ -271,7 +271,7 @@
         "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.0",
         "bodySha256": "aaf40767fd8e183781f6f8c2ea427691421bfee4d0aa4bf2e2247e9de2077789"
       },
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "2a3d2d2ac2d6368d4599406ab2f8ae2eda33ac4c5a62ed849d8d71182f5d743a"
     },
     "maka": {
@@ -303,7 +303,7 @@
         "contentSha256": "5be2430fcc867469b6abc7e00c6813a9d97c3546880ca72a7eba1b75aa559f28"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-03T02:06:36Z",
+      "capturedAt": "2026-09-03T08:44:00Z",
       "fingerprint": "839843aca463ead8ef13903e6eefb7909eed70246236bdcdefbe12e23861ad64"
     }
   }
