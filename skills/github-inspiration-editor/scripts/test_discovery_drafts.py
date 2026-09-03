@@ -4,16 +4,19 @@
 from __future__ import annotations
 
 import json
+import io
 import copy
 import tempfile
 import threading
 import time
 import unittest
 from datetime import datetime, timezone
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import generate_discovery_drafts as drafts
+import publish_discovery_batch as publisher
 
 
 def ai_provider() -> dict[str, object]:
@@ -57,6 +60,26 @@ def generation_payload() -> dict[str, object]:
             "approach": "录入资源名称、地点和服务时间，复用原项目的连接与搜索能力形成资源网络。",
             "difference": "它把技术可视化能力改造成面向居民的地点发现和互助协调工具。",
             "scope": ["录入资源", "地点分类", "地图搜索", "查看服务时间"],
+        },
+        {
+            "id": "research-evidence-trail",
+            "name": "研究证据路线",
+            "tagline": "导入资料来源，得到一张可以回查结论依据的证据路线图",
+            "problem": "研究者整理多份材料时，结论与来源之间的关系容易丢失。",
+            "audience": "需要反复核对资料出处的学生和研究者",
+            "approach": "导入资料目录和引用关系，复用原项目的节点布局与搜索能力形成可回查的证据路径。",
+            "difference": "原项目展示通用数据，新产品围绕论点、来源和复核状态形成研究工作流。",
+            "scope": ["导入资料", "绑定引用", "生成证据路线", "标记复核状态"],
+        },
+        {
+            "id": "accessible-event-guide",
+            "name": "无障碍活动指南",
+            "tagline": "录入场地信息，得到一张按无障碍条件筛选的活动路线图",
+            "problem": "行动不便的参与者很难在出发前确认场地、入口和设施是否适合自己。",
+            "audience": "需要提前规划无障碍出行的活动参与者和陪同者",
+            "approach": "录入活动地点、入口和设施条件，复用搜索与关系展示能力生成可筛选的到场路线。",
+            "difference": "它把通用关系图改造成围绕场地条件核对和到场规划的无障碍决策流程。",
+            "scope": ["录入场地", "标记设施", "条件筛选", "生成到场路线"],
         },
     ]
     facts = [
@@ -156,8 +179,15 @@ def evidence() -> dict[str, object]:
 
 def quality_payload(*failed_ids: str) -> dict[str, object]:
     failed = set(failed_ids)
-    direction_ids = ["family-memory-map", "learning-path-board", "community-resource-map"]
+    direction_ids = [
+        "family-memory-map",
+        "learning-path-board",
+        "community-resource-map",
+        "research-evidence-trail",
+        "accessible-event-guide",
+    ]
     return {
+        "selectedDirectionIds": direction_ids[:3],
         "items": [
             {
                 "id": item,
@@ -206,9 +236,60 @@ class DraftTests(unittest.TestCase):
         self.assertIn("## Pairwise direction comparison", note)
         self.assertIn("- Materially changed axes: audience, input, workflow, outcome", note)
 
+    def test_official_license_file_resolves_other_metadata_without_readme_guessing(self) -> None:
+        value = evidence()
+        value["repository"]["license"] = {"name": "Other", "spdx_id": "NOASSERTION"}
+        value["licenseFile"] = {
+            "html_url": "https://github.com/example/visual-map/blob/main/LICENSE",
+            "license": {"name": "MIT License", "spdx_id": "MIT"},
+            "content": "MIT License\n\nCopyright example",
+        }
+
+        self.assertEqual(drafts.repository_license_label(value), "MIT License")
+        self.assertIn("S4", {item["id"] for item in drafts.source_records(value, "2026-09-03")})
+        self.assertIn("officialLicenseFile", json.loads(drafts.evidence_input(value)))
+
+    def test_equivalent_spdx_and_license_name_do_not_conflict(self) -> None:
+        value = evidence()
+        value["repository"]["license"] = {"name": "MIT License", "spdx_id": "MIT"}
+        value["licenseFile"] = {
+            "html_url": "https://github.com/example/visual-map/blob/main/LICENSE",
+            "license": {"name": "MIT License", "spdx_id": "NOASSERTION"},
+            "content": "MIT License\n",
+        }
+
+        self.assertEqual(drafts.repository_license_label(value), "MIT License")
+
+    def test_custom_license_uses_title_from_official_file(self) -> None:
+        value = evidence()
+        value["repository"]["license"] = {"name": "Other", "spdx_id": "NOASSERTION"}
+        value["licenseFile"] = {
+            "html_url": "https://github.com/example/visual-map/blob/main/LICENSE.md",
+            "license": {"name": "Other", "spdx_id": "NOASSERTION"},
+            "content": "# Example Community License 1.0\n\nTerms follow.",
+        }
+        self.assertEqual(drafts.repository_license_label(value), "Example Community License 1.0")
+
+    def test_conflicting_official_license_identities_still_stop(self) -> None:
+        value = evidence()
+        value["licenseFile"] = {
+            "html_url": "https://github.com/example/visual-map/blob/main/LICENSE",
+            "license": {"name": "Apache License 2.0", "spdx_id": "Apache-2.0"},
+            "content": "Apache License 2.0",
+        }
+        with self.assertRaisesRegex(drafts.DraftError, "conflicts with official license file"):
+            drafts.repository_license_label(value)
+
     def test_direction_reasoning_requires_real_transformation_matrix(self) -> None:
         payload = generation_payload()
-        self.assertEqual(drafts.validate_generation_payload(payload, {"S1", "S2", "S3"}), [])
+        self.assertEqual(
+            drafts.validate_generation_payload(
+                payload,
+                {"S1", "S2", "S3"},
+                expected_direction_count=drafts.DIRECTION_POOL_SIZE,
+            ),
+            [],
+        )
 
         weak_change = copy.deepcopy(payload)
         weak_change["directionRationales"][0]["changedAxes"] = ["audience"]
@@ -237,7 +318,7 @@ class DraftTests(unittest.TestCase):
         false_pass["directionAudits"][0]["status"] = "fail"
         false_pass["directionAudits"][0]["changedAxes"] = ["audience"]
         errors = drafts.validate_quality_payload(false_pass, project)
-        self.assertIn("D3 must fail when any direction audit fails", errors)
+        self.assertIn("D3 must fail when any selected direction audit fails", errors)
         audit = drafts.quality_audit_entry(0, false_pass, errors, strategy="test", changed_paths=[])
         self.assertEqual(audit["failedDirectionAudits"][0]["directionId"], "family-memory-map")
 
@@ -245,9 +326,38 @@ class DraftTests(unittest.TestCase):
         pair_false_pass["directionPairAudits"][0]["status"] = "fail"
         pair_false_pass["directionPairAudits"][0]["differentAxes"] = ["input"]
         errors = drafts.validate_quality_payload(pair_false_pass, project)
-        self.assertIn("E1 must fail when any direction pair audit fails", errors)
+        self.assertIn("E1 must fail when any selected direction pair audit fails", errors)
         audit = drafts.quality_audit_entry(0, pair_false_pass, errors, strategy="test", changed_paths=[])
         self.assertEqual(audit["failedDirectionPairAudits"][0]["leftDirectionId"], "family-memory-map")
+
+    def test_quality_review_can_discard_two_weak_directions_and_keep_three(self) -> None:
+        payload = generation_payload()
+        project = {"editorial": payload["editorial"]}
+        quality = quality_payload()
+        quality["directionAudits"][3]["status"] = "fail"
+        quality["directionAudits"][3]["changedAxes"] = ["audience"]
+        quality["directionPairAudits"][6]["status"] = "fail"
+        quality["directionPairAudits"][6]["differentAxes"] = ["input"]
+
+        self.assertEqual(drafts.validate_quality_payload(quality, project), [])
+        selected_payload = drafts.select_final_generation(payload, quality)
+        selected_quality = drafts.select_final_quality(quality, quality["selectedDirectionIds"])
+
+        self.assertEqual(len(selected_payload["editorial"]["directions"]), 3)
+        self.assertEqual(
+            [direction["id"] for direction in selected_payload["editorial"]["directions"]],
+            quality["selectedDirectionIds"],
+        )
+        self.assertEqual(len(selected_payload["directionComparisons"]), 3)
+        self.assertEqual(len(selected_quality["directionAudits"]), 3)
+        self.assertEqual(len(selected_quality["directionPairAudits"]), 3)
+
+    def test_review_cannot_fail_an_audit_after_confirming_two_axes(self) -> None:
+        project = {"editorial": generation_payload()["editorial"]}
+        quality = quality_payload("D3")
+        quality["directionAudits"][0]["status"] = "fail"
+        errors = drafts.validate_quality_payload(quality, project)
+        self.assertTrue(any("cannot fail with two or more verified changed axes" in error for error in errors))
 
     def test_a3_is_replaced_by_deterministic_github_check(self) -> None:
         fetched_at = "2026-08-30T00:00:00Z"
@@ -318,6 +428,21 @@ class DraftTests(unittest.TestCase):
         self.assertNotIn("instructions", payload)
         self.assertNotIn("input", payload)
 
+    def test_quality_schema_uses_fixed_check_keys_and_normalizes_order(self) -> None:
+        schema = drafts.quality_schema()
+        items_schema = schema["properties"]["items"]
+        self.assertEqual(items_schema["type"], "object")
+        self.assertEqual(items_schema["required"], list(drafts.CHECK_IDS))
+
+        quality = quality_payload()
+        keyed_items = {
+            item["id"]: {"status": item["status"], "evidence": item["evidence"]}
+            for item in reversed(quality["items"])
+        }
+        quality["items"] = keyed_items
+        normalized = drafts.normalize_quality_payload(quality)
+        self.assertEqual([item["id"] for item in normalized["items"]], list(drafts.CHECK_IDS))
+
     def test_calls_configured_provider_and_parses_json(self) -> None:
         class FakeResponse:
             def __enter__(self) -> "FakeResponse":
@@ -366,6 +491,50 @@ class DraftTests(unittest.TestCase):
         response["choices"][0]["finish_reason"] = "length"
         with self.assertRaisesRegex(drafts.DraftError, "token limit"):
             drafts.extract_chat_completion_text(response)
+
+    def test_disconnected_ai_request_retries_identical_strict_request(self) -> None:
+        response = MagicMock()
+        response.__enter__.return_value = response
+        response.read.return_value = json.dumps({"choices": [{"finish_reason": "stop",
+            "message": {"content": '{"ok":true}'}}]}).encode()
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=[
+            drafts.http.client.RemoteDisconnected("Remote end closed connection without response"), response,
+        ]) as urlopen, patch.object(drafts.time, "sleep") as sleep:
+            result = drafts.call_ai("test-key", ai_provider(), "rules", "evidence", "retry_test", {"type": "object"})
+        self.assertEqual(result, {"ok": True})
+        self.assertEqual(result.telemetry["attempts"], 2)
+        self.assertEqual(urlopen.call_count, 2)
+        sleep.assert_called_once()
+        self.assertEqual(urlopen.call_args_list[0].args[0].data, urlopen.call_args_list[1].args[0].data)
+        self.assertTrue(json.loads(urlopen.call_args.args[0].data)["response_format"]["json_schema"]["strict"])
+
+    def test_broken_ai_response_retries_are_bounded(self) -> None:
+        response = MagicMock()
+        response.__enter__.return_value = response
+        response.read.side_effect = drafts.http.client.IncompleteRead(b"partial")
+        with patch.object(drafts.urllib.request, "urlopen", return_value=response) as urlopen, patch.object(drafts.time, "sleep"):
+            with self.assertRaisesRegex(drafts.AIServiceError, "IncompleteRead"):
+                drafts.call_ai("test-key", ai_provider(), "rules", "evidence", "retry_test", {"type": "object"})
+        self.assertEqual(urlopen.call_count, 3)
+
+    def test_authentication_error_stops_without_retrying(self) -> None:
+        error = drafts.urllib.error.HTTPError("https://example.test", 401, "Unauthorized", {}, io.BytesIO(b"bad key"))
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=error) as urlopen, patch.object(drafts.time, "sleep") as sleep:
+            with self.assertRaises(drafts.AIServiceError) as raised:
+                drafts.call_ai("test-key", ai_provider(), "rules", "evidence", "retry_test", {"type": "object"})
+        self.assertTrue(raised.exception.fatal)
+        self.assertEqual(urlopen.call_count, 1)
+        sleep.assert_not_called()
+
+    def test_github_evidence_disconnection_retries_then_recovers(self) -> None:
+        response = MagicMock()
+        response.__enter__.return_value = response
+        response.read.return_value = b'{"id":123}'
+        with patch.object(drafts.urllib.request, "urlopen", side_effect=[
+            drafts.http.client.RemoteDisconnected("closed"), response,
+        ]) as urlopen, patch.object(drafts.time, "sleep"):
+            self.assertEqual(drafts.request_json("https://api.github.com/repos/example/test", None), {"id": 123})
+        self.assertEqual(urlopen.call_count, 2)
 
     def test_redacts_provider_keys_from_error_details(self) -> None:
         key = "sk-sensitive-secret-value"
@@ -441,6 +610,51 @@ class DraftTests(unittest.TestCase):
         self.assertIn("删除审核中仍失败的方向", direction_requirement["action"])
         self.assertTrue(any(scope.startswith("directionRationales[") for scope in direction_requirement["scope"]))
 
+    def test_direction_only_repair_cannot_rewrite_passing_project_copy(self) -> None:
+        previous = generation_payload()
+        repaired = copy.deepcopy(previous)
+        repaired["editorial"]["hook"] = "被误改的 Hook"
+        repaired["editorial"]["summary"] = "被误改的摘要"
+        repaired["facts"][0]["claim"] = "被误改的事实"
+        repaired["editorial"]["directions"][0]["name"] = "真正替换的新方向"
+        quality = quality_payload("D3", "E3")
+        quality["directionAudits"][0]["status"] = "fail"
+        quality["directionAudits"][0]["changedAxes"] = ["audience"]
+
+        protected = drafts.enforce_repair_scope(previous, repaired, quality)
+
+        self.assertEqual(protected["editorial"]["hook"], previous["editorial"]["hook"])
+        self.assertEqual(protected["editorial"]["summary"], previous["editorial"]["summary"])
+        self.assertEqual(protected["facts"], previous["facts"])
+        self.assertEqual(protected["editorial"]["directions"][0]["name"], "真正替换的新方向")
+
+    def test_invalid_quality_shape_retries_reviewer_without_rewriting_content(self) -> None:
+        invalid_quality = quality_payload()
+        invalid_quality["items"] = invalid_quality["items"][:-1]
+        calls = iter([generation_payload(), invalid_quality, quality_payload()])
+
+        result = drafts.generate_batch(
+            {
+                "aiProvider": ai_provider(),
+                "minimumReadmeCharacters": 100,
+                "aiAnalysisLimit": 1,
+                "maxCandidatesPerRun": 1,
+            },
+            {"policySha256": "9" * 64, "aiQueue": [{"fullName": "example/visual-map"}]},
+            "test-key",
+            ai_call=lambda *_args, **_kwargs: next(calls),
+            evidence_fetcher=lambda _full_name, _token: evidence(),
+            now=datetime(2026, 9, 3, 0, 0, tzinfo=timezone.utc),
+            write=False,
+        )
+
+        self.assertEqual(result["candidateCount"], 1)
+        self.assertEqual(result["aiMetrics"]["logicalCallCount"], 3)
+        self.assertEqual(
+            [call["stage"] for call in result["aiMetrics"]["calls"]],
+            ["inspiration_project_draft", "inspiration_quality_review", "inspiration_quality_review_retry"],
+        )
+
     def test_zero_candidates_is_a_reported_normal_result(self) -> None:
         config = {
             "aiProvider": ai_provider(),
@@ -482,16 +696,89 @@ class DraftTests(unittest.TestCase):
         def unavailable_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
             raise drafts.AIServiceError("AI provider request failed (403): model access denied")
 
-        with self.assertRaisesRegex(drafts.AIServiceError, "example/visual-map.*403"):
-            drafts.generate_batch(
-                config,
-                discovery,
-                "test-key",
-                ai_call=unavailable_ai,
-                evidence_fetcher=lambda _full_name, _token: evidence(),
-                now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc),
-                write=False,
-            )
+        result = drafts.generate_batch(
+            config, discovery, "test-key", ai_call=unavailable_ai,
+            evidence_fetcher=lambda _full_name, _token: evidence(),
+            now=datetime(2026, 8, 30, 0, 0, tzinfo=timezone.utc), write=False,
+        )
+        self.assertEqual(result["status"], "technical-failure")
+        self.assertEqual(result["rejectedCount"], 0)
+        self.assertEqual(result["errorCount"], 1)
+        self.assertIn("403", result["errors"][0]["reason"])
+
+    def test_failed_parallel_candidate_does_not_discard_valid_frozen_batch(self) -> None:
+        def fake_evidence(full_name: str, _token: str | None) -> dict[str, object]:
+            value = evidence()
+            if full_name == "broken/service":
+                value["repository"]["full_name"] = full_name
+            return value
+
+        def fake_ai(*args: object, **_kwargs: object) -> dict[str, object]:
+            if "broken/service" in str(args[3]):
+                raise drafts.AIServiceError("RemoteDisconnected after 3 attempts")
+            return generation_payload() if args[4] == "inspiration_project_draft" else quality_payload()
+
+        with tempfile.TemporaryDirectory(dir=drafts.PROJECT_ROOT / "outputs/generated") as temporary:
+            batch_root = Path(temporary) / "batches"
+            with patch.object(drafts, "GENERATED_ROOT", batch_root), patch.object(publisher, "BATCH_ROOT", batch_root):
+                result = drafts.generate_batch(
+                    {"aiProvider": ai_provider(), "minimumReadmeCharacters": 100, "aiAnalysisLimit": 2,
+                     "maxCandidatesPerRun": 2, "maxConcurrentCandidates": 2},
+                    {"policySha256": "a" * 64, "aiQueue": [{"fullName": "example/visual-map"}, {"fullName": "broken/service"}]},
+                    "test-key", ai_call=fake_ai, evidence_fetcher=fake_evidence, write=True,
+                    now=datetime(2026, 9, 3, 0, 0, tzinfo=timezone.utc),
+                )
+                self.assertEqual(result["status"], "partial-failure")
+                self.assertEqual(result["candidateCount"], 1)
+                self.assertEqual(result["errorCount"], 1)
+                self.assertEqual(result["rejectedCount"], 0)
+                self.assertEqual(result["errors"][0]["fullName"], "broken/service")
+                self.assertIn("技术故障", result["preview"])
+                _, manifest, projects = publisher.load_batch(result["batchId"])
+                self.assertEqual(len(projects), 1)
+                self.assertFalse(manifest["publicationAuthorized"])
+
+    def test_fatal_service_error_does_not_start_remaining_candidates(self) -> None:
+        def unavailable_ai(*_args: object, **_kwargs: object) -> dict[str, object]:
+            raise drafts.AIServiceError("401: denied", fatal=True)
+        result = drafts.generate_batch(
+            {"aiProvider": ai_provider(), "minimumReadmeCharacters": 100, "aiAnalysisLimit": 3,
+             "maxCandidatesPerRun": 3, "maxConcurrentCandidates": 1},
+            {"policySha256": "a" * 64, "aiQueue": [{"fullName": name} for name in ["first/repo", "second/repo", "third/repo"]]},
+            "test-key", ai_call=unavailable_ai, evidence_fetcher=lambda *_args: evidence(), write=False,
+        )
+        self.assertEqual(result["errorCount"], 1)
+        self.assertEqual(result["notStartedCount"], 2)
+        self.assertEqual(result["aiMetrics"]["logicalCallCount"], 1)
+
+    def test_cli_partial_failure_outputs_usable_json_and_nonzero_exit(self) -> None:
+        config = drafts.read_json(drafts.DEFAULT_CONFIG)
+        result = {"status": "partial-failure", "candidateCount": 1, "errorCount": 1,
+                  "batchId": "test-batch", "batchPath": "outputs/generated/discovery-batches/test-batch", "preview": "report"}
+        stdout = io.StringIO()
+        with patch.object(drafts.sys, "argv", ["generate_discovery_drafts.py", "--write"]), \
+             patch.dict(drafts.os.environ, {"OPENAI_API_KEY": "test-key"}), \
+             patch.object(drafts, "read_json", return_value=config), \
+             patch.object(drafts, "generate_batch", return_value=result), \
+             redirect_stdout(stdout):
+            exit_code = drafts.main()
+        self.assertEqual(exit_code, 1)
+        self.assertEqual(json.loads(stdout.getvalue()), result)
+
+    def test_cli_unexpected_network_failure_still_outputs_redacted_diagnostic(self) -> None:
+        config = drafts.read_json(drafts.DEFAULT_CONFIG)
+        stdout, stderr = io.StringIO(), io.StringIO()
+        with patch.object(drafts.sys, "argv", ["generate_discovery_drafts.py", "--write"]), \
+             patch.dict(drafts.os.environ, {"OPENAI_API_KEY": "test-key"}), \
+             patch.object(drafts, "read_json", return_value=config), \
+             patch.object(drafts, "generate_batch", side_effect=ConnectionResetError("closed test-key")), \
+             redirect_stdout(stdout), redirect_stderr(stderr):
+            exit_code = drafts.main()
+        self.assertEqual(exit_code, 1)
+        report = json.loads(stdout.getvalue())
+        self.assertEqual(report["status"], "technical-failure")
+        self.assertEqual(report["candidateCount"], 0)
+        self.assertNotIn("test-key", stdout.getvalue() + stderr.getvalue())
 
     def test_generates_valid_fingerprinted_batch_without_network(self) -> None:
         payload = generation_payload()
@@ -531,7 +818,9 @@ class DraftTests(unittest.TestCase):
                 self.assertEqual(len(manifest["candidates"]), 1)
                 project_path = next(batch.glob("*.project.json"))
                 research_path = next(batch.glob("*.research.md"))
-                self.assertEqual(drafts.validate_project(drafts.read_json(project_path)), [])
+                project = drafts.read_json(project_path)
+                self.assertEqual(drafts.validate_project(project), [])
+                self.assertEqual(len(project["editorial"]["directions"]), drafts.FINAL_DIRECTION_COUNT)
                 self.assertEqual(drafts.validate_research(research_path.read_text(encoding="utf-8")), [])
             finally:
                 drafts.GENERATED_ROOT = original_root
@@ -584,11 +873,15 @@ class DraftTests(unittest.TestCase):
         repair_one["editorial"]["directions"][0]["name"] = "仍未形成差异的家庭地图"
         repair_two = copy.deepcopy(first)
         repair_two["editorial"]["directions"][0]["name"] = "重新构造的不同产品"
+        initial_quality = quality_payload("D3")
+        initial_quality["directionAudits"][0]["status"] = "fail"
+        initial_quality["directionAudits"][0]["changedAxes"] = ["audience"]
+        repair_quality = copy.deepcopy(initial_quality)
         calls = iter([
             first,
-            quality_payload("D3"),
+            initial_quality,
             repair_one,
-            quality_payload("D3"),
+            repair_quality,
             repair_two,
             quality_payload(),
         ])
@@ -674,6 +967,69 @@ class DraftTests(unittest.TestCase):
             {"first/shared", "second/shared"},
         )
         self.assertLess(result["preview"].index("first/shared"), result["preview"].index("second/shared"))
+
+    def test_rolling_concurrency_starts_next_candidate_before_slowest_finishes(self) -> None:
+        first_generation_finished = threading.Event()
+        third_started_before_first_finished = False
+        lock = threading.Lock()
+
+        def fake_ai(*args: object, **_kwargs: object) -> dict[str, object]:
+            nonlocal third_started_before_first_finished
+            input_value = json.loads(str(args[3]))
+            schema_name = str(args[4])
+            if schema_name == "inspiration_project_draft":
+                full_name = str(input_value["metadata"]["full_name"])
+            else:
+                full_name = str(input_value["project"]["repository"]["fullName"])
+            if full_name == "first/shared" and schema_name == "inspiration_project_draft":
+                time.sleep(0.20)
+                first_generation_finished.set()
+            else:
+                if full_name == "third/shared" and schema_name == "inspiration_project_draft":
+                    with lock:
+                        third_started_before_first_finished = not first_generation_finished.is_set()
+                time.sleep(0.01)
+            return copy.deepcopy(generation_payload() if schema_name == "inspiration_project_draft" else quality_payload())
+
+        def candidate_evidence(full_name: str, _token: str | None) -> dict[str, object]:
+            value = evidence()
+            repository = value["repository"]
+            assert isinstance(repository, dict)
+            owner, name = full_name.split("/", 1)
+            repository["id"] = {"first": 2001, "second": 2002, "third": 2003}[owner]
+            repository["full_name"] = full_name
+            repository["name"] = name
+            repository["owner"] = {"login": owner}
+            value["readmeUrl"] = f"https://github.com/{full_name}/blob/main/README.md"
+            return value
+
+        result = drafts.generate_batch(
+            {
+                "aiProvider": ai_provider(),
+                "minimumReadmeCharacters": 100,
+                "aiAnalysisLimit": 3,
+                "maxCandidatesPerRun": 3,
+                "maxConcurrentCandidates": 2,
+            },
+            {
+                "policySha256": "8" * 64,
+                "aiQueue": [
+                    {"fullName": "first/shared"},
+                    {"fullName": "second/shared"},
+                    {"fullName": "third/shared"},
+                ],
+            },
+            "test-key",
+            ai_call=fake_ai,
+            evidence_fetcher=candidate_evidence,
+            now=datetime(2026, 9, 3, 0, 0, tzinfo=timezone.utc),
+            write=False,
+        )
+
+        self.assertTrue(third_started_before_first_finished)
+        self.assertEqual(result["candidateCount"], 3)
+        self.assertLess(result["preview"].index("first/shared"), result["preview"].index("second/shared"))
+        self.assertLess(result["preview"].index("second/shared"), result["preview"].index("third/shared"))
 
 
 if __name__ == "__main__":

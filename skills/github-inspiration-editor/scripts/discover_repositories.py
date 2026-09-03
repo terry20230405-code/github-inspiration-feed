@@ -68,7 +68,7 @@ def validate_config(value: object) -> dict[str, object]:
         "shortlistSize": (1, 200),
         "aiAnalysisLimit": (1, 50),
         "maxCandidatesPerRun": (1, 20),
-        "maxConcurrentCandidates": (1, 2),
+        "maxConcurrentCandidates": (1, 3),
         "activeWithinDays": (30, 1825),
         "minimumStars": (0, 1_000_000),
         "minimumReadmeCharacters": (100, 100_000),

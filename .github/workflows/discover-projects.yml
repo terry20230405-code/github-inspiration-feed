@@ -150,21 +150,38 @@ jobs:
       - name: AI 深读并生成候选批次
         id: drafts
         run: |
+          set +e
           python skills/github-inspiration-editor/scripts/generate_discovery_drafts.py --write > outputs/discovery/draft-result.json
-          python - <<'PY'
+          draft_exit_code=$?
+          set -e
+          DRAFT_EXIT_CODE="$draft_exit_code" python - <<'PY'
           import json
           import os
           from pathlib import Path
 
-          result = json.loads(Path("outputs/discovery/draft-result.json").read_text(encoding="utf-8"))
+          exit_code = int(os.environ["DRAFT_EXIT_CODE"])
+          try:
+              result = json.loads(Path("outputs/discovery/draft-result.json").read_text(encoding="utf-8"))
+              if not isinstance(result, dict) or not all(key in result for key in ("batchId", "batchPath", "candidateCount", "preview")):
+                  raise ValueError("Incomplete discovery result")
+          except (OSError, ValueError):
+              exit_code = 1
+              result = {"status": "technical-failure", "batchId": "", "batchPath": "", "candidateCount": 0, "errorCount": 1,
+                        "preview": "## 新项目发现技术失败\n\n未生成完整报告，请查看 AI 深读步骤日志和发现审计附件。\n"}
+              Path("outputs/discovery/draft-result.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
+          if result.get("errorCount", 0):
+              exit_code = 1
           with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8") as output:
+              output.write(f"exit_code={exit_code}\n")
               output.write(f"batch_id={result['batchId']}\n")
               output.write(f"batch_path={result['batchPath']}\n")
               output.write(f"candidate_count={result['candidateCount']}\n")
-          Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(result["preview"], encoding="utf-8")
+          with Path(os.environ["GITHUB_STEP_SUMMARY"]).open("a", encoding="utf-8") as output:
+              output.write("\n" + result["preview"])
           PY
 
       - name: 保存本轮发现审计报告
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: discovery-audit-${{ github.run_id }}
@@ -172,6 +189,7 @@ jobs:
             outputs/discovery/draft-result.json
             outputs/discovery/latest.json
             outputs/discovery/latest.md
+            ${{ steps.drafts.outputs.batch_path }}
           if-no-files-found: error
           retention-days: 30
 
@@ -180,6 +198,7 @@ jobs:
           python skills/github-inspiration-editor/scripts/test_repository_discovery.py
           python skills/github-inspiration-editor/scripts/test_discovery_drafts.py
           python skills/github-inspiration-editor/scripts/test_discovery_batch_publication.py
+          python skills/github-inspiration-editor/scripts/test_discovery_workflows.py
           npm run test:feed-data
           npm run test:feed-window
           npm run test:visual-identity
@@ -188,7 +207,7 @@ jobs:
           npm run build
 
       - name: 创建候选审核分支
-        if: steps.drafts.outputs.candidate_count != '0'
+        if: steps.drafts.outputs.candidate_count != '0' && steps.drafts.outputs.batch_path != ''
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BATCH_ID: ${{ steps.drafts.outputs.batch_id }}
@@ -220,6 +239,16 @@ jobs:
             --head "$branch" \
             --title "自动候选：${BATCH_ID}（${CANDIDATE_COUNT} 个项目）" \
             --body-file "$body_file"
+
+      - name: 报告新项目发现状态
+        if: always()
+        env:
+          DRAFT_EXIT_CODE: ${{ steps.drafts.outputs.exit_code }}
+        run: |
+          if [ "$DRAFT_EXIT_CODE" != "0" ]; then
+            echo "::error title=新项目发现发生技术故障::请查看发现审计报告；已通过检查的候选和已创建的审核 PR 仍有效，失败候选未发布。"
+            exit 1
+          fi
 
       - name: 报告旧项目巡检状态
         if: always()

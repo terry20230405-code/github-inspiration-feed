@@ -50,6 +50,12 @@ The 3–5 directions should not be the same workflow with different professions 
 
 Keep commercial directions when they naturally fit the repository. Unless the user explicitly requests a purely commercial theme, at least one of the 3–5 directions must primarily serve personal, family, learning, accessibility, privacy, community, or creative value rather than marketing, sales, or revenue work.
 
+## Automated discovery candidate pool
+
+The scheduled discovery workflow first generates exactly five complete directions as a candidate pool. All five still need evidence-backed rationales and pairwise comparisons; a filler idea is not acceptable merely because it may later be discarded.
+
+The independent quality review audits all five directions and all ten unique pairs, then selects exactly three final directions in their original order. Every selected direction must pass the per-direction checks, every selected pair must pass the diversity check, and the selected set must retain the required non-commercial value. A weak or repetitive unselected direction does not fail the repository. The published project contains only the three selected directions; the two discarded options are never written to the feed.
+
 ## Reject weak transformations
 
 Reject a direction when its only difference is:
