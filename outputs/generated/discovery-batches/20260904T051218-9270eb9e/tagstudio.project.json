@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "id": "tagstudio",
+  "repository": {
+    "githubId": 787908531,
+    "fullName": "TagStudioDev/TagStudio",
+    "name": "TagStudio",
+    "stars": 7166,
+    "forks": 465,
+    "language": "Python",
+    "pushedAt": "2026-09-03T23:48:11Z",
+    "license": "GNU General Public License v3.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:12:18Z"
+  },
+  "editorial": {
+    "hook": "不搬动原文件，也能重新整理整座资料库",
+    "summary": "TagStudio 在现有文件夹上建立一层标签资料库，不要求用户搬动、复制或改名文件。照片、视频、音频、文档等条目可以添加人物、地点、概念等标签和自定义字段，再用 AND、OR、NOT 等组合条件搜索；资料库数据集中保存在本地 SQLite 中。",
+    "meaning": "它把文件的位置与文件的含义分开，适合复用为任何需要保留原目录、却又要按多重关系重新发现资料的个人知识产品。",
+    "audience": "想整理大量照片和混合文件，同时不愿打乱原有文件夹结构的个人、创作者和资料管理者。",
+    "features": [
+      "在现有文件夹上建立资料库而不搬动文件",
+      "为文件条目添加标签和自定义字段",
+      "标签可包含别名、关系等属性",
+      "支持多种媒体预览和播放",
+      "支持布尔条件、路径与媒体类型搜索"
+    ],
+    "stack": [
+      "Python",
+      "Qt",
+      "SQLite",
+      "Local File System"
+    ],
+    "opportunity": [
+      "把标签关系改造成家庭记忆索引。",
+      "把字段与组合搜索改造成研究证据架。",
+      "把多媒体预览与标签改造成手作材料目录。"
+    ],
+    "directions": [
+      {
+        "id": "family-memory-labeler",
+        "name": "家庭记忆索引",
+        "tagline": "不改照片位置，也能按人物和故事找回回忆",
+        "problem": "家庭照片散在多年文件夹中，按日期能找到文件，却找不到跨年份的人物与事件故事。",
+        "audience": "整理家庭照片和录音的个人",
+        "approach": "扫描原文件夹，为照片和录音添加人物、地点、事件标签，把相关条目组成故事集并记录待确认身份。",
+        "difference": "从通用文件标签改成围绕家庭人物与事件的共同确认流程。",
+        "scope": [
+          "文件夹扫描",
+          "人物标签",
+          "事件关系",
+          "故事集",
+          "待确认清单"
+        ]
+      },
+      {
+        "id": "research-evidence-shelf",
+        "name": "研究证据架",
+        "tagline": "让每条论点都能回到原始资料",
+        "problem": "研究资料包含 PDF、图片和录音，文件名与文件夹很难同时表达主题、可信度和引用状态。",
+        "audience": "进行桌面研究的学生和独立研究者",
+        "approach": "保留原文件位置，为条目添加主题、论点、来源和待核对字段，用组合搜索生成某个结论的证据包。",
+        "difference": "把浏览文件改成按论点组装、核对和导出证据的研究流程。",
+        "scope": [
+          "资料扫描",
+          "论点标签",
+          "来源字段",
+          "核对状态",
+          "证据包"
+        ]
+      },
+      {
+        "id": "craft-material-catalog",
+        "name": "手作材料目录",
+        "tagline": "拍一张照片就知道材料放在哪",
+        "problem": "手作爱好者积累布料、颜料和零件后，常忘记颜色、数量、存放位置和曾用于什么作品。",
+        "audience": "管理手作材料的个人创作者",
+        "approach": "为材料照片添加颜色、材质、数量和位置字段，关联成品图片，再按项目需求筛选可用库存。",
+        "difference": "输入变成材料照片和库存属性，结果是创作前可查询的选材目录。",
+        "scope": [
+          "材料照片",
+          "属性字段",
+          "位置记录",
+          "作品关联",
+          "条件筛选"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "TagStudioDev/TagStudio",
+    "accent": "#4e2ebd",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 1239273794
+  }
+}

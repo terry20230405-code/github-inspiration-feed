@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "plausible",
+  "repository": {
+    "githubId": 160427405,
+    "fullName": "plausible/analytics",
+    "name": "analytics",
+    "stars": 28861,
+    "forks": 1833,
+    "language": "Elixir",
+    "pushedAt": "2026-09-03T14:21:35Z",
+    "license": "GNU Affero General Public License v3.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:12:18Z"
+  },
+  "editorial": {
+    "hook": "只看网站发生什么，不追踪访问者是谁",
+    "summary": "Plausible 用一段轻量统计脚本收集网站访问、来源、页面和自定义事件，再把结果放进一页式仪表盘。它不依赖 Cookie，也不保存可直接识别个人的信息；目标、漏斗、实时数据、定期报告和统计 API 帮助站点负责人持续观察内容是否有效。",
+    "meaning": "它证明网站分析不必先建立个人画像；匿名聚合、事件目标和简洁报告可以被复用到重视隐私的小型公共互动场景。",
+    "audience": "需要了解网站内容和转化表现，同时希望减少个人追踪的站点负责人、创作者与小团队。",
+    "features": [
+      "无 Cookie 的隐私优先统计",
+      "页面与访问来源的一页式仪表盘",
+      "自定义事件、目标和漏斗",
+      "实时数据与定期报告",
+      "共享链接、导入、CSV 和统计 API"
+    ],
+    "stack": [
+      "Elixir",
+      "Phoenix",
+      "PostgreSQL",
+      "ClickHouse",
+      "React",
+      "Tailwind CSS"
+    ],
+    "opportunity": [
+      "把匿名事件统计改造成社区活动公开进度板。",
+      "把目标和来源分析改造成独立创作者的阅读回声报告。",
+      "把实时事件和简洁仪表盘改造成展览互动热区图。"
+    ],
+    "directions": [
+      {
+        "id": "community-campaign-counter",
+        "name": "社区活动计数板",
+        "tagline": "公开活动进展，不记录参与者是谁",
+        "problem": "社区活动需要公开传播效果，但不应为统计点击而建立居民画像。",
+        "audience": "社区组织者和参与居民",
+        "approach": "为海报、报名页和现场二维码分配匿名事件，按来源与日期聚合，再发布只含总量和趋势的公开进度板。",
+        "difference": "从站点经营分析改成面向社区透明度的公开汇总产品。",
+        "scope": [
+          "活动链接",
+          "匿名事件",
+          "来源聚合",
+          "趋势卡片",
+          "公开分享"
+        ]
+      },
+      {
+        "id": "creator-reading-echo",
+        "name": "创作者阅读回声",
+        "tagline": "每周看清哪些内容真正被读到",
+        "problem": "独立创作者知道总访问量，却难以快速判断哪些文章和来源带来持续阅读。",
+        "audience": "经营个人网站和通讯的独立创作者",
+        "approach": "接入页面和滚动完成事件，按文章与来源汇总，每周生成只保留内容表现和回访趋势的阅读报告。",
+        "difference": "把通用网站指标改成围绕内容复盘的固定周报。",
+        "scope": [
+          "文章接入",
+          "完成事件",
+          "来源对照",
+          "回访趋势",
+          "周报生成"
+        ]
+      },
+      {
+        "id": "exhibit-interaction-map",
+        "name": "展览互动热区图",
+        "tagline": "用匿名触碰看见观众停在哪里",
+        "problem": "小型展览想改善动线，却没有预算部署复杂摄像或身份识别系统。",
+        "audience": "博物馆和社区展览策展人",
+        "approach": "把展签二维码和互动按钮记为匿名事件，按区域和时段聚合，输出展区热度与待调整点位。",
+        "difference": "输入从网页访问变成线下展区互动，结果变成空间布置建议。",
+        "scope": [
+          "点位编号",
+          "匿名互动",
+          "时段聚合",
+          "展区热图",
+          "调整清单"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "plausible/analytics",
+    "accent": "#a9631e",
+    "foreground": "#ffffff",
+    "motif": "stack",
+    "variant": 196835840
+  }
+}

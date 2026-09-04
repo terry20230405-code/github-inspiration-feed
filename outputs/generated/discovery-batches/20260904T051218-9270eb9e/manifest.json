@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260904T051218-9270eb9e",
+  "createdAt": "2026-09-04T05:12:18Z",
+  "status": "published",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "superset",
+      "fullName": "apache/superset",
+      "githubId": 39464018,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/superset.project.json",
+          "sha256": "f360dbcfd5afb63b86342d86f8cc2b46a30369b9cbbd52005aa8185c6cfdda48"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/superset.research.md",
+          "sha256": "dddff233bcc468c22341ca2e1066cb697926411eee8fe7491abe562302a072fc"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/superset.quality.json",
+          "sha256": "15222f4fac395268eb8302c51cdf273b672a1ec2135405a67fe3dcf1887c8495"
+        }
+      }
+    },
+    {
+      "projectId": "plausible",
+      "fullName": "plausible/analytics",
+      "githubId": 160427405,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/plausible.project.json",
+          "sha256": "e66d11989ab2975174ecebaec2b3044896cc76ce784ff86dc65cc1243d9478a0"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/plausible.research.md",
+          "sha256": "e33d57ff38f19cd95cc06cedc8d5b4a95a334957605c8671680d1e063540f1e9"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/plausible.quality.json",
+          "sha256": "22becd2c292813d7f433dcb165cc0a3413cdf273c8027c1c72da82d06813079b"
+        }
+      }
+    },
+    {
+      "projectId": "lossless-cut",
+      "fullName": "mifi/lossless-cut",
+      "githubId": 72343657,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/lossless-cut.project.json",
+          "sha256": "147c503a2faa44f7ac557f7b8d21823c734bd2dd6e38e5c856993450ba7a910f"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/lossless-cut.research.md",
+          "sha256": "79f0f8dbc3479b7ce30621002651f0bbc60d78b79e6fccd7db69d6719ff7031d"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/lossless-cut.quality.json",
+          "sha256": "af550225f6ffaff0c23648865f6874fd3a826f11c7f4270c951807a932a9e815"
+        }
+      }
+    },
+    {
+      "projectId": "flowgram-ai",
+      "fullName": "bytedance/flowgram.ai",
+      "githubId": 933963452,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/flowgram-ai.project.json",
+          "sha256": "5b931c48b5a81177926bec704691a8e3cb9eb328f50293c604d07e3a2fd6c228"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/flowgram-ai.research.md",
+          "sha256": "1f30d3a3019e4f37f045c3f94a6c743affca6e08b7ed2b5a763708cd31c9a7c7"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/flowgram-ai.quality.json",
+          "sha256": "83d787dc3318276999653b065a97f085374f9d309eab4d0a8e3604a8d83a8a68"
+        }
+      }
+    },
+    {
+      "projectId": "tagstudio",
+      "fullName": "TagStudioDev/TagStudio",
+      "githubId": 787908531,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/tagstudio.project.json",
+          "sha256": "5d957d9cc3a4eeb183599b3fb1b280b11d4ce1d345361ef921c48785c8fc2cb1"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/tagstudio.research.md",
+          "sha256": "edf55ed6b4dbdac75311a35a9ed11d49c65ca9fee93f1e39b26ad10d4e9859fa"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/tagstudio.quality.json",
+          "sha256": "294a90f79be0e1e9086d82ea9a4c58a1821fa24bbb220d1a96e2a2be5221bb92"
+        }
+      }
+    },
+    {
+      "projectId": "meetily",
+      "fullName": "Zackriya-Solutions/meetily",
+      "githubId": 908589694,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/meetily.project.json",
+          "sha256": "d3b8b12893f6a1c5446dc0c13c42bcc81426a91b5a5018145cd5568a55068de6"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/meetily.research.md",
+          "sha256": "f8220b43cda637d9bf2ecccc2cd3cb2a74e311b92140e37217c388bb8c0065b0"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/meetily.quality.json",
+          "sha256": "8edfa6176b21aa965876829284ff2ceefd5dc28884b384d4f08df492622a4cf6"
+        }
+      }
+    },
+    {
+      "projectId": "trilium",
+      "fullName": "TriliumNext/Trilium",
+      "githubId": 92111509,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/trilium.project.json",
+          "sha256": "4f147738c15ca21f5fb69a706b301b530b20eee62e2c3ab95e8befdbb17d7435"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/trilium.research.md",
+          "sha256": "cb5f657f091d949e06cbfcc21a48d443861d53d4e7e8d1c459bf5d9c1dc0b49d"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/trilium.quality.json",
+          "sha256": "d09b0f9b7ca1bccbd1fd09aedaf751addc894b89e5705936b6eba884151b5c23"
+        }
+      }
+    },
+    {
+      "projectId": "responsible-ai-toolbox",
+      "fullName": "microsoft/responsible-ai-toolbox",
+      "githubId": 277645425,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/responsible-ai-toolbox.project.json",
+          "sha256": "3a9853c4e3c92c577673417482d77c2d02569b0c2ecc85990b80f852a7ac408e"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/responsible-ai-toolbox.research.md",
+          "sha256": "763e4bf8c020615d83c13df7005107a3001c43709b2f7174cb086b248d6976f8"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/responsible-ai-toolbox.quality.json",
+          "sha256": "8b8812350d1865b90e39ed08837c62d8e601d5d8c672bb7e1e3dc51db0314062"
+        }
+      }
+    },
+    {
+      "projectId": "ohmyzsh",
+      "fullName": "ohmyzsh/ohmyzsh",
+      "githubId": 291137,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/ohmyzsh.project.json",
+          "sha256": "4b227f4e68f1c8883ccc9f193584d8f050ff327b888a29cf59070bc50d5d1889"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/ohmyzsh.research.md",
+          "sha256": "6b01c9646dc6b953fd97e15aa4b80597b41756e0193703438dc600a18ae6ff19"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/ohmyzsh.quality.json",
+          "sha256": "7d936333a7cf42d72b795fc010f3bec1520f05b93056277ba2f034b5254409dd"
+        }
+      }
+    },
+    {
+      "projectId": "airflow",
+      "fullName": "apache/airflow",
+      "githubId": 33884891,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/airflow.project.json",
+          "sha256": "9c0736e33b85432405c23ae87d8909f7df61a67beaafebaf51565022f7a8b00d"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/airflow.research.md",
+          "sha256": "0be689982cc29906db264302761fadee9f3bfd81c6c81a1730a5e0a80ab38a52"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/airflow.quality.json",
+          "sha256": "daab5f2d5acde80b99c3be238edb34b12c01c9164c71db57ad40f0335f2f5aba"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "f516e6340f9f7c6ed4d5288734b10d6754ecca82ca99f056086c0526f26eb763",
+  "rejected": [],
+  "publicationAuthorized": true
+}

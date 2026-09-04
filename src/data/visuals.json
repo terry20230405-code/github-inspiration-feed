@@ -62,5 +62,85 @@
     "foreground": "#000000",
     "motif": "orbit",
     "variant": 1287818385
+  },
+  "superset": {
+    "generatorVersion": 2,
+    "seed": "apache/superset",
+    "accent": "#1a8471",
+    "foreground": "#000000",
+    "motif": "grid",
+    "variant": 137251478
+  },
+  "plausible": {
+    "generatorVersion": 2,
+    "seed": "plausible/analytics",
+    "accent": "#a9631e",
+    "foreground": "#ffffff",
+    "motif": "stack",
+    "variant": 196835840
+  },
+  "lossless-cut": {
+    "generatorVersion": 2,
+    "seed": "mifi/lossless-cut",
+    "accent": "#a822b9",
+    "foreground": "#ffffff",
+    "motif": "path",
+    "variant": 4138876531
+  },
+  "flowgram-ai": {
+    "generatorVersion": 2,
+    "seed": "bytedance/flowgram.ai",
+    "accent": "#8c7221",
+    "foreground": "#ffffff",
+    "motif": "polyline",
+    "variant": 1949116971
+  },
+  "tagstudio": {
+    "generatorVersion": 2,
+    "seed": "TagStudioDev/TagStudio",
+    "accent": "#4e2ebd",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 1239273794
+  },
+  "meetily": {
+    "generatorVersion": 2,
+    "seed": "Zackriya-Solutions/meetily",
+    "accent": "#89751f",
+    "foreground": "#000000",
+    "motif": "wave",
+    "variant": 1830271905
+  },
+  "trilium": {
+    "generatorVersion": 2,
+    "seed": "TriliumNext/Trilium",
+    "accent": "#b62f89",
+    "foreground": "#ffffff",
+    "motif": "orbit",
+    "variant": 597313446
+  },
+  "responsible-ai-toolbox": {
+    "generatorVersion": 2,
+    "seed": "microsoft/responsible-ai-toolbox",
+    "accent": "#797820",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 2175708540
+  },
+  "ohmyzsh": {
+    "generatorVersion": 2,
+    "seed": "ohmyzsh/ohmyzsh",
+    "accent": "#9a2fc6",
+    "foreground": "#ffffff",
+    "motif": "grid",
+    "variant": 2516926895
+  },
+  "airflow": {
+    "generatorVersion": 2,
+    "seed": "apache/airflow",
+    "accent": "#1f7e98",
+    "foreground": "#ffffff",
+    "motif": "polyline",
+    "variant": 2891680967
   }
 }

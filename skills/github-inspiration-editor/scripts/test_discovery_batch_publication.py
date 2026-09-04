@@ -110,6 +110,19 @@ class BatchPublicationTests(unittest.TestCase):
         self.assertEqual(approval["sourcePullRequest"], 42)
         self.assertTrue(approval["publicationAuthorized"])
 
+    def test_local_codex_approval_is_bound_without_fake_pull_request(self) -> None:
+        approval = batch.approval_record(
+            "batch-1",
+            "a" * 64,
+            "Terry",
+            None,
+            approval_source="local-codex-conversation",
+            now="2026-09-04T00:00:00Z",
+        )
+        self.assertEqual(approval["approvalSource"], "local-codex-conversation")
+        self.assertIsNone(approval["sourcePullRequest"])
+        self.assertTrue(approval["publicationAuthorized"])
+
     def test_valid_merged_batch_updates_all_layers_once(self) -> None:
         batch_id = "20260830T000000Z-cafebabe"
         directory = self.create_valid_batch(batch_id)

@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "id": "flowgram-ai",
+  "repository": {
+    "githubId": 933963452,
+    "fullName": "bytedance/flowgram.ai",
+    "name": "flowgram.ai",
+    "stars": 8420,
+    "forks": 768,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-01T04:02:40Z",
+    "license": "MIT License",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:12:18Z"
+  },
+  "editorial": {
+    "hook": "把节点画布变成可运行的工作流产品",
+    "summary": "FlowGram 不是现成的自动化平台，而是一套用来搭建这类平台的 TypeScript 框架。开发者可以组合自由或固定布局画布、节点配置表单、变量作用域、现成节点材料与运行时，让用户在自己的产品里连接条件、循环、HTTP、代码和大模型步骤。",
+    "meaning": "它把工作流产品最难重复建设的画布、数据流和节点配置拆成可嵌入模块，因此适合快速验证面向具体人群的可视化流程工具。",
+    "audience": "正在开发 AI 工作流、自动化编排或节点式编辑器产品的前端和平台团队。",
+    "features": [
+      "自由布局与固定布局画布",
+      "节点配置表单和校验",
+      "变量作用域与类型推断",
+      "LLM、条件、代码等节点材料",
+      "可嵌入运行时"
+    ],
+    "stack": [
+      "TypeScript",
+      "React",
+      "Node.js",
+      "Workflow Runtime"
+    ],
+    "opportunity": [
+      "把节点画布改造成家庭照护日程设计器。",
+      "把变量和分支改造成课堂实验流程卡。",
+      "把条件与连线改造成互动故事分支工坊。"
+    ],
+    "directions": [
+      {
+        "id": "care-routine-designer",
+        "name": "家庭照护流程板",
+        "tagline": "把每天的照护交接画成清楚步骤",
+        "problem": "家庭多人轮流照护时，条件、提醒和交接信息容易散落在聊天记录。",
+        "audience": "共同照护老人或病后家人的家庭成员",
+        "approach": "用步骤节点登记用药、饮食和复诊事项，用条件分支表达异常情况，运行后生成当天清单和交接记录。",
+        "difference": "从开发框架变成家庭直接使用的照护流程产品。",
+        "scope": [
+          "照护节点",
+          "条件分支",
+          "日程运行",
+          "完成记录",
+          "交接摘要"
+        ]
+      },
+      {
+        "id": "class-experiment-flow",
+        "name": "课堂实验流程卡",
+        "tagline": "让学生沿着变量和分支完成实验",
+        "problem": "学生做探究实验时容易跳过控制变量、记录或复盘步骤。",
+        "audience": "组织探究课的教师和学生",
+        "approach": "教师用节点设计实验步骤、输入变量和检查点，学生逐步运行并填写结果，最后生成带分支路径的实验记录。",
+        "difference": "把任意工作流编辑器改成有教学检查点的学生执行界面。",
+        "scope": [
+          "实验步骤",
+          "变量输入",
+          "检查点",
+          "分支运行",
+          "记录导出"
+        ]
+      },
+      {
+        "id": "story-branch-workshop",
+        "name": "故事分支工坊",
+        "tagline": "把人物选择连成能试玩的故事路径",
+        "problem": "互动故事作者在文档中维护条件和分支时，很难发现断路与无法到达的结局。",
+        "audience": "创作互动小说和游戏剧情的作者",
+        "approach": "用节点表示场景与选择，用变量记录人物状态，检查不可达路径，再生成可点击的试玩预览。",
+        "difference": "输出从工作流配置变成读者可试玩的叙事原型。",
+        "scope": [
+          "场景节点",
+          "选择连线",
+          "状态变量",
+          "路径检查",
+          "试玩预览"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "bytedance/flowgram.ai",
+    "accent": "#8c7221",
+    "foreground": "#ffffff",
+    "motif": "polyline",
+    "variant": 1949116971
+  }
+}

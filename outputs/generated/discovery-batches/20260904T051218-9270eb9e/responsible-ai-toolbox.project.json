@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "responsible-ai-toolbox",
+  "repository": {
+    "githubId": 277645425,
+    "fullName": "microsoft/responsible-ai-toolbox",
+    "name": "responsible-ai-toolbox",
+    "stars": 1831,
+    "forks": 494,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-03T12:52:32Z",
+    "license": "MIT License",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:12:18Z"
+  },
+  "editorial": {
+    "hook": "把模型出错的人群和原因摊在一张图上",
+    "summary": "Responsible AI Toolbox 把模型与数据评估集中到一组交互界面中：先找出错误率特别高的数据组，再比较不同群体的表现，并解释整体模型或单次预测为何得到当前结果。反事实视图展示哪些输入变化可能带来不同输出，因果和数据平衡视图则帮助团队提出下一步调查问题。",
+    "meaning": "它把抽象的模型质量拆成可定位的数据组、可解释的案例和可比较的结果，适合改造成面向学习、公共沟通和人工复核的模型检查产品。",
+    "audience": "需要调试、评估或向相关人员解释机器学习模型表现的开发者、数据科学家和业务负责人。",
+    "features": [
+      "定位高错误率数据组",
+      "比较不同群体的公平性指标",
+      "解释整体模型和单次预测",
+      "查看反事实输入变化",
+      "探索因果问题与数据分布"
+    ],
+    "stack": [
+      "TypeScript",
+      "Python",
+      "React",
+      "Jupyter",
+      "Model Assessment Widgets"
+    ],
+    "opportunity": [
+      "把错误分组改造成课堂模型实验报告。",
+      "把群体比较与解释改造成公共服务模型说明书。",
+      "把数据平衡与异常组改造成资料盲点工作坊。"
+    ],
+    "directions": [
+      {
+        "id": "student-model-lab",
+        "name": "学生模型实验室",
+        "tagline": "让一份预测结果说清哪里错、为何错",
+        "problem": "学生训练模型后只看总准确率，容易忽略某些数据组反复出错。",
+        "audience": "学习机器学习的学生和教师",
+        "approach": "导入预测结果与测试数据，按特征分组比较错误，查看代表案例和解释，再生成包含局限性的实验报告。",
+        "difference": "从专业调试工具改成有教学步骤和报告模板的模型实验。",
+        "scope": [
+          "结果导入",
+          "错误分组",
+          "案例解释",
+          "群体对照",
+          "报告模板"
+        ]
+      },
+      {
+        "id": "public-model-brief",
+        "name": "公共模型说明书",
+        "tagline": "把自动判断对不同人群的影响讲清楚",
+        "problem": "公共服务采用模型时，居民很难从技术指标理解哪些群体可能受到不同影响。",
+        "audience": "负责公共沟通的机构人员和社区代表",
+        "approach": "导入经批准的评估结果，选择群体和代表案例，把错误、公平性与解释转成分层图表，并记录仍需人工决定的问题。",
+        "difference": "从开发者调试界面变成面向公众的证据沟通与问题登记流程。",
+        "scope": [
+          "评估导入",
+          "群体图表",
+          "案例解释",
+          "术语说明",
+          "待决定问题",
+          "公开导出"
+        ]
+      },
+      {
+        "id": "dataset-blindspot-workshop",
+        "name": "资料盲点工作坊",
+        "tagline": "在继续收集前先看哪些样本长期缺席",
+        "problem": "小型数据集不断追加样本，却没有固定流程检查类别和特征是否失衡。",
+        "audience": "创建开放数据集的社区和研究小组",
+        "approach": "导入数据摘要，比较类别与特征分布，定位稀少组合，让参与者认领补充任务并记录新增来源。",
+        "difference": "从评估已有模型改成指导下一轮资料收集的协作产品。",
+        "scope": [
+          "数据摘要",
+          "分布对照",
+          "盲点组合",
+          "任务认领",
+          "来源记录"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "microsoft/responsible-ai-toolbox",
+    "accent": "#797820",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 2175708540
+  }
+}

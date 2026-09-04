@@ -1,0 +1,2602 @@
+{
+  "schemaVersion": 1,
+  "projects": [
+    {
+      "projectId": "superset",
+      "fullName": "apache/superset",
+      "directionPool": [
+        {
+          "id": "home-energy-board",
+          "name": "家庭能耗说明板",
+          "tagline": "把水电账单拆成看得懂的节省线索",
+          "problem": "家庭拿到多月账单后，常常看不出是哪段时间或哪类用量造成变化。",
+          "audience": "想控制水电支出的家庭成员",
+          "approach": "导入账单表格，统一月份和项目名称，按时间与用量做对照图，再把异常月份整理成待检查清单。",
+          "difference": "从通用企业 BI 改成围绕家庭账单的固定解释流程和行动清单。",
+          "scope": [
+            "账单导入",
+            "字段匹配",
+            "月度对照",
+            "异常标记",
+            "节省清单"
+          ],
+          "reusedCapability": "结构化数据连接、指标定义和交互图表",
+          "boundary": "只分析用户导入的账单，不代替能源审计，也不控制家电。",
+          "axes": {
+            "audience": "家庭成员",
+            "input": "水电燃气账单表格",
+            "workflow": "导入账单→统一字段→对照月份→标记异常",
+            "outcome": "家庭能耗说明板和节省检查清单"
+          },
+          "selected": true
+        },
+        {
+          "id": "class-survey-lab",
+          "name": "课堂调查工作室",
+          "tagline": "让一份问卷变成可以追问的数据课",
+          "problem": "教师收回问卷后，整理字段和制作多组图表耗时，学生也难以理解筛选条件如何改变结论。",
+          "audience": "带学生做调查项目的教师",
+          "approach": "导入问卷表格，选择问题和分组条件，生成可互动的对照图，并把观察和证据写入课堂讲义。",
+          "difference": "把自由分析界面变成面向教学的提问、筛选、解释和讲义输出闭环。",
+          "scope": [
+            "问卷导入",
+            "问题选择",
+            "分组筛选",
+            "互动图表",
+            "观察记录",
+            "讲义导出"
+          ],
+          "reusedCapability": "数据导入、交互筛选和图表组合",
+          "boundary": "只处理课堂项目数据，不提供考试评分或学生画像。",
+          "axes": {
+            "audience": "教师和学生",
+            "input": "课堂问卷与研究问题",
+            "workflow": "导入问卷→选择问题→分组筛选→记录观察",
+            "outcome": "互动数据课和证据讲义"
+          },
+          "selected": true
+        },
+        {
+          "id": "community-service-map",
+          "name": "社区服务地图",
+          "tagline": "把公开数据变成居民能查的服务入口",
+          "problem": "社区资源散落在表格和公告里，居民难以按地点和需求找到真正可用的服务。",
+          "audience": "社区组织者和附近居民",
+          "approach": "导入服务点表格，校正类别与位置，生成地图和条件筛选，再把缺口整理成待补充清单。",
+          "difference": "把企业仪表盘改成面向公共查询的地图入口与资料补全流程。",
+          "scope": [
+            "数据导入",
+            "地点校正",
+            "服务分类",
+            "地图筛选",
+            "缺口清单"
+          ],
+          "reusedCapability": "数据连接、地理图表和共享仪表盘",
+          "boundary": "只展示来源和更新时间明确的公共资料，不判断服务资格或替机构受理申请。",
+          "axes": {
+            "audience": "社区组织者和居民",
+            "input": "服务点公开表格与地址",
+            "workflow": "导入资料→校正地点→分类筛选→发现缺口",
+            "outcome": "可查询服务地图和资料缺口清单"
+          },
+          "selected": true
+        },
+        {
+          "id": "incident-metric-brief",
+          "name": "故障指标简报",
+          "tagline": "把运行数据自动整理成值班交接",
+          "problem": "运维人员要在多张指标图之间手工寻找异常并写交接说明。",
+          "audience": "维护线上服务的值班团队",
+          "approach": "连接运行指标，按服务口径计算趋势，标出异常时段，再生成带图表链接的交接简报。",
+          "difference": "从自由探索改成围绕值班交接的异常发现与简报输出。",
+          "scope": [
+            "指标连接",
+            "异常规则",
+            "时段对照",
+            "事件标记",
+            "简报生成"
+          ],
+          "reusedCapability": "指标语义层、缓存和仪表盘",
+          "boundary": "只辅助汇总和定位，不自动执行生产环境修复。",
+          "axes": {
+            "audience": "软件运维团队",
+            "input": "服务运行指标与值班时段",
+            "workflow": "连接指标→按口径计算→标记异常→生成交接",
+            "outcome": "故障指标简报"
+          },
+          "selected": false
+        },
+        {
+          "id": "dataset-contract-catalog",
+          "name": "数据口径目录",
+          "tagline": "让团队先看懂每个指标怎么算",
+          "problem": "不同报表重复定义同名指标，导致会议中反复争论数字口径。",
+          "audience": "维护公司数据口径的数据团队",
+          "approach": "登记维度和指标定义，绑定示例查询与责任人，检查重复名称，再发布可搜索的口径目录。",
+          "difference": "从查看分析结果转向治理指标定义和责任关系。",
+          "scope": [
+            "指标登记",
+            "定义校验",
+            "示例查询",
+            "责任人绑定",
+            "目录发布"
+          ],
+          "reusedCapability": "语义层、SQL 编辑与角色权限",
+          "boundary": "只管理定义和查询示例，不替代数据仓库建模。",
+          "axes": {
+            "audience": "企业数据治理人员",
+            "input": "指标定义、SQL 示例和责任人",
+            "workflow": "登记口径→检查冲突→绑定示例→发布目录",
+            "outcome": "可搜索的数据口径目录"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "home-energy-board",
+          "rightDirectionId": "class-survey-lab",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“教师和学生”；输入分别是“水电燃气账单表格”与“课堂问卷与研究问题”；流程分别是“导入账单→统一字段→对照月份→标记异常”与“导入问卷→选择问题→分组筛选→记录观察”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "home-energy-board",
+          "rightDirectionId": "community-service-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“社区组织者和居民”；输入分别是“水电燃气账单表格”与“服务点公开表格与地址”；流程分别是“导入账单→统一字段→对照月份→标记异常”与“导入资料→校正地点→分类筛选→发现缺口”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "home-energy-board",
+          "rightDirectionId": "incident-metric-brief",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“软件运维团队”；输入分别是“水电燃气账单表格”与“服务运行指标与值班时段”；流程分别是“导入账单→统一字段→对照月份→标记异常”与“连接指标→按口径计算→标记异常→生成交接”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "home-energy-board",
+          "rightDirectionId": "dataset-contract-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“企业数据治理人员”；输入分别是“水电燃气账单表格”与“指标定义、SQL 示例和责任人”；流程分别是“导入账单→统一字段→对照月份→标记异常”与“登记口径→检查冲突→绑定示例→发布目录”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-survey-lab",
+          "rightDirectionId": "community-service-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“社区组织者和居民”；输入分别是“课堂问卷与研究问题”与“服务点公开表格与地址”；流程分别是“导入问卷→选择问题→分组筛选→记录观察”与“导入资料→校正地点→分类筛选→发现缺口”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-survey-lab",
+          "rightDirectionId": "incident-metric-brief",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“软件运维团队”；输入分别是“课堂问卷与研究问题”与“服务运行指标与值班时段”；流程分别是“导入问卷→选择问题→分组筛选→记录观察”与“连接指标→按口径计算→标记异常→生成交接”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-survey-lab",
+          "rightDirectionId": "dataset-contract-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“企业数据治理人员”；输入分别是“课堂问卷与研究问题”与“指标定义、SQL 示例和责任人”；流程分别是“导入问卷→选择问题→分组筛选→记录观察”与“登记口径→检查冲突→绑定示例→发布目录”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-service-map",
+          "rightDirectionId": "incident-metric-brief",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“软件运维团队”；输入分别是“服务点公开表格与地址”与“服务运行指标与值班时段”；流程分别是“导入资料→校正地点→分类筛选→发现缺口”与“连接指标→按口径计算→标记异常→生成交接”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-service-map",
+          "rightDirectionId": "dataset-contract-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“企业数据治理人员”；输入分别是“服务点公开表格与地址”与“指标定义、SQL 示例和责任人”；流程分别是“导入资料→校正地点→分类筛选→发现缺口”与“登记口径→检查冲突→绑定示例→发布目录”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "incident-metric-brief",
+          "rightDirectionId": "dataset-contract-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“软件运维团队”与“企业数据治理人员”；输入分别是“服务运行指标与值班时段”与“指标定义、SQL 示例和责任人”；流程分别是“连接指标→按口径计算→标记异常→生成交接”与“登记口径→检查冲突→绑定示例→发布目录”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "home-energy-board",
+        "class-survey-lab",
+        "community-service-map"
+      ],
+      "selectionReason": "三条入选方向分别覆盖家庭、学习和社区，输入、使用流程与可见结果均不同；另外两条偏企业运营，留作候选但不进入页面。"
+    },
+    {
+      "projectId": "plausible",
+      "fullName": "plausible/analytics",
+      "directionPool": [
+        {
+          "id": "community-campaign-counter",
+          "name": "社区活动计数板",
+          "tagline": "公开活动进展，不记录参与者是谁",
+          "problem": "社区活动需要公开传播效果，但不应为统计点击而建立居民画像。",
+          "audience": "社区组织者和参与居民",
+          "approach": "为海报、报名页和现场二维码分配匿名事件，按来源与日期聚合，再发布只含总量和趋势的公开进度板。",
+          "difference": "从站点经营分析改成面向社区透明度的公开汇总产品。",
+          "scope": [
+            "活动链接",
+            "匿名事件",
+            "来源聚合",
+            "趋势卡片",
+            "公开分享"
+          ],
+          "reusedCapability": "无 Cookie 事件统计、目标与共享仪表盘",
+          "boundary": "只显示聚合数量，不建立个人档案，也不替代正式报名系统。",
+          "axes": {
+            "audience": "社区组织者和居民",
+            "input": "活动链接、二维码与匿名事件",
+            "workflow": "分配事件→聚合来源→核对趋势→公开进度",
+            "outcome": "不含个人记录的活动进度板"
+          },
+          "selected": true
+        },
+        {
+          "id": "creator-reading-echo",
+          "name": "创作者阅读回声",
+          "tagline": "每周看清哪些内容真正被读到",
+          "problem": "独立创作者知道总访问量，却难以快速判断哪些文章和来源带来持续阅读。",
+          "audience": "经营个人网站和通讯的独立创作者",
+          "approach": "接入页面和滚动完成事件，按文章与来源汇总，每周生成只保留内容表现和回访趋势的阅读报告。",
+          "difference": "把通用网站指标改成围绕内容复盘的固定周报。",
+          "scope": [
+            "文章接入",
+            "完成事件",
+            "来源对照",
+            "回访趋势",
+            "周报生成"
+          ],
+          "reusedCapability": "页面统计、自定义目标和定期报告",
+          "boundary": "只呈现匿名内容数据，不判断读者身份或兴趣标签。",
+          "axes": {
+            "audience": "独立创作者",
+            "input": "文章页面、来源和阅读完成事件",
+            "workflow": "接入页面→聚合阅读→比较来源→生成周报",
+            "outcome": "内容阅读回声周报"
+          },
+          "selected": true
+        },
+        {
+          "id": "exhibit-interaction-map",
+          "name": "展览互动热区图",
+          "tagline": "用匿名触碰看见观众停在哪里",
+          "problem": "小型展览想改善动线，却没有预算部署复杂摄像或身份识别系统。",
+          "audience": "博物馆和社区展览策展人",
+          "approach": "把展签二维码和互动按钮记为匿名事件，按区域和时段聚合，输出展区热度与待调整点位。",
+          "difference": "输入从网页访问变成线下展区互动，结果变成空间布置建议。",
+          "scope": [
+            "点位编号",
+            "匿名互动",
+            "时段聚合",
+            "展区热图",
+            "调整清单"
+          ],
+          "reusedCapability": "实时事件、聚合筛选和简洁仪表盘",
+          "boundary": "不使用人脸、设备指纹或个体轨迹。",
+          "axes": {
+            "audience": "展览策展人",
+            "input": "展签二维码与互动按钮事件",
+            "workflow": "编号点位→收集匿名触碰→按时段聚合→标记冷热点",
+            "outcome": "展览互动热区图和调整清单"
+          },
+          "selected": true
+        },
+        {
+          "id": "privacy-site-health",
+          "name": "隐私站点体检",
+          "tagline": "用最少数据发现页面突然失灵",
+          "problem": "小站点负责人常在数天后才发现重要页面访问或转化突然下降。",
+          "audience": "维护公益或个人站点的站长",
+          "approach": "设定关键页面和目标的正常区间，每日比较聚合数据，异常时只发送趋势和页面名称。",
+          "difference": "从主动浏览仪表盘变成每日异常体检。",
+          "scope": [
+            "关键页面",
+            "正常区间",
+            "每日检查",
+            "异常提醒"
+          ],
+          "reusedCapability": "目标、实时统计和报告",
+          "boundary": "只做统计异常提示，不进行安全扫描。",
+          "axes": {
+            "audience": "小型站点维护者",
+            "input": "关键页面和目标的聚合基线",
+            "workflow": "设定区间→每日比较→确认异常→发送提醒",
+            "outcome": "隐私友好的站点体检单"
+          },
+          "selected": false
+        },
+        {
+          "id": "lesson-link-feedback",
+          "name": "课程链接反馈卡",
+          "tagline": "看清学生在哪份资料前停住",
+          "problem": "教师分享多份课外资料后，不知道哪些链接无人打开或在哪一步流失。",
+          "audience": "发布线上学习资料的教师",
+          "approach": "给学习链接设置匿名目标，按班次和资料阶段聚合，只输出资料使用顺序和缺口。",
+          "difference": "从营销转化漏斗改成教学资料使用反馈。",
+          "scope": [
+            "资料链接",
+            "匿名目标",
+            "阶段漏斗",
+            "缺口卡片"
+          ],
+          "reusedCapability": "目标、漏斗和共享报告",
+          "boundary": "不记录学生姓名，不作为成绩依据。",
+          "axes": {
+            "audience": "教师和学习小组",
+            "input": "课程资料链接和学习阶段",
+            "workflow": "标记资料→聚合打开→比较阶段→形成反馈",
+            "outcome": "课程资料使用反馈卡"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "community-campaign-counter",
+          "rightDirectionId": "creator-reading-echo",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“独立创作者”；输入分别是“活动链接、二维码与匿名事件”与“文章页面、来源和阅读完成事件”；流程分别是“分配事件→聚合来源→核对趋势→公开进度”与“接入页面→聚合阅读→比较来源→生成周报”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-campaign-counter",
+          "rightDirectionId": "exhibit-interaction-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“展览策展人”；输入分别是“活动链接、二维码与匿名事件”与“展签二维码与互动按钮事件”；流程分别是“分配事件→聚合来源→核对趋势→公开进度”与“编号点位→收集匿名触碰→按时段聚合→标记冷热点”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-campaign-counter",
+          "rightDirectionId": "privacy-site-health",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“小型站点维护者”；输入分别是“活动链接、二维码与匿名事件”与“关键页面和目标的聚合基线”；流程分别是“分配事件→聚合来源→核对趋势→公开进度”与“设定区间→每日比较→确认异常→发送提醒”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-campaign-counter",
+          "rightDirectionId": "lesson-link-feedback",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区组织者和居民”与“教师和学习小组”；输入分别是“活动链接、二维码与匿名事件”与“课程资料链接和学习阶段”；流程分别是“分配事件→聚合来源→核对趋势→公开进度”与“标记资料→聚合打开→比较阶段→形成反馈”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "creator-reading-echo",
+          "rightDirectionId": "exhibit-interaction-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“独立创作者”与“展览策展人”；输入分别是“文章页面、来源和阅读完成事件”与“展签二维码与互动按钮事件”；流程分别是“接入页面→聚合阅读→比较来源→生成周报”与“编号点位→收集匿名触碰→按时段聚合→标记冷热点”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "creator-reading-echo",
+          "rightDirectionId": "privacy-site-health",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“独立创作者”与“小型站点维护者”；输入分别是“文章页面、来源和阅读完成事件”与“关键页面和目标的聚合基线”；流程分别是“接入页面→聚合阅读→比较来源→生成周报”与“设定区间→每日比较→确认异常→发送提醒”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "creator-reading-echo",
+          "rightDirectionId": "lesson-link-feedback",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“独立创作者”与“教师和学习小组”；输入分别是“文章页面、来源和阅读完成事件”与“课程资料链接和学习阶段”；流程分别是“接入页面→聚合阅读→比较来源→生成周报”与“标记资料→聚合打开→比较阶段→形成反馈”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "exhibit-interaction-map",
+          "rightDirectionId": "privacy-site-health",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“展览策展人”与“小型站点维护者”；输入分别是“展签二维码与互动按钮事件”与“关键页面和目标的聚合基线”；流程分别是“编号点位→收集匿名触碰→按时段聚合→标记冷热点”与“设定区间→每日比较→确认异常→发送提醒”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "exhibit-interaction-map",
+          "rightDirectionId": "lesson-link-feedback",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“展览策展人”与“教师和学习小组”；输入分别是“展签二维码与互动按钮事件”与“课程资料链接和学习阶段”；流程分别是“编号点位→收集匿名触碰→按时段聚合→标记冷热点”与“标记资料→聚合打开→比较阶段→形成反馈”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "privacy-site-health",
+          "rightDirectionId": "lesson-link-feedback",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“小型站点维护者”与“教师和学习小组”；输入分别是“关键页面和目标的聚合基线”与“课程资料链接和学习阶段”；流程分别是“设定区间→每日比较→确认异常→发送提醒”与“标记资料→聚合打开→比较阶段→形成反馈”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "community-campaign-counter",
+        "creator-reading-echo",
+        "exhibit-interaction-map"
+      ],
+      "selectionReason": "选择社区、创作和展览三种差异最大的使用场景；站点体检和课程反馈与前三者的产品边界较近，暂不发布。"
+    },
+    {
+      "projectId": "lossless-cut",
+      "fullName": "mifi/lossless-cut",
+      "directionPool": [
+        {
+          "id": "family-video-curator",
+          "name": "家庭影像整理器",
+          "tagline": "把几小时素材变成按事件归档的回忆",
+          "problem": "家庭视频越积越多，重复片段和长时间空镜让人很难回看。",
+          "audience": "整理家庭照片和视频的个人",
+          "approach": "扫描相机文件，用场景和静音提示定位片段，人工确认保留范围，再无损导出并按日期事件生成联系表。",
+          "difference": "从自由媒体工具改成家庭事件归档与回看流程。",
+          "scope": [
+            "素材扫描",
+            "场景提示",
+            "片段确认",
+            "无损导出",
+            "事件归档",
+            "联系表"
+          ],
+          "reusedCapability": "场景检测、时间线标记、无损裁切和快照",
+          "boundary": "不自动识别人脸，也不替用户决定哪些家庭片段重要。",
+          "axes": {
+            "audience": "家庭影像整理者",
+            "input": "相机和手机中的长视频",
+            "workflow": "扫描素材→提示场景→确认片段→按事件归档",
+            "outcome": "按日期整理的家庭短片和联系表"
+          },
+          "selected": true
+        },
+        {
+          "id": "lecture-breakdown-kit",
+          "name": "课程拆解工具",
+          "tagline": "把长课变成章节、片段和复习图卡",
+          "problem": "教师要从长录课中制作章节与复习片段，常要重复定位时间点和截图。",
+          "audience": "制作线上课程的教师",
+          "approach": "导入录课与章节表，核对时间点，批量裁出示例片段和关键帧，再导出带章节索引的课程包。",
+          "difference": "从单次剪切改成按教学结构批量产出课程材料。",
+          "scope": [
+            "录课导入",
+            "章节匹配",
+            "片段批切",
+            "关键帧",
+            "索引导出"
+          ],
+          "reusedCapability": "时间线片段、章节、批量导出和帧快照",
+          "boundary": "不生成教学内容，也不评价课程质量。",
+          "axes": {
+            "audience": "教师和课程制作者",
+            "input": "长录课、章节表和关键时间点",
+            "workflow": "匹配章节→核对时间点→批切片段→导出索引",
+            "outcome": "章节化课程包和复习图卡"
+          },
+          "selected": true
+        },
+        {
+          "id": "field-audio-trimmer",
+          "name": "田野录音整理台",
+          "tagline": "从长录音里留下可引用的声音证据",
+          "problem": "研究者面对数小时现场录音，难以快速排除静音并保持片段与笔记对应。",
+          "audience": "做访谈或自然声音记录的研究者",
+          "approach": "导入音频和现场笔记，用静音提示划分区段，人工命名并绑定笔记，再无损导出带来源信息的片段。",
+          "difference": "输入变成录音与现场笔记，结果是可引用的证据片段目录。",
+          "scope": [
+            "录音导入",
+            "静音提示",
+            "区段命名",
+            "笔记绑定",
+            "无损导出"
+          ],
+          "reusedCapability": "音频波形、静音检测、片段标记和无损导出",
+          "boundary": "不自动转写或判断说话内容。",
+          "axes": {
+            "audience": "田野和访谈研究者",
+            "input": "长录音与现场笔记",
+            "workflow": "检测静音→划分区段→绑定笔记→导出证据",
+            "outcome": "带来源笔记的音频片段目录"
+          },
+          "selected": true
+        },
+        {
+          "id": "dashcam-incident-pack",
+          "name": "行车事件片段包",
+          "tagline": "把事故前后几分钟完整截出来",
+          "problem": "行车记录仪文件很多，提交事件材料时难以迅速找到前后连续片段。",
+          "audience": "需要整理行车记录的车主",
+          "approach": "按文件时间排序，标记事件时刻，自动拼接前后窗口，导出原质量片段和时间说明。",
+          "difference": "从手工时间线变成围绕单一事件窗口的证据打包。",
+          "scope": [
+            "文件排序",
+            "事件标记",
+            "前后窗口",
+            "无损拼接",
+            "说明导出"
+          ],
+          "reusedCapability": "片段标记、合并和元数据读取",
+          "boundary": "不判断事故责任，不修改原始文件。",
+          "axes": {
+            "audience": "车主和材料整理人员",
+            "input": "连续行车记录文件和事件时间",
+            "workflow": "排序文件→标记事件→拼接窗口→生成说明",
+            "outcome": "保留原质量的事件片段包"
+          },
+          "selected": false
+        },
+        {
+          "id": "archive-remux-checker",
+          "name": "媒体归档检查器",
+          "tagline": "在入库前统一容器并核对轨道",
+          "problem": "档案馆收到的媒体容器和轨道组合不一，入库前人工检查容易遗漏。",
+          "audience": "管理媒体档案的技术人员",
+          "approach": "批量读取容器、轨道和元数据，按规则标出异常，确认后重封装并生成入库清单。",
+          "difference": "从编辑媒体转向归档规范检查与清单交付。",
+          "scope": [
+            "批量读取",
+            "轨道规则",
+            "异常标记",
+            "重封装",
+            "入库清单"
+          ],
+          "reusedCapability": "轨道检查、元数据和重封装",
+          "boundary": "不修复损坏内容，不长期保存档案文件。",
+          "axes": {
+            "audience": "媒体档案技术人员",
+            "input": "待入库媒体与轨道规范",
+            "workflow": "读取结构→比对规范→确认异常→重封装入库",
+            "outcome": "合规媒体文件和入库检查清单"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "family-video-curator",
+          "rightDirectionId": "lecture-breakdown-kit",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭影像整理者”与“教师和课程制作者”；输入分别是“相机和手机中的长视频”与“长录课、章节表和关键时间点”；流程分别是“扫描素材→提示场景→确认片段→按事件归档”与“匹配章节→核对时间点→批切片段→导出索引”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-video-curator",
+          "rightDirectionId": "field-audio-trimmer",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭影像整理者”与“田野和访谈研究者”；输入分别是“相机和手机中的长视频”与“长录音与现场笔记”；流程分别是“扫描素材→提示场景→确认片段→按事件归档”与“检测静音→划分区段→绑定笔记→导出证据”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-video-curator",
+          "rightDirectionId": "dashcam-incident-pack",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭影像整理者”与“车主和材料整理人员”；输入分别是“相机和手机中的长视频”与“连续行车记录文件和事件时间”；流程分别是“扫描素材→提示场景→确认片段→按事件归档”与“排序文件→标记事件→拼接窗口→生成说明”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-video-curator",
+          "rightDirectionId": "archive-remux-checker",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭影像整理者”与“媒体档案技术人员”；输入分别是“相机和手机中的长视频”与“待入库媒体与轨道规范”；流程分别是“扫描素材→提示场景→确认片段→按事件归档”与“读取结构→比对规范→确认异常→重封装入库”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "lecture-breakdown-kit",
+          "rightDirectionId": "field-audio-trimmer",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和课程制作者”与“田野和访谈研究者”；输入分别是“长录课、章节表和关键时间点”与“长录音与现场笔记”；流程分别是“匹配章节→核对时间点→批切片段→导出索引”与“检测静音→划分区段→绑定笔记→导出证据”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "lecture-breakdown-kit",
+          "rightDirectionId": "dashcam-incident-pack",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和课程制作者”与“车主和材料整理人员”；输入分别是“长录课、章节表和关键时间点”与“连续行车记录文件和事件时间”；流程分别是“匹配章节→核对时间点→批切片段→导出索引”与“排序文件→标记事件→拼接窗口→生成说明”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "lecture-breakdown-kit",
+          "rightDirectionId": "archive-remux-checker",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和课程制作者”与“媒体档案技术人员”；输入分别是“长录课、章节表和关键时间点”与“待入库媒体与轨道规范”；流程分别是“匹配章节→核对时间点→批切片段→导出索引”与“读取结构→比对规范→确认异常→重封装入库”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "field-audio-trimmer",
+          "rightDirectionId": "dashcam-incident-pack",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“田野和访谈研究者”与“车主和材料整理人员”；输入分别是“长录音与现场笔记”与“连续行车记录文件和事件时间”；流程分别是“检测静音→划分区段→绑定笔记→导出证据”与“排序文件→标记事件→拼接窗口→生成说明”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "field-audio-trimmer",
+          "rightDirectionId": "archive-remux-checker",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“田野和访谈研究者”与“媒体档案技术人员”；输入分别是“长录音与现场笔记”与“待入库媒体与轨道规范”；流程分别是“检测静音→划分区段→绑定笔记→导出证据”与“读取结构→比对规范→确认异常→重封装入库”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "dashcam-incident-pack",
+          "rightDirectionId": "archive-remux-checker",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“车主和材料整理人员”与“媒体档案技术人员”；输入分别是“连续行车记录文件和事件时间”与“待入库媒体与轨道规范”；流程分别是“排序文件→标记事件→拼接窗口→生成说明”与“读取结构→比对规范→确认异常→重封装入库”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "family-video-curator",
+        "lecture-breakdown-kit",
+        "field-audio-trimmer"
+      ],
+      "selectionReason": "家庭记忆、教学材料和研究证据三条方向在用户、输入和交付物上差异最大；车辆证据和档案规范暂留候选。"
+    },
+    {
+      "projectId": "flowgram-ai",
+      "fullName": "bytedance/flowgram.ai",
+      "directionPool": [
+        {
+          "id": "care-routine-designer",
+          "name": "家庭照护流程板",
+          "tagline": "把每天的照护交接画成清楚步骤",
+          "problem": "家庭多人轮流照护时，条件、提醒和交接信息容易散落在聊天记录。",
+          "audience": "共同照护老人或病后家人的家庭成员",
+          "approach": "用步骤节点登记用药、饮食和复诊事项，用条件分支表达异常情况，运行后生成当天清单和交接记录。",
+          "difference": "从开发框架变成家庭直接使用的照护流程产品。",
+          "scope": [
+            "照护节点",
+            "条件分支",
+            "日程运行",
+            "完成记录",
+            "交接摘要"
+          ],
+          "reusedCapability": "固定布局画布、表单、变量和条件节点",
+          "boundary": "只协助整理家庭约定，不给出医疗诊断或剂量建议。",
+          "axes": {
+            "audience": "家庭照护成员",
+            "input": "照护事项、时间和异常条件",
+            "workflow": "画步骤→设置条件→生成日程→记录交接",
+            "outcome": "每日照护清单和交接摘要"
+          },
+          "selected": true
+        },
+        {
+          "id": "class-experiment-flow",
+          "name": "课堂实验流程卡",
+          "tagline": "让学生沿着变量和分支完成实验",
+          "problem": "学生做探究实验时容易跳过控制变量、记录或复盘步骤。",
+          "audience": "组织探究课的教师和学生",
+          "approach": "教师用节点设计实验步骤、输入变量和检查点，学生逐步运行并填写结果，最后生成带分支路径的实验记录。",
+          "difference": "把任意工作流编辑器改成有教学检查点的学生执行界面。",
+          "scope": [
+            "实验步骤",
+            "变量输入",
+            "检查点",
+            "分支运行",
+            "记录导出"
+          ],
+          "reusedCapability": "节点表单、变量作用域、分支和运行时",
+          "boundary": "不替教师判断实验安全，也不自动给学生评分。",
+          "axes": {
+            "audience": "教师和学生",
+            "input": "实验步骤、变量和观察问题",
+            "workflow": "设计流程→学生运行→填写观察→回看分支",
+            "outcome": "可复盘的实验过程记录"
+          },
+          "selected": true
+        },
+        {
+          "id": "story-branch-workshop",
+          "name": "故事分支工坊",
+          "tagline": "把人物选择连成能试玩的故事路径",
+          "problem": "互动故事作者在文档中维护条件和分支时，很难发现断路与无法到达的结局。",
+          "audience": "创作互动小说和游戏剧情的作者",
+          "approach": "用节点表示场景与选择，用变量记录人物状态，检查不可达路径，再生成可点击的试玩预览。",
+          "difference": "输出从工作流配置变成读者可试玩的叙事原型。",
+          "scope": [
+            "场景节点",
+            "选择连线",
+            "状态变量",
+            "路径检查",
+            "试玩预览"
+          ],
+          "reusedCapability": "自由画布、变量、条件分支和运行时",
+          "boundary": "不自动代写故事正文，也不包含完整游戏引擎。",
+          "axes": {
+            "audience": "互动故事创作者",
+            "input": "场景、人物状态和选择条件",
+            "workflow": "连接场景→设置状态→检查路径→试玩分支",
+            "outcome": "可点击的互动故事原型"
+          },
+          "selected": true
+        },
+        {
+          "id": "support-triage-builder",
+          "name": "客服分流构建器",
+          "tagline": "把问题分类和转交规则放在一张图上",
+          "problem": "支持团队的分类规则散在文档和机器人配置里，修改后难以验证。",
+          "audience": "配置客户支持流程的运营人员",
+          "approach": "拖入分类、条件和转交节点，用样例问题运行测试，再发布版本化分流流程。",
+          "difference": "从框架开发转向运营人员可维护的支持规则产品。",
+          "scope": [
+            "规则节点",
+            "样例测试",
+            "路径预览",
+            "版本发布"
+          ],
+          "reusedCapability": "节点材料、表单校验、条件和运行时",
+          "boundary": "不直接替代工单系统，也不自动回复高风险问题。",
+          "axes": {
+            "audience": "客服运营人员",
+            "input": "问题类别、条件和转交规则",
+            "workflow": "画规则→运行样例→检查路径→发布版本",
+            "outcome": "可测试的客服分流流程"
+          },
+          "selected": false
+        },
+        {
+          "id": "data-pipeline-editor",
+          "name": "数据管线编辑器",
+          "tagline": "用节点连接取数、清洗和输出",
+          "problem": "小团队的数据定时处理脚本分散，依赖关系难以查看。",
+          "audience": "维护内部数据处理的工程团队",
+          "approach": "把数据源、转换和输出做成节点，配置变量与失败分支，再由运行时执行。",
+          "difference": "面向数据工程场景提供预制节点和运行监控。",
+          "scope": [
+            "数据源节点",
+            "转换节点",
+            "变量配置",
+            "失败分支",
+            "运行记录"
+          ],
+          "reusedCapability": "画布、变量和运行时",
+          "boundary": "不提供大规模计算引擎，重任务交给外部服务。",
+          "axes": {
+            "audience": "数据工程团队",
+            "input": "数据源、转换规则和调度参数",
+            "workflow": "连接节点→校验变量→设置失败分支→运行管线",
+            "outcome": "可执行的数据处理管线"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "care-routine-designer",
+          "rightDirectionId": "class-experiment-flow",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“教师和学生”；输入分别是“照护事项、时间和异常条件”与“实验步骤、变量和观察问题”；流程分别是“画步骤→设置条件→生成日程→记录交接”与“设计流程→学生运行→填写观察→回看分支”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "care-routine-designer",
+          "rightDirectionId": "story-branch-workshop",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“互动故事创作者”；输入分别是“照护事项、时间和异常条件”与“场景、人物状态和选择条件”；流程分别是“画步骤→设置条件→生成日程→记录交接”与“连接场景→设置状态→检查路径→试玩分支”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "care-routine-designer",
+          "rightDirectionId": "support-triage-builder",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“客服运营人员”；输入分别是“照护事项、时间和异常条件”与“问题类别、条件和转交规则”；流程分别是“画步骤→设置条件→生成日程→记录交接”与“画规则→运行样例→检查路径→发布版本”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "care-routine-designer",
+          "rightDirectionId": "data-pipeline-editor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“数据工程团队”；输入分别是“照护事项、时间和异常条件”与“数据源、转换规则和调度参数”；流程分别是“画步骤→设置条件→生成日程→记录交接”与“连接节点→校验变量→设置失败分支→运行管线”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-experiment-flow",
+          "rightDirectionId": "story-branch-workshop",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“互动故事创作者”；输入分别是“实验步骤、变量和观察问题”与“场景、人物状态和选择条件”；流程分别是“设计流程→学生运行→填写观察→回看分支”与“连接场景→设置状态→检查路径→试玩分支”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-experiment-flow",
+          "rightDirectionId": "support-triage-builder",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“客服运营人员”；输入分别是“实验步骤、变量和观察问题”与“问题类别、条件和转交规则”；流程分别是“设计流程→学生运行→填写观察→回看分支”与“画规则→运行样例→检查路径→发布版本”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "class-experiment-flow",
+          "rightDirectionId": "data-pipeline-editor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学生”与“数据工程团队”；输入分别是“实验步骤、变量和观察问题”与“数据源、转换规则和调度参数”；流程分别是“设计流程→学生运行→填写观察→回看分支”与“连接节点→校验变量→设置失败分支→运行管线”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "story-branch-workshop",
+          "rightDirectionId": "support-triage-builder",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“互动故事创作者”与“客服运营人员”；输入分别是“场景、人物状态和选择条件”与“问题类别、条件和转交规则”；流程分别是“连接场景→设置状态→检查路径→试玩分支”与“画规则→运行样例→检查路径→发布版本”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "story-branch-workshop",
+          "rightDirectionId": "data-pipeline-editor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“互动故事创作者”与“数据工程团队”；输入分别是“场景、人物状态和选择条件”与“数据源、转换规则和调度参数”；流程分别是“连接场景→设置状态→检查路径→试玩分支”与“连接节点→校验变量→设置失败分支→运行管线”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "support-triage-builder",
+          "rightDirectionId": "data-pipeline-editor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“客服运营人员”与“数据工程团队”；输入分别是“问题类别、条件和转交规则”与“数据源、转换规则和调度参数”；流程分别是“画规则→运行样例→检查路径→发布版本”与“连接节点→校验变量→设置失败分支→运行管线”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "care-routine-designer",
+        "class-experiment-flow",
+        "story-branch-workshop"
+      ],
+      "selectionReason": "入选方向分别服务家庭、学习和创作，并把画布能力转成三种完全不同的最终产品；企业支持和数据管线暂不进入。"
+    },
+    {
+      "projectId": "tagstudio",
+      "fullName": "TagStudioDev/TagStudio",
+      "directionPool": [
+        {
+          "id": "family-memory-labeler",
+          "name": "家庭记忆索引",
+          "tagline": "不改照片位置，也能按人物和故事找回回忆",
+          "problem": "家庭照片散在多年文件夹中，按日期能找到文件，却找不到跨年份的人物与事件故事。",
+          "audience": "整理家庭照片和录音的个人",
+          "approach": "扫描原文件夹，为照片和录音添加人物、地点、事件标签，把相关条目组成故事集并记录待确认身份。",
+          "difference": "从通用文件标签改成围绕家庭人物与事件的共同确认流程。",
+          "scope": [
+            "文件夹扫描",
+            "人物标签",
+            "事件关系",
+            "故事集",
+            "待确认清单"
+          ],
+          "reusedCapability": "不搬文件的资料库、关系标签和媒体预览",
+          "boundary": "不自动做人脸身份判断，也不把原文件上传到云端。",
+          "axes": {
+            "audience": "家庭成员",
+            "input": "家庭照片、录音和人物线索",
+            "workflow": "扫描原目录→标注人物事件→组成故事→共同确认",
+            "outcome": "可按人物和事件浏览的家庭记忆索引"
+          },
+          "selected": true
+        },
+        {
+          "id": "research-evidence-shelf",
+          "name": "研究证据架",
+          "tagline": "让每条论点都能回到原始资料",
+          "problem": "研究资料包含 PDF、图片和录音，文件名与文件夹很难同时表达主题、可信度和引用状态。",
+          "audience": "进行桌面研究的学生和独立研究者",
+          "approach": "保留原文件位置，为条目添加主题、论点、来源和待核对字段，用组合搜索生成某个结论的证据包。",
+          "difference": "把浏览文件改成按论点组装、核对和导出证据的研究流程。",
+          "scope": [
+            "资料扫描",
+            "论点标签",
+            "来源字段",
+            "核对状态",
+            "证据包"
+          ],
+          "reusedCapability": "自定义字段、关系标签和组合搜索",
+          "boundary": "不判断来源真假，不替代正式引用管理器。",
+          "axes": {
+            "audience": "学生和独立研究者",
+            "input": "PDF、图片、录音和研究论点",
+            "workflow": "登记来源→绑定论点→标记核对→组合检索",
+            "outcome": "可追溯的研究证据包"
+          },
+          "selected": true
+        },
+        {
+          "id": "craft-material-catalog",
+          "name": "手作材料目录",
+          "tagline": "拍一张照片就知道材料放在哪",
+          "problem": "手作爱好者积累布料、颜料和零件后，常忘记颜色、数量、存放位置和曾用于什么作品。",
+          "audience": "管理手作材料的个人创作者",
+          "approach": "为材料照片添加颜色、材质、数量和位置字段，关联成品图片，再按项目需求筛选可用库存。",
+          "difference": "输入变成材料照片和库存属性，结果是创作前可查询的选材目录。",
+          "scope": [
+            "材料照片",
+            "属性字段",
+            "位置记录",
+            "作品关联",
+            "条件筛选"
+          ],
+          "reusedCapability": "图片预览、标签、字段和组合搜索",
+          "boundary": "只记录个人库存，不处理采购付款或仓储物流。",
+          "axes": {
+            "audience": "个人手作爱好者",
+            "input": "材料照片、属性和存放位置",
+            "workflow": "拍摄登记→补充属性→关联作品→按需求筛选",
+            "outcome": "可查询的手作材料与作品目录"
+          },
+          "selected": true
+        },
+        {
+          "id": "game-asset-library",
+          "name": "游戏素材资料库",
+          "tagline": "跨项目查找音效、贴图和模型",
+          "problem": "独立游戏团队的素材散在多个项目目录，重复下载或授权记录遗漏。",
+          "audience": "小型游戏制作团队",
+          "approach": "索引素材目录，添加类型、风格、授权和使用项目字段，按条件生成可复用素材集。",
+          "difference": "从个人文件整理转向团队素材复用和授权核对。",
+          "scope": [
+            "目录索引",
+            "素材预览",
+            "授权字段",
+            "项目关系",
+            "素材集"
+          ],
+          "reusedCapability": "混合文件预览、字段和标签检索",
+          "boundary": "不复制素材，也不替代版本控制。",
+          "axes": {
+            "audience": "独立游戏团队",
+            "input": "音效、贴图、模型与授权信息",
+            "workflow": "索引素材→标注授权→关联项目→生成素材集",
+            "outcome": "跨项目素材与授权目录"
+          },
+          "selected": false
+        },
+        {
+          "id": "document-retention-board",
+          "name": "文件留存看板",
+          "tagline": "按规则找到该保留和该复查的文件",
+          "problem": "小组织长期积累文档后，很难按来源、年份和留存规则统一复查。",
+          "audience": "小型公益组织的资料管理员",
+          "approach": "为文档添加来源、年份、责任人和复查日期，组合筛选到期条目，输出人工处置清单。",
+          "difference": "从查找内容转向周期性的留存复查。",
+          "scope": [
+            "文档索引",
+            "留存字段",
+            "到期筛选",
+            "责任人",
+            "处置清单"
+          ],
+          "reusedCapability": "文件字段、布尔搜索和本地资料库",
+          "boundary": "不自动删除文件，也不提供法律合规结论。",
+          "axes": {
+            "audience": "公益组织资料管理员",
+            "input": "组织文档与留存规则",
+            "workflow": "登记字段→计算复查期→筛选到期→人工处置",
+            "outcome": "文件留存复查清单"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "family-memory-labeler",
+          "rightDirectionId": "research-evidence-shelf",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“学生和独立研究者”；输入分别是“家庭照片、录音和人物线索”与“PDF、图片、录音和研究论点”；流程分别是“扫描原目录→标注人物事件→组成故事→共同确认”与“登记来源→绑定论点→标记核对→组合检索”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-memory-labeler",
+          "rightDirectionId": "craft-material-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“个人手作爱好者”；输入分别是“家庭照片、录音和人物线索”与“材料照片、属性和存放位置”；流程分别是“扫描原目录→标注人物事件→组成故事→共同确认”与“拍摄登记→补充属性→关联作品→按需求筛选”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-memory-labeler",
+          "rightDirectionId": "game-asset-library",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“独立游戏团队”；输入分别是“家庭照片、录音和人物线索”与“音效、贴图、模型与授权信息”；流程分别是“扫描原目录→标注人物事件→组成故事→共同确认”与“索引素材→标注授权→关联项目→生成素材集”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-memory-labeler",
+          "rightDirectionId": "document-retention-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭成员”与“公益组织资料管理员”；输入分别是“家庭照片、录音和人物线索”与“组织文档与留存规则”；流程分别是“扫描原目录→标注人物事件→组成故事→共同确认”与“登记字段→计算复查期→筛选到期→人工处置”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "research-evidence-shelf",
+          "rightDirectionId": "craft-material-catalog",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“学生和独立研究者”与“个人手作爱好者”；输入分别是“PDF、图片、录音和研究论点”与“材料照片、属性和存放位置”；流程分别是“登记来源→绑定论点→标记核对→组合检索”与“拍摄登记→补充属性→关联作品→按需求筛选”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "research-evidence-shelf",
+          "rightDirectionId": "game-asset-library",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“学生和独立研究者”与“独立游戏团队”；输入分别是“PDF、图片、录音和研究论点”与“音效、贴图、模型与授权信息”；流程分别是“登记来源→绑定论点→标记核对→组合检索”与“索引素材→标注授权→关联项目→生成素材集”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "research-evidence-shelf",
+          "rightDirectionId": "document-retention-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“学生和独立研究者”与“公益组织资料管理员”；输入分别是“PDF、图片、录音和研究论点”与“组织文档与留存规则”；流程分别是“登记来源→绑定论点→标记核对→组合检索”与“登记字段→计算复查期→筛选到期→人工处置”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "craft-material-catalog",
+          "rightDirectionId": "game-asset-library",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“个人手作爱好者”与“独立游戏团队”；输入分别是“材料照片、属性和存放位置”与“音效、贴图、模型与授权信息”；流程分别是“拍摄登记→补充属性→关联作品→按需求筛选”与“索引素材→标注授权→关联项目→生成素材集”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "craft-material-catalog",
+          "rightDirectionId": "document-retention-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“个人手作爱好者”与“公益组织资料管理员”；输入分别是“材料照片、属性和存放位置”与“组织文档与留存规则”；流程分别是“拍摄登记→补充属性→关联作品→按需求筛选”与“登记字段→计算复查期→筛选到期→人工处置”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "game-asset-library",
+          "rightDirectionId": "document-retention-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“独立游戏团队”与“公益组织资料管理员”；输入分别是“音效、贴图、模型与授权信息”与“组织文档与留存规则”；流程分别是“索引素材→标注授权→关联项目→生成素材集”与“登记字段→计算复查期→筛选到期→人工处置”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "family-memory-labeler",
+        "research-evidence-shelf",
+        "craft-material-catalog"
+      ],
+      "selectionReason": "家庭记忆、研究证据和创作材料三条路径差异清楚，并优先保留非商业主题；团队素材和组织留存暂留候选。"
+    },
+    {
+      "projectId": "meetily",
+      "fullName": "Zackriya-Solutions/meetily",
+      "directionPool": [
+        {
+          "id": "oral-history-notebook",
+          "name": "家庭口述史笔记",
+          "tagline": "把长辈的声音整理成可追溯的故事线",
+          "problem": "家庭访谈录完后常被搁置，重要人物、时间和原声片段难以对应。",
+          "audience": "记录家族故事的个人和家庭",
+          "approach": "在本机录音或导入访谈，生成转写，人工校正人物与年代，再把摘要段落链接回原声时间点。",
+          "difference": "从会议纪要改成需要人工考证和原声回链的家庭档案。",
+          "scope": [
+            "本地录音",
+            "访谈转写",
+            "人物校正",
+            "年代标注",
+            "原声回链",
+            "故事导出"
+          ],
+          "reusedCapability": "本地录音、转写和摘要",
+          "boundary": "不自动确认历史事实，也不把音频公开上传。",
+          "axes": {
+            "audience": "家庭口述史记录者",
+            "input": "长辈访谈音频、人物和年代线索",
+            "workflow": "本地转写→人工校正→标注年代→链接原声",
+            "outcome": "可追溯到原声的家庭故事线"
+          },
+          "selected": true
+        },
+        {
+          "id": "learning-review-coach",
+          "name": "学习复盘教练",
+          "tagline": "讲一遍所学内容，找出没讲清的地方",
+          "problem": "学习者读完材料后自以为理解，却很少通过口头复述发现概念缺口。",
+          "audience": "自学课程和备考的学生",
+          "approach": "录下自己的主题讲解，在本机转写，按提纲比对遗漏和含糊段落，再生成下一轮复习问题。",
+          "difference": "输入从多人会议变成个人讲解，输出从纪要变成知识缺口和复习题。",
+          "scope": [
+            "主题录音",
+            "本地转写",
+            "提纲比对",
+            "缺口标记",
+            "复习问题"
+          ],
+          "reusedCapability": "本地收音、转写和结构化摘要",
+          "boundary": "不自动判分，也不替代教师反馈。",
+          "axes": {
+            "audience": "自学者和备考学生",
+            "input": "个人口头讲解与课程提纲",
+            "workflow": "录下复述→转写分段→对照提纲→生成复习问题",
+            "outcome": "知识缺口清单和下一轮复习题"
+          },
+          "selected": true
+        },
+        {
+          "id": "volunteer-handoff-log",
+          "name": "志愿者交接日志",
+          "tagline": "把讨论中的决定和负责人交给下一班",
+          "problem": "社区志愿者轮班开会后，后续人员常不知道已经决定什么、谁负责、何时跟进。",
+          "audience": "轮班协作的社区志愿团队",
+          "approach": "本地记录会议，校正转写后提取决定、负责人和日期，由主持人确认，再生成下一班能直接接手的交接卡。",
+          "difference": "从通用摘要变成必须人工确认责任关系的轮班交接产品。",
+          "scope": [
+            "本地会议记录",
+            "转写校正",
+            "决定提取",
+            "负责人确认",
+            "交接卡"
+          ],
+          "reusedCapability": "会议录音、转写和摘要生成",
+          "boundary": "不自动指派责任，也不替代团队的最终确认。",
+          "axes": {
+            "audience": "社区志愿团队",
+            "input": "轮班会议音频、成员和待办日期",
+            "workflow": "转写会议→提取决定→确认负责人→生成交接",
+            "outcome": "带责任人与日期的轮班交接卡"
+          },
+          "selected": true
+        },
+        {
+          "id": "interview-theme-board",
+          "name": "访谈主题看板",
+          "tagline": "把多次访谈中的相同问题并排看",
+          "problem": "研究团队完成多次访谈后，要手工复制片段才能比较重复主题。",
+          "audience": "做用户访谈的研究团队",
+          "approach": "导入多段录音，本地转写，人工标记主题与引用片段，再生成跨访谈对照板。",
+          "difference": "从单次会议摘要转向多份访谈的主题比较。",
+          "scope": [
+            "批量导入",
+            "本地转写",
+            "主题标记",
+            "引用片段",
+            "对照看板"
+          ],
+          "reusedCapability": "录音导入、转写和摘要",
+          "boundary": "不自动代表受访者观点，不隐藏研究者的人工判断。",
+          "axes": {
+            "audience": "用户研究团队",
+            "input": "多次访谈录音与主题框架",
+            "workflow": "批量转写→标记主题→核对引用→跨访谈对照",
+            "outcome": "访谈主题与原声引用看板"
+          },
+          "selected": false
+        },
+        {
+          "id": "private-call-archive",
+          "name": "私密通话档案",
+          "tagline": "在自己的电脑上搜索重要通话",
+          "problem": "个人与顾问的长期通话记录分散，回找约定时只能逐段听录音。",
+          "audience": "需要保留专业咨询记录的个人",
+          "approach": "经参与者同意后本地导入录音，转写并按日期、主题整理，搜索结果始终链接原声。",
+          "difference": "从即时会议助手变成个人长期可搜索档案。",
+          "scope": [
+            "同意记录",
+            "本地导入",
+            "主题摘要",
+            "全文搜索",
+            "原声回链"
+          ],
+          "reusedCapability": "本地转写、摘要和音频存储",
+          "boundary": "仅在合法并获得同意的情况下使用，不提供法律或医疗判断。",
+          "axes": {
+            "audience": "保存咨询记录的个人",
+            "input": "已获同意的通话录音",
+            "workflow": "本地导入→转写摘要→按主题归档→搜索回听",
+            "outcome": "可搜索且能回到原声的私密通话档案"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "oral-history-notebook",
+          "rightDirectionId": "learning-review-coach",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭口述史记录者”与“自学者和备考学生”；输入分别是“长辈访谈音频、人物和年代线索”与“个人口头讲解与课程提纲”；流程分别是“本地转写→人工校正→标注年代→链接原声”与“录下复述→转写分段→对照提纲→生成复习问题”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "oral-history-notebook",
+          "rightDirectionId": "volunteer-handoff-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭口述史记录者”与“社区志愿团队”；输入分别是“长辈访谈音频、人物和年代线索”与“轮班会议音频、成员和待办日期”；流程分别是“本地转写→人工校正→标注年代→链接原声”与“转写会议→提取决定→确认负责人→生成交接”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "oral-history-notebook",
+          "rightDirectionId": "interview-theme-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭口述史记录者”与“用户研究团队”；输入分别是“长辈访谈音频、人物和年代线索”与“多次访谈录音与主题框架”；流程分别是“本地转写→人工校正→标注年代→链接原声”与“批量转写→标记主题→核对引用→跨访谈对照”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "oral-history-notebook",
+          "rightDirectionId": "private-call-archive",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭口述史记录者”与“保存咨询记录的个人”；输入分别是“长辈访谈音频、人物和年代线索”与“已获同意的通话录音”；流程分别是“本地转写→人工校正→标注年代→链接原声”与“本地导入→转写摘要→按主题归档→搜索回听”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "learning-review-coach",
+          "rightDirectionId": "volunteer-handoff-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“自学者和备考学生”与“社区志愿团队”；输入分别是“个人口头讲解与课程提纲”与“轮班会议音频、成员和待办日期”；流程分别是“录下复述→转写分段→对照提纲→生成复习问题”与“转写会议→提取决定→确认负责人→生成交接”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "learning-review-coach",
+          "rightDirectionId": "interview-theme-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“自学者和备考学生”与“用户研究团队”；输入分别是“个人口头讲解与课程提纲”与“多次访谈录音与主题框架”；流程分别是“录下复述→转写分段→对照提纲→生成复习问题”与“批量转写→标记主题→核对引用→跨访谈对照”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "learning-review-coach",
+          "rightDirectionId": "private-call-archive",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“自学者和备考学生”与“保存咨询记录的个人”；输入分别是“个人口头讲解与课程提纲”与“已获同意的通话录音”；流程分别是“录下复述→转写分段→对照提纲→生成复习问题”与“本地导入→转写摘要→按主题归档→搜索回听”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "volunteer-handoff-log",
+          "rightDirectionId": "interview-theme-board",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区志愿团队”与“用户研究团队”；输入分别是“轮班会议音频、成员和待办日期”与“多次访谈录音与主题框架”；流程分别是“转写会议→提取决定→确认负责人→生成交接”与“批量转写→标记主题→核对引用→跨访谈对照”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "volunteer-handoff-log",
+          "rightDirectionId": "private-call-archive",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区志愿团队”与“保存咨询记录的个人”；输入分别是“轮班会议音频、成员和待办日期”与“已获同意的通话录音”；流程分别是“转写会议→提取决定→确认负责人→生成交接”与“本地导入→转写摘要→按主题归档→搜索回听”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "interview-theme-board",
+          "rightDirectionId": "private-call-archive",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“用户研究团队”与“保存咨询记录的个人”；输入分别是“多次访谈录音与主题框架”与“已获同意的通话录音”；流程分别是“批量转写→标记主题→核对引用→跨访谈对照”与“本地导入→转写摘要→按主题归档→搜索回听”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "oral-history-notebook",
+        "learning-review-coach",
+        "volunteer-handoff-log"
+      ],
+      "selectionReason": "家庭历史、个人学习和社区交接三条方向的价值闭环不同，也都保留本地隐私优势；研究看板和通话档案暂留候选。"
+    },
+    {
+      "projectId": "trilium",
+      "fullName": "TriliumNext/Trilium",
+      "directionPool": [
+        {
+          "id": "family-care-journal",
+          "name": "家庭照护日志",
+          "tagline": "把每天的变化、文件和交接留在同一条线",
+          "problem": "长期照护记录散在聊天、纸张和文件夹里，家人难以知道某次变化之后发生了什么。",
+          "audience": "共同照护家人的家庭成员",
+          "approach": "按日期记录事件，把文件和联系人作为关联笔记，使用属性标记待办与复查，并通过版本查看修改过程。",
+          "difference": "从自由知识库改成按时间交接、关系追踪和复查的家庭日志。",
+          "scope": [
+            "日期日志",
+            "事件属性",
+            "文件关联",
+            "联系人关系",
+            "复查清单",
+            "版本记录"
+          ],
+          "reusedCapability": "层级笔记、属性、关系和版本记录",
+          "boundary": "只保存家庭观察和资料，不提供医疗结论。",
+          "axes": {
+            "audience": "家庭照护成员",
+            "input": "每日观察、文件、联系人和复查事项",
+            "workflow": "按日记录→关联资料→标记待办→交接复查",
+            "outcome": "可追溯的家庭照护时间线"
+          },
+          "selected": true
+        },
+        {
+          "id": "worldbuilding-atlas",
+          "name": "世界观设定图谱",
+          "tagline": "让人物、地点和事件自动露出矛盾",
+          "problem": "长篇故事的角色与地点跨章节重复出现，作者容易忘记时间关系和设定冲突。",
+          "audience": "小说和游戏剧情创作者",
+          "approach": "为人物、地点、事件建立笔记与属性，用关系图连接出场和因果，同一设定克隆到章节视图，再列出冲突待核对。",
+          "difference": "从通用笔记改成围绕叙事连续性的关系检查产品。",
+          "scope": [
+            "人物卡",
+            "地点卡",
+            "事件时间线",
+            "关系图",
+            "章节视图",
+            "冲突清单"
+          ],
+          "reusedCapability": "笔记克隆、属性、关系图和搜索",
+          "boundary": "不自动代写剧情，只帮助维护已输入设定。",
+          "axes": {
+            "audience": "小说和游戏剧情作者",
+            "input": "人物、地点、事件和章节设定",
+            "workflow": "建立设定→连接关系→生成章节视图→核对冲突",
+            "outcome": "可视世界观图谱和连续性清单"
+          },
+          "selected": true
+        },
+        {
+          "id": "learning-dependency-map",
+          "name": "学习前置地图",
+          "tagline": "先看懂知识依赖，再安排下一步学习",
+          "problem": "自学者积累很多笔记，却不知道某个概念卡住是因为缺少哪项前置知识。",
+          "audience": "进行长期自学的学生和成年人",
+          "approach": "把概念笔记连接为前置关系，用属性标记理解程度和复习日期，生成从目标倒推的学习路径。",
+          "difference": "从按主题存笔记变成按知识依赖决定学习顺序。",
+          "scope": [
+            "概念笔记",
+            "前置关系",
+            "理解标记",
+            "复习日期",
+            "学习路径"
+          ],
+          "reusedCapability": "关系、属性、搜索和关系图",
+          "boundary": "不自动判定知识正确性，也不代替课程教学。",
+          "axes": {
+            "audience": "长期自学者",
+            "input": "概念笔记、前置关系和理解状态",
+            "workflow": "连接前置→标记理解→查找断点→安排复习",
+            "outcome": "从目标倒推的学习路径图"
+          },
+          "selected": true
+        },
+        {
+          "id": "lab-record-ledger",
+          "name": "实验记录账本",
+          "tagline": "让每次实验都连回样品、脚本和结果",
+          "problem": "小型实验团队的参数、文件和结论分散，复现实验时缺少完整上下文。",
+          "audience": "管理实验记录的小型研究团队",
+          "approach": "按实验建立模板笔记，关联样品、脚本和结果文件，用版本保存修改并生成复现检查表。",
+          "difference": "从个人笔记改成结构化实验可复现账本。",
+          "scope": [
+            "实验模板",
+            "样品关系",
+            "脚本关联",
+            "结果文件",
+            "版本记录",
+            "复现清单"
+          ],
+          "reusedCapability": "模板、关系、代码笔记和版本",
+          "boundary": "不执行实验仪器，也不验证科研结论。",
+          "axes": {
+            "audience": "小型研究团队",
+            "input": "实验参数、样品、脚本和结果文件",
+            "workflow": "套用模板→关联材料→记录版本→生成复现检查",
+            "outcome": "可复现的实验记录账本"
+          },
+          "selected": false
+        },
+        {
+          "id": "personal-relationship-log",
+          "name": "个人联系备忘录",
+          "tagline": "在下一次联系前找回共同上下文",
+          "problem": "个人很难长期记住与朋友、导师或合作伙伴上次谈过什么。",
+          "audience": "重视长期关系的个人",
+          "approach": "为联系人建立私密笔记，关联事件和共同项目，按复查日期提示下一次联系前的上下文。",
+          "difference": "从知识整理转向以人为中心的私密回顾节奏。",
+          "scope": [
+            "联系人笔记",
+            "事件关系",
+            "共同项目",
+            "复查日期",
+            "联系前摘要"
+          ],
+          "reusedCapability": "加密笔记、属性、关系和搜索",
+          "boundary": "不抓取社交平台数据，也不替用户自动发送消息。",
+          "axes": {
+            "audience": "维护长期关系的个人",
+            "input": "联系人、共同事件和私密备忘",
+            "workflow": "记录交往→关联事件→设置复查→联系前回顾",
+            "outcome": "私密联系人上下文和回顾提醒"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "family-care-journal",
+          "rightDirectionId": "worldbuilding-atlas",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“小说和游戏剧情作者”；输入分别是“每日观察、文件、联系人和复查事项”与“人物、地点、事件和章节设定”；流程分别是“按日记录→关联资料→标记待办→交接复查”与“建立设定→连接关系→生成章节视图→核对冲突”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-care-journal",
+          "rightDirectionId": "learning-dependency-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“长期自学者”；输入分别是“每日观察、文件、联系人和复查事项”与“概念笔记、前置关系和理解状态”；流程分别是“按日记录→关联资料→标记待办→交接复查”与“连接前置→标记理解→查找断点→安排复习”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-care-journal",
+          "rightDirectionId": "lab-record-ledger",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“小型研究团队”；输入分别是“每日观察、文件、联系人和复查事项”与“实验参数、样品、脚本和结果文件”；流程分别是“按日记录→关联资料→标记待办→交接复查”与“套用模板→关联材料→记录版本→生成复现检查”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-care-journal",
+          "rightDirectionId": "personal-relationship-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭照护成员”与“维护长期关系的个人”；输入分别是“每日观察、文件、联系人和复查事项”与“联系人、共同事件和私密备忘”；流程分别是“按日记录→关联资料→标记待办→交接复查”与“记录交往→关联事件→设置复查→联系前回顾”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "worldbuilding-atlas",
+          "rightDirectionId": "learning-dependency-map",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“小说和游戏剧情作者”与“长期自学者”；输入分别是“人物、地点、事件和章节设定”与“概念笔记、前置关系和理解状态”；流程分别是“建立设定→连接关系→生成章节视图→核对冲突”与“连接前置→标记理解→查找断点→安排复习”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "worldbuilding-atlas",
+          "rightDirectionId": "lab-record-ledger",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“小说和游戏剧情作者”与“小型研究团队”；输入分别是“人物、地点、事件和章节设定”与“实验参数、样品、脚本和结果文件”；流程分别是“建立设定→连接关系→生成章节视图→核对冲突”与“套用模板→关联材料→记录版本→生成复现检查”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "worldbuilding-atlas",
+          "rightDirectionId": "personal-relationship-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“小说和游戏剧情作者”与“维护长期关系的个人”；输入分别是“人物、地点、事件和章节设定”与“联系人、共同事件和私密备忘”；流程分别是“建立设定→连接关系→生成章节视图→核对冲突”与“记录交往→关联事件→设置复查→联系前回顾”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "learning-dependency-map",
+          "rightDirectionId": "lab-record-ledger",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“长期自学者”与“小型研究团队”；输入分别是“概念笔记、前置关系和理解状态”与“实验参数、样品、脚本和结果文件”；流程分别是“连接前置→标记理解→查找断点→安排复习”与“套用模板→关联材料→记录版本→生成复现检查”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "learning-dependency-map",
+          "rightDirectionId": "personal-relationship-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“长期自学者”与“维护长期关系的个人”；输入分别是“概念笔记、前置关系和理解状态”与“联系人、共同事件和私密备忘”；流程分别是“连接前置→标记理解→查找断点→安排复习”与“记录交往→关联事件→设置复查→联系前回顾”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "lab-record-ledger",
+          "rightDirectionId": "personal-relationship-log",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“小型研究团队”与“维护长期关系的个人”；输入分别是“实验参数、样品、脚本和结果文件”与“联系人、共同事件和私密备忘”；流程分别是“套用模板→关联材料→记录版本→生成复现检查”与“记录交往→关联事件→设置复查→联系前回顾”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "family-care-journal",
+        "worldbuilding-atlas",
+        "learning-dependency-map"
+      ],
+      "selectionReason": "家庭、创作和学习三个方向同时利用关系能力，但形成不同日常循环和交付物；实验账本与联系人备忘暂留候选。"
+    },
+    {
+      "projectId": "responsible-ai-toolbox",
+      "fullName": "microsoft/responsible-ai-toolbox",
+      "directionPool": [
+        {
+          "id": "student-model-lab",
+          "name": "学生模型实验室",
+          "tagline": "让一份预测结果说清哪里错、为何错",
+          "problem": "学生训练模型后只看总准确率，容易忽略某些数据组反复出错。",
+          "audience": "学习机器学习的学生和教师",
+          "approach": "导入预测结果与测试数据，按特征分组比较错误，查看代表案例和解释，再生成包含局限性的实验报告。",
+          "difference": "从专业调试工具改成有教学步骤和报告模板的模型实验。",
+          "scope": [
+            "结果导入",
+            "错误分组",
+            "案例解释",
+            "群体对照",
+            "报告模板"
+          ],
+          "reusedCapability": "错误分析、群体比较和模型解释",
+          "boundary": "只帮助理解课堂模型，不判定现实系统可安全部署。",
+          "axes": {
+            "audience": "机器学习学生和教师",
+            "input": "课堂模型预测与测试数据",
+            "workflow": "导入结果→分组找错→解释案例→撰写局限",
+            "outcome": "带证据和局限说明的实验报告"
+          },
+          "selected": true
+        },
+        {
+          "id": "public-model-brief",
+          "name": "公共模型说明书",
+          "tagline": "把自动判断对不同人群的影响讲清楚",
+          "problem": "公共服务采用模型时，居民很难从技术指标理解哪些群体可能受到不同影响。",
+          "audience": "负责公共沟通的机构人员和社区代表",
+          "approach": "导入经批准的评估结果，选择群体和代表案例，把错误、公平性与解释转成分层图表，并记录仍需人工决定的问题。",
+          "difference": "从开发者调试界面变成面向公众的证据沟通与问题登记流程。",
+          "scope": [
+            "评估导入",
+            "群体图表",
+            "案例解释",
+            "术语说明",
+            "待决定问题",
+            "公开导出"
+          ],
+          "reusedCapability": "公平性比较、错误分析和预测解释",
+          "boundary": "不自动裁定模型是否公平，也不发布未经机构确认的数据。",
+          "axes": {
+            "audience": "公共机构沟通人员和社区代表",
+            "input": "已批准的模型评估结果与群体定义",
+            "workflow": "选择群体→核对证据→解释案例→登记争议→公开导出",
+            "outcome": "可读的公共模型说明书和待决定问题"
+          },
+          "selected": true
+        },
+        {
+          "id": "dataset-blindspot-workshop",
+          "name": "资料盲点工作坊",
+          "tagline": "在继续收集前先看哪些样本长期缺席",
+          "problem": "小型数据集不断追加样本，却没有固定流程检查类别和特征是否失衡。",
+          "audience": "创建开放数据集的社区和研究小组",
+          "approach": "导入数据摘要，比较类别与特征分布，定位稀少组合，让参与者认领补充任务并记录新增来源。",
+          "difference": "从评估已有模型改成指导下一轮资料收集的协作产品。",
+          "scope": [
+            "数据摘要",
+            "分布对照",
+            "盲点组合",
+            "任务认领",
+            "来源记录"
+          ],
+          "reusedCapability": "数据平衡、群体切片和交互筛选",
+          "boundary": "不自动采集个人数据，也不把数量平衡等同于代表性。",
+          "axes": {
+            "audience": "开放数据集社区和研究小组",
+            "input": "数据字段、类别分布和样本来源",
+            "workflow": "比较分布→定位盲点→认领补充→记录来源",
+            "outcome": "数据盲点地图和补充任务板"
+          },
+          "selected": true
+        },
+        {
+          "id": "accessibility-review-queue",
+          "name": "无障碍案例复核队列",
+          "tagline": "先找到辅助功能模型最容易漏掉的场景",
+          "problem": "无障碍分类或识别模型的少数失败会直接影响使用体验，却容易被总指标掩盖。",
+          "audience": "维护辅助技术的产品与无障碍测试人员",
+          "approach": "按设备、环境和交互方式切分失败案例，解释代表预测，把高风险组合送入人工复核。",
+          "difference": "结果从分析图表变成按影响排序的人工复核队列。",
+          "scope": [
+            "案例导入",
+            "场景切片",
+            "预测解释",
+            "影响排序",
+            "复核队列"
+          ],
+          "reusedCapability": "错误分析、数据组和单例解释",
+          "boundary": "不替无障碍用户作价值判断，最终优先级由人工确认。",
+          "axes": {
+            "audience": "辅助技术产品与测试人员",
+            "input": "无障碍场景预测、设备和环境字段",
+            "workflow": "切分场景→解释失败→评估影响→人工复核",
+            "outcome": "按影响排序的案例复核队列"
+          },
+          "selected": false
+        },
+        {
+          "id": "model-change-diff",
+          "name": "模型改版差异单",
+          "tagline": "看见新版本修好了谁又伤到了谁",
+          "problem": "模型升级后总分上升，也可能让某些数据组表现下降。",
+          "audience": "发布机器学习模型的工程团队",
+          "approach": "导入新旧版本结果，按相同数据组比较错误、公平性和解释变化，生成发布前差异单。",
+          "difference": "从单模型探索变成版本间回归检查。",
+          "scope": [
+            "版本导入",
+            "群体对齐",
+            "指标差异",
+            "案例对照",
+            "发布清单"
+          ],
+          "reusedCapability": "群体比较、错误分析和解释界面",
+          "boundary": "不自动批准模型发布。",
+          "axes": {
+            "audience": "模型工程和发布团队",
+            "input": "新旧模型在同一测试集上的结果",
+            "workflow": "对齐版本→比较群体→检查案例→形成发布结论",
+            "outcome": "模型改版差异单和人工签核清单"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "student-model-lab",
+          "rightDirectionId": "public-model-brief",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“机器学习学生和教师”与“公共机构沟通人员和社区代表”；输入分别是“课堂模型预测与测试数据”与“已批准的模型评估结果与群体定义”；流程分别是“导入结果→分组找错→解释案例→撰写局限”与“选择群体→核对证据→解释案例→登记争议→公开导出”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "student-model-lab",
+          "rightDirectionId": "dataset-blindspot-workshop",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“机器学习学生和教师”与“开放数据集社区和研究小组”；输入分别是“课堂模型预测与测试数据”与“数据字段、类别分布和样本来源”；流程分别是“导入结果→分组找错→解释案例→撰写局限”与“比较分布→定位盲点→认领补充→记录来源”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "student-model-lab",
+          "rightDirectionId": "accessibility-review-queue",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“机器学习学生和教师”与“辅助技术产品与测试人员”；输入分别是“课堂模型预测与测试数据”与“无障碍场景预测、设备和环境字段”；流程分别是“导入结果→分组找错→解释案例→撰写局限”与“切分场景→解释失败→评估影响→人工复核”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "student-model-lab",
+          "rightDirectionId": "model-change-diff",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“机器学习学生和教师”与“模型工程和发布团队”；输入分别是“课堂模型预测与测试数据”与“新旧模型在同一测试集上的结果”；流程分别是“导入结果→分组找错→解释案例→撰写局限”与“对齐版本→比较群体→检查案例→形成发布结论”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "public-model-brief",
+          "rightDirectionId": "dataset-blindspot-workshop",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“公共机构沟通人员和社区代表”与“开放数据集社区和研究小组”；输入分别是“已批准的模型评估结果与群体定义”与“数据字段、类别分布和样本来源”；流程分别是“选择群体→核对证据→解释案例→登记争议→公开导出”与“比较分布→定位盲点→认领补充→记录来源”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "public-model-brief",
+          "rightDirectionId": "accessibility-review-queue",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“公共机构沟通人员和社区代表”与“辅助技术产品与测试人员”；输入分别是“已批准的模型评估结果与群体定义”与“无障碍场景预测、设备和环境字段”；流程分别是“选择群体→核对证据→解释案例→登记争议→公开导出”与“切分场景→解释失败→评估影响→人工复核”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "public-model-brief",
+          "rightDirectionId": "model-change-diff",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“公共机构沟通人员和社区代表”与“模型工程和发布团队”；输入分别是“已批准的模型评估结果与群体定义”与“新旧模型在同一测试集上的结果”；流程分别是“选择群体→核对证据→解释案例→登记争议→公开导出”与“对齐版本→比较群体→检查案例→形成发布结论”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "dataset-blindspot-workshop",
+          "rightDirectionId": "accessibility-review-queue",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“开放数据集社区和研究小组”与“辅助技术产品与测试人员”；输入分别是“数据字段、类别分布和样本来源”与“无障碍场景预测、设备和环境字段”；流程分别是“比较分布→定位盲点→认领补充→记录来源”与“切分场景→解释失败→评估影响→人工复核”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "dataset-blindspot-workshop",
+          "rightDirectionId": "model-change-diff",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“开放数据集社区和研究小组”与“模型工程和发布团队”；输入分别是“数据字段、类别分布和样本来源”与“新旧模型在同一测试集上的结果”；流程分别是“比较分布→定位盲点→认领补充→记录来源”与“对齐版本→比较群体→检查案例→形成发布结论”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "accessibility-review-queue",
+          "rightDirectionId": "model-change-diff",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“辅助技术产品与测试人员”与“模型工程和发布团队”；输入分别是“无障碍场景预测、设备和环境字段”与“新旧模型在同一测试集上的结果”；流程分别是“切分场景→解释失败→评估影响→人工复核”与“对齐版本→比较群体→检查案例→形成发布结论”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "student-model-lab",
+        "public-model-brief",
+        "dataset-blindspot-workshop"
+      ],
+      "selectionReason": "教学、公共沟通和社区数据收集三条方向分别改变了评估目的与结果；专业复核队列和版本差异暂留候选。"
+    },
+    {
+      "projectId": "ohmyzsh",
+      "fullName": "ohmyzsh/ohmyzsh",
+      "directionPool": [
+        {
+          "id": "command-practice-coach",
+          "name": "终端练习教练",
+          "tagline": "做真实任务时顺手学会下一条命令",
+          "problem": "初学者背过命令后，在真实目录和 Git 任务中仍不知道何时使用。",
+          "audience": "刚开始使用终端和 Git 的学习者",
+          "approach": "选择一个任务，教练按步骤提示可用命令和插件帮助，记录实际输入，在结束后生成易错命令卡。",
+          "difference": "从提供别名和补全改成围绕真实任务的练习与复盘产品。",
+          "scope": [
+            "任务选择",
+            "逐步提示",
+            "命令记录",
+            "错误解释",
+            "复习卡"
+          ],
+          "reusedCapability": "插件命令、补全、别名和帮助信息",
+          "boundary": "不自动执行破坏性命令，所有命令由学习者确认。",
+          "axes": {
+            "audience": "终端和 Git 初学者",
+            "input": "练习任务、当前目录和实际命令",
+            "workflow": "选择任务→尝试命令→获得提示→复盘错误",
+            "outcome": "完成任务的记录和个人易错命令卡"
+          },
+          "selected": true
+        },
+        {
+          "id": "team-shell-onboarding",
+          "name": "团队终端入职包",
+          "tagline": "一次检查新电脑还缺哪些开发工具",
+          "problem": "新成员照文档配置终端时，插件、命令和版本缺失常到真正工作时才暴露。",
+          "audience": "负责开发者入职的工程团队",
+          "approach": "维护团队插件与工具清单，在新电脑运行只读检测，生成建议配置和缺失项，由成员确认后安装。",
+          "difference": "从个人配置框架变成可核对、可签收的团队入职流程。",
+          "scope": [
+            "团队清单",
+            "环境检测",
+            "缺失报告",
+            "配置建议",
+            "完成签收"
+          ],
+          "reusedCapability": "插件模块、自定义目录和配置约定",
+          "boundary": "默认只读检测，未经用户确认不安装或改写配置。",
+          "axes": {
+            "audience": "开发团队和新成员",
+            "input": "团队工具清单与新电脑环境",
+            "workflow": "读取清单→检测环境→生成建议→人工确认→签收入职",
+            "outcome": "环境缺失报告和团队终端配置包"
+          },
+          "selected": true
+        },
+        {
+          "id": "personal-command-launcher",
+          "name": "个人命令启动器",
+          "tagline": "用一句描述找到自己写过的快捷动作",
+          "problem": "个人积累很多别名和脚本后，常因忘记名称而重复编写。",
+          "audience": "维护大量个人命令的开发者和创作者",
+          "approach": "索引自定义别名、函数和插件命令，补充用途标签，通过搜索或描述找到动作，执行前展示展开后的命令。",
+          "difference": "从启动终端时加载配置改成面向找回和安全确认的动作目录。",
+          "scope": [
+            "命令索引",
+            "用途标签",
+            "描述搜索",
+            "展开预览",
+            "执行确认"
+          ],
+          "reusedCapability": "别名、函数、自定义插件和帮助文本",
+          "boundary": "不隐藏最终命令，不绕过用户确认。",
+          "axes": {
+            "audience": "有个人脚本库的命令行用户",
+            "input": "别名、函数、插件命令和用途标签",
+            "workflow": "索引动作→描述搜索→预览展开→确认执行",
+            "outcome": "可搜索且可预览的个人动作目录"
+          },
+          "selected": true
+        },
+        {
+          "id": "prompt-theme-gallery",
+          "name": "提示符主题试衣间",
+          "tagline": "先预览再决定终端要显示什么",
+          "problem": "用户选择主题时要反复修改配置并重开终端才能比较。",
+          "audience": "想定制终端外观的用户",
+          "approach": "读取主题与变量，在模拟目录和 Git 状态下并排预览，导出选中的最小配置。",
+          "difference": "从静态主题列表改成状态化对比与配置导出。",
+          "scope": [
+            "主题读取",
+            "状态模拟",
+            "并排预览",
+            "变量调整",
+            "配置导出"
+          ],
+          "reusedCapability": "主题系统和提示符配置",
+          "boundary": "只生成预览和配置片段，不修改终端字体。",
+          "axes": {
+            "audience": "终端外观定制用户",
+            "input": "主题、颜色变量和模拟状态",
+            "workflow": "加载主题→模拟状态→并排比较→导出选择",
+            "outcome": "主题对比预览和最小配置"
+          },
+          "selected": false
+        },
+        {
+          "id": "shell-update-auditor",
+          "name": "终端更新审阅器",
+          "tagline": "更新配置前先看插件会改什么",
+          "problem": "长期使用的终端框架更新时，用户担心别名和自定义行为发生意外变化。",
+          "audience": "维护稳定开发环境的高级用户",
+          "approach": "比较当前与新版本插件文件，按已启用插件筛选变化，生成更新影响清单后再允许升级。",
+          "difference": "从直接更新框架改成先审查个人受影响范围。",
+          "scope": [
+            "版本比较",
+            "插件筛选",
+            "别名变化",
+            "影响清单",
+            "更新确认"
+          ],
+          "reusedCapability": "插件目录、Git 更新和配置清单",
+          "boundary": "不判断所有脚本行为安全，仍由用户决定升级。",
+          "axes": {
+            "audience": "重视环境稳定的高级用户",
+            "input": "当前版本、新版本和已启用插件",
+            "workflow": "比较版本→筛选插件→审阅变化→确认更新",
+            "outcome": "个人化更新影响清单"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "command-practice-coach",
+          "rightDirectionId": "team-shell-onboarding",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“终端和 Git 初学者”与“开发团队和新成员”；输入分别是“练习任务、当前目录和实际命令”与“团队工具清单与新电脑环境”；流程分别是“选择任务→尝试命令→获得提示→复盘错误”与“读取清单→检测环境→生成建议→人工确认→签收入职”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "command-practice-coach",
+          "rightDirectionId": "personal-command-launcher",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“终端和 Git 初学者”与“有个人脚本库的命令行用户”；输入分别是“练习任务、当前目录和实际命令”与“别名、函数、插件命令和用途标签”；流程分别是“选择任务→尝试命令→获得提示→复盘错误”与“索引动作→描述搜索→预览展开→确认执行”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "command-practice-coach",
+          "rightDirectionId": "prompt-theme-gallery",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“终端和 Git 初学者”与“终端外观定制用户”；输入分别是“练习任务、当前目录和实际命令”与“主题、颜色变量和模拟状态”；流程分别是“选择任务→尝试命令→获得提示→复盘错误”与“加载主题→模拟状态→并排比较→导出选择”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "command-practice-coach",
+          "rightDirectionId": "shell-update-auditor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“终端和 Git 初学者”与“重视环境稳定的高级用户”；输入分别是“练习任务、当前目录和实际命令”与“当前版本、新版本和已启用插件”；流程分别是“选择任务→尝试命令→获得提示→复盘错误”与“比较版本→筛选插件→审阅变化→确认更新”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "team-shell-onboarding",
+          "rightDirectionId": "personal-command-launcher",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“开发团队和新成员”与“有个人脚本库的命令行用户”；输入分别是“团队工具清单与新电脑环境”与“别名、函数、插件命令和用途标签”；流程分别是“读取清单→检测环境→生成建议→人工确认→签收入职”与“索引动作→描述搜索→预览展开→确认执行”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "team-shell-onboarding",
+          "rightDirectionId": "prompt-theme-gallery",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“开发团队和新成员”与“终端外观定制用户”；输入分别是“团队工具清单与新电脑环境”与“主题、颜色变量和模拟状态”；流程分别是“读取清单→检测环境→生成建议→人工确认→签收入职”与“加载主题→模拟状态→并排比较→导出选择”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "team-shell-onboarding",
+          "rightDirectionId": "shell-update-auditor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“开发团队和新成员”与“重视环境稳定的高级用户”；输入分别是“团队工具清单与新电脑环境”与“当前版本、新版本和已启用插件”；流程分别是“读取清单→检测环境→生成建议→人工确认→签收入职”与“比较版本→筛选插件→审阅变化→确认更新”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "personal-command-launcher",
+          "rightDirectionId": "prompt-theme-gallery",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“有个人脚本库的命令行用户”与“终端外观定制用户”；输入分别是“别名、函数、插件命令和用途标签”与“主题、颜色变量和模拟状态”；流程分别是“索引动作→描述搜索→预览展开→确认执行”与“加载主题→模拟状态→并排比较→导出选择”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "personal-command-launcher",
+          "rightDirectionId": "shell-update-auditor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“有个人脚本库的命令行用户”与“重视环境稳定的高级用户”；输入分别是“别名、函数、插件命令和用途标签”与“当前版本、新版本和已启用插件”；流程分别是“索引动作→描述搜索→预览展开→确认执行”与“比较版本→筛选插件→审阅变化→确认更新”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "prompt-theme-gallery",
+          "rightDirectionId": "shell-update-auditor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“终端外观定制用户”与“重视环境稳定的高级用户”；输入分别是“主题、颜色变量和模拟状态”与“当前版本、新版本和已启用插件”；流程分别是“加载主题→模拟状态→并排比较→导出选择”与“比较版本→筛选插件→审阅变化→确认更新”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "command-practice-coach",
+        "team-shell-onboarding",
+        "personal-command-launcher"
+      ],
+      "selectionReason": "学习、团队入职和个人效率三条方向形成不同日常循环；主题预览与更新审阅更接近原项目维护功能，暂不进入。"
+    },
+    {
+      "projectId": "airflow",
+      "fullName": "apache/airflow",
+      "directionPool": [
+        {
+          "id": "family-backup-calendar",
+          "name": "家庭备份日历",
+          "tagline": "每天确认照片和文件真的备份成功",
+          "problem": "家庭成员以为手机和电脑已经备份，往往到设备损坏后才发现某个来源长期失败。",
+          "audience": "管理家庭数字资料的个人",
+          "approach": "连接用户选择的照片和文档来源，按日执行复制与校验，失败时重试，并在日历中显示每个来源最后成功时间。",
+          "difference": "从工程任务平台改成家庭能读懂的备份状态与补救流程。",
+          "scope": [
+            "来源连接",
+            "定时备份",
+            "校验记录",
+            "失败重试",
+            "状态日历",
+            "补救提醒"
+          ],
+          "reusedCapability": "调度、任务依赖、日志、状态和重试",
+          "boundary": "不替代存储服务，不承诺灾难恢复等级。",
+          "axes": {
+            "audience": "家庭数字资料管理者",
+            "input": "照片文档来源、备份位置和时间计划",
+            "workflow": "按日复制→校验结果→失败重试→提醒补救",
+            "outcome": "家庭备份状态日历和缺失提醒"
+          },
+          "selected": true
+        },
+        {
+          "id": "school-report-pipeline",
+          "name": "学校报告流水线",
+          "tagline": "让每次表格汇总都按同一顺序完成",
+          "problem": "教师周期性汇总成绩或出勤表时，要重复清理列名、检查缺失值和制作图表。",
+          "audience": "需要定期整理班级数据的教师与学校行政人员",
+          "approach": "上传表格后按固定步骤校验格式、去除公开报告不需要的个人字段、计算汇总并生成待人工核对的报告。",
+          "difference": "把代码 DAG 隐藏成教师可操作的表格检查和报告交付。",
+          "scope": [
+            "表格上传",
+            "格式校验",
+            "字段移除",
+            "汇总计算",
+            "人工核对",
+            "报告导出"
+          ],
+          "reusedCapability": "任务依赖、失败状态、重试和运行日志",
+          "boundary": "不自动决定学生评价，不发布未经教师核对的报告。",
+          "axes": {
+            "audience": "教师和学校行政人员",
+            "input": "成绩或出勤表格与报告模板",
+            "workflow": "上传表格→校验清理→计算汇总→人工核对",
+            "outcome": "可追踪生成的学校周期报告"
+          },
+          "selected": true
+        },
+        {
+          "id": "community-open-data-publisher",
+          "name": "社区数据更新站",
+          "tagline": "按期抓取公开资料并标出哪天断更",
+          "problem": "社区志愿者维护公开信息时，数据源格式变化会让页面悄悄停止更新。",
+          "audience": "维护社区公开数据的志愿团队",
+          "approach": "按计划读取城市 CSV 或 API，校验字段和更新时间，清理后发布版本，并把失败来源放进待修清单。",
+          "difference": "从内部数据管线变成同时交付公开数据和新鲜度说明的社区产品。",
+          "scope": [
+            "来源计划",
+            "字段校验",
+            "数据清理",
+            "版本发布",
+            "新鲜度面板",
+            "修复清单"
+          ],
+          "reusedCapability": "定时调度、依赖、日志、失败重试和外部连接",
+          "boundary": "只发布许可允许的公开数据，不替来源机构背书。",
+          "axes": {
+            "audience": "社区开放数据志愿者和居民",
+            "input": "公开 CSV、API 与更新频率",
+            "workflow": "定时抓取→校验清理→发布版本→跟踪断更",
+            "outcome": "带来源新鲜度的社区数据站"
+          },
+          "selected": true
+        },
+        {
+          "id": "model-training-scheduler",
+          "name": "模型训练调度台",
+          "tagline": "让数据、训练和评估按依赖反复运行",
+          "problem": "机器学习团队的重训步骤分散，失败后难以判断该从哪一步恢复。",
+          "audience": "维护周期训练任务的机器学习团队",
+          "approach": "把数据准备、训练、评估和发布门槛写成任务图，按计划运行并在失败节点重试。",
+          "difference": "围绕模型生命周期提供预制依赖与发布门槛。",
+          "scope": [
+            "数据任务",
+            "训练任务",
+            "评估门槛",
+            "运行日志",
+            "节点重试"
+          ],
+          "reusedCapability": "DAG、调度、状态和重试",
+          "boundary": "不提供模型训练算法，重计算交给外部平台。",
+          "axes": {
+            "audience": "机器学习平台团队",
+            "input": "训练步骤、数据位置和评估门槛",
+            "workflow": "准备数据→训练模型→评估门槛→决定发布",
+            "outcome": "可追踪的周期训练运行记录"
+          },
+          "selected": false
+        },
+        {
+          "id": "invoice-etl-monitor",
+          "name": "账单汇总监控台",
+          "tagline": "每天把多平台账单汇成一份可核对表",
+          "problem": "小公司从多个服务下载账单后，字段不同且某个平台失败时容易漏算。",
+          "audience": "核对 SaaS 支出的财务与运营人员",
+          "approach": "定时获取账单文件，统一供应商和币种字段，校验总额并把异常交给人工处理。",
+          "difference": "把通用数据管线变成财务人员可见的账单核对流程。",
+          "scope": [
+            "账单获取",
+            "字段统一",
+            "金额校验",
+            "异常队列",
+            "汇总表"
+          ],
+          "reusedCapability": "调度、外部连接、依赖和失败状态",
+          "boundary": "不发起付款，也不提供税务意见。",
+          "axes": {
+            "audience": "小公司财务和运营人员",
+            "input": "多个服务的账单文件和换算规则",
+            "workflow": "定时获取→统一字段→核对总额→处理异常",
+            "outcome": "每日 SaaS 支出汇总和异常队列"
+          },
+          "selected": false
+        }
+      ],
+      "pairAudits": [
+        {
+          "leftDirectionId": "family-backup-calendar",
+          "rightDirectionId": "school-report-pipeline",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭数字资料管理者”与“教师和学校行政人员”；输入分别是“照片文档来源、备份位置和时间计划”与“成绩或出勤表格与报告模板”；流程分别是“按日复制→校验结果→失败重试→提醒补救”与“上传表格→校验清理→计算汇总→人工核对”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-backup-calendar",
+          "rightDirectionId": "community-open-data-publisher",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭数字资料管理者”与“社区开放数据志愿者和居民”；输入分别是“照片文档来源、备份位置和时间计划”与“公开 CSV、API 与更新频率”；流程分别是“按日复制→校验结果→失败重试→提醒补救”与“定时抓取→校验清理→发布版本→跟踪断更”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-backup-calendar",
+          "rightDirectionId": "model-training-scheduler",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭数字资料管理者”与“机器学习平台团队”；输入分别是“照片文档来源、备份位置和时间计划”与“训练步骤、数据位置和评估门槛”；流程分别是“按日复制→校验结果→失败重试→提醒补救”与“准备数据→训练模型→评估门槛→决定发布”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "family-backup-calendar",
+          "rightDirectionId": "invoice-etl-monitor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“家庭数字资料管理者”与“小公司财务和运营人员”；输入分别是“照片文档来源、备份位置和时间计划”与“多个服务的账单文件和换算规则”；流程分别是“按日复制→校验结果→失败重试→提醒补救”与“定时获取→统一字段→核对总额→处理异常”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "school-report-pipeline",
+          "rightDirectionId": "community-open-data-publisher",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学校行政人员”与“社区开放数据志愿者和居民”；输入分别是“成绩或出勤表格与报告模板”与“公开 CSV、API 与更新频率”；流程分别是“上传表格→校验清理→计算汇总→人工核对”与“定时抓取→校验清理→发布版本→跟踪断更”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "school-report-pipeline",
+          "rightDirectionId": "model-training-scheduler",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学校行政人员”与“机器学习平台团队”；输入分别是“成绩或出勤表格与报告模板”与“训练步骤、数据位置和评估门槛”；流程分别是“上传表格→校验清理→计算汇总→人工核对”与“准备数据→训练模型→评估门槛→决定发布”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "school-report-pipeline",
+          "rightDirectionId": "invoice-etl-monitor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“教师和学校行政人员”与“小公司财务和运营人员”；输入分别是“成绩或出勤表格与报告模板”与“多个服务的账单文件和换算规则”；流程分别是“上传表格→校验清理→计算汇总→人工核对”与“定时获取→统一字段→核对总额→处理异常”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-open-data-publisher",
+          "rightDirectionId": "model-training-scheduler",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区开放数据志愿者和居民”与“机器学习平台团队”；输入分别是“公开 CSV、API 与更新频率”与“训练步骤、数据位置和评估门槛”；流程分别是“定时抓取→校验清理→发布版本→跟踪断更”与“准备数据→训练模型→评估门槛→决定发布”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "community-open-data-publisher",
+          "rightDirectionId": "invoice-etl-monitor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“社区开放数据志愿者和居民”与“小公司财务和运营人员”；输入分别是“公开 CSV、API 与更新频率”与“多个服务的账单文件和换算规则”；流程分别是“定时抓取→校验清理→发布版本→跟踪断更”与“定时获取→统一字段→核对总额→处理异常”",
+          "status": "pass"
+        },
+        {
+          "leftDirectionId": "model-training-scheduler",
+          "rightDirectionId": "invoice-etl-monitor",
+          "differentAxes": [
+            "audience",
+            "input",
+            "workflow",
+            "outcome"
+          ],
+          "comparison": "用户分别是“机器学习平台团队”与“小公司财务和运营人员”；输入分别是“训练步骤、数据位置和评估门槛”与“多个服务的账单文件和换算规则”；流程分别是“准备数据→训练模型→评估门槛→决定发布”与“定时获取→统一字段→核对总额→处理异常”",
+          "status": "pass"
+        }
+      ],
+      "selectedDirectionIds": [
+        "family-backup-calendar",
+        "school-report-pipeline",
+        "community-open-data-publisher"
+      ],
+      "selectionReason": "家庭备份、学校报告和社区数据三条方向分别处理文件安全、教育汇总与公共发布；模型训练和账单 ETL 偏常见企业管线，暂不进入。"
+    }
+  ]
+}

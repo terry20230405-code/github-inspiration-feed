@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 2,
+  "id": "lossless-cut",
+  "repository": {
+    "githubId": 72343657,
+    "fullName": "mifi/lossless-cut",
+    "name": "lossless-cut",
+    "stars": 43431,
+    "forks": 2148,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-03T10:26:44Z",
+    "license": "GNU General Public License v2.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:12:18Z"
+  },
+  "editorial": {
+    "hook": "剪掉视频废片，不再整段重新编码",
+    "summary": "LosslessCut 给 FFmpeg 套上跨平台时间线界面，让用户标记片段后快速裁切、合并或重封装视频、音频和字幕，而不必为普通剪切重新编码整段素材。它还支持轨道与元数据处理、快照、章节，以及黑场、静音和场景检测。",
+    "meaning": "它把耗时的媒体重编码换成对容器和片段的精确操作，适合改造成围绕家庭记忆、课程材料或现场录音的轻量整理产品。",
+    "audience": "需要快速清理相机、录屏、无人机或录音素材，又不想因重复编码损失质量的个人与内容工作者。",
+    "features": [
+      "快速无损裁切与合并",
+      "视频、音频和字幕轨道处理",
+      "媒体重封装与元数据编辑",
+      "帧快照、章节和片段项目",
+      "黑场、静音与场景检测"
+    ],
+    "stack": [
+      "TypeScript",
+      "Electron",
+      "Chromium",
+      "FFmpeg"
+    ],
+    "opportunity": [
+      "把场景检测和无损裁切做成家庭影像整理器。",
+      "把章节、片段和快照输出做成课程拆解工具。",
+      "把静音检测和音频裁切做成田野录音整理台。"
+    ],
+    "directions": [
+      {
+        "id": "family-video-curator",
+        "name": "家庭影像整理器",
+        "tagline": "把几小时素材变成按事件归档的回忆",
+        "problem": "家庭视频越积越多，重复片段和长时间空镜让人很难回看。",
+        "audience": "整理家庭照片和视频的个人",
+        "approach": "扫描相机文件，用场景和静音提示定位片段，人工确认保留范围，再无损导出并按日期事件生成联系表。",
+        "difference": "从自由媒体工具改成家庭事件归档与回看流程。",
+        "scope": [
+          "素材扫描",
+          "场景提示",
+          "片段确认",
+          "无损导出",
+          "事件归档",
+          "联系表"
+        ]
+      },
+      {
+        "id": "lecture-breakdown-kit",
+        "name": "课程拆解工具",
+        "tagline": "把长课变成章节、片段和复习图卡",
+        "problem": "教师要从长录课中制作章节与复习片段，常要重复定位时间点和截图。",
+        "audience": "制作线上课程的教师",
+        "approach": "导入录课与章节表，核对时间点，批量裁出示例片段和关键帧，再导出带章节索引的课程包。",
+        "difference": "从单次剪切改成按教学结构批量产出课程材料。",
+        "scope": [
+          "录课导入",
+          "章节匹配",
+          "片段批切",
+          "关键帧",
+          "索引导出"
+        ]
+      },
+      {
+        "id": "field-audio-trimmer",
+        "name": "田野录音整理台",
+        "tagline": "从长录音里留下可引用的声音证据",
+        "problem": "研究者面对数小时现场录音，难以快速排除静音并保持片段与笔记对应。",
+        "audience": "做访谈或自然声音记录的研究者",
+        "approach": "导入音频和现场笔记，用静音提示划分区段，人工命名并绑定笔记，再无损导出带来源信息的片段。",
+        "difference": "输入变成录音与现场笔记，结果是可引用的证据片段目录。",
+        "scope": [
+          "录音导入",
+          "静音提示",
+          "区段命名",
+          "笔记绑定",
+          "无损导出"
+        ]
+      }
+    ]
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "mifi/lossless-cut",
+    "accent": "#a822b9",
+    "foreground": "#ffffff",
+    "motif": "path",
+    "variant": 4138876531
+  }
+}

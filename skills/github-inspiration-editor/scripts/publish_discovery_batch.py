@@ -135,24 +135,47 @@ def load_batch(batch_id: str) -> tuple[Path, dict[str, object], list[dict[str, o
     return directory, manifest, loaded
 
 
-def approval_record(batch_id: str, fingerprint: str, approved_by: str, source_pr: int, *, now: str | None = None) -> dict[str, object]:
+def approval_record(
+    batch_id: str,
+    fingerprint: str,
+    approved_by: str,
+    source_pr: int | None,
+    *,
+    approval_source: str = "merged-review-pull-request",
+    now: str | None = None,
+) -> dict[str, object]:
     if not approved_by.strip():
-        raise BatchPublicationError("approved-by must identify the human who merged the review PR")
-    if source_pr <= 0:
-        raise BatchPublicationError("source PR number must be positive")
+        raise BatchPublicationError("approved-by must identify the human approver")
+    if approval_source == "merged-review-pull-request":
+        if not isinstance(source_pr, int) or source_pr <= 0:
+            raise BatchPublicationError("source PR number must be positive")
+    elif approval_source == "local-codex-conversation":
+        if source_pr is not None:
+            raise BatchPublicationError("local Codex approval must not claim a source PR")
+    else:
+        raise BatchPublicationError("unsupported approval source")
     return {
         "schemaVersion": 1,
         "batchId": batch_id,
         "batchFingerprint": fingerprint,
         "approvedAt": now or utc_now(),
         "approvedBy": approved_by.strip(),
-        "approvalSource": "merged-review-pull-request",
+        "approvalSource": approval_source,
         "sourcePullRequest": source_pr,
         "publicationAuthorized": True,
     }
 
 
-def publish_batch(batch_id: str, approved_by: str, source_pr: int, *, write: bool = False, run_checks=default_check_runner, now: str | None = None) -> dict[str, object]:
+def publish_batch(
+    batch_id: str,
+    approved_by: str,
+    source_pr: int | None,
+    *,
+    approval_source: str = "merged-review-pull-request",
+    write: bool = False,
+    run_checks=default_check_runner,
+    now: str | None = None,
+) -> dict[str, object]:
     directory, manifest, projects = load_batch(batch_id)
     if manifest.get("status") == "published":
         return {
@@ -162,7 +185,14 @@ def publish_batch(batch_id: str, approved_by: str, source_pr: int, *, write: boo
             "candidateCount": len(projects),
             "publicationAuthorized": True,
         }
-    approval = approval_record(batch_id, str(manifest["batchFingerprint"]), approved_by, source_pr, now=now)
+    approval = approval_record(
+        batch_id,
+        str(manifest["batchFingerprint"]),
+        approved_by,
+        source_pr,
+        approval_source=approval_source,
+        now=now,
+    )
     dirty = dirty_data_paths(PROJECT_ROOT)
     if dirty:
         raise BatchPublicationError("published data has uncommitted changes: " + " | ".join(dirty))
@@ -200,6 +230,7 @@ def publish_batch(batch_id: str, approved_by: str, source_pr: int, *, write: boo
         "candidateCount": len(projects),
         "projectIds": [project["id"] for project in projects],
         "approvedBy": approved_by,
+        "approvalSource": approval_source,
         "sourcePullRequest": source_pr,
         "changedFiles": list(DATA_PATHS),
         "publicationAuthorized": True,
@@ -223,6 +254,7 @@ def publish_batch(batch_id: str, approved_by: str, source_pr: int, *, write: boo
             "status": "published",
             "publishedAt": now or utc_now(),
             "batchId": batch_id,
+            "approvalSource": approval_source,
             "sourcePullRequest": source_pr,
             "checks": checks,
         })
@@ -244,11 +276,20 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("batch_id")
     parser.add_argument("--approved-by", required=True)
-    parser.add_argument("--source-pr", type=int, required=True)
+    approval_group = parser.add_mutually_exclusive_group(required=True)
+    approval_group.add_argument("--source-pr", type=int)
+    approval_group.add_argument("--local-approval", action="store_true")
     parser.add_argument("--write", action="store_true")
     args = parser.parse_args()
     try:
-        result = publish_batch(args.batch_id, args.approved_by, args.source_pr, write=args.write)
+        approval_source = "local-codex-conversation" if args.local_approval else "merged-review-pull-request"
+        result = publish_batch(
+            args.batch_id,
+            args.approved_by,
+            args.source_pr,
+            approval_source=approval_source,
+            write=args.write,
+        )
         print(json.dumps(result, ensure_ascii=False, indent=2))
         return 0
     except (BatchPublicationError, OSError, ValueError, RuntimeError) as error:

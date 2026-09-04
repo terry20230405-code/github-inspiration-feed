@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260904T051218-9270eb9e",
+  "batchFingerprint": "f516e6340f9f7c6ed4d5288734b10d6754ecca82ca99f056086c0526f26eb763",
+  "approvedAt": "2026-09-04T06:43:53Z",
+  "approvedBy": "Terry",
+  "approvalSource": "local-codex-conversation",
+  "sourcePullRequest": null,
+  "publicationAuthorized": true
+}

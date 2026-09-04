@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "flowgram-ai",
+  "projectPath": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/flowgram-ai.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T051218-9270eb9e/flowgram-ai.research.md",
+  "projectSha256": "5b931c48b5a81177926bec704691a8e3cb9eb328f50293c604d07e3a2fd6c228",
+  "researchSha256": "1f30d3a3019e4f37f045c3f94a6c743affca6e08b7ed2b5a763708cd31c9a7c7",
+  "reviewedAt": "2026-09-04T05:12:18Z",
+  "items": [
+    {
+      "id": "A1",
+      "status": "pass",
+      "evidence": "research note 的 Page field evidence 已把全部仓库字段和页面字段逐项绑定到 F1-F4 或 I1-I4。"
+    },
+    {
+      "id": "A2",
+      "status": "pass",
+      "evidence": "research note 将 README 可验证事实列在 F1-F4，将产品价值与改造方向分别列为 I1-I4，没有把推断伪装成仓库现有功能。"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序逐项核对 githubId、fullName、Star、Fork、language、pushedAt、license、state 与本轮 GitHub 快照，数值保持整数且 fetchedAt 晚于 pushedAt。"
+    },
+    {
+      "id": "A4",
+      "status": "pass",
+      "evidence": "许可证同时由 GitHub 元数据和仓库内 LICENSE 文件确认；research Snapshot 与 project.repository.license 一致。"
+    },
+    {
+      "id": "B1",
+      "status": "pass",
+      "evidence": "hook“把节点画布变成可运行的工作流产品”直接概括 F2-F3 的核心工作方式，语序自然，没有用生硬拼词代替含义。"
+    },
+    {
+      "id": "B2",
+      "status": "pass",
+      "evidence": "summary 在两句话内交代输入、主要处理过程和用户最终得到的结果，不要求读者查看代码才能理解。"
+    },
+    {
+      "id": "B3",
+      "status": "pass",
+      "evidence": "features 覆盖至少三项 README 明确描述的核心能力，并与 summary 的主流程一致。"
+    },
+    {
+      "id": "B4",
+      "status": "pass",
+      "evidence": "只保留理解产品确有必要的基础技术名词；每个较专业概念都在相邻短语中说明实际作用。"
+    },
+    {
+      "id": "C1",
+      "status": "pass",
+      "evidence": "hook 只保留一个记忆点，summary 再展开完整流程，两者没有逐句重复。"
+    },
+    {
+      "id": "C2",
+      "status": "pass",
+      "evidence": "meaning 解释原项目为何值得复用，没有把三个未来方向写成仓库已经提供的功能。"
+    },
+    {
+      "id": "C3",
+      "status": "pass",
+      "evidence": "opportunity 逐条对应三个方向的具体用户摩擦、复用能力和可见结果，不是泛泛罗列行业。"
+    },
+    {
+      "id": "C4",
+      "status": "pass",
+      "evidence": "原项目 audience 与三个方向 audience 分开描述；每个 direction.scope 只保留完成闭环所需的 3-6 项。"
+    },
+    {
+      "id": "D1",
+      "status": "pass",
+      "evidence": "“家庭照护流程板”明确面向共同照护老人或病后家人的家庭成员，处理“家庭多人轮流照护时，条件、提醒和交接信息容易散落在聊天记录。”，可演示完整重复流程。"
+    },
+    {
+      "id": "D2",
+      "status": "pass",
+      "evidence": "“家庭照护流程板”以照护事项、时间和异常条件为输入，经过画步骤→设置条件→生成日程→记录交接，输出每日照护清单和交接摘要。"
+    },
+    {
+      "id": "D3",
+      "status": "pass",
+      "evidence": "“家庭照护流程板”相对原项目在用户、输入、核心流程和可见结果四轴均改变，并明确复用“固定布局画布、表单、变量和条件节点”，不是换皮或只暴露 API。"
+    },
+    {
+      "id": "D4",
+      "status": "pass",
+      "evidence": "“家庭照护流程板”的 scope 共 5 项，均直接支撑该方向的输入到结果闭环。"
+    },
+    {
+      "id": "E1",
+      "status": "pass",
+      "evidence": "“课堂实验流程卡”与“故事分支工坊”均给出独立用户、输入、工作流和输出；研究笔记的三组两两比较每组至少差两轴。"
+    },
+    {
+      "id": "E2",
+      "status": "pass",
+      "evidence": "三个方向都说明明确的反复摩擦、可见收益与最小边界，不依赖虚构的市场数据或仓库未承诺的能力。"
+    },
+    {
+      "id": "E3",
+      "status": "pass",
+      "evidence": "方向集合至少包含个人、家庭、学习、创作或社区主题，避免只生成企业内部和商业运营工具。"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}
