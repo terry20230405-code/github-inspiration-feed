@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "vokoscreenng",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/vokoscreenng.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/vokoscreenng.research.md",
+  "projectSha256": "994cfddcb3fbd4e043f7fda357c40f8ef1c87110bb0947693bec1b0daae3b884",
+  "researchSha256": "fdc9d6395014930c35fc27f68723c2e5d70a8150862aceac94071c2028103300",
+  "reviewedAt": "2026-09-04T06:46:21Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "Page field evidence maps repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state to F1-F6 and editorial.summary/audience/features/stack to F7-F13; the research Snapshot repeats the same GitHub facts and the verified repository facts reference those fact IDs directly.",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "The research note separates facts from inference: editorial.hook/meaning/opportunity are marked inferred in the Page field evidence table, while the underlying claims point back to F7-F11 and the direction rationale sections explain the derived classroom/demo/support/creator/family uses.",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "F6 states GitHub metadata and the official COPYING file both resolve to GPL-2.0 / GNU General Public License v2.0; no conflicting license source text appears in the note or project JSON.",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "Hook '把屏幕、摄像头和多路声音录成讲解视频' is natural Chinese with a clear 把…录成… structure and concrete nouns from F7-F11; it does not rely on coined abstractions or English syntax.",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary names the input surfaces (screen/area/window on Windows and Linux), core actions (multi-source audio, webcam overlay, countdown/timer, magnifier/Showclick/Halo), and the visible result (录屏视频).",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary plus features cover at least three core capabilities: recording screen/region/window, mixing multiple audio sources, built-in camera overlay, and auxiliary tools like countdown/timer/magnifier/Showclick/Halo.",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "editorial.stack keeps C++/Qt6/GStreamer/PulseAudio/Wayland/pipewire/xdg-desktop-portal, and F13 ties those terms to the Linux build/runtime environment, so the technical level supports reuse understanding instead of gratuitous jargon.",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook is a short memory phrase only; summary expands the product into a full picture with platforms, capture targets, audio, camera overlay, and helper tools without repeating the hook verbatim.",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "meaning only explains reuse value ('方便继续做课堂、演示、排障和讲解类产品') and does not introduce a new product; the concrete direction ideas are kept separate in opportunity and directions.",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "opportunity links verified abilities to specific futures: classroom video from课件+麦克风+摄像头, demo clips from窗口录制+放大镜+Showclick/Halo, support repro from多路音频+倒计时+定时器, and creator素材 from屏幕+摄像头+多路声音.",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "editorial.audience is the original-user group ('需要在 Windows 或 Linux 上录课、做演示或讲解的人'); each direction audience is a new target group, and each scope is a 3–6 item minimal tool set that supports its own workflow.",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "Each selected direction names a concrete recurring user/problem in its rationale: teachers/trainers needing lecture replay, demo staff needing readable customer demos, and support staff needing reproduction handoff.",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "Each selected direction states input → process → result: lesson window + mic/camera → record with countdown → replayable lecture video; app window + click cues → record with highlights → demo short; fault scene + audio → timer-controlled capture → repro video.",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "All three selected directions cite reused capabilities from F8-F11 and compare against the original generic recording flow; each has at least four changed axes (audience, input, workflow, outcome) in its direction rationale.",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "Selected scopes are closed and minimal: classroom (5 items), demo (5 items), support repro (5 items). None include roadmap items or decorative extras beyond what the described workflow needs.",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "All ten unique pairs show at least two substantive differences in the pairwise audit, and the selected trio (classroom/demo/support) are separated by audience plus workflow/outcome, not just file type or UI styling.",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "Each direction states a concrete benefit: clearer lecture replay for teachers, readable customer demos for sales/demo roles, and a handoffable repro package for support.",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "The selected set is entirely non-commercial/learning-support oriented, so the required non-commercial value is preserved without needing a theme exception.",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

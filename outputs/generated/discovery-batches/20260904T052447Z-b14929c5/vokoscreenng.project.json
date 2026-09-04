@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 2,
+  "id": "vokoscreenng",
+  "repository": {
+    "githubId": 103692141,
+    "fullName": "vkohaupt/vokoscreenNG",
+    "name": "vokoscreenNG",
+    "stars": 1499,
+    "forks": 110,
+    "language": "C++",
+    "pushedAt": "2026-09-02T20:24:06Z",
+    "license": "GNU General Public License v2.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T06:33:15Z"
+  },
+  "editorial": {
+    "audience": "需要在 Windows 或 Linux 上录课、做演示或讲解的人",
+    "directions": [
+      {
+        "approach": "选择屏幕或课件窗口，接入麦克风和摄像头，倒计时后开始录制，最后导出一段适合回放的讲解视频。",
+        "audience": "线上授课老师、培训讲师",
+        "difference": "从通用录屏转为授课回放，强调课件窗口、人像和讲解声的组合输出。",
+        "id": "classroom-screen-video",
+        "name": "课堂录屏器",
+        "problem": "老师和培训讲师反复录课时，既要保住课件画面，又要把人像和讲解声一起留住。",
+        "scope": [
+          "选择屏幕/窗口",
+          "麦克风与系统音切换",
+          "摄像头叠加",
+          "倒计时与定时",
+          "导出视频"
+        ],
+        "tagline": "把课件窗口和讲解声录成课后视频"
+      },
+      {
+        "approach": "选定应用窗口或屏幕，打开 Showclick/Halo 和放大镜，录入旁白或系统音，输出能直接发给客户的演示短片。",
+        "audience": "售前演示人员、产品经理、客户成功",
+        "difference": "从通用录屏转为客户演示，核心是窗口操作、点击提示和可读性，而不是单纯录下画面。",
+        "id": "product-demo-clip",
+        "name": "产品演示短片机",
+        "problem": "做软件演示时，观众常看不清点击位置和操作顺序。",
+        "scope": [
+          "选择窗口或区域",
+          "点击提示与高亮",
+          "放大镜",
+          "旁白/系统音",
+          "导出短片"
+        ],
+        "tagline": "录下窗口和点击提示，直接给客户看"
+      },
+      {
+        "approach": "录制出问题的屏幕区域或窗口，同时保留系统音和麦克风说明，再用倒计时、定时器控制开始与长度，最后导出复现视频。",
+        "audience": "客服、技术支持、内部排障人员",
+        "difference": "从讲解录制转为证据留档和交接，输入更像故障现场，结果更像复现包。",
+        "id": "support-repro-video",
+        "name": "故障复现录像包",
+        "problem": "技术支持复现问题时，需要把操作步骤、声音和现场画面一起交给下一位同事。",
+        "scope": [
+          "选择区域/窗口",
+          "系统音与麦克风同时录制",
+          "倒计时",
+          "定时器",
+          "导出复现视频"
+        ],
+        "tagline": "把屏幕、声音和步骤一起留给同事"
+      }
+    ],
+    "features": [
+      "录制屏幕、区域或窗口",
+      "混录多路音频",
+      "内建摄像头叠加",
+      "倒计时与定时器",
+      "放大镜、Showclick、Halo 辅助"
+    ],
+    "hook": "把屏幕、摄像头和多路声音录成讲解视频",
+    "meaning": "它把屏幕捕捉、音频混录和摄像头叠加放进同一条录制链里，方便继续做课堂、演示、排障和讲解类产品。倒计时、定时器、放大镜和点击提示这类辅助工具，说明它不只是录下画面，而是在为“看得懂”的视频留出加工空间。",
+    "opportunity": [
+      "把课件窗口、讲解麦克风和摄像头放进同一条录制流程，就能做出适合回看的课堂视频。",
+      "把窗口录制、放大镜和 Showclick/Halo 组合起来，可以把软件操作做成更容易跟着看的演示短片。",
+      "把多路音频、倒计时和定时器结合起来，适合生成带步骤说明的故障复现视频。",
+      "把屏幕、摄像头和多路声音一起保留下来，能支撑后续剪辑型的直播素材录制。"
+    ],
+    "stack": [
+      "C++",
+      "Qt6",
+      "GStreamer",
+      "PulseAudio",
+      "Wayland",
+      "pipewire",
+      "xdg-desktop-portal"
+    ],
+    "summary": "它面向 Windows 和 Linux，把屏幕、某个区域或窗口录成录屏视频，Linux 还支持窗口录制。它还能混录多路声音，叠加内建摄像头，并用倒计时、定时器、放大镜、Showclick 和 Halo 辅助录制，让成片更适合讲解和演示。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "vkohaupt/vokoscreenNG",
+    "accent": "#1f8468",
+    "foreground": "#ffffff",
+    "motif": "wave",
+    "variant": 3355271413
+  }
+}

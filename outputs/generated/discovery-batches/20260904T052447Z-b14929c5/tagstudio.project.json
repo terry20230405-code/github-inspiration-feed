@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "tagstudio",
+  "repository": {
+    "githubId": 787908531,
+    "fullName": "TagStudioDev/TagStudio",
+    "name": "TagStudio",
+    "stars": 7166,
+    "forks": 465,
+    "language": "Python",
+    "pushedAt": "2026-09-03T23:48:11Z",
+    "license": "GNU General Public License v3.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T06:17:55Z"
+  },
+  "editorial": {
+    "audience": "需要在不搬动原文件的前提下，给照片和各类文件做标签、字段和检索的人",
+    "directions": [
+      {
+        "approach": "把旅行照片所在目录打开成 library，给照片补地点、人物和日期，再按标签和路径回看旅程。",
+        "audience": "经常整理旅行照片和家庭影集的人",
+        "difference": "原项目是通用文件库；这里把输入和结果都收窄到旅行照片与相册回看。",
+        "id": "d1-travel-photo-album",
+        "name": "旅行相册标签册",
+        "problem": "照片散在原文件夹里，想回看某次旅行时很难按地点、人物和日期翻出来。",
+        "scope": [
+          "导入现有照片目录作为 library",
+          "给照片添加标签和日期字段",
+          "按标签、路径和文件类型搜索",
+          "预览图片并保留原文件结构",
+          "处理移动后的照片条目"
+        ],
+        "tagline": "把相机照片和文件夹整理成可搜的相册"
+      },
+      {
+        "approach": "把设计工程文件和参考图放进同一个 library，用父标签、别名和字段建立素材词表，再按项目找回资产。",
+        "audience": "插画师、设计师和 3D 创作者",
+        "difference": "原项目面向泛用文件管理；这里专门服务创作素材整理和复用。",
+        "id": "d2-design-asset-vault",
+        "name": "设计素材档案库",
+        "problem": "PSD、Blender、Krita 和参考图混在一起时，常常记得内容，却记不住文件名。",
+        "scope": [
+          "导入设计素材目录作为 library",
+          "创建带别名和父标签的素材标签",
+          "给文件补充文本和日期字段",
+          "按 filetype、mediatype 和路径搜索",
+          "预览主流创作文件和图片"
+        ],
+        "tagline": "把设计文件和参考图收进可查的素材库"
+      },
+      {
+        "approach": "把视频、音频和动图目录打开成 library，先预览内容，再按标签和媒体类型挑出可用素材。",
+        "audience": "做视频、播客和剪辑素材管理的人",
+        "difference": "原项目是通用文件管理；这里把预览和播放放到核心位置。",
+        "id": "d4-audio-video-material-cabinet",
+        "name": "音视频素材柜",
+        "problem": "媒体文件体积大、格式杂，只靠文件名很难直接找出要用的片段。",
+        "scope": [
+          "导入音视频素材目录作为 library",
+          "为媒体条目添加标签和字段",
+          "播放视频和音频并查看缩略图",
+          "按 mediatype、filetype 和标签搜索",
+          "保留原目录结构"
+        ],
+        "tagline": "把音视频素材放进能直接浏览的柜子"
+      }
+    ],
+    "features": [
+      "在现有目录上建立 library，文件不必移动",
+      "标签支持别名、父标签、颜色和分类位",
+      "字段支持文本和日期",
+      "按标签、路径、filetype、mediatype 组合搜索",
+      "预览并播放多种媒体文件",
+      "处理移动或删除后的未链接条目"
+    ],
+    "hook": "让照片和文件夹变成可回头找的标签库",
+    "meaning": "它把“文件放在原地”和“元数据可重组”放到同一层，适合被拆成更小的资料库、素材库或索引工具。标签继承、别名、字段和搜索组合在一起后，复用重点不是界面，而是一套能长期维持的文件组织模型。",
+    "opportunity": [
+      "既然 library 叠在现有目录上，就很适合做不搬家的本地资料库，把相册、素材盘和课件盘分别整理成可搜的标签层。",
+      "标签有别名、父标签和分类位，说明它能承载更细的词表，适合把人名、地点、系列和版本做成稳定关系。",
+      "字段支持文本和日期，配合搜索后，条目可以像轻量档案卡一样保存标题、作者和时间。",
+      "支持多种预览和视频/音频播放，说明它不只是索引器，也能直接浏览内容，适合离线素材柜。"
+    ],
+    "stack": [
+      "Python",
+      "SQLite",
+      "FFmpeg",
+      "ripgrep"
+    ],
+    "summary": "TagStudio 把你现有的照片和文件夹开成一个本地资料库，条目和标签存进 .TagStudio 里的 SQLite 数据库，不用搬文件也不用 sidecar 文件。它能给文件加标签、别名、父标签和字段，按标签、路径、filetype、mediatype 搜索，还能预览图片、视频、音频和文本并找回移动后的条目。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "TagStudioDev/TagStudio",
+    "accent": "#4e2ebd",
+    "foreground": "#ffffff",
+    "motif": "radial",
+    "variant": 1239273794
+  }
+}

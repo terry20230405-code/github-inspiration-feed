@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 2,
+  "id": "qwen-audio-agent",
+  "repository": {
+    "githubId": 1313435339,
+    "fullName": "QwenAudio/qwen-audio-agent",
+    "name": "qwen-audio-agent",
+    "stars": 2335,
+    "forks": 201,
+    "language": "JavaScript",
+    "pushedAt": "2026-09-04T05:24:27Z",
+    "license": "Apache License 2.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:24:48Z"
+  },
+  "editorial": {
+    "audience": "需要用语音接入并协调后台 Agent 的桌面用户，以及做多端语音交互产品的开发者",
+    "directions": [
+      {
+        "approach": "用户在桌面上发出语音任务，系统把任务交给后端 Agent 异步处理，期间持续回报进度，完成后把结果带回当前会话。",
+        "audience": "经常在桌面上边说边办事的个人用户和小团队",
+        "difference": "从通用语音运行时收窄成个人日常办事台，只保留任务接力、进度追踪和结果回流。",
+        "id": "personal-voice-task-desk",
+        "name": "桌面语音任务台",
+        "problem": "语音交代完任务后，用户还得反复催进度、补充要求、等结果。",
+        "scope": [
+          "语音发起任务",
+          "后台任务状态跟踪",
+          "结果回流到当前对话",
+          "进度查询与取消",
+          "WebUI、TUI、桌面浮窗入口"
+        ],
+        "tagline": "用一句语音发起任务，进度和结果回到对话里"
+      },
+      {
+        "approach": "客服在同一段语音对话里接住问题，系统帮助澄清诉求、查单、整理工单，必要时把上下文交给人工坐席。",
+        "audience": "一线客服和售后坐席",
+        "difference": "从个人任务接力改成客服通话接力，重点是问题澄清、查单、工单和人工转接摘要。",
+        "id": "support-call-handoff",
+        "name": "客服接力台",
+        "problem": "客户咨询常要查订单、解释情况，还要把需要人工处理的部分接好。",
+        "scope": [
+          "问题澄清",
+          "订单或工单查询",
+          "人工转接摘要",
+          "对话上下文保留",
+          "状态持续更新"
+        ],
+        "tagline": "把咨询、查单和人工转接接在同一段对话里"
+      },
+      {
+        "approach": "主播边直播边提问，系统持续接住观众问题、补充商品说明、提醒优惠和风险，再把内容回填到口播节奏里。",
+        "audience": "直播间主播和场控",
+        "difference": "从通用语音运行时变成直播口播助理，工作流围绕互动、提词和风险提醒展开。",
+        "id": "livestream-prompt-assistant",
+        "name": "直播口播助理",
+        "problem": "讲产品时还要回应观众、提示优惠，并及时提醒风险。",
+        "scope": [
+          "观众问题接住",
+          "商品说明补充",
+          "优惠提示",
+          "风险提醒",
+          "实时口播回填"
+        ],
+        "tagline": "一边直播一边回答观众、提产品和提醒风险"
+      }
+    ],
+    "features": [
+      "全双工实时语音互动和自然打断",
+      "可接入兼容 ACP 的后端 Agent，复用 model config、tools、MCP、Skills 和 authentication",
+      "前台对话与后台异步任务并行，支持进度查询和取消",
+      "多个独立任务可持续跟踪，结果自动回到当前对话",
+      "WebUI、TUI 和桌面浮窗入口",
+      "跨会话记忆和个人长期个性化"
+    ],
+    "hook": "让语音对话边聊边办事",
+    "meaning": "它把“前台一直在聊、后台继续做事、结果再回到同一会话”这条边界做清楚了，因此很适合复用到需要持续陪伴和异步执行的产品。对车载、客服、巡检、直播这类场景来说，真正可移植的是对话不中断、状态可追踪、结果可回流这三层能力。",
+    "opportunity": [
+      "实时语音、后台任务和结果回流已经连成一条完整链路，适合收窄成桌面语音任务台，让用户不用切到别的窗口等结果。",
+      "README 已经给出 smart cockpit 场景，结合持续对话和后台执行边界，适合做车载语音中控，把车内请求放进同一条对话。",
+      "README 直接列出 customer support 的 issue clarification、order lookup、tickets 和 human handoff，适合做客服接力台，把查单和人工转接接稳。",
+      "v1.11.0 的多模态输入 parts，加上 embodied intelligence 场景里的 voice commands、action execution、inspection 和 exception feedback，适合做巡检语音执行台。",
+      "README 的 livestream assistant 场景包含 audience interaction、product explanation、coupons 和 risk reminders，适合做直播口播助理，让主播不断线地接话和提醒。"
+    ],
+    "stack": [
+      "JavaScript",
+      "Node.js 22.22.2+ / 24.15.0+",
+      "ACP",
+      "MCP",
+      "DashScope realtime voice frontend",
+      "speech-to-speech frontend"
+    ],
+    "summary": "它接入实时语音前端和可兼容 ACP 的后端 Agent，把语音聊天、工具调用、后台异步任务和结果回传放在同一条对话里。用户可以在 WebUI、TUI 或桌面浮窗中继续追问进度、取消任务，并收到持续状态更新。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "QwenAudio/qwen-audio-agent",
+    "accent": "#8631bf",
+    "foreground": "#ffffff",
+    "motif": "network",
+    "variant": 180853650
+  }
+}

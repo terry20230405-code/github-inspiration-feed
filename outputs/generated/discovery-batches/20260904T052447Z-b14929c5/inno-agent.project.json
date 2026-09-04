@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "id": "inno-agent",
+  "repository": {
+    "githubId": 1252294823,
+    "fullName": "hhyqhh/inno-agent",
+    "name": "inno-agent",
+    "stars": 1082,
+    "forks": 205,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-04T04:22:43Z",
+    "license": "MIT License",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:44:09Z"
+  },
+  "editorial": {
+    "audience": "需要个人化学习陪伴、复习提醒和知识沉淀的单人学习者。",
+    "directions": [
+      {
+        "approach": "原项目的工作流是单人学习者输入问题、笔记和练习记录，系统用三层记忆、scheduler、IM 通道和 Practice Lab 持续陪伴；这个方向改成错题和讲解进入后先更新 L1/L2，再排复习节点、推送提醒、安排再练，最后给出错题清单和复盘计划。",
+        "audience": "备考或自学时总在同一类题上反复失手的人",
+        "difference": "从持续学习陪伴改为错题诊断与重复练习，从对话输入改为题目证据输入，从即时支持改为可执行的复盘流程。",
+        "id": "wrong-review-coach",
+        "name": "错题复盘教练",
+        "problem": "错题、讲解和薄弱点散在不同地方，几天后就很难继续复盘。",
+        "scope": [
+          "导入错题照片或文字",
+          "给错因和薄弱点打标签",
+          "生成复习日程",
+          "通过 IM 推送提醒",
+          "记录再练结果"
+        ],
+        "tagline": "把错题和薄弱点变成复习提醒和再练习"
+      },
+      {
+        "approach": "原项目的工作流是个人学习者把问题和资料交给 agent，系统在 L1/L2/L3 里慢慢积累；这个方向改成课程资料先进入 L2 wiki，再被切成主题页、引用和问答入口，最后形成可检索的课程知识库。",
+        "audience": "课程助教、家教和知识型创作者",
+        "difference": "从个人学习记忆改为教学资料整理，从对话驱动改为文件驱动，从陪伴式结果改为课程知识页。",
+        "id": "handout-knowledge-organizer",
+        "name": "讲义整理助手",
+        "problem": "PDF、PPT 和图片讲义分散，学生问答会反复重复。",
+        "scope": [
+          "导入 PDF、PPT 和图片",
+          "按主题生成知识页",
+          "保留引用和摘要",
+          "支持检索式问答",
+          "合并更新旧资料"
+        ],
+        "tagline": "把讲义和课件整理成可检索的课程知识页"
+      },
+      {
+        "approach": "原项目的工作流是学习者在实时交互中得到支持；这个方向改成导出某次会话或学习记录后再回看，系统把聊天、工具动作、工作区产物和画像变化按时间线重放，最后给出可审阅的学习过程。",
+        "audience": "家长、导师或班主任",
+        "difference": "从实时陪伴改为事后复盘，从学习者本人改为旁观审阅者，从即时结果改为可分享的过程回放。",
+        "id": "learning-replay-station",
+        "name": "学习回放站",
+        "problem": "只看到结果，不知道学习过程里卡在哪里。",
+        "scope": [
+          "导出会话记录",
+          "按时间线回放消息和工具动作",
+          "预览工作区产物",
+          "展示画像变化",
+          "生成分享链接"
+        ],
+        "tagline": "导出并回看完整学习对话和练习过程"
+      }
+    ],
+    "features": [
+      "三层记忆：L1 learner profile、L2 native wiki、L3 session records",
+      "自然语言创建 cron scheduler 任务",
+      "Feishu / WeChat 个人 IM 通道",
+      "workspace-scoped Practice Lab，带浏览器终端和运行记录",
+      "Web / Desktop / CLI 三种运行形态",
+      "会话回放与 trace timeline"
+    ],
+    "hook": "把日常学习交给会记忆的陪练",
+    "meaning": "这套能力的价值不只在于回答问题，而在于把学习过程拆成可写入、可追踪、可回放的状态层：画像、知识页、会话记录、提醒和实操结果都能被工具显式保存。这样的结构很适合被拆成更窄的产品，例如错题复盘、讲义整理、练习记录、节奏提醒和过程回放。",
+    "opportunity": [
+      "L1 画像可编辑、L2 wiki 可沉淀证据，让错题复盘和薄弱点追踪有稳定的数据底座。",
+      "L2 wiki 的文件摄取与混合检索，适合把讲义、课件和参考资料整理成课程知识页。",
+      "scheduler 加上 Feishu / WeChat 通道，天然适合做按节奏推送的复习提醒和跟进。",
+      "Practice Lab、run records 和 replay 能把动手练习、结果检查和过程复盘连成闭环。"
+    ],
+    "stack": [
+      "TypeScript",
+      "Electron",
+      "React 19",
+      "Tailwind 4",
+      "SSE",
+      "WebSocket",
+      "SQLite",
+      "Pi SDK"
+    ],
+    "summary": "Inno Agent 接入大模型提供商、个人 IM 和本地工作区，把学习任务、提醒、笔记与练习串成连续的对话工作流。它用 L1 画像、L2 wiki、L3 会话记录和 SQLite 检索保存长期上下文，并在 Web、Desktop 和 CLI 里输出可回放的聊天、终端和练习记录。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "hhyqhh/inno-agent",
+    "accent": "#198655",
+    "foreground": "#ffffff",
+    "motif": "network",
+    "variant": 1485942087
+  }
+}
