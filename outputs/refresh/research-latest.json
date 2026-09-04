@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T08:44:00Z",
+  "generatedAt": "2026-09-04T05:24:26Z",
   "mode": "write",
   "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
     "checked": 6,
-    "updated": 0,
-    "refreshed": 6,
-    "semanticReviewPending": 0,
+    "updated": 1,
+    "refreshed": 5,
+    "semanticReviewPending": 1,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
@@ -28,6 +28,18 @@
       "reasons": []
     },
     {
+      "id": "excalidraw",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d",
+      "semanticReviewStatus": "complete",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4992",
+      "reasons": []
+    },
+    {
       "id": "immich",
       "status": "refreshed",
       "observation": "unchanged",
@@ -36,32 +48,47 @@
       "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4992",
-      "reasons": []
-    },
-    {
-      "id": "n8n",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf",
-      "semanticReviewStatus": "not-needed",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
       "rateLimitRemaining": "4991",
       "reasons": []
     },
     {
-      "id": "papertodo",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "2bfbe90ab7f4a7b1849f73a766d161520fed63281b5a39986e7648b813f6293a",
-      "semanticReviewStatus": "not-needed",
+      "id": "n8n",
+      "status": "updated",
+      "observation": "source-changed",
+      "changes": [
+        {
+          "field": "latestRelease.id",
+          "before": 381094367,
+          "after": 382036593,
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.tagName",
+          "before": "n8n@2.37.7",
+          "after": "n8n@2.37.9",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.publishedAt",
+          "before": "2026-09-02T08:41:33Z",
+          "after": "2026-09-03T13:16:03Z",
+          "level": "release"
+        },
+        {
+          "field": "latestRelease.bodySha256",
+          "before": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
+          "after": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
+          "level": "release"
+        }
+      ],
+      "sourceFingerprint": "dbeb88e8df77adf64cf98ca9042ffbca17131ee844f27faf00ff93014756a2ec",
+      "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
       "rateLimitRemaining": "4990",
-      "reasons": []
+      "reasons": [
+        "sourceFingerprint does not match the current source snapshot"
+      ]
     },
     {
       "id": "nanobot",
