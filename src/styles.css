@@ -10,6 +10,15 @@ button { color: inherit; }
 .topbar { position: fixed; z-index: 20; top: 0; left: 0; right: 0; height: 58px; padding: max(10px, env(safe-area-inset-top)) 18px 0; display: flex; align-items: center; justify-content: space-between; background: color-mix(in srgb, #f5f5f7 84%, transparent); backdrop-filter: blur(20px) saturate(160%); border-bottom: 1px solid rgba(0,0,0,.06); }
 .brand { color: #111; text-decoration: none; font-size: 17px; font-weight: 750; letter-spacing: -.04em; }.brand span { font: 500 8px/1 'DM Mono', monospace; vertical-align: top; color: var(--accent); margin-left: 3px; }
 .top-note { display: none; color: #77777c; font-size: 12px; }
+.top-actions { display: flex; align-items: center; gap: 22px; flex-shrink: 0; }
+.language-switch { display: inline-flex; align-items: center; gap: 2px; flex-shrink: 0; white-space: nowrap; }
+.language-switch > span { color: #c3c3c7; font-size: 11px; font-weight: 400; }
+.language-switch button, .detail-nav .language-switch button { position: relative; min-width: 36px; min-height: 44px; padding: 0 5px; display: inline-flex; justify-content: center; align-items: center; border: 0; background: transparent; color: #77777c; font-family: inherit; font-size: 12px; font-weight: 500; line-height: 1; cursor: pointer; transition: color .2s; }
+.language-switch button[aria-pressed="true"], .detail-nav .language-switch button[aria-pressed="true"] { color: #171719; font-weight: 700; }
+.language-switch button[aria-pressed="true"]::after { content: ''; position: absolute; bottom: 8px; left: 8px; right: 8px; height: 2px; border-radius: 2px; background: var(--project-accent, #171719); }
+.language-switch button:hover { color: #171719; }
+.language-switch button:focus-visible { outline: 2px solid var(--project-accent, #171719); outline-offset: -2px; border-radius: 4px; }
+.loading-language { position: fixed; top: max(7px, env(safe-area-inset-top)); right: 18px; }
 .progress { display: flex; gap: 5px; }.progress button { border: 0; width: 6px; height: 6px; padding: 0; border-radius: 9px; background: color-mix(in srgb, var(--project-accent) 26%, #c7c7ca); transition: .25s; }.progress button.active { width: 20px; background: var(--project-accent); }.progress button:disabled { opacity: .28; }
 .feed { height: 100dvh; overflow-y: auto; scroll-snap-type: y mandatory; scroll-behavior: smooth; scrollbar-width: none; }.feed::-webkit-scrollbar { display: none; }
 .feed-spacer { width: 1px; pointer-events: none; }
@@ -54,7 +63,7 @@ button { color: inherit; }
 .scribble { font-family: cursive; font-size: 30px; transform: rotate(-7deg); }.arrow { font-size: 38px; transform: rotate(10deg); }.mini-card { position: absolute; right: -10%; bottom: 0; padding: 12px 18px; background: #f4f0d6; color: #2e2b23; box-shadow: 0 12px 40px #0006; transform: rotate(5deg); font: 12px 'DM Mono'; }
 .photo { position: absolute; width: 90px; height: 118px; background: linear-gradient(145deg, #a5e3cf, #367c6f); border: 7px solid #fff; box-shadow: 0 15px 30px #0007; }.photo--one { transform: rotate(-10deg) translate(-32px, 3px); }.photo--two { transform: rotate(8deg) translate(36px, -5px); background: linear-gradient(145deg, #ffe1aa, #dd7964); }.photo-label { z-index: 2; font-size: 16px; font-weight: 800; line-height: 1.05; text-shadow: 0 2px 12px #000; }
 .node { padding: 11px 14px; background: rgba(255,255,255,.94); color: #1c1c1e; border-radius: 7px; box-shadow: 0 8px 30px #0004; font: 10px 'DM Mono'; }.node--accent { background: var(--accent); color: #fff; }.cover-mark i { width: 25px; height: 1px; background: #fff8; }
-.project-heading { margin-top: clamp(34px, 7vh, 62px); }.project-heading h1 { margin: 0; font-size: clamp(56px, 16vw, 82px); line-height: .88; letter-spacing: -.078em; }.project-hook { max-width: 430px; margin: 25px 0 0; color: #1d1d1f; font-size: clamp(25px, 7.2vw, 34px); font-weight: 650; line-height: 1.12; letter-spacing: -.045em; }.project-summary { max-width: 600px; margin: 14px 0 0; color: #6e6e73; font-size: 15px; line-height: 1.62; letter-spacing: -.012em; }
+.project-heading { margin-top: clamp(34px, 7vh, 62px); }.project-heading h1 { --project-title-min-size: 24; width: 100%; margin: 0; overflow: visible; white-space: nowrap; font-size: clamp(56px, 16vw, 82px); line-height: .88; letter-spacing: -.078em; }.project-hook { max-width: 430px; margin: 25px 0 0; color: #1d1d1f; font-size: clamp(25px, 7.2vw, 34px); font-weight: 650; line-height: 1.12; letter-spacing: -.045em; }.project-summary { max-width: 600px; margin: 14px 0 0; color: #6e6e73; font-size: 15px; line-height: 1.62; letter-spacing: -.012em; }
 .project-actions { margin-top: 18px; padding: 15px 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-top: 1px solid #d8d8dc; border-bottom: 1px solid #d8d8dc; }
 .meta-row { display: flex; align-items: center; gap: 5px; color: #67676c; font: 500 11px 'DM Mono'; }.meta-row span:first-child { display: flex; align-items: center; gap: 5px; margin-right: 8px; }.lang-dot { width: 8px; height: 8px; border-radius: 50%; }
 .github-editorial { display: inline-flex; align-items: center; gap: 5px; color: #6e6e73; font-size: 13px; font-weight: 600; text-decoration: none; }
@@ -135,3 +144,51 @@ button { color: inherit; }
   .feed-card { padding-top: 67px; padding-bottom: 14px; }.project-heading { margin-top: 14px; }.project-heading h1 { font-size: 44px; }.project-heading .project-hook { margin-top: 12px; font-size: 21px; }.project-heading .project-summary { margin-top: 7px; font-size: 12px; line-height: 1.45; }.project-actions { margin-top: 9px; padding: 9px 0; }.possibilities { margin-top: 10px; }.possibility { padding: 7px 0; }.possibility-copy strong { font-size: 14px; }.possibility-copy small { font-size: 10px; }.remix-link { padding-top: 10px; font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; animation-duration: .01ms !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; } }
+
+/* Keep the language control at the right edge, including narrow phone screens. */
+.topbar > .progress { position: absolute; left: 50%; transform: translateX(-50%); }
+.detail-project-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.detail-nav { gap: 16px; }
+@media (max-width: 1099px) { .top-note { display: none; } }
+@media (max-width: 759px) {
+  .detail-nav .detail-nav-github { display: none; }
+  :root:lang(en) .detail-heading-row { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  :root:lang(en) .detail-github-link { justify-self: start; }
+  .minimum-scope li { align-items: flex-start; }
+  .minimum-scope svg { flex-shrink: 0; }
+  :root:lang(en) .project-heading { margin-top: clamp(18px, 4vh, 32px); }
+  :root:lang(en) .project-heading .project-hook { max-width: none; margin-top: 16px; font-size: clamp(23px, 6.2vw, 28px); line-height: 1.08; }
+  :root:lang(en) .project-heading .project-summary { max-width: none; margin-top: 10px; font-size: 13px; line-height: 1.45; }
+  :root:lang(en) .project-actions { margin-top: 12px; padding: 10px 0; }
+  :root:lang(en) .possibilities { margin-top: 14px; }
+  :root:lang(en) .possibility { padding: 9px 0; }
+  :root:lang(en) .possibility-copy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 12px; }
+  :root:lang(en) .possibility-copy small { max-width: none; }
+  :root:lang(en) .possibility-copy strong { font-size: 14px; }
+  :root:lang(en) .remix-link { padding-top: 12px; font-size: 15px; }
+}
+@media (min-width: 760px) {
+  :root:lang(en) .project-heading { margin-top: clamp(18px, 4vh, 40px); }
+  :root:lang(en) .project-heading .project-hook { max-width: 680px; margin-top: 20px; font-size: clamp(28px, 3.2vw, 34px); line-height: 1.08; }
+  :root:lang(en) .project-heading .project-summary { max-width: 700px; margin-top: 12px; font-size: clamp(14px, 1.55vw, 16px); line-height: 1.5; }
+  :root:lang(en) .project-actions { margin-top: 14px; padding: 11px 0; }
+  :root:lang(en) .possibilities { margin-top: 16px; }
+  :root:lang(en) .possibility { padding: 9px 0; }
+  :root:lang(en) .remix-link { padding-top: 13px; }
+}
+@media (min-width: 760px) and (max-height: 760px) {
+  :root:lang(en) .feed-card { padding-top: 68px; padding-bottom: 14px; }
+  :root:lang(en) .project-heading { margin-top: 14px; }
+  :root:lang(en) .project-heading h1 { font-size: 70px; }
+  :root:lang(en) .project-heading .project-hook { margin-top: 14px; font-size: 27px; }
+  :root:lang(en) .project-heading .project-summary { margin-top: 8px; font-size: 13px; line-height: 1.4; }
+  :root:lang(en) .project-actions { margin-top: 10px; padding: 8px 0; }
+  :root:lang(en) .possibilities { margin-top: 10px; }
+  :root:lang(en) .possibility { padding: 7px 0; }
+  :root:lang(en) .remix-link { padding-top: 9px; font-size: 15px; }
+}
+@media (max-height: 720px) and (max-width: 759px) {
+  :root:lang(en) .project-heading .project-hook { font-size: 23px; margin-top: 12px; }
+  :root:lang(en) .project-heading .project-summary { font-size: 12px; line-height: 1.45; }
+  :root:lang(en) .possibility-copy strong { font-size: 13px; }
+}

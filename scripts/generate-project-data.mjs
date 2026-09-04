@@ -1,6 +1,7 @@
 import { mkdir, readFile, readdir, unlink, writeFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
+import { validateTranslation } from './project-translations.mjs'
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const sourceDirectory = path.join(projectRoot, 'src', 'data')
@@ -18,11 +19,12 @@ function assertLayer(name, value, projectIds) {
 }
 
 export async function generateProjectData() {
-  const [order, repositories, editorial, visuals] = await Promise.all([
+  const [order, repositories, editorial, visuals, english] = await Promise.all([
     readJson('order.json'),
     readJson('repositories.json'),
     readJson('editorial.json'),
     readJson('visuals.json'),
+    readJson('../locales/projects.en.json'),
   ])
 
   if (!Array.isArray(order) || order.length === 0 || !order.every(id => typeof id === 'string' && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id))) {
@@ -32,6 +34,10 @@ export async function generateProjectData() {
   assertLayer('repositories.json', repositories, order)
   assertLayer('editorial.json', editorial, order)
   assertLayer('visuals.json', visuals, order)
+  assertLayer('projects.en.json', english, order)
+  for (const id of order) {
+    validateTranslation(editorial[id], english[id], id)
+  }
 
   const projects = order.map(id => ({
     schemaVersion: 2,
@@ -39,6 +45,7 @@ export async function generateProjectData() {
     repository: repositories[id],
     editorial: editorial[id],
     visual: visuals[id],
+    translations: { en: english[id] },
   }))
   const index = {
     schemaVersion: 1,

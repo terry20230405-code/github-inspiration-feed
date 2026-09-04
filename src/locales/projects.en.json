@@ -1,0 +1,422 @@
+{
+  "nanobot": {
+    "hook": "Bring chats, files and tool results into one workflow",
+    "summary": "nanobot is a self-hosted personal AI agent framework written in Python, connecting models, tools, long-term memory and MCP through a web UI, terminal or chat app. Conversations, file operations, tool calls and automation results stay in a reviewable session, with an OpenAI-compatible API and Python SDK for integration.",
+    "meaning": "It brings chat, tools, memory and automation into one persistent core, letting you build focused interfaces or workflows without recreating an entire agent runtime.",
+    "audience": "People who want to self-host a personal AI agent in a web UI, terminal or chat app",
+    "features": ["Runs in a web UI, terminal and chat apps", "Tools, MCP, web search, web fetch, cron, image generation and subagents", "Session history and long-term memory through Dream", "Long-running goals and scheduled automation", "OpenAI-compatible API", "Python SDK with model routing and fallback"],
+    "stack": ["Python", "WebUI", "MCP", "OpenAI-compatible API"],
+    "opportunity": ["Persistent topics, temporary chats, file diffs, visible agent activity and workspace controls can support task handoff packages", "Model routing, per-session presets and fallback can support comparing models on the same prompt", "Dream, cron and long-running goals can support ongoing follow-up, reminders and progress reports"],
+    "directions": [
+      {
+        "id": "handoff-packet", "name": "Task Handoff Pack", "tagline": "Turn an agent's work into a record others can pick up",
+        "problem": "Conversations, file changes and tool results are spread across windows, making it hard to explain what has already been done.",
+        "audience": "People who hand agent work to someone else or leave it for their future self",
+        "approach": "Collect a topic's chats, files and tool traces in one workspace. Use file diffs, visible agent activity and workspace controls to organize an exportable handoff pack.",
+        "difference": "Narrow a general agent runtime to organizing and exporting task handoffs.",
+        "scope": ["Topic overview", "File and diff preview", "Tool trace organization", "Handoff summary export", "Workspace switching"]
+      },
+      {
+        "id": "model-tryout-studio", "name": "Model Tryout Studio", "tagline": "Compare several models on the same question",
+        "problem": "Differences between providers and presets are hard to see, leading to repeated reconfiguration after a poor choice.",
+        "audience": "People who want to choose a model before starting real work",
+        "approach": "Enter one prompt and choose several model presets. Use routing, per-session switching and fallback to generate comparisons, then save the preferred configuration.",
+        "difference": "Use model routing for focused tryouts and comparison instead of a single agent task.",
+        "scope": ["Prompt input", "Multiple preset comparison", "Side-by-side results", "Fallback indicators", "Saved preferences"]
+      },
+      {
+        "id": "goal-followup-agent", "name": "Long-Term Goal Companion", "tagline": "Turn a goal into an automated task with ongoing reminders",
+        "problem": "Some goals need progress, reminders and new records every few days, rather than one conversation.",
+        "audience": "People following up on family needs, courses or personal projects",
+        "approach": "Enter a long-term goal, deadline and context. Use goals, Dream and cron to check progress and send reminders until completion or cancellation.",
+        "difference": "Focus on following one goal over time rather than immediate conversations.",
+        "scope": ["Goal creation", "Reminder rules", "Progress records", "Scheduled checks", "Completion notification"]
+      }
+    ]
+  },
+  "maka": {
+    "hook": "Make AI agent work something you can replay",
+    "summary": "Bring local projects, model connections and permissions into one AI agent workspace. Start tasks from the desktop, TUI/CLI or evaluation interface, inspect tool activity and resume interrupted turns, with model messages, tool calls, results, permission decisions and termination events recorded for replay.",
+    "meaning": "Traceable execution records provide a foundation for review, audit and recovery tools. One Runtime Host can support desktop, CLI and evaluations without splitting control, execution and experiments into separate systems.",
+    "audience": "Developers and testers using local AI agents who need tasks, model connections and permissions in one workspace",
+    "features": ["Desktop, TUI, CLI and Eval share one Runtime Host", "Append-only logs of model messages, tool calls, results, permission decisions and termination events", "Built-in Read, Write, Edit, Bash, Glob and Grep tools", "Approval for actions outside the sandbox, interruptible runs and classified failures", "Session search, branching, recovery and retries", "Declarative multi-arm experiments and a result kernel"],
+    "stack": ["TypeScript", "Electron", "React", "SQLite", "Runtime Host", "Model Context Protocol (MCP)"],
+    "opportunity": ["Append-only logs and branching or recovery can turn an old agent session into a searchable timeline with resumable turns", "Model connections, permission decisions and sandbox boundaries can become an auditable configuration that a team can sign off", "Immutable per-cell attempts and the result kernel can compare completed evaluations by score, usage, duration, status and failure reason"],
+    "directions": [
+      {
+        "id": "session-forensics", "name": "Session Review Desk", "tagline": "Find the failure in an old session and resume the work",
+        "problem": "After an agent task fails, it is hard to locate the tool call, permission decision or model output that caused the problem.",
+        "audience": "Independent developers and support staff diagnosing agent failures",
+        "approach": "Open a past session and inspect messages, tool calls, results, permission decisions and termination points along a timeline. Search for unusual steps and continue from a branch when needed, reusing the append-only execution log, search, branching and recovery.",
+        "difference": "Focus on understanding a failure after a task ends, rather than doing the task in a workspace.",
+        "scope": ["Session list", "Timeline view", "Event search", "Permission and result inspection", "Continue from a branch", "Recovery replay"]
+      },
+      {
+        "id": "policy-console", "name": "Permission Audit Console", "tagline": "Connect models and tools, then gate out-of-bounds actions with approval",
+        "problem": "Model connections, tool permissions and out-of-bounds approvals are often scattered, making reusable governance settings hard to assemble.",
+        "audience": "Platform and security leads configuring agent connections and sandbox boundaries for teams",
+        "approach": "Test a model connection, configure the sandbox and choose which tools need approval. Assemble send-ready status, approval rules and out-of-bounds actions into auditable settings for team tasks, reusing model connections, permission decisions and sandbox boundaries.",
+        "difference": "Focus on configuration and sign-off rather than task execution.",
+        "scope": ["Connection tests", "Default model selection", "Permission rules", "Sandbox presets", "Approval records", "Status audit"]
+      },
+      {
+        "id": "experiment-review", "name": "Experiment Comparison Desk", "tagline": "See evaluation results and failure points side by side",
+        "problem": "Every model, tool or parameter change requires manually comparing evaluation cells to see which results actually changed.",
+        "audience": "Evaluation engineers and QA staff reviewing model or subject results",
+        "approach": "Open completed multi-arm experiments and inspect attempts, scores, usage, duration, status and failure reasons by task, repetition, subject and cell. Highlight outliers to help choose a configuration, reusing declarative experiments, immutable per-cell attempts and the result kernel.",
+        "difference": "Inspect and compare completed results rather than run the experiments themselves.",
+        "scope": ["Experiment list", "Cell comparison", "Attempt details", "Score, usage, duration and status filters", "Failure annotations", "Outlier highlights"]
+      }
+    ]
+  },
+  "remotion": {
+    "hook": "Write videos the way you build websites",
+    "summary": "Compose scenes with React and control captions, animation, audio and transitions frame by frame. Feed different data into one template to render videos in batches locally, on a server or in the cloud.",
+    "meaning": "It turns repetitive work in a video editor into reusable programs that run automatically, making it a foundation for focused tools that everyday creators can use.",
+    "audience": "Developers and content teams that need automated, batch video production",
+    "features": ["Video rendering with React components", "Frame-by-frame animation control", "Batch rendering on a server"],
+    "stack": ["React", "TypeScript", "FFmpeg"],
+    "opportunity": ["The underlying tools are powerful, but creators still need to write code", "Templates, forms and specialized workflows can sit on top of the framework", "Content production involves plenty of repetitive, batch work"],
+    "directions": [
+      {
+        "id": "short-video", "name": "Chinese Short Video Studio", "tagline": "Turn scripts into batches of captioned vertical videos",
+        "problem": "Small teams repeat time-consuming editing steps when producing many talking-head videos.",
+        "audience": "Educational creators, creator networks and independent creators",
+        "approach": "Wrap Remotion templates in a form: enter copy, choose colors and a voiceover, then render automatically.",
+        "difference": "Turn a coding framework into a no-code workspace for Chinese-language content.",
+        "scope": ["3 vertical video templates", "Script and storyboard input", "Automatic caption layout", "MP4 export"]
+      },
+      {
+        "id": "knowledge-card", "name": "Article-to-Video Cards", "tagline": "Turn long articles into shareable animated learning cards",
+        "problem": "Good long-form articles are difficult to share directly on short-form content platforms.",
+        "audience": "Educational creators and newsletter writers",
+        "approach": "Paste an article, manually confirm the card structure, then apply an animation template to generate a video.",
+        "difference": "Focus on breaking down educational content, rather than general-purpose video programming.",
+        "scope": ["Article input", "Card editor", "Two animation styles", "Local export"]
+      },
+      {
+        "id": "commerce-video", "name": "Product Video Maker", "tagline": "Make promo videos from product photos and selling points",
+        "problem": "Small merchants cannot produce a separate video for every product SKU.",
+        "audience": "Independent online stores and e-commerce sellers",
+        "approach": "Upload product photos, prices and selling points, then automatically apply promotional pacing and transitions.",
+        "difference": "Add product-specific fields and a workflow for batches of SKUs.",
+        "scope": ["Product information form", "Image upload", "1 promotional template", "Single-video export"]
+      }
+    ]
+  },
+  "excalidraw": {
+    "hook": "Make complex ideas as clear as a sketch",
+    "summary": "An infinite, hand-drawn canvas for shapes, arrows, text, images and sticky notes. It supports real-time collaboration, shareable links, reusable libraries and PNG or SVG exports.",
+    "meaning": "The hard work of building a canvas, shapes and collaboration is already done. Templates, structured input or AI assistance can turn it into a dedicated tool for a specific group of people.",
+    "audience": "Teams, teachers and developers who need to explain ideas quickly",
+    "features": ["Infinite canvas and hand-drawn shapes", "Real-time collaboration", "Image and scene export"],
+    "stack": ["React", "TypeScript", "Canvas"],
+    "opportunity": ["An open-ended whiteboard can leave new users unsure where to start", "A mature canvas can support specialized templates and structured data", "There is room for a lighter way to capture ideas on mobile"],
+    "directions": [
+      {
+        "id": "story-map", "name": "Story Map Builder", "tagline": "Map characters, places and plots with cards",
+        "problem": "Novelists and screenwriters struggle to see how story threads connect.",
+        "audience": "Novelists, screenwriters and tabletop game masters",
+        "approach": "Provide structured character, event and location cards with relationship lines on the canvas.",
+        "difference": "Turn a blank whiteboard into a workspace built for storytelling.",
+        "scope": ["Three card types", "Relationship links", "Story templates", "Image export"]
+      },
+      {
+        "id": "lesson-board", "name": "One-Page Lesson Board", "tagline": "Turn one concept into an interactive teaching board",
+        "problem": "Creating visual teaching materials takes skills many teachers do not have.",
+        "audience": "School teachers and instructors",
+        "approach": "Offer classroom layout templates, step-by-step reveals and a presentation mode.",
+        "difference": "Build around explaining a lesson, rather than freeform drawing.",
+        "scope": ["Lesson templates", "Step-by-step reveals", "Presentation mode", "Shareable links"]
+      },
+      {
+        "id": "idea-camera", "name": "Pocket Idea Sketchbook", "tagline": "Capture a visual idea on your phone in thirty seconds",
+        "problem": "Text notes on a phone do not clearly capture ideas built around relationships.",
+        "audience": "Product managers and creative professionals",
+        "approach": "Simplify the toolbar and use gestures to place sticky notes, arrows and images quickly.",
+        "difference": "Narrow the feature set around quick, one-handed capture on a phone.",
+        "scope": ["Sticky notes", "Arrows", "Photos from your library", "Local saving"]
+      }
+    ]
+  },
+  "immich": {
+    "hook": "Keep a lifetime of photos in your own hands",
+    "summary": "Automatically back up phone photos and videos to your own server, organized by timeline, album, location and face. Smart search, duplicate detection, shared albums and cross-device browsing bring a polished experience to a private photo cloud.",
+    "meaning": "Beyond storing photos, it brings together useful information about people, places and time: a foundation for family memories, travel stories and photo-organizing tools.",
+    "audience": "Privacy-conscious photo users with a home server",
+    "features": ["Automatic phone photo backup", "Search by face and location", "Album sharing"],
+    "stack": ["Flutter", "TypeScript", "PostgreSQL"],
+    "opportunity": ["Full self-hosting is still too complex for many everyday users", "Photo metadata can support family, travel and memory experiences", "Storage management is well covered; richer ways to enjoy the content remain possible"],
+    "directions": [
+      {
+        "id": "family-digest", "name": "Weekly Family Photos", "tagline": "Create a weekly collection of shared family memories",
+        "problem": "Family photos are scattered across phones and rarely revisited after they are taken.",
+        "audience": "Families with children and relatives living apart",
+        "approach": "Group a family album by time, select this week's photos and generate a story page.",
+        "difference": "Move from photo backup to actively rediscovering family memories.",
+        "scope": ["Photo import", "Weekly highlights", "Story page", "Private sharing"]
+      },
+      {
+        "id": "trip-map", "name": "Travel Route Album", "tagline": "Recreate a journey from your photos' locations",
+        "problem": "Travel albums contain plenty of photos but often lack a route and a story.",
+        "audience": "Travel enthusiasts",
+        "approach": "Use photo timestamps and locations to build daily routes and photo stops on a map.",
+        "difference": "Tell the story of one trip through a map.",
+        "scope": ["Photo selection", "Mapped routes", "Grouping by date", "Shareable long image"]
+      },
+      {
+        "id": "photo-cleaner", "name": "Private Photo Organizer", "tagline": "Spot duplicates, blurry shots and sensitive photos",
+        "problem": "Growing photo libraries take time to clean up, and sensitive screenshots are easy to overlook.",
+        "audience": "People with large photo libraries",
+        "approach": "Analyze duplicates, blurry photos and screenshots containing identity documents locally.",
+        "difference": "Focus on local privacy and cleanup decisions, rather than cloud backup.",
+        "scope": ["Duplicate groups", "Blur detection", "Manual confirmation", "Batch cleanup"]
+      }
+    ]
+  },
+  "n8n": {
+    "hook": "Connect your tools and put them to work",
+    "summary": "Connect email, spreadsheets, databases, web services and AI models as visual nodes. Drag triggers, conditions and actions into workflows that run on a schedule or automatically, with self-hosting and custom code available.",
+    "meaning": "Its extensive connectors and reliable execution engine let Vibe Coding creators hide complex settings and keep only the inputs and outcomes a particular profession needs.",
+    "audience": "Technical teams, automation enthusiasts and operations staff",
+    "features": ["Visual workflow editor", "Hundreds of service connectors", "Self-hosting and code nodes"],
+    "stack": ["Vue", "TypeScript", "Node.js"],
+    "opportunity": ["General-purpose automation still has concepts and settings to learn", "Many people only need a few repeatable workflows for their field", "Nodes and parameters can sit behind a more familiar, task-focused interface"],
+    "directions": [
+      {
+        "id": "creator-inbox", "name": "Creator Partnership Inbox", "tagline": "Organize brand inquiries and turn them into tasks",
+        "problem": "Scattered partnership emails make it easy for creators to miss replies and deadlines.",
+        "audience": "Independent content creators",
+        "approach": "Connect an inbox, identify partnership inquiries, extract budgets and dates, and collect them on a board.",
+        "difference": "Hide workflow nodes behind familiar inbox and project views.",
+        "scope": ["Email forwarding", "Partnership detail extraction", "Status board", "Reply reminders"]
+      },
+      {
+        "id": "shop-review", "name": "Local Shop Review Radar", "tagline": "Turn reviews across platforms into daily action ideas",
+        "problem": "Small shop owners lack time to read and answer reviews on every platform.",
+        "audience": "Restaurants and local service businesses",
+        "approach": "Collect reviews, label sentiment and recurring issues, then suggest three priority actions each day.",
+        "difference": "Turn a general-purpose builder into a ready-to-use shop operations assistant.",
+        "scope": ["Review import", "Sentiment labels", "Issue grouping", "Daily summary"]
+      },
+      {
+        "id": "personal-brief", "name": "Personal Morning Brief", "tagline": "Gather what you follow into a daily one-page digest",
+        "problem": "Information is spread across websites and subscriptions, making it tiring to keep up.",
+        "audience": "Industry researchers and knowledge workers",
+        "approach": "Let users pick a few sources, fetch headlines on a schedule and create a categorized digest.",
+        "difference": "Offer a simple subscription experience without exposing automation settings.",
+        "scope": ["RSS sources", "Scheduled aggregation", "Categorized lists", "Email delivery"]
+      }
+    ]
+  },
+  "archify": {
+    "hook": "Turn a complex system into a map you can explore",
+    "summary": "AI agents turn a repository or system description into typed JSON, then validation and layout rules produce interactive HTML/SVG diagrams. Explore architecture, workflows, call sequences, data flows and lifecycles; search nodes, trace paths, and export PNG, SVG, WebM or sharing cards.",
+    "meaning": "It connects system understanding, relationship mapping, diagram checks and shareable output into one repeatable process, making it a foundation for dedicated learning, privacy review and team retrospective tools.",
+    "audience": "Developers and technical teams explaining, reviewing or sharing software system structures",
+    "features": ["Five types of system diagram", "Typed JSON diagram sources", "Automatic layout and pre-delivery checks", "Node search and path tracing", "Multiple export formats and sharing cards"],
+    "stack": ["Node.js", "JavaScript", "HTML/SVG", "JSON Schema"],
+    "opportunity": ["The current workflow focuses on technical communication; beginners need guided input and explanations of terms", "Data flows, trust boundaries and traceable paths can become a privacy check everyday people can complete", "Sequences, lifecycles and story playback can turn long incident reports into paths a team can explore together"],
+    "directions": [
+      {
+        "id": "vibe-project-tour", "name": "Vibe Project Tour", "tagline": "Turn a repository into a guided system map",
+        "problem": "Many Vibe Coding creators have a working product but cannot explain how its frontend, backend, APIs and data connect.",
+        "audience": "Vibe Coding creators who do not read code but want to understand what they have built",
+        "approach": "Submit a repository URL. AI extracts a few core components and one main path, then Archify's architecture diagrams, source evidence and interactions become a tour with term cards and step-by-step explanations.",
+        "difference": "Go beyond a general technical diagram by organizing the reading order, basic explanations and learning outcomes around beginners understanding their own project.",
+        "scope": ["Repository URL input", "Core component map", "Basic term cards", "Main-path walkthrough", "Shareable tour page"]
+      },
+      {
+        "id": "home-data-map", "name": "Family Privacy Map", "tagline": "List devices and accounts to see where photos and voice data go",
+        "problem": "Families use cameras, speakers, phones and cloud albums without knowing which services handle their private data or where it ends up.",
+        "audience": "Households using smart-home devices and family cloud services",
+        "approach": "A questionnaire collects devices, accounts and data types. Reuse data-flow diagrams and trust boundaries to map local devices, the home network, cloud and third-party services, then produce a privacy checklist for users to verify.",
+        "difference": "Replace technical diagram descriptions with an everyday questionnaire, delivering a privacy map and checklist that help families check where their data goes.",
+        "scope": ["Device and account questionnaire", "Data-flow map", "Local and cloud boundaries", "Third-party service markers", "Privacy checklist"]
+      },
+      {
+        "id": "incident-story", "name": "Incident Storyboard", "tagline": "Turn an incident timeline into a playable failure path",
+        "problem": "Small teams often document incidents in long reports, leaving new members struggling to see where the normal flow broke and how the team recovered.",
+        "audience": "Independent developers and small engineering teams",
+        "approach": "Import events, participants and recovery actions. Reuse sequence diagrams, lifecycles and story playback to show the normal path, failure branches and recovery, then export a shareable retrospective.",
+        "difference": "Organize content around the timing, decisions and recovery of one incident, rather than letting users build any kind of system diagram.",
+        "scope": ["Incident event import", "Roles and timeline", "Failure and recovery paths", "Step-by-step playback", "Retrospective page export"]
+      }
+    ]
+  },
+  "papertodo": {
+    "hook": "Turn sticky notes into quiet desktop sheets",
+    "summary": "PaperTodo is a Windows sticky-note tool with separate to-do and note windows that live on your desktop. Check off and reorder tasks, use Markdown and local images, save automatically, or fold sheets into edge-docked capsules to reduce distractions.",
+    "meaning": "Its value goes beyond note-taking. Separate windows, autosave, edge-docked capsules and task-linked sheets can be combined into more focused desktop tools: an end-of-day checklist, a reference shelf or linked task instructions.",
+    "audience": "Windows desktop users, especially people who keep tasks and short notes on their desktop",
+    "features": ["Separate desktop sheets for tasks and notes", "Check off, reorder and clear completed tasks", "Markdown notes, local images and external editor support", "Capsule mode and automatic edge docking across monitors", "Local autosave to data.json and note-assets.lmdb"],
+    "stack": ["C#", "WPF", ".NET 10", "LMDB", "AvalonEdit", "Hardcodet.NotifyIcon.Wpf", "Vortice.DirectComposition"],
+    "opportunity": ["Separate windows and autosave suit an end-of-day checklist that does not require opening a full task manager", "Capsules, automatic edge docking and multi-monitor queues can keep temporary screenshots and excerpts out of the way but within reach", "Task-linked sheets can connect to-dos with supporting notes, creating a quick desktop jump between a task and its context"],
+    "directions": [
+      {
+        "id": "closeout-paper", "name": "End-of-Day Checklist", "tagline": "Paste wrap-up tasks into a desktop list of unfinished items",
+        "problem": "Wrap-up tasks are scattered across chats, notes and memory, making them easy to miss before signing off.",
+        "audience": "People who check a list of wrap-up tasks each day",
+        "approach": "Paste tasks into a to-do sheet, then check them off, reorder them and clear completed items while autosave keeps the day's wrap-up on the desktop.",
+        "difference": "Keep only the end-of-day checklist workflow, without long notes, images or script execution.",
+        "scope": ["Paste or add wrap-up tasks", "Check off completed items", "Drag to reorder", "Clear completed tasks", "Autosave"]
+      },
+      {
+        "id": "side-ref-shelf", "name": "Desktop Reference Shelf", "tagline": "Keep screenshots and excerpts at the screen edge, ready to open",
+        "problem": "People need a few screenshots and short explanations while working, but do not want those windows occupying the main screen.",
+        "audience": "People who need temporary reference material while working",
+        "approach": "Put screenshots, excerpts and temporary notes into sheets, then fold them into edge-docked capsules. Hover or click to expand them, keeping the desktop clear and the reference material available.",
+        "difference": "Prioritize temporary storage and edge docking rather than long-form editing.",
+        "scope": ["New note sheets", "Fold into capsules", "Automatic edge docking", "Multi-monitor queues", "Expand and collapse"]
+      },
+      {
+        "id": "task-link-paper", "name": "Task Context Sheets", "tagline": "Link tasks to notes and open the context with a click",
+        "problem": "Tasks and their background information are kept in different places, requiring repeated searches before work can begin.",
+        "audience": "People who need to read instructions before starting a task",
+        "approach": "Create a to-do sheet, then drag a related note sheet onto a task to link them. Open the instructions directly from the task, read the context and get to work.",
+        "difference": "Make the connection between tasks and supporting instructions the core experience, rather than general note editing.",
+        "scope": ["Create task and note sheets", "Drag to link sheets", "Open linked notes from tasks", "Local autosave"]
+      }
+    ]
+  },
+  "superset": {
+    "hook": "Turn questions in a database into charts you can explore",
+    "summary": "Superset connects to SQL databases and data engines so analysts can explore data with a no-code chart builder or SQL editor, then organize the results into shareable dashboards. A semantic layer keeps metrics consistent, while caching, role-based access and APIs help teams deliver a reliable analytics workflow to more people.",
+    "meaning": "It combines querying, metric definitions, visualization and sharing in one traceable workflow, making it a strong base for focused products that continually explain changes in structured data.",
+    "audience": "Analysts, business users and data teams that explore databases, create charts and maintain shared dashboards",
+    "features": ["Connections to multiple SQL databases and data engines", "No-code chart builder and SQL editor", "A semantic layer for consistent dimensions and metrics", "Composable, shareable dashboards", "Caching, role-based access and APIs"],
+    "stack": ["Python", "React", "SQL", "Web API"],
+    "opportunity": ["Turn metrics and charts into a home energy guide that converts bill data into practical saving actions", "Turn data import and interactive filters into a classroom survey lab where students learn to ask and test questions", "Turn map charts and shared dashboards into a community service map that makes public data useful to residents"],
+    "directions": [
+      {"id": "home-energy-board", "name": "Home Energy Guide", "tagline": "Break utility bills into understandable saving clues", "problem": "After collecting several months of bills, households often cannot tell which period or type of usage caused a change.", "audience": "Household members who want to control utility costs", "approach": "Import bill spreadsheets, normalize month and category names, compare usage over time, and turn unusual months into a checklist of items to investigate.", "difference": "Replace general-purpose business intelligence with a fixed workflow for explaining household bills and planning actions.", "scope": ["Bill import", "Field matching", "Monthly comparisons", "Anomaly markers", "Saving checklist"]},
+      {"id": "class-survey-lab", "name": "Classroom Survey Lab", "tagline": "Turn one survey into a data lesson students can question", "problem": "After collecting a survey, teachers spend time cleaning fields and making many charts, while students struggle to see how filters change a conclusion.", "audience": "Teachers leading student survey projects", "approach": "Import a survey spreadsheet, choose questions and grouping conditions, generate interactive comparison charts, and add observations and evidence to a lesson handout.", "difference": "Turn open-ended analysis into a teaching loop of questions, filters, explanations and handout creation.", "scope": ["Survey import", "Question selection", "Group filters", "Interactive charts", "Observation notes", "Handout export"]},
+      {"id": "community-service-map", "name": "Community Service Map", "tagline": "Turn public data into a service finder for residents", "problem": "Community resources are scattered across spreadsheets and notices, making it hard for residents to find services by location and need.", "audience": "Community organizers and nearby residents", "approach": "Import a spreadsheet of service locations, correct categories and coordinates, provide a map with filters, and collect missing information in a follow-up list.", "difference": "Turn an enterprise dashboard into a public map and a workflow for completing community resource information.", "scope": ["Data import", "Location correction", "Service categories", "Map filters", "Missing-data list"]}
+    ]
+  },
+  "plausible": {
+    "hook": "See what happens on a website without tracking who visits",
+    "summary": "Plausible uses a lightweight analytics script to collect visits, referrers, pages and custom events, then presents the results in a single-page dashboard. It does not rely on cookies or store directly identifying personal information; goals, funnels, real-time data, scheduled reports and a statistics API help site owners understand whether their content works.",
+    "meaning": "It shows that web analytics does not require personal profiles. Anonymous aggregation, event goals and concise reports can support small public experiences where privacy matters.",
+    "audience": "Site owners, creators and small teams that need content and conversion insights while minimizing personal tracking",
+    "features": ["Privacy-first analytics without cookies", "A single-page dashboard for pages and referrers", "Custom events, goals and funnels", "Real-time data and scheduled reports", "Shared links, imports, CSV and a statistics API"],
+    "stack": ["Elixir", "Phoenix", "PostgreSQL", "ClickHouse", "React", "Tailwind CSS"],
+    "opportunity": ["Turn anonymous event analytics into a public progress board for community campaigns", "Turn goals and referrer analysis into a reading feedback report for independent creators", "Turn real-time events and a simple dashboard into an interaction heatmap for exhibitions"],
+    "directions": [
+      {"id": "community-campaign-counter", "name": "Community Campaign Counter", "tagline": "Share campaign progress without recording who participated", "problem": "Community campaigns need to show how outreach is working without building profiles of residents just to count clicks.", "audience": "Community organizers and participating residents", "approach": "Assign anonymous events to posters, signup pages and on-site QR codes, aggregate them by source and date, and publish a public board containing only totals and trends.", "difference": "Shift from operating a website to providing transparent, public summaries for a community.", "scope": ["Campaign links", "Anonymous events", "Source aggregation", "Trend cards", "Public sharing"]},
+      {"id": "creator-reading-echo", "name": "Creator Reading Pulse", "tagline": "See which content people actually read each week", "problem": "Independent creators can see total visits but struggle to quickly identify which articles and sources lead to sustained reading.", "audience": "Independent creators who run a personal site or newsletter", "approach": "Track page views and completed-reading events, summarize them by article and referrer, and generate a weekly report focused on content performance and returning-reader trends.", "difference": "Turn general website metrics into a fixed weekly review for editorial decisions.", "scope": ["Article setup", "Completion events", "Referrer comparisons", "Return trends", "Weekly report"]},
+      {"id": "exhibit-interaction-map", "name": "Exhibition Interaction Map", "tagline": "Use anonymous taps to see where visitors stop", "problem": "Small exhibitions want to improve visitor flow but cannot afford complex cameras or identity-recognition systems.", "audience": "Curators at museums and community exhibitions", "approach": "Record exhibit-label QR scans and interactive-button presses as anonymous events, aggregate them by area and time, and produce an exhibit heatmap with locations to adjust.", "difference": "Change the input from website visits to physical exhibit interactions and the outcome to spatial layout guidance.", "scope": ["Location IDs", "Anonymous interactions", "Time aggregation", "Exhibit heatmap", "Adjustment list"]}
+    ]
+  },
+  "lossless-cut": {
+    "hook": "Remove unwanted footage without re-encoding the whole file",
+    "summary": "LosslessCut wraps FFmpeg in a cross-platform timeline interface for quickly trimming, merging or remuxing video, audio and subtitles without re-encoding an entire file for ordinary cuts. It also supports track and metadata editing, snapshots, chapters, and detection of black frames, silence and scene changes.",
+    "meaning": "It replaces slow media re-encoding with precise operations on containers and segments, making it a useful base for lightweight tools that organize family memories, course material or field recordings.",
+    "audience": "People and content professionals who need to clean up camera, screen, drone or audio recordings quickly without quality loss from repeated encoding",
+    "features": ["Fast lossless trimming and merging", "Video, audio and subtitle track handling", "Media remuxing and metadata editing", "Frame snapshots, chapters and segment projects", "Black-frame, silence and scene detection"],
+    "stack": ["TypeScript", "Electron", "Chromium", "FFmpeg"],
+    "opportunity": ["Turn scene detection and lossless trimming into a family video organizer", "Turn chapters, clips and snapshots into a course breakdown tool", "Turn silence detection and audio trimming into a field-recording desk"],
+    "directions": [
+      {"id": "family-video-curator", "name": "Family Video Organizer", "tagline": "Turn hours of footage into memories filed by event", "problem": "As family videos accumulate, duplicate clips and long empty shots make them difficult to revisit.", "audience": "People organizing family photos and videos", "approach": "Scan camera files, use scene and silence hints to locate segments, let the user confirm what to keep, then export without re-encoding and create contact sheets organized by date and event.", "difference": "Turn a flexible media utility into a workflow for archiving and revisiting family events.", "scope": ["Media scan", "Scene hints", "Clip confirmation", "Lossless export", "Event archive", "Contact sheets"]},
+      {"id": "lecture-breakdown-kit", "name": "Lecture Breakdown Kit", "tagline": "Turn a long class into chapters, clips and review cards", "problem": "Teachers creating chapters and review clips from long recordings repeatedly search for timestamps and capture frames.", "audience": "Teachers producing online courses", "approach": "Import a lecture recording and chapter list, verify timestamps, batch-cut example clips and keyframes, then export a course pack with a chapter index.", "difference": "Move from one-off cutting to batch production of materials organized around a course structure.", "scope": ["Lecture import", "Chapter matching", "Batch clipping", "Keyframes", "Index export"]},
+      {"id": "field-audio-trimmer", "name": "Field Recording Desk", "tagline": "Keep citable sound evidence from long recordings", "problem": "Researchers working through hours of field audio struggle to remove silence quickly while keeping clips connected to their notes.", "audience": "Researchers recording interviews or natural sound", "approach": "Import audio and field notes, use silence hints to divide sections, name and link them to notes, then export lossless clips with source information.", "difference": "Combine recordings with field notes and produce a catalog of citable evidence clips.", "scope": ["Audio import", "Silence hints", "Section naming", "Note links", "Lossless export"]}
+    ]
+  },
+  "flowgram-ai": {
+    "hook": "Turn a node canvas into a working workflow product",
+    "summary": "FlowGram is not a ready-made automation platform but a TypeScript framework for building one. Developers can combine freeform or fixed-layout canvases, node configuration forms, variable scopes, ready-made node materials and a runtime so users can connect conditions, loops, HTTP requests, code and large-language-model steps inside their own product.",
+    "meaning": "It turns the canvas, data flow and node configuration that workflow products repeatedly rebuild into embeddable modules, making focused visual process tools faster to prototype.",
+    "audience": "Frontend and platform teams building AI workflows, automation orchestration or node-based editor products",
+    "features": ["Freeform and fixed-layout canvases", "Node configuration forms and validation", "Variable scopes and type inference", "Node materials for LLMs, conditions and code", "An embeddable runtime"],
+    "stack": ["TypeScript", "React", "Node.js", "Workflow Runtime"],
+    "opportunity": ["Turn the node canvas into a family care routine designer", "Turn variables and branches into classroom experiment cards", "Turn conditions and connections into a branching-story workshop"],
+    "directions": [
+      {"id": "care-routine-designer", "name": "Family Care Routine Board", "tagline": "Draw daily care handoffs as clear steps", "problem": "When several relatives share caregiving, conditions, reminders and handoff notes easily disappear in chat history.", "audience": "Family members jointly caring for an older or recovering relative", "approach": "Represent medication, meals and appointments as step nodes, express unusual situations with conditional branches, and generate a daily checklist and handoff record when the routine runs.", "difference": "Turn a development framework into a care workflow product families use directly.", "scope": ["Care nodes", "Conditional branches", "Daily runs", "Completion records", "Handoff summaries"]},
+      {"id": "class-experiment-flow", "name": "Classroom Experiment Flow", "tagline": "Guide students through variables and branches in an experiment", "problem": "Students doing inquiry-based experiments often skip control variables, observations or reflection steps.", "audience": "Teachers and students in inquiry-based classes", "approach": "Teachers design experiment steps, input variables and checkpoints as nodes. Students run them in order, enter results, and produce a record containing the path they followed.", "difference": "Turn a general workflow editor into a student-facing runner with instructional checkpoints.", "scope": ["Experiment steps", "Variable inputs", "Checkpoints", "Branch execution", "Record export"]},
+      {"id": "story-branch-workshop", "name": "Branching Story Workshop", "tagline": "Connect character choices into a story people can play", "problem": "When interactive-story authors maintain conditions and branches in documents, broken paths and unreachable endings are hard to spot.", "audience": "Writers of interactive fiction and game narratives", "approach": "Represent scenes and choices as nodes, track character state with variables, check unreachable paths, and generate a clickable playable preview.", "difference": "Change the output from workflow configuration to a narrative prototype readers can play.", "scope": ["Scene nodes", "Choice connections", "State variables", "Path checks", "Playable preview"]}
+    ]
+  },
+  "tagstudio": {
+    "hook": "Reorganize an entire library without moving the original files",
+    "summary": "TagStudio adds a tagged library on top of existing folders without requiring users to move, copy or rename files. Photos, video, audio and documents can receive tags for people, places and concepts plus custom fields, then be searched with combinations such as AND, OR and NOT; library data stays together in a local SQLite database.",
+    "meaning": "It separates where a file lives from what it means, making it useful for personal knowledge products that preserve existing folders while rediscovering material through multiple relationships.",
+    "audience": "People, creators and archivists organizing large photo and mixed-file collections without disrupting existing folder structures",
+    "features": ["Builds a library over existing folders without moving files", "Tags and custom fields for file entries", "Aliases, relationships and other tag properties", "Preview and playback for multiple media types", "Search by Boolean conditions, path and media type"],
+    "stack": ["Python", "Qt", "SQLite", "Local File System"],
+    "opportunity": ["Turn tag relationships into an index of family memories", "Turn fields and compound search into a shelf of research evidence", "Turn media previews and tags into a craft-material catalog"],
+    "directions": [
+      {"id": "family-memory-labeler", "name": "Family Memory Index", "tagline": "Find memories by people and stories without moving photos", "problem": "Family photos sit in years of folders; dates can locate files, but not stories connecting people and events across years.", "audience": "People organizing family photos and recordings", "approach": "Scan existing folders, tag photos and recordings by person, place and event, collect related entries into stories, and track identities that relatives still need to confirm.", "difference": "Turn general file tagging into a shared confirmation workflow around family members and events.", "scope": ["Folder scanning", "Person tags", "Event relationships", "Story collections", "Needs-confirmation list"]},
+      {"id": "research-evidence-shelf", "name": "Research Evidence Shelf", "tagline": "Trace every claim back to its original source", "problem": "Research material spans PDFs, images and recordings, while filenames and folders cannot express topic, credibility and citation status at once.", "audience": "Students and independent researchers doing desk research", "approach": "Keep files in place, add topic, claim, source and verification fields, and use compound search to assemble an evidence pack for a conclusion.", "difference": "Turn file browsing into a research workflow for assembling, verifying and exporting evidence by claim.", "scope": ["Material scan", "Claim tags", "Source fields", "Verification status", "Evidence packs"]},
+      {"id": "craft-material-catalog", "name": "Craft Material Catalog", "tagline": "Take a photo and remember exactly where a material is stored", "problem": "After collecting fabric, paint and parts, makers forget colors, quantities, storage locations and which projects used them.", "audience": "Independent makers managing craft supplies", "approach": "Add color, material, quantity and location fields to supply photos, link finished-project images, and filter available stock for a planned project.", "difference": "Use supply photos and inventory attributes as input to create a searchable material-selection catalog.", "scope": ["Material photos", "Attribute fields", "Storage locations", "Project links", "Conditional filters"]}
+    ]
+  },
+  "meetily": {
+    "hook": "Keep meeting audio on your computer and still get clear notes",
+    "summary": "Meetily captures meeting audio, transcribes it in real time and creates summaries on the user's computer, with the goal of keeping sensitive conversations out of external meeting services. It can import existing recordings, use local open-source models or connect to a user-selected OpenAI-compatible endpoint, while its cross-platform desktop app and audio mixing join capture, text and summaries into one workflow.",
+    "meaning": "Local recording, transcription and structured summaries can support more than business meetings. They also provide a foundation for oral history, learning reviews and community coordination where privacy matters.",
+    "audience": "People, professionals and organizations that need meeting records while retaining control of audio, transcripts and model connections",
+    "features": ["On-device recording and real-time transcription", "Import of existing audio", "Summary generation with local models", "Custom OpenAI-compatible endpoints", "A cross-platform desktop app with audio mixing"],
+    "stack": ["Rust", "Tauri", "Local Speech Model", "OpenAI-compatible API"],
+    "opportunity": ["Turn local transcription into a family oral-history notebook", "Turn recordings and summaries into a learning review coach", "Turn action-item extraction into a volunteer handoff log"],
+    "directions": [
+      {"id": "oral-history-notebook", "name": "Family Oral History Notebook", "tagline": "Turn a relative's voice into a traceable story line", "problem": "Family interviews are often left untouched after recording, making it hard to connect important people and dates with the original audio.", "audience": "People and families preserving family stories", "approach": "Record or import an interview locally, create a transcript, let the family correct names and dates, and link each summary passage back to its original timestamp.", "difference": "Turn meeting notes into a family archive that requires human verification and links back to original voices.", "scope": ["Local recording", "Interview transcription", "Name correction", "Date annotations", "Audio links", "Story export"]},
+      {"id": "learning-review-coach", "name": "Learning Review Coach", "tagline": "Explain what you learned and find what is still unclear", "problem": "After reading course material, learners often assume they understand it without using a spoken explanation to reveal conceptual gaps.", "audience": "Students studying independently or preparing for exams", "approach": "Record a spoken explanation of a topic, transcribe it locally, compare it with an outline for missing or vague sections, and create questions for the next review session.", "difference": "Change the input from a group meeting to an individual explanation and the output from minutes to knowledge gaps and review questions.", "scope": ["Topic recording", "Local transcription", "Outline comparison", "Gap markers", "Review questions"]},
+      {"id": "volunteer-handoff-log", "name": "Volunteer Handoff Log", "tagline": "Pass decisions and owners from a discussion to the next shift", "problem": "After shift-based volunteer meetings, later volunteers often do not know what was decided, who owns an action or when to follow up.", "audience": "Community volunteer teams working in shifts", "approach": "Record meetings locally, correct the transcript, extract decisions, owners and dates, have the facilitator confirm them, and create a handoff card the next shift can act on.", "difference": "Turn a general summary into a shift handoff product where responsibility must be confirmed by a person.", "scope": ["Local meeting recording", "Transcript correction", "Decision extraction", "Owner confirmation", "Handoff cards"]}
+    ]
+  },
+  "trilium": {
+    "hook": "Grow connected notes into a personal knowledge tree",
+    "summary": "Trilium Notes manages large personal knowledge bases through a note tree of unlimited depth, and the same note can be cloned into several locations. Rich text, code, attributes, full-text search, version history and scripts organize the content; self-hosted sync, per-note encryption, public sharing, canvases and relationship maps let knowledge stay private while also being explored through connections.",
+    "meaning": "It stores more than pages: one piece of information can belong to several contexts with relationships, attributes and history, making it a base for long-lived family, creative or learning records.",
+    "audience": "Personal knowledge workers who maintain many connected notes over time and want control over synchronization and sharing",
+    "features": ["An unlimited-depth note tree with note cloning", "Rich text, code and multiple note types", "Attributes, search, version history and scripts", "Self-hosted sync, sharing and per-note encryption", "Canvases, relationship maps and link maps"],
+    "stack": ["TypeScript", "Electron", "Node.js", "SQLite", "Web UI"],
+    "opportunity": ["Turn hierarchy, attributes and history into a family care journal", "Turn relationship maps and cloning into a worldbuilding atlas", "Turn relationships and search into a prerequisite map for learning"],
+    "directions": [
+      {"id": "family-care-journal", "name": "Family Care Journal", "tagline": "Keep daily changes, files and handoffs on one timeline", "problem": "Long-term care records are spread across chats, paper and folders, making it hard for family members to see what followed a particular change.", "audience": "Family members caring for a relative together", "approach": "Record events by date, link files and contacts as related notes, mark follow-ups and reviews with attributes, and use version history to see how records changed.", "difference": "Turn a freeform knowledge base into a family journal for chronological handoffs, relationship tracking and review.", "scope": ["Dated journal", "Event attributes", "File links", "Contact relationships", "Review checklist", "Version history"]},
+      {"id": "worldbuilding-atlas", "name": "Worldbuilding Atlas", "tagline": "Make contradictions between characters, places and events visible", "problem": "Characters and places recur across chapters in long stories, making timelines and conflicting details easy for writers to forget.", "audience": "Novelists and game narrative designers", "approach": "Create notes and attributes for people, places and events, connect appearances and causes in a relationship map, clone shared details into chapter views, and list conflicts to review.", "difference": "Turn general notes into a relationship-checking product focused on narrative continuity.", "scope": ["Character cards", "Location cards", "Event timeline", "Relationship map", "Chapter views", "Conflict list"]},
+      {"id": "learning-dependency-map", "name": "Learning Prerequisite Map", "tagline": "Understand knowledge dependencies before choosing what to study next", "problem": "Independent learners collect many notes but cannot tell which missing prerequisite is blocking a concept.", "audience": "Students and adults engaged in long-term self-study", "approach": "Connect concept notes with prerequisite relationships, mark understanding and review dates as attributes, and generate a learning path backward from a target.", "difference": "Move from storing notes by topic to choosing a learning order based on knowledge dependencies.", "scope": ["Concept notes", "Prerequisite links", "Understanding markers", "Review dates", "Learning paths"]}
+    ]
+  },
+  "responsible-ai-toolbox": {
+    "hook": "Put the people and reasons behind model errors on one screen",
+    "summary": "Responsible AI Toolbox brings model and data assessment into a set of interactive interfaces. It first locates data groups with unusually high error rates, compares performance across groups, and explains why the model or an individual prediction produced its result. Counterfactual views show which input changes might alter an output, while causal and data-balance views help teams form their next investigation questions.",
+    "meaning": "It breaks abstract model quality into identifiable data groups, explainable cases and comparable results, making it useful for model-checking products centered on learning, public communication and human review.",
+    "audience": "Developers, data scientists and business owners who need to debug, assess or explain machine-learning model behavior",
+    "features": ["Finds data groups with high error rates", "Compares fairness metrics across groups", "Explains the whole model and individual predictions", "Explores counterfactual input changes", "Investigates causal questions and data distributions"],
+    "stack": ["TypeScript", "Python", "React", "Jupyter", "Model Assessment Widgets"],
+    "opportunity": ["Turn error grouping into classroom model experiment reports", "Turn group comparisons and explanations into a public-service model brief", "Turn data balance and unusual groups into a dataset blind-spot workshop"],
+    "directions": [
+      {"id": "student-model-lab", "name": "Student Model Lab", "tagline": "Make prediction results explain where and why a model failed", "problem": "After training a model, students often look only at total accuracy and miss repeated failures within particular data groups.", "audience": "Students and teachers learning machine learning", "approach": "Import predictions and test data, compare errors by feature groups, inspect representative cases and explanations, and create an experiment report that includes limitations.", "difference": "Turn a professional debugging tool into a guided model experiment with teaching steps and a report template.", "scope": ["Result import", "Error groups", "Case explanations", "Group comparisons", "Report template"]},
+      {"id": "public-model-brief", "name": "Public Model Brief", "tagline": "Explain how automated decisions affect different groups", "problem": "When public services use models, residents struggle to understand from technical metrics which groups may be affected differently.", "audience": "Agency staff responsible for public communication and community representatives", "approach": "Import approved assessment results, choose groups and representative cases, translate errors, fairness and explanations into layered charts, and record questions that still require human decisions.", "difference": "Turn a developer debugging interface into a public evidence-communication and issue-tracking workflow.", "scope": ["Assessment import", "Group charts", "Case explanations", "Term definitions", "Open questions", "Public export"]},
+      {"id": "dataset-blindspot-workshop", "name": "Dataset Blind-Spot Workshop", "tagline": "See which samples remain absent before collecting more data", "problem": "Small datasets keep receiving new samples without a regular process for checking imbalanced categories and features.", "audience": "Communities and research groups building open datasets", "approach": "Import a data summary, compare category and feature distributions, locate rare combinations, let contributors claim collection tasks, and record the sources of new material.", "difference": "Move from evaluating an existing model to coordinating the next round of data collection.", "scope": ["Data summary", "Distribution comparisons", "Blind-spot combinations", "Task claiming", "Source records"]}
+    ]
+  },
+  "ohmyzsh": {
+    "hook": "Package everyday terminal actions into plugins and themes",
+    "summary": "Oh My Zsh is a community framework for managing zsh configuration. Users enable selected plugins in a configuration file to add aliases, completion and helper functions for Git, directory navigation and other common commands; themes control the prompt, a custom directory holds personal extensions, and built-in updates let the configuration evolve over time.",
+    "meaning": "It packages scattered command-line habits as selectable, composable and updatable modules, a structure that can support terminal learning, team environment setup and personal shortcuts.",
+    "audience": "Command-line users and developers who want easier management of zsh plugins, themes, aliases and updates",
+    "features": ["Centralized zsh configuration", "Community plugins enabled as needed", "Selectable and customizable terminal themes", "Custom plugins and themes", "Automatic update checks and manual updates"],
+    "stack": ["Shell", "Zsh", "Git", "Unix-like OS"],
+    "opportunity": ["Turn command completion and help into a terminal practice coach", "Turn plugin lists and checks into a team onboarding kit", "Turn aliases and functions into a searchable personal command launcher"],
+    "directions": [
+      {"id": "command-practice-coach", "name": "Terminal Practice Coach", "tagline": "Learn the next command while completing real tasks", "problem": "Beginners may memorize commands but still not know when to use them in real folders and Git tasks.", "audience": "People beginning to use the terminal and Git", "approach": "Choose a task, receive step-by-step hints about suitable commands and plugin help, record the commands actually entered, and create review cards for common mistakes afterward.", "difference": "Move from aliases and completion to practice and reflection around real tasks.", "scope": ["Task selection", "Step-by-step hints", "Command history", "Error explanations", "Review cards"]},
+      {"id": "team-shell-onboarding", "name": "Team Shell Onboarding Kit", "tagline": "Check what development tools a new computer is missing", "problem": "When new team members configure a terminal from documentation, missing plugins, commands and versions often appear only after real work begins.", "audience": "Engineering teams responsible for developer onboarding", "approach": "Maintain a team list of plugins and tools, run read-only checks on a new computer, produce recommended configuration and missing items, and install only after the member confirms.", "difference": "Turn a personal configuration framework into a verifiable team onboarding process with sign-off.", "scope": ["Team checklist", "Environment checks", "Missing-item report", "Configuration suggestions", "Completion sign-off"]},
+      {"id": "personal-command-launcher", "name": "Personal Command Launcher", "tagline": "Find a shortcut you wrote by describing what it does", "problem": "After accumulating many aliases and scripts, people often rewrite them because they cannot remember their names.", "audience": "Developers and creators maintaining many personal commands", "approach": "Index custom aliases, functions and plugin commands, add purpose tags, find an action through search or a description, and show the expanded command before execution.", "difference": "Move from loading configuration at terminal startup to a searchable action catalog with safety confirmation.", "scope": ["Command index", "Purpose tags", "Description search", "Expanded preview", "Execution confirmation"]}
+    ]
+  },
+  "airflow": {
+    "hook": "Turn scheduled batch jobs into a task graph you can trace",
+    "summary": "Apache Airflow lets teams define batch jobs and dependencies in Python as a DAG, a graph of tasks with a required order. A scheduler dispatches planned tasks to workers, while command-line and web interfaces show progress, logs and failure locations. Code-defined workflows can be versioned, tested and reviewed, though Airflow suits stable batch processing better than continuous streaming data.",
+    "meaning": "It turns scattered scheduled scripts into observable, retryable and accountable dependency graphs, making it a foundation for reliable pipelines that periodically collect, validate, transform and publish information.",
+    "audience": "Data engineering and platform teams that write, schedule, monitor and troubleshoot batch jobs or data pipelines",
+    "features": ["Python definitions for tasks and DAG dependencies", "Scheduled execution distributed to workers", "Web views for progress, logs and failures", "Versionable, testable and collaborative workflows", "Extensible task types and external-service connections"],
+    "stack": ["Python", "DAG", "Scheduler", "Workers", "Web UI", "Command Line"],
+    "opportunity": ["Turn scheduling, validation and retries into a family backup calendar", "Turn spreadsheet processing and task dependencies into a school reporting pipeline", "Turn public API collection and publishing into a community data update site"],
+    "directions": [
+      {"id": "family-backup-calendar", "name": "Family Backup Calendar", "tagline": "Confirm every day that photos and files were really backed up", "problem": "Family members assume phones and computers are backed up, then discover only after a device fails that one source has been broken for months.", "audience": "People managing a household's digital records", "approach": "Connect selected photo and document sources, copy and verify them daily, retry failures, and show the last successful backup for every source on a calendar.", "difference": "Turn an engineering task platform into backup status and recovery steps a household can understand.", "scope": ["Source connections", "Scheduled backups", "Verification records", "Failure retries", "Status calendar", "Recovery reminders"]},
+      {"id": "school-report-pipeline", "name": "School Report Pipeline", "tagline": "Complete every spreadsheet summary in the same reliable order", "problem": "When teachers regularly summarize grades or attendance, they repeatedly clean column names, check missing values and create charts.", "audience": "Teachers and school administrators who regularly prepare class data", "approach": "After a spreadsheet is uploaded, validate its format, remove personal fields not needed in a public report, calculate summaries, and create a report for human review.", "difference": "Hide code-defined DAGs behind a spreadsheet-checking and report-delivery workflow teachers can operate.", "scope": ["Spreadsheet upload", "Format validation", "Field removal", "Summary calculations", "Human review", "Report export"]},
+      {"id": "community-open-data-publisher", "name": "Community Data Update Site", "tagline": "Collect public data on schedule and show when a source stops updating", "problem": "When volunteers maintain public information, a source format change can silently stop a page from updating.", "audience": "Volunteer teams maintaining community open data", "approach": "Read city CSV files or APIs on a schedule, validate fields and update times, clean and publish a version, and add failed sources to a repair list.", "difference": "Turn an internal data pipeline into a community product that delivers both public data and freshness information.", "scope": ["Source schedule", "Field validation", "Data cleanup", "Version publishing", "Freshness dashboard", "Repair list"]}
+    ]
+  }
+}

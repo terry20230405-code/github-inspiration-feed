@@ -8,11 +8,20 @@ export function formatRepositoryCount(value: number) {
   return `${(value / 1_000).toFixed(1).replace(/\.0$/, '')}k`
 }
 
-export function formatRelativeDate(isoDate: string, now = Date.now()) {
+export function formatRelativeDate(isoDate: string, now = Date.now(), language: 'zh' | 'en' = 'zh') {
   const timestamp = Date.parse(isoDate)
-  if (Number.isNaN(timestamp)) return '未知'
+  if (Number.isNaN(timestamp)) return language === 'en' ? 'Unknown' : '未知'
 
   const seconds = Math.max(0, Math.floor((now - timestamp) / 1_000))
+  if (language === 'en') {
+    if (seconds < 60) return 'Just now'
+    const [size, unit] = seconds < 3_600 ? [60, 'minute'] as const
+      : seconds < 86_400 ? [3_600, 'hour'] as const
+      : seconds < 2_592_000 ? [86_400, 'day'] as const
+      : seconds < 31_536_000 ? [2_592_000, 'month'] as const
+      : [31_536_000, 'year'] as const
+    return new Intl.RelativeTimeFormat('en', { numeric: 'always' }).format(-Math.floor(seconds / size), unit)
+  }
   if (seconds < 60) return '刚刚'
   if (seconds < 3_600) return `${Math.floor(seconds / 60)} 分钟前`
   if (seconds < 86_400) return `${Math.floor(seconds / 3_600)} 小时前`

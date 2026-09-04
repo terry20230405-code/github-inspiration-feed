@@ -1,4 +1,9 @@
-import type { Project, ProjectVisual } from './types'
+import type { Project, ProjectEditorial, ProjectVisual } from './types'
+
+// Translations are a presentation layer, not part of the published source record.
+export type RuntimeProject = Project & {
+  readonly translations: { readonly en: ProjectEditorial }
+}
 
 export type ProjectIndexEntry = {
   readonly id: string
@@ -13,8 +18,8 @@ type ProjectIndexPayload = {
   readonly projects: readonly ProjectIndexEntry[]
 }
 
-const projectCache = new Map<string, Project>()
-const projectRequests = new Map<string, { controller: AbortController; promise: Promise<Project> }>()
+const projectCache = new Map<string, RuntimeProject>()
+const projectRequests = new Map<string, { controller: AbortController; promise: Promise<RuntimeProject> }>()
 let indexRequest: Promise<readonly ProjectIndexEntry[]> | null = null
 
 function dataUrl(file: string) {
@@ -37,10 +42,15 @@ function assertIndex(value: unknown): asserts value is ProjectIndexPayload {
   }
 }
 
-function assertProject(value: unknown, id: string): asserts value is Project {
+function assertProject(value: unknown, id: string): asserts value is RuntimeProject {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`项目 ${id} 的数据格式无效`)
   const project = value as Record<string, unknown>
-  if (project.schemaVersion !== 2 || project.id !== id || !project.repository || !project.editorial || !project.visual) {
+  const translations = project.translations
+  if (
+    project.schemaVersion !== 2 || project.id !== id || !project.repository || !project.editorial || !project.visual
+    || !translations || typeof translations !== 'object' || Array.isArray(translations)
+    || !(translations as Record<string, unknown>).en
+  ) {
     throw new Error(`项目 ${id} 的数据不完整`)
   }
 }

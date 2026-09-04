@@ -35,6 +35,7 @@
     "test:identity-renderer": "node scripts/test-project-identity.mjs",
     "test:feed-data": "node scripts/test-project-feed-data.mjs",
     "test:feed-window": "node scripts/test-feed-window.mjs",
+    "test:i18n": "node scripts/test-i18n.mjs",
     "test:refresh-cycle": "python skills/github-inspiration-editor/scripts/test_refresh_cycle.py",
     "test:version-manager": "python skills/github-inspiration-editor/scripts/test_version_manager.py",
     "test:research-refresh": "python skills/github-inspiration-editor/scripts/test_research_refresh.py",

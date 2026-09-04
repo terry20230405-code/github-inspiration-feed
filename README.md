@@ -143,6 +143,14 @@ npm run preview
 
 `public/data/projects/` 是自动生成目录，不应手动维护。自动发现和发布工作流仍然只修改 `src/data/` 中的正式数据源。
 
+### 中英文切换
+
+首页和详情页右上角提供「中文 / EN」切换，默认中文，并在浏览器中保存语言偏好。切换不会重置当前项目或已选方向。
+
+界面文案位于 `src/i18n.ts`，项目英文译文位于 `src/locales/projects.en.json`，不修改中文正式数据。生成脚本将译文随单个项目 JSON 一起输出，保留窗口懒加载。英文层和项目顺序必须拥有完全相同的项目 ID；新增项目缺少英文或英文中残留中文时，开发启动和生产构建会直接失败，避免页面静默混用两种语言。
+
+修改译文后运行 `node scripts/generate-project-data.mjs` 并刷新页面。使用 `npm run test:i18n` 检查全项目覆盖、字段、方向 ID、技术名称、时间文案和语言偏好保存。更多约定见 [翻译维护说明](src/locales/README.md)。
+
 ## 配置 GitHub 自动化
 
 ### 1. 添加 AI API Key
