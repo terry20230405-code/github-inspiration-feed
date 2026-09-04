@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-02T14:59:40Z",
-  "sourceFingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf",
+  "generatedAt": "2026-09-04T05:24:26Z",
+  "sourceFingerprint": "dbeb88e8df77adf64cf98ca9042ffbca17131ee844f27faf00ff93014756a2ec",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203137,
-    "forks": 60511,
+    "stars": 203277,
+    "forks": 60543,
     "language": "TypeScript",
-    "pushedAt": "2026-09-02T14:59:29Z",
+    "pushedAt": "2026-09-04T04:37:42Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-02T14:59:30Z"
+    "fetchedAt": "2026-09-04T05:24:19Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 379592100,
-      "after": 381094367,
+      "before": 381094367,
+      "after": 382036593,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.36.9",
-      "after": "n8n@2.37.7",
+      "before": "n8n@2.37.7",
+      "after": "n8n@2.37.9",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-08-31T08:01:15Z",
-      "after": "2026-09-02T08:41:33Z",
+      "before": "2026-09-02T08:41:33Z",
+      "after": "2026-09-03T13:16:03Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "273efbcda091e4021370b674317dc7df1e915661452b02668260adc3aeb89fd6",
-      "after": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
+      "before": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
+      "after": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 381094367,
-        "tagName": "n8n@2.37.7",
-        "name": "n8n@2.37.7",
-        "publishedAt": "2026-09-02T08:41:33Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.7",
-        "bodySha256": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
-        "body": "## [2.37.7](https://github.com/n8n-io/n8n/compare/n8n@2.37.6...n8n@2.37.7) (2026-09-02)\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37609?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 382036593,
+        "tagName": "n8n@2.37.9",
+        "name": "n8n@2.37.9",
+        "publishedAt": "2026-09-03T13:16:03Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.9",
+        "bodySha256": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
+        "body": "## [2.37.9](https://github.com/n8n-io/n8n/compare/n8n@2.37.7...n8n@2.37.9) (2026-09-03)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* **core:** Restore mutating array methods on $json data in expressions ([#37727](https://github.com/n8n-io/n8n/issues/37727)) ([336c081](https://github.com/n8n-io/n8n/commit/336c0810c0bd98172b7204ce42497a966efa9bdf))\r\n\r\n<!-- This is an auto-generated description by cubic. -->\r\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37735?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\r\n<!-- End of auto-generated description by cubic. -->\r\n\r\n",
         "bodyTruncated": false
       }
     }

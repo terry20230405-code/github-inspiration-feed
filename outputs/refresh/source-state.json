@@ -26,7 +26,7 @@
         "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.520",
         "bodySha256": "cbcb40948bead228fbd7dceb2210c34d61d81371df92acf74e0e911e5d2b160a"
       },
-      "capturedAt": "2026-09-03T08:44:00Z",
+      "capturedAt": "2026-09-04T05:24:26Z",
       "fingerprint": "df62edee8f88d40a7d37926c0b86927e74e29807a54d5e7928983412f336d5a0"
     },
     "immich": {
@@ -67,7 +67,7 @@
         "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
         "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
       },
-      "capturedAt": "2026-09-03T08:44:00Z",
+      "capturedAt": "2026-09-04T05:24:26Z",
       "fingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619"
     },
     "n8n": {
@@ -105,15 +105,15 @@
         "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
       },
       "latestRelease": {
-        "id": 381094367,
-        "tagName": "n8n@2.37.7",
-        "name": "n8n@2.37.7",
-        "publishedAt": "2026-09-02T08:41:33Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.7",
-        "bodySha256": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8"
+        "id": 382036593,
+        "tagName": "n8n@2.37.9",
+        "name": "n8n@2.37.9",
+        "publishedAt": "2026-09-03T13:16:03Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.9",
+        "bodySha256": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89"
       },
-      "capturedAt": "2026-09-03T08:44:00Z",
-      "fingerprint": "ad2ff951c74299d436525525c628c31e0d851b73d63fd103f2dd6104e09f3bcf"
+      "capturedAt": "2026-09-04T05:24:26Z",
+      "fingerprint": "dbeb88e8df77adf64cf98ca9042ffbca17131ee844f27faf00ff93014756a2ec"
     },
     "excalidraw": {
       "githubId": 231283452,
@@ -144,7 +144,7 @@
         "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
         "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
       },
-      "capturedAt": "2026-09-02T14:59:40Z",
+      "capturedAt": "2026-09-04T05:24:26Z",
       "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
     },
     "archify": {
@@ -271,7 +271,7 @@
         "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.0",
         "bodySha256": "aaf40767fd8e183781f6f8c2ea427691421bfee4d0aa4bf2e2247e9de2077789"
       },
-      "capturedAt": "2026-09-03T08:44:00Z",
+      "capturedAt": "2026-09-04T05:24:26Z",
       "fingerprint": "2a3d2d2ac2d6368d4599406ab2f8ae2eda33ac4c5a62ed849d8d71182f5d743a"
     },
     "maka": {
@@ -303,7 +303,7 @@
         "contentSha256": "5be2430fcc867469b6abc7e00c6813a9d97c3546880ca72a7eba1b75aa559f28"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-03T08:44:00Z",
+      "capturedAt": "2026-09-04T05:24:26Z",
       "fingerprint": "839843aca463ead8ef13903e6eefb7909eed70246236bdcdefbe12e23861ad64"
     }
   }
