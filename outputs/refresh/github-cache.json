@@ -3,43 +3,93 @@
   "repositories": {
     "274495425": {
       "fullName": "remotion-dev/remotion",
-      "etag": "\"e6df590c69ca9b9a918e601bf534153f0285887913facb3e15d14631caba04c2\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"bf380d1a7f61309560c3e92318e9d6478c4418477b5e3af1c08ae78befada310\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "231283452": {
       "fullName": "excalidraw/excalidraw",
-      "etag": "\"024eb43efc4a79ddaaa8328966112bd5c2190e449c6fe2dc6186157c8f3e1124\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"006b9451d51e6880f806536367d34a1f4a5e0bee4c3ad8509000434b5e572cc8\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "455229168": {
       "fullName": "immich-app/immich",
-      "etag": "\"2e6d0c98b704752d9ed8d8d1fea594fb02a0c24d9d14f1a0afbbee11ba7b72ef\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"72b863ce17eeb93f360678ee9a6303a18ef950e08cf545d9d49373d81785b77d\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "193215554": {
       "fullName": "n8n-io/n8n",
-      "etag": "\"b0622ade71bbedbb273379f55292a28aaaaf72c258378f5c2355aa5479182be7\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"d8f7a223fb1919a3971cd66475b4a2b8326f90f77b511ecc740e22802f93b2b2\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "1211139949": {
       "fullName": "tt-a1i/archify",
-      "etag": "\"463e5323187c45b0b06fd0cc8d5cb2b661bcf2f870faa01fb7379b7ac556c63b\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"004d96788b961662c342f3f61dd4b5381bf91c32a677c3f25b586c5ee76cdc8d\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "1250907197": {
       "fullName": "snownico0722/PaperTodo",
-      "etag": "\"14fe8a87e772e2f44dc32c61f2e9cc2fa2df3641a567f778ceda2d467c106f3f\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"9cf02ef0c6e8c715fb4befaeb19130ffa21507b667f37fd4ac58a9be97e2e1c4\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "1147094660": {
       "fullName": "HKUDS/nanobot",
-      "etag": "\"0e14fa5ca1e34c09b96c698d1d6acd25beba79270e01306c1758c32265f02b7d\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"c1a3cfd9d4d2bc40d6854a8f7e11b2e920c17cab4817a747fca53fbc15786275\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     },
     "1251460378": {
       "fullName": "apache/maka",
-      "etag": "\"24f7f93461ad8511848d097a2c50c06ad60566c106c8fec0c86e3e7cc1c8c32c\"",
-      "lastCheckedAt": "2026-09-04T05:24:19Z"
+      "etag": "\"7330c053e01cbe5948ebcdea4ba96afcadf9460884bdfff50c4d21ff61303db3\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "39464018": {
+      "fullName": "apache/superset",
+      "etag": "\"e5c36f4ffc369520759afc94ff81fe9b94fb4fbd8091a9756a1bf52927ca31ef\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "160427405": {
+      "fullName": "plausible/analytics",
+      "etag": "\"5a11b363e89284c482392c3d42765c8f7caead71cfbfff16b90ff0960ad08465\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "72343657": {
+      "fullName": "mifi/lossless-cut",
+      "etag": "\"1baf48e2107de3a302839ee6341b35edd7b3f647f72b70aa2558f4a34c65786d\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "933963452": {
+      "fullName": "bytedance/flowgram.ai",
+      "etag": "\"1c7751ab83a029f99c9247e934fcb622af2620744cc387f89d82ab4bab2162f0\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "787908531": {
+      "fullName": "TagStudioDev/TagStudio",
+      "etag": "\"45bcfbd7db78e952b05f8d1b2f6d3899ba0de2e993f20d7638b4c2d45bfcf149\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "908589694": {
+      "fullName": "Zackriya-Solutions/meetily",
+      "etag": "\"83e92a4330e25148d308a0ff27c9771ccc253b7c41cab65188c370ab33c1b714\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "92111509": {
+      "fullName": "TriliumNext/Trilium",
+      "etag": "\"861199db831cd7411124694f8386e1c757651fb934e49862e0461829c9e82ee5\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "277645425": {
+      "fullName": "microsoft/responsible-ai-toolbox",
+      "etag": "\"9e55a8e02e2fbeb736f48aa0b903c47b04b7e099d3ba90b95a6df6e5b93aad42\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "291137": {
+      "fullName": "ohmyzsh/ohmyzsh",
+      "etag": "\"298b17adb918da970820142048b324ed094164c9fef267199184a47fb70869c8\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
+    },
+    "33884891": {
+      "fullName": "apache/airflow",
+      "etag": "\"d911e09a309948732f7a009996039fe8a0b173f8346c6833fbc063108d903211\"",
+      "lastCheckedAt": "2026-09-08T05:32:31Z"
     }
   }
 }

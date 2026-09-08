@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-04T05:24:26Z",
-  "sourceFingerprint": "dbeb88e8df77adf64cf98ca9042ffbca17131ee844f27faf00ff93014756a2ec",
+  "generatedAt": "2026-09-08T05:32:49Z",
+  "sourceFingerprint": "6c3f47d3513d1272d69f48b704297ca7f721f7a097f55747048525215046abce",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203277,
-    "forks": 60543,
+    "stars": 203688,
+    "forks": 60606,
     "language": "TypeScript",
-    "pushedAt": "2026-09-04T04:37:42Z",
+    "pushedAt": "2026-09-08T05:31:11Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-04T05:24:19Z"
+    "fetchedAt": "2026-09-08T05:32:31Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 381094367,
-      "after": 382036593,
+      "before": 382036593,
+      "after": 384088095,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.37.7",
-      "after": "n8n@2.37.9",
+      "before": "n8n@2.37.9",
+      "after": "n8n@2.37.11",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-02T08:41:33Z",
-      "after": "2026-09-03T13:16:03Z",
+      "before": "2026-09-03T13:16:03Z",
+      "after": "2026-09-07T12:53:40Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "bbcc45510449ef6d70113c72eb69eb39a694cc91d3e4d150320c60bcda3d1bd8",
-      "after": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
+      "before": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
+      "after": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 382036593,
-        "tagName": "n8n@2.37.9",
-        "name": "n8n@2.37.9",
-        "publishedAt": "2026-09-03T13:16:03Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.9",
-        "bodySha256": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
-        "body": "## [2.37.9](https://github.com/n8n-io/n8n/compare/n8n@2.37.7...n8n@2.37.9) (2026-09-03)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* **core:** Restore mutating array methods on $json data in expressions ([#37727](https://github.com/n8n-io/n8n/issues/37727)) ([336c081](https://github.com/n8n-io/n8n/commit/336c0810c0bd98172b7204ce42497a966efa9bdf))\r\n\r\n<!-- This is an auto-generated description by cubic. -->\r\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/37735?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\r\n<!-- End of auto-generated description by cubic. -->\r\n\r\n",
+        "id": 384088095,
+        "tagName": "n8n@2.37.11",
+        "name": "n8n@2.37.11",
+        "publishedAt": "2026-09-07T12:53:40Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.11",
+        "bodySha256": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
+        "body": "## [2.37.11](https://github.com/n8n-io/n8n/compare/n8n@2.37.10...n8n@2.37.11) (2026-09-07)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* **core:** Ensure running job cleanup when a workflow run rejects ([#37826](https://github.com/n8n-io/n8n/issues/37826)) ([257f0bb](https://github.com/n8n-io/n8n/commit/257f0bb616fe6013032513b7bfae3d7304efaf11))\r\n* **core:** Keep a serving external secrets provider active when its replacement fails ([#37872](https://github.com/n8n-io/n8n/issues/37872)) ([865fa12](https://github.com/n8n-io/n8n/commit/865fa12059e632c22a21e6d05b8e1b86dea2f0f5))",
         "bodyTruncated": false
       }
     }

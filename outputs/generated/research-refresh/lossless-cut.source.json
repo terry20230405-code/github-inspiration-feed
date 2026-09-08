@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "projectId": "lossless-cut",
+  "generatedAt": "2026-09-08T05:32:49Z",
+  "sourceFingerprint": "af641e02deff115ebfab74f3398a86c0d804e415003adbc3dcfbff4c78a0c321",
+  "repository": {
+    "githubId": 72343657,
+    "fullName": "mifi/lossless-cut",
+    "name": "lossless-cut",
+    "stars": 43550,
+    "forks": 2155,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-07T11:39:53Z",
+    "license": "GNU General Public License v2.0",
+    "state": "active",
+    "fetchedAt": "2026-09-08T05:32:31Z"
+  },
+  "observation": "baseline",
+  "changes": [
+    {
+      "field": "sourceBaseline",
+      "before": null,
+      "after": "created",
+      "level": "baseline"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "kind": "metadata",
+      "retrievalStatus": "fetched",
+      "content": {
+        "githubId": 72343657,
+        "fullName": "mifi/lossless-cut",
+        "defaultBranch": "master",
+        "description": "The swiss army knife of lossless video/audio editing",
+        "homepage": "https://losslesscut.app/",
+        "topics": [
+          "codec",
+          "cut",
+          "editor",
+          "ffmpeg",
+          "lossless",
+          "losslesscut",
+          "player",
+          "video",
+          "video-editor",
+          "video-files"
+        ]
+      }
+    },
+    {
+      "id": "S2",
+      "kind": "readme",
+      "retrievalStatus": "fetched",
+      "content": {
+        "sha": "f6e053c59dc6280954a0f758d5a9c703971a7dc8",
+        "path": "README.md",
+        "htmlUrl": "https://github.com/mifi/lossless-cut/blob/master/README.md",
+        "contentSha256": "aad0be61e3679dd9925f6b9725cba4ae49145192f531f14ef205bce9999e73b8",
+        "content": "<div align=\"center\">\n\t<br>\n  <p><a href=\"https://losslesscut.app/\"><img src=\"src/renderer/src/icon.svg\" width=\"120\" alt=\"LosslessCut\" /></a></p>\n  <p><a href=\"https://losslesscut.app/\"><b>LosslessCut</b></a></p>\n  The swiss army knife of lossless video/audio editing\n\t<br>\n  <img src=\"https://github.com/mifi/lossless-cut/workflows/Build/release/badge.svg\" />\n  <a href=\"https://paypal.me/mifino/usd\"><img src=\"https://img.shields.io/badge/Donate-PayPal-green.svg\" /></a> <a href=\"https://github.com/mifi/lossless-cut#download\"><img src=\"https://img.shields.io/github/v/release/mifi/lossless-cut\" /></a> <a href=\"https://discord.gg/fhnEREfUJ3\"><img src=\"https://img.shields.io/discord/986051448385183804\" /></a> <a href=\"https://twitter.com/losslesscut\"><img src=\"https://img.shields.io/twitter/follow/losslesscut?label=Twitter&style=social\" alt=\"Twitter\"></a>\n\t<br>\n\t<br>\n  <a href=\"https://mifi.no/thanks/\">Thanks to my supporters</a> and everyone who purchased LosslessCut!\n\t<br>\n\t<br>\n  <p align=\"center\"><img src=\"main_screenshot.jpg\" width=\"600\" alt=\"screenshot\" /></p>\n\t<br>\n\t<br>\n</div>\n\nLosslessCut aims to be the ultimate cross platform FFmpeg GUI for extremely fast and lossless operations on video, audio, subtitle and other related media files.\nThe main feature is lossless trimming and cutting of video and audio files, which is great for saving space by rough-cutting your large video files taken from a video camera, GoPro, drone, etc. It lets you quickly extract the good parts from your videos and discard many gigabytes of data without doing a slow re-encode and thereby losing quality. There are also many more [use cases](#typical-workflow). Everything is extremely fast because it does an almost direct data copy, fueled by the awesome FFmpeg which does all the grunt work.\n\n## Table of contents\n\n- [Features](#features)\n- [Example lossless use cases](#example-lossless-use-cases)\n- [Download](#download)\n- [Supported formats](#supported-formats)\n- [Documentation, usage & getting started](#documentation)\n- [Video demos](#video-demos)\n- [Featured](#featured)\n- [Attributions](#attributions)\n\n## Features\n\n- Lossless cutting of most video and audio formats\n- [Smart cut](https://github.com/mifi/lossless-cut/issues/126) (experimental)\n- Losslessly cut out parts of video/audio (for cutting away commercials etc.)\n- Losslessly rearrange the order of video/audio segments\n- Lossless merge/concatenation of arbitrary files (with identical codecs parameters, e.g. from the same camera)\n- Lossless multi track/stream editing\n  - Combine arbitrary tracks from multiple files (ex. add music or subtitle track to a video file)\n  - Remove unneeded tracks\n  - Replace or re-encode only some tracks\n  - Extract all tracks from a file (extract video, audio, subtitle, attachments and other tracks from one file into separate files)\n- View technical data about all tracks. Edit file metadata, per-track metadata and per-track disposition\n- Select video/audio tracks for playback. Playback multiple audio tracks simultaneously.\n- Fast multi-file workflow (note: no mass/batch export yet)\n- Keyboard shortcut workflow\n- Losslessly remux video/audio into a different container (file) format\n- Take full-resolution snapshots from videos in JPEG/PNG format (low or high quality)\n- Export ranges of video frames to images (every nth frame, second, by scene change, best thumbnails)\n  - Export only from a selected time range (segment)\n  - Optionally include original timestamps in image file names\n- Manual input of cutpoint times\n- Apply a per-file timecode offset (and auto load timecode from file)\n- Change rotation/orientation metadata in videos\n- Timeline zoom and frame/keyframe jumping for cutting around keyframes\n- Video thumbnails and audio waveform\n- Saves per project cut segments to project file\n- View FFmpeg last command log so you can modify and re-run recent commands on the command line\n- Undo/redo\n- Advanced segment query and mutation JS-based expression language.\n- Give labels to cut segments, annotate with tags\n- [Import/export](docs/index.md#importexport-projects) segments: MP4/MKV chapter marks, Text file, YouTube, CSV, CUE, XML (DaVinci, Final Cut Pro) and more\n- MKV/MP4 embedded chapters marks editor\n- View subtitles\n- Customizable keyboard hotkeys\n- Black scene detection, silent audio detection, and scene change detection\n- Divide timeline into segments of length L, size (X MB), N number of segments or even randomized segments!\n- Speed up / slow down video or audio file ([changing FPS](https://github.com/mifi/lossless-cut/issues/1712))\n- Lossless crop and aspect ratio modification\n- Basic [CLI](docs/cli.md) and [HTTP API](docs/api.md)\n- Show (DJI) embedded GPS track on a map\n- Losslessly Download videos over HTTP (e.g. HLS `.m3u8`)\n- Extremely fast removal of all non-keyframes (e.g. timelapse)\n\n## Example lossless use cases\n\n- Cut out commercials from a recorded TV show (and re-format from TS to MP4).\n- Remove audio tracks from a file.\n- Extract music track from a video and cut it to your needs.\n- Add music to a video (or replace existing audio track).\n- Combine audio and video tracks from separate recordings.\n- Include an external subtitle into a video\n- Quickly change a H264/H265 MKV video to MOV or MP4 for playback on iPhone.\n- Import a list of cut times from other tool as a EDL (edit decision list, CSV) and run these cuts with LosslessCut.\n- Export a list of cut times as a CSV EDL and process these in another tool.\n- Quickly cut a file by its MP4/MKV chapters.\n- Quickly cut a [YouTube video](https://youtube-dl.org/) by its chapters (or music times from a comment).\n- Change the language of a file's audio/subtitle tracks.\n- Attach cover art / thumbnail to videos / audio from an external JPEG file or from a frame on the timeline.\n- Change author, title, GPS position, recording time of a video.\n- Fix rotation of a video that has the wrong orientation flag set.\n- Loop a video / audio clip X times quickly without re-encoding, see [#284](https://github.com/mifi/lossless-cut/issues/284).\n- Convert a video or parts of it into X image files (not lossless)\n- Losslessly split a video into one file per scene (note you probably have to shift segments, see [#330](https://github.com/mifi/lossless-cut/issues/330).)\n- Cut away silent parts from an audio/video file.\n- Split video into segments to for example respect Twitter's 140 second limit.\n- Annotate each segment with one or more tags, then use those tags to organize your segments or use it to create an output folder structure or hierarchy for your segments.\n\nSee also [Recipe cookbook](docs/recipes.md)\n\n## Download\n\nIf you want to support my continued work on LosslessCut, and you want the advantage of a secure and simple installation process with automatic, stable updates, consider getting it from your favorite store:\n\n<a href=\"https://apps.apple.com/app/id1505323402\"><img src=\"mac-app-store-badge.svg\" alt=\"Mac App Store\" height=\"50\"/></a> <a href=\"https://www.microsoft.com/store/apps/9P30LSR4705L?cid=storebadge&ocid=badge\"><img src=\"ms-store-badge.svg\" alt=\"MS badge\" height=\"50\"/></a>\n\nFor Linux I publish to the Snap Store:\n\n<a href=\"https://snapcraft.io/losslesscut\"><img src=\"https://github.com/mifi/lossless-cut/raw/master/snap-store-black.svg?sanitize=true\" alt=\"Snapcraft\" height=\"50\"/></a>\n\nIf you prefer to download the executables manually, this will of course always be free (see also [supported operating systems](docs/requirements.md)):\n\n- macOS: [Intel](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-mac-x64.dmg) / [Apple Silicon](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-mac-arm64.dmg) DMG (note that PKG does **not** work)\n- Windows: [7zip](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-win-x64.7z) (Windows 7, 8 and 8.1 is [no longer supported after v3.50.0](docs/requirements.md))\n- Linux: [x64 tar.bz2](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-x64.tar.bz2) / [x64 AppImage](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-x86_64.AppImage) / [arm64 tar.bz2](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-arm64.tar.bz2) / [Raspberry Pi armv7l](https://github.com/mifi/lossless-cut/releases/latest/download/LosslessCut-linux-armv7l.tar.bz2)\n- [More releases](https://github.com/mifi/lossless-cut/releases) - Note that APPX (Windows) and PKG (macOS) do **not** work)\n- [Latest nightly builds 🧪](https://mifi.no/llc/nightly/)\n\nNote that the above are the [only official downloads](docs/index.md#faq). There are also unofficial releases like [Flathub](https://flathub.org/apps/details/no.mifi.losslesscut) (not maintained by me). Difference between App Stores and GitHub download? [Please see FAQ](docs/index.md#faq).\n\n[![](./donate.svg)](https://mifi.no/thanks)\n\nLosslessCut is maintained by me alone and will always remain free and open source. If it's useful to you, consider supporting my work. Alternatively [donate to the FFmpeg team](https://www.ffmpeg.org/donations.html) because they are doing the world a huge favor.\n\n[Paypal](https://paypal.me/mifino/usd) | [crypto](https://mifi.no/thanks) | [more](https://mifi.no/thanks)\n\n## Supported formats\n\nLosslessCut uses the Chromium browser's HTML5 video player, and not all formats/codecs are [natively supported](https://www.chromium.org/audio-video). Generally, the following file formats work: `MP4`, `MOV`, `WebM`, `Matroska`, `OGG` and `WAV`. Audio codecs: `FLAC`, `MP3`, `Opus`, `PCM`, `Vorbis` and `AAC`. Video codecs: `H264`, `AV1`, `Theora`, `VP8`, `VP9` and `H265` (with hardware decoder). Learn the [difference between a codec and a format](docs/index.md#primer-videoaudio-codecs-vs-formats). Codecs and formats not listed above can still be converted to a supported format/codec from the `File` menu (try the option *Fastest: FFmpeg-assisted playback* first). A low quality version of the file will then be created and opened in the player. Note that the actual cut/export operation will still be performed on the original file, so it will be lossless. This allows for potentially opening any file that FFmpeg is able to decode.\n\n## Documentation\n\n- Official website: [LosslessCut.app](https://losslesscut.app)\n- **[Getting started, FAQ and usage documentation](docs/index.md)**\n- [Troubleshooting and known issues and limitations](docs/troubleshooting.md)\n- [Contributing](CONTRIBUTING.md)\n\n### Video demos\n\n- [Common features](https://www.youtube.com/watch?v=pYHMxXy05Jg)\n- [How to add a thumbnail / cover art to an MP4](https://www.youtube.com/watch?v=4pYJ93cn80E)\n- [How to add multi-language audio to a video](https://www.youtube.com/watch?v=MRBGDsuw_WU)\n- Your video here?\n\n## Featured\n\n- [Console newsletter](https://console.substack.com/p/console-93)\n- Hacker News [2024](https://news.ycombinator.com/item?id=40829494) [2022](https://news.ycombinator.com/item?id=33969490) [2020-10](https://news.ycombinator.com/item?id=24883030) [2020-01](https://news.ycombinator.com/item?id=22026412) [2016](https://news.ycombinator.com/item?id=12885585)\n- [Wikipedia](https://en.m.wikipedia.org/wiki/LosslessCut)\n- Your link here?\n- theo (YouTube) [1](https://youtu.be/FI5ba4RRE8U?t=246) [2](https://youtu.be/uaCypXEJjes?t=381)\n\n<img src=\"https://api.star-history.com/svg?repos=mifi/lossless-cut&type=Date\" alt=\"Star History Chart\" width=\"400px\" />\n\n## Attributions\n- App icon made by [Dimi Kazak](http://www.flaticon.com/authors/dimi-kazak \"Dimi Kazak\") from [www.flaticon.com](http://www.flaticon.com \"Flaticon\") is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/ \"Creative Commons BY 3.0\").\n- [Lottie animation by Chris Gannon](https://lottiefiles.com/7077-magic-flow).\n- Thanks to Adi Abinun and [@abdul-alhasany](https://github.com/mifi/lossless-cut/issues/2561) for UI work.\n- Thanks to translators who helped translate the app. [You can too!](docs/translation.md)\n- [Thanks to everyone for supporting](https://mifi.no/thanks/) my open source work 🙌\n\n---\n\nMade with ❤️ in [🇳🇴](https://www.youtube.com/watch?v=uQIv8Vo9_Jc)\n\n[More apps by mifi.no](https://mifi.no/)\n\nFollow me on [GitHub](https://github.com/mifi/), [YouTube](https://www.youtube.com/channel/UC6XlvVH63g0H54HSJubURQA), [IG](https://www.instagram.com/mifi.no/), [Twitter](https://twitter.com/mifi_no) for more awesome content!\n",
+        "contentTruncated": false
+      }
+    },
+    {
+      "id": "S3",
+      "kind": "release",
+      "retrievalStatus": "fetched",
+      "content": {
+        "id": 333848942,
+        "tagName": "v3.69.0",
+        "name": "3.69.0",
+        "publishedAt": "2026-06-04T08:14:49Z",
+        "htmlUrl": "https://github.com/mifi/lossless-cut/releases/tag/v3.69.0",
+        "bodySha256": "ca4f1d5df4834c0bd6df15fbe319cd3049a5731443152199aa60e0577eea064c",
+        "body": "Warning:\r\n- Windows arm64 version is missing ffmpeg.exe - please use nightly build instead for Windows ARM.\r\n- There is a bug when changing files while playing back where playback continues in the background, please use latest nightly build instead if you're experiencing this issue. [#2907](https://github.com/mifi/lossless-cut/issues/2907)\r\n\r\nRelease notes:\r\n\r\n- Add lossless cropping & aspect ratio override via bitstream and container metadata #643\r\n- Alow shifting tracks for each file (`-itsoffset`) #216\r\n- Add \"decimate video\" tool to filter away all non-keyframes #2111\r\n- Add Windows ARM 64 native build with native ffmpeg\r\n- Move timecode out of timeline and make it copy-able #2592 #2691 #2800 #483 #2808\r\n- Upgrade Electron to latest\r\n- Add new \"opposing\" align mode #2654\r\n- Add FFmpeg `-hwaccel auto` setting for hardware acceleration of certain operations\r\n- Add API events `export-start` and `export-complete`\r\n- Allow deleting track metadata #2819\r\n- Improve shift segments dialog #2839\r\n- Show keyboard shortcuts inside button tooltips in UI\r\n- Warn if trying to cut with too few keyframes around cutpoint #516 #2780 #2756\r\n- (Linux) include app name in notification #2794\r\n- Pull latest translations\r\n\r\nOther notable changes:\r\n- Advanced output directory selector #2101 #2115 #2755\r\n- increase max file name length to 250 (truncation) #2779\r\n- don't reset playback speed when using special playback modes #2889\r\n- preserve chapters when merging files that already have chapters\r\n- don't merge adjacent segments in combineOverlappingSegments  #2896\r\n- don't transfer segment name when filling gaps #2754\r\n- always scroll *up* to zoom in #2703 #2786\r\n- increase max keyframes to 10000\r\n- Don't bind ctrl/cmd+c by default (they interfer with copying text)\r\n- Many other improvements and fixes\r\n",
+        "bodyTruncated": false
+      }
+    }
+  ],
+  "safety": {
+    "repositoryContentIsUntrusted": true,
+    "publicationAuthorized": false
+  }
+}
