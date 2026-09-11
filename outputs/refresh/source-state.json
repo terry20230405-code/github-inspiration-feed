@@ -19,15 +19,15 @@
         "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d"
       },
       "latestRelease": {
-        "id": 383978924,
-        "tagName": "v4.0.522",
-        "name": "v4.0.522",
-        "publishedAt": "2026-09-07T09:42:54Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.522",
-        "bodySha256": "cd65fc5c2311ae22114ed94296250a8ffddeaf2c4ab1f22db5b1a14f7caf895c"
+        "id": 385518591,
+        "tagName": "v4.0.523",
+        "name": "v4.0.523",
+        "publishedAt": "2026-09-09T13:00:45Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.523",
+        "bodySha256": "07bcf00bdcc33e1621907e92f5de6713d5f2a0999b7e350e84c9ccbd57268c52"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "1f99538608528d0fa9d8f39ca899b44858a8d289020a883be4fb392999e93741"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "38963660f8f0e80fea51697b1df7bd3578c7ac170f9dbf90398c3df10b1c90a5"
     },
     "immich": {
       "githubId": 455229168,
@@ -60,15 +60,15 @@
         "contentSha256": "27b511ae6ee3be2295c4c1e0674dd0ac5b0c6023d9fdd9187869b1605ff56fad"
       },
       "latestRelease": {
-        "id": 360659796,
-        "tagName": "v3.1.0",
-        "name": "v3.1.0",
-        "publishedAt": "2026-07-29T14:20:10Z",
-        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.1.0",
-        "bodySha256": "f5509417f26e2a297aab63904193fdafe5f59f7073a0fb98d4777c390237bba7"
+        "id": 385613902,
+        "tagName": "v3.2.0",
+        "name": "v3.2.0",
+        "publishedAt": "2026-09-10T16:00:52Z",
+        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.0",
+        "bodySha256": "04d6abcd429deb72d3349d01810405a74aa1c8ff39d7eb8c6862ec6a405c7a23"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "af27e21aca3b9ef65302b5319607b5f098d7f9f99d83290fa5f2f734c0f29619"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "8ef44a388231f43a9f05524526a6ba924cb0cf857538f81a0713a0a9a7e0b241"
     },
     "n8n": {
       "githubId": 193215554,
@@ -105,15 +105,15 @@
         "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
       },
       "latestRelease": {
-        "id": 384088095,
-        "tagName": "n8n@2.37.11",
-        "name": "n8n@2.37.11",
-        "publishedAt": "2026-09-07T12:53:40Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.11",
-        "bodySha256": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9"
+        "id": 386101801,
+        "tagName": "n8n@2.38.6",
+        "name": "n8n@2.38.6",
+        "publishedAt": "2026-09-10T08:08:03Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.6",
+        "bodySha256": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "6c3f47d3513d1272d69f48b704297ca7f721f7a097f55747048525215046abce"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "91e2b849cb22d1ef2ac728b3bd6a2a3b35c82c9749c5ae7356ab4a0f878d8065"
     },
     "excalidraw": {
       "githubId": 231283452,
@@ -144,7 +144,7 @@
         "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
         "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
     },
     "archify": {
@@ -176,10 +176,10 @@
         "text-to-diagram"
       ],
       "readme": {
-        "sha": "5983178b956d2d31ec3229510cfe315108c8bafd",
+        "sha": "431de2bd270eb98fcae83db3acfb4090e7bdf9a2",
         "path": "README.md",
         "htmlUrl": "https://github.com/tt-a1i/archify/blob/main/README.md",
-        "contentSha256": "55c3a1323906a910b38151935f2159ef13adddf295e43b9d2c4f7e646889396f"
+        "contentSha256": "164122bcb86a77ef0d53b83a746feb38049603832e9568872681ec00b17211ba"
       },
       "latestRelease": {
         "id": 379259141,
@@ -189,8 +189,8 @@
         "htmlUrl": "https://github.com/tt-a1i/archify/releases/tag/v2.16.0",
         "bodySha256": "b20a59bf9c87ce81efb75806a391cbc87d910c6f1857c52cfc4bfe0a57d3803a"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "28845976be5b8f4754c3a7868d1f35281eb5a8bbb87ba00a0032888476943a1b"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "cf10ce44a99064090501f7a31579823881285f217b715c76c0f46f08b3032daf"
     },
     "papertodo": {
       "githubId": 1250907197,
@@ -226,7 +226,7 @@
         "htmlUrl": "https://github.com/snownico0722/PaperTodo/releases/tag/v3.31",
         "bodySha256": "6efdd5c402b4becc1a87fb5d86f51c160211a2b02fdb2edcd8735970e3e594d9"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "2bfbe90ab7f4a7b1849f73a766d161520fed63281b5a39986e7648b813f6293a"
     },
     "nanobot": {
@@ -271,7 +271,7 @@
         "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.0",
         "bodySha256": "aaf40767fd8e183781f6f8c2ea427691421bfee4d0aa4bf2e2247e9de2077789"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "5737d206f7f2eb707f4796468e9f3cea77cc1cacaddaac9c55c29461451f062a"
     },
     "maka": {
@@ -303,7 +303,7 @@
         "contentSha256": "2f60c904352e67fff28042a550b520a097c5a268ee7945a371aa6b4f6840ea3d"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "76191cebc681affc79e13e20a83b0e2e24b1b97de4a10a7be31af9ac108ef8fc"
     },
     "superset": {
@@ -346,7 +346,7 @@
         "htmlUrl": "https://github.com/apache/superset/releases/tag/6.1.0",
         "bodySha256": "9e67f7044d6058bbfbd5c3b69c41f5395362c367517a592fc7ad3358ffdc8766"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "a6bf28cb13c77f27ea54d711ac724ab6e9808feda1718ac24b322e1a639e86da"
     },
     "plausible": {
@@ -378,10 +378,10 @@
         "website-tracking"
       ],
       "readme": {
-        "sha": "d592aef247c5a0192ac0b8d07e5676ad2afbc0ef",
+        "sha": "6320d91e4b69b40da0c6a5433a258bf23e0f51ce",
         "path": "README.md",
         "htmlUrl": "https://github.com/plausible/analytics/blob/master/README.md",
-        "contentSha256": "d8af8a2dea337d4e7a514a3e862f17f88c1509f74718a37794e811ecd1b435a6"
+        "contentSha256": "48cb983fc85b3fbd91d9cdeaba6864b13d35de5a1e7cd160ab6764b9318ae69f"
       },
       "latestRelease": {
         "id": 323141490,
@@ -391,8 +391,8 @@
         "htmlUrl": "https://github.com/plausible/analytics/releases/tag/v3.2.1",
         "bodySha256": "1b7fd93b573e3fbb0c62991c711c1a3ab9cf549e361ab3ee134a3d5b89be7366"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "bd1459d2a1bc4d5c9442208ea38928367d7d5f78ecbbb808cf8d22fef96f94d5"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "6d45492f126a8ea101c09aab1501879d7b25efe7c247ba248d5b4391aa5daeea"
     },
     "lossless-cut": {
       "githubId": 72343657,
@@ -426,7 +426,7 @@
         "htmlUrl": "https://github.com/mifi/lossless-cut/releases/tag/v3.69.0",
         "bodySha256": "ca4f1d5df4834c0bd6df15fbe319cd3049a5731443152199aa60e0577eea064c"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "af641e02deff115ebfab74f3398a86c0d804e415003adbc3dcfbff4c78a0c321"
     },
     "tagstudio": {
@@ -460,7 +460,7 @@
         "htmlUrl": "https://github.com/TagStudioDev/TagStudio/releases/tag/v9.6.3",
         "bodySha256": "05f8ef3602d805684648fe1cbe6041df83efa7c02f7c7a54b87cdc6b35e227a2"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "6e2d022f832ef066d0bd7151d0fe8848fa263a51ecc7e8e2637ac79ea9f2b043"
     },
     "meetily": {
@@ -492,10 +492,10 @@
         "windows"
       ],
       "readme": {
-        "sha": "a62e67055589d2a1ee764c48126c30ac8dd4f999",
+        "sha": "65e0ab4ad685cc45cd651d24f192cb2ddd24e3f6",
         "path": "README.md",
         "htmlUrl": "https://github.com/Zackriya-Solutions/meetily/blob/main/README.md",
-        "contentSha256": "86affbc284cc609ba65a4e33b4dd569a2b6519b58e7dcc1824bedbc57c8f8fc6"
+        "contentSha256": "7b234f4512fe221c9057f9b3f7c5831534278a0576a473f87e2a985b9f2a3dc2"
       },
       "latestRelease": {
         "id": 334958536,
@@ -505,8 +505,8 @@
         "htmlUrl": "https://github.com/Zackriya-Solutions/meetily/releases/tag/v0.4.0",
         "bodySha256": "f69366ded015216a478b3eaff50d08793cea672d9238330d381785dff4666f88"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "5292d7501fdefa7564c5be5fce43b89f9c317971813210eee519ccc0a3fcc21e"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "e4cfd1f8658a012fef5cf699777dd3eaefbd65f18bcbe27a2502e107adfe20b2"
     },
     "trilium": {
       "githubId": 92111509,
@@ -549,7 +549,7 @@
         "htmlUrl": "https://github.com/TriliumNext/Trilium/releases/tag/v0.105.0",
         "bodySha256": "67305603a5484e04cc0da357bf8311a932e225c7220ecea83f1cb102e810fdf6"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "a6cd813eca57c1c6ab97b91f91b91ceef8e246610daf3abf63104f2e813dd093"
     },
     "responsible-ai-toolbox": {
@@ -594,7 +594,7 @@
         "htmlUrl": "https://github.com/microsoft/responsible-ai-toolbox/releases/tag/v0.36.0",
         "bodySha256": "616313ff7dc5e8be4fdd0c3d4ae08de9e24117a060ca8952e4f3d9a2842d01c4"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
+      "capturedAt": "2026-09-11T05:32:41Z",
       "fingerprint": "4c0f81d4c80b40dc7216111e522726aaf1f678ddf2987c31c279abad0f382a88"
     },
     "ohmyzsh": {
@@ -621,14 +621,14 @@
         "zsh-configuration"
       ],
       "readme": {
-        "sha": "d7f1433970f7f36a6740c78baa2037c4ccc92afa",
+        "sha": "af8022afc2875343cac1c4cfdc901c239e6a16f7",
         "path": "README.md",
         "htmlUrl": "https://github.com/ohmyzsh/ohmyzsh/blob/master/README.md",
-        "contentSha256": "9bc1e888997b4db53efc8a8d1b0968d61650607e00f2b7fa21a207bcd9cc4322"
+        "contentSha256": "cadb51a2e5dc9c351ad053f7f676ffd7a87f8e2040abb31a6ac3cf5d2daf1305"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "1cab145136143ed93860c46e2a3d9b4e0e5afa03432d3716c7c3f0b68da7c2fc"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "dcfd3b568c9bd47ca061372ad853b3f31df52769055e72edee755fd58fa98554"
     },
     "airflow": {
       "githubId": 33884891,
@@ -659,10 +659,10 @@
         "workflow-orchestration"
       ],
       "readme": {
-        "sha": "9471b85ebebe0c47b2c191b24d1dc77e4c3be2e9",
+        "sha": "886a21be6d7e6c172969bfab21dc4d784e236167",
         "path": "README.md",
         "htmlUrl": "https://github.com/apache/airflow/blob/main/README.md",
-        "contentSha256": "fd35aad7626cfbb53fdca1e1184abe89689eb2d080d477f4ee68b6ec3ea8756e"
+        "contentSha256": "eac37b3407be0ce890f9873115a7c575991ce80c9ba88dc8c9fd47fca5781ebf"
       },
       "latestRelease": {
         "id": 369136526,
@@ -672,8 +672,8 @@
         "htmlUrl": "https://github.com/apache/airflow/releases/tag/3.3.1",
         "bodySha256": "0d16066cc63008dd4f16a9550f8e7a424c4dc1ea34bbb926082e84934edc1c63"
       },
-      "capturedAt": "2026-09-08T05:32:49Z",
-      "fingerprint": "002effe8b3c88f0965d783f544a954931f5416631054ba745dc54d51f55eccf7"
+      "capturedAt": "2026-09-11T05:32:41Z",
+      "fingerprint": "ae7cb35d6c3095eb6dc02f3fdfcb087947442bc2f541970031a4199c21e7885e"
     }
   }
 }

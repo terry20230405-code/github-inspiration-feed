@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-08T05:32:49Z",
-  "sourceFingerprint": "6c3f47d3513d1272d69f48b704297ca7f721f7a097f55747048525215046abce",
+  "generatedAt": "2026-09-11T05:32:41Z",
+  "sourceFingerprint": "91e2b849cb22d1ef2ac728b3bd6a2a3b35c82c9749c5ae7356ab4a0f878d8065",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203688,
-    "forks": 60606,
+    "stars": 203968,
+    "forks": 60630,
     "language": "TypeScript",
-    "pushedAt": "2026-09-08T05:31:11Z",
+    "pushedAt": "2026-09-11T05:22:27Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-08T05:32:31Z"
+    "fetchedAt": "2026-09-11T05:32:22Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 382036593,
-      "after": 384088095,
+      "before": 384088095,
+      "after": 386101801,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.37.9",
-      "after": "n8n@2.37.11",
+      "before": "n8n@2.37.11",
+      "after": "n8n@2.38.6",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-03T13:16:03Z",
-      "after": "2026-09-07T12:53:40Z",
+      "before": "2026-09-07T12:53:40Z",
+      "after": "2026-09-10T08:08:03Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "53a7ce01012e9c79f4ab08bae6e09ef715d1d00853d069166ad59d4a8d59be89",
-      "after": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
+      "before": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
+      "after": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 384088095,
-        "tagName": "n8n@2.37.11",
-        "name": "n8n@2.37.11",
-        "publishedAt": "2026-09-07T12:53:40Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.37.11",
-        "bodySha256": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
-        "body": "## [2.37.11](https://github.com/n8n-io/n8n/compare/n8n@2.37.10...n8n@2.37.11) (2026-09-07)\r\n\r\n\r\n### Bug Fixes\r\n\r\n* **core:** Ensure running job cleanup when a workflow run rejects ([#37826](https://github.com/n8n-io/n8n/issues/37826)) ([257f0bb](https://github.com/n8n-io/n8n/commit/257f0bb616fe6013032513b7bfae3d7304efaf11))\r\n* **core:** Keep a serving external secrets provider active when its replacement fails ([#37872](https://github.com/n8n-io/n8n/issues/37872)) ([865fa12](https://github.com/n8n-io/n8n/commit/865fa12059e632c22a21e6d05b8e1b86dea2f0f5))",
+        "id": 386101801,
+        "tagName": "n8n@2.38.6",
+        "name": "n8n@2.38.6",
+        "publishedAt": "2026-09-10T08:08:03Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.6",
+        "bodySha256": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
+        "body": "## [2.38.6](https://github.com/n8n-io/n8n/compare/n8n@2.38.5...n8n@2.38.6) (2026-09-10)\n\n\n### Performance Improvements\n\n* **core:** Bound peak memory during source control push ([#37975](https://github.com/n8n-io/n8n/issues/37975)) ([b3c32da](https://github.com/n8n-io/n8n/commit/b3c32da290a0ebbb8db66a0385d063e100ad08ba))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38272?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }
