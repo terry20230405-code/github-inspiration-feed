@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-11T05:32:41Z",
-  "sourceFingerprint": "91e2b849cb22d1ef2ac728b3bd6a2a3b35c82c9749c5ae7356ab4a0f878d8065",
+  "generatedAt": "2026-09-15T05:41:17Z",
+  "sourceFingerprint": "d1a8245fb6a5af195b4689b1cec49bb8dd50565e8059b64ca4815e408bf0448e",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 203968,
-    "forks": 60630,
+    "stars": 204333,
+    "forks": 60673,
     "language": "TypeScript",
-    "pushedAt": "2026-09-11T05:22:27Z",
+    "pushedAt": "2026-09-15T05:40:38Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-11T05:32:22Z"
+    "fetchedAt": "2026-09-15T05:40:59Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 384088095,
-      "after": 386101801,
+      "before": 386101801,
+      "after": 386872474,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.37.11",
-      "after": "n8n@2.38.6",
+      "before": "n8n@2.38.6",
+      "after": "n8n@2.38.7",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-07T12:53:40Z",
-      "after": "2026-09-10T08:08:03Z",
+      "before": "2026-09-10T08:08:03Z",
+      "after": "2026-09-11T08:06:20Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "0f50186667a5ef5742177fd05c1fb784c58772daf2bc3cff80e71f1e73c013c9",
-      "after": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
+      "before": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
+      "after": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 386101801,
-        "tagName": "n8n@2.38.6",
-        "name": "n8n@2.38.6",
-        "publishedAt": "2026-09-10T08:08:03Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.6",
-        "bodySha256": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
-        "body": "## [2.38.6](https://github.com/n8n-io/n8n/compare/n8n@2.38.5...n8n@2.38.6) (2026-09-10)\n\n\n### Performance Improvements\n\n* **core:** Bound peak memory during source control push ([#37975](https://github.com/n8n-io/n8n/issues/37975)) ([b3c32da](https://github.com/n8n-io/n8n/commit/b3c32da290a0ebbb8db66a0385d063e100ad08ba))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38272?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 386872474,
+        "tagName": "n8n@2.38.7",
+        "name": "n8n@2.38.7",
+        "publishedAt": "2026-09-11T08:06:20Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.7",
+        "bodySha256": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
+        "body": "## [2.38.7](https://github.com/n8n-io/n8n/compare/n8n@2.38.6...n8n@2.38.7) (2026-09-11)\n\n\n### Bug Fixes\n\n* **core:** Execute MCP toolkit members on workers ([#38277](https://github.com/n8n-io/n8n/issues/38277)) ([1025dc7](https://github.com/n8n-io/n8n/commit/1025dc717d266f34f451eb152d71f66d6149ddbf))\n* **core:** Reuse an existing consent grant after the visitor authenticates mid-flow ([#38249](https://github.com/n8n-io/n8n/issues/38249)) ([52c8a72](https://github.com/n8n-io/n8n/commit/52c8a72ea16f3f23021e9fe3bb9daf66def7fd3d))\n* **core:** Trust the CA from GIT_SSL_CAINFO for source control HTTPS remotes ([#38297](https://github.com/n8n-io/n8n/issues/38297)) ([3234078](https://github.com/n8n-io/n8n/commit/32340787f6f04f20ece563fd36f871961ec5e77a))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38406?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }
