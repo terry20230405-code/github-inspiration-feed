@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-15T05:41:17Z",
-  "sourceFingerprint": "d1a8245fb6a5af195b4689b1cec49bb8dd50565e8059b64ca4815e408bf0448e",
+  "generatedAt": "2026-09-18T05:28:58Z",
+  "sourceFingerprint": "b683da2f3da141e1914845aad5c6177675dc793f131f3b23b1536ccf6ba82b1b",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 204333,
-    "forks": 60673,
+    "stars": 205097,
+    "forks": 60754,
     "language": "TypeScript",
-    "pushedAt": "2026-09-15T05:40:38Z",
+    "pushedAt": "2026-09-18T03:29:31Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-15T05:40:59Z"
+    "fetchedAt": "2026-09-18T05:28:36Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 386101801,
-      "after": 386872474,
+      "before": 386872474,
+      "after": 390518095,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.38.6",
-      "after": "n8n@2.38.7",
+      "before": "n8n@2.38.7",
+      "after": "n8n@2.39.7",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-10T08:08:03Z",
-      "after": "2026-09-11T08:06:20Z",
+      "before": "2026-09-11T08:06:20Z",
+      "after": "2026-09-17T07:44:43Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "b16d2ab540577714b4c39ae70d50b8e50c43c887a2abc2d4da900fedff67fec9",
-      "after": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
+      "before": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
+      "after": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 386872474,
-        "tagName": "n8n@2.38.7",
-        "name": "n8n@2.38.7",
-        "publishedAt": "2026-09-11T08:06:20Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.7",
-        "bodySha256": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
-        "body": "## [2.38.7](https://github.com/n8n-io/n8n/compare/n8n@2.38.6...n8n@2.38.7) (2026-09-11)\n\n\n### Bug Fixes\n\n* **core:** Execute MCP toolkit members on workers ([#38277](https://github.com/n8n-io/n8n/issues/38277)) ([1025dc7](https://github.com/n8n-io/n8n/commit/1025dc717d266f34f451eb152d71f66d6149ddbf))\n* **core:** Reuse an existing consent grant after the visitor authenticates mid-flow ([#38249](https://github.com/n8n-io/n8n/issues/38249)) ([52c8a72](https://github.com/n8n-io/n8n/commit/52c8a72ea16f3f23021e9fe3bb9daf66def7fd3d))\n* **core:** Trust the CA from GIT_SSL_CAINFO for source control HTTPS remotes ([#38297](https://github.com/n8n-io/n8n/issues/38297)) ([3234078](https://github.com/n8n-io/n8n/commit/32340787f6f04f20ece563fd36f871961ec5e77a))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38406?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 390518095,
+        "tagName": "n8n@2.39.7",
+        "name": "n8n@2.39.7",
+        "publishedAt": "2026-09-17T07:44:43Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.7",
+        "bodySha256": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
+        "body": "## [2.39.7](https://github.com/n8n-io/n8n/compare/n8n@2.39.6...n8n@2.39.7) (2026-09-17)\n\n\n### Bug Fixes\n\n* **core:** Keep breaking change detection running when a rule throws ([#38790](https://github.com/n8n-io/n8n/issues/38790)) ([28945cb](https://github.com/n8n-io/n8n/commit/28945cb71d09a4cf232148ad00873dd11f59e484))\n* **editor:** Send number values in credential inputs ([#38881](https://github.com/n8n-io/n8n/issues/38881)) ([3ac6dda](https://github.com/n8n-io/n8n/commit/3ac6dda7d03ba19444fa4a1597488623a146e550))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38901?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }

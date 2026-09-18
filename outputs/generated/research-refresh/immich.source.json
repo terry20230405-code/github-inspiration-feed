@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "immich",
-  "generatedAt": "2026-09-15T05:41:17Z",
-  "sourceFingerprint": "932b692a8542015d3a1e210de7fd29e7a68a55eab979fd5be74c0ed4175fd7db",
+  "generatedAt": "2026-09-18T05:28:58Z",
+  "sourceFingerprint": "0cdd2c98d82281bd6c54ba306059ce4ba51e978a31577607ba6f546b9fec391f",
   "repository": {
     "githubId": 455229168,
     "fullName": "immich-app/immich",
     "name": "Immich",
-    "stars": 114190,
-    "forks": 6916,
+    "stars": 114489,
+    "forks": 6981,
     "language": "TypeScript",
-    "pushedAt": "2026-09-15T04:24:28Z",
+    "pushedAt": "2026-09-18T01:51:36Z",
     "license": "AGPL-3.0",
     "state": "active",
-    "fetchedAt": "2026-09-15T05:40:59Z"
+    "fetchedAt": "2026-09-18T05:28:36Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 385613902,
-      "after": 388599058,
+      "before": 388599058,
+      "after": 389445351,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "v3.2.0",
-      "after": "v3.2.1",
+      "before": "v3.2.1",
+      "after": "v3.2.2",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-10T16:00:52Z",
-      "after": "2026-09-14T18:24:25Z",
+      "before": "2026-09-14T18:24:25Z",
+      "after": "2026-09-15T20:14:33Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "04d6abcd429deb72d3349d01810405a74aa1c8ff39d7eb8c6862ec6a405c7a23",
-      "after": "c9bbbea6b1d9f693829b22c7106c221c3eb32c30280bc5a58cde599647bdf0c0",
+      "before": "c9bbbea6b1d9f693829b22c7106c221c3eb32c30280bc5a58cde599647bdf0c0",
+      "after": "2a5b5d2add35159cc8763cb159ac89fe61ffe7578d472f4fe981437120752f69",
       "level": "release"
     }
   ],
@@ -84,13 +84,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 388599058,
-        "tagName": "v3.2.1",
-        "name": "v3.2.1",
-        "publishedAt": "2026-09-14T18:24:25Z",
-        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.1",
-        "bodySha256": "c9bbbea6b1d9f693829b22c7106c221c3eb32c30280bc5a58cde599647bdf0c0",
-        "body": "This patch release addresses various bugs, including:\r\n- An issue with connection pool exhaustion during sync\r\n- Problems with the new search modal\r\n- Not seeing partner shared assets on people page\r\n- Person merge not working for two named people\r\n\r\n... and more. See the full list below.\r\n\r\n<!-- Release notes generated using configuration in .github/release.yml at v3.2.1 -->\r\n\r\n## What's Changed\r\n### 🐛 Bug fixes\r\n* fix: show partner assets on people page by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31449\r\n* fix(server): vacuum after migrations, concurrent reindex by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31446\r\n* fix(web): asset remains in timeline after archive by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31459\r\n* fix(web): change \"View asset owners\" to \"Hide asset owners\" when enabled by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31460\r\n* fix(web): preserve search type by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31462\r\n* fix: sync client disconnect by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31463\r\n* fix(web): scroll timeline to top when navigating without a scroll target by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31477\r\n* fix: honor memory filters on explore page by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31542\r\n* fix: face label clipping (again) by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31543\r\n* fix(web): show full path on hover in duplicates utility by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31491\r\n* fix: feature face update ignores soft-deleted faces by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31545\r\n* fix: put back search untagged button by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31546\r\n* fix: reset shouldChangePassword on password change by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31553\r\n* fix: metadata extraction of faces by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31554\r\n* feat: people merge improvements by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31555\r\n\r\n\r\n**Full Changelog**: https://github.com/immich-app/immich/compare/v3.2.0...v3.2.1",
+        "id": 389445351,
+        "tagName": "v3.2.2",
+        "name": "v3.2.2",
+        "publishedAt": "2026-09-15T20:14:33Z",
+        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.2",
+        "bodySha256": "2a5b5d2add35159cc8763cb159ac89fe61ffe7578d472f4fe981437120752f69",
+        "body": "Just another small patch with a fix for the reassign faces feature.\r\n\r\n<!-- Release notes generated using configuration in .github/release.yml at v3.2.2 -->\r\n\r\n## What's Changed\r\n### 🐛 Bug fixes\r\n* fix: skip faces of other users when reassigning faces by @immich-push-o-matic[bot] in https://github.com/immich-app/immich/pull/31586\r\n\r\n\r\n**Full Changelog**: https://github.com/immich-app/immich/compare/v3.2.1...v3.2.2",
         "bodyTruncated": false
       }
     }

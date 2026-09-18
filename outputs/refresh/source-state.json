@@ -19,15 +19,15 @@
         "contentSha256": "c0aa4732decbd340d28ed59c805605820c3a6ade67b34933d2fad1c8bc0a603d"
       },
       "latestRelease": {
-        "id": 387830786,
-        "tagName": "v4.0.524",
-        "name": "v4.0.524",
-        "publishedAt": "2026-09-13T07:50:18Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.524",
-        "bodySha256": "a8c39b8ae1656ee6804589e56219151ce1e1979d90dce136042b5e6a3e0a8ac2"
+        "id": 390811149,
+        "tagName": "v4.0.526",
+        "name": "v4.0.526",
+        "publishedAt": "2026-09-17T14:51:58Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.526",
+        "bodySha256": "5ade60f1ecf11d456f7ec76f35eb9b613335cb644d20e592d5fbb88965631037"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "9dc71707f46fed6bf7d7074ac4d73cd12f3a18603d552156afab1d19df0cd6bb"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "0c46608cd75edac73a9967dc9db9dc7e7334217e16ab321870cb14ec3f5f0f06"
     },
     "immich": {
       "githubId": 455229168,
@@ -60,15 +60,15 @@
         "contentSha256": "27b511ae6ee3be2295c4c1e0674dd0ac5b0c6023d9fdd9187869b1605ff56fad"
       },
       "latestRelease": {
-        "id": 388599058,
-        "tagName": "v3.2.1",
-        "name": "v3.2.1",
-        "publishedAt": "2026-09-14T18:24:25Z",
-        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.1",
-        "bodySha256": "c9bbbea6b1d9f693829b22c7106c221c3eb32c30280bc5a58cde599647bdf0c0"
+        "id": 389445351,
+        "tagName": "v3.2.2",
+        "name": "v3.2.2",
+        "publishedAt": "2026-09-15T20:14:33Z",
+        "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.2",
+        "bodySha256": "2a5b5d2add35159cc8763cb159ac89fe61ffe7578d472f4fe981437120752f69"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "932b692a8542015d3a1e210de7fd29e7a68a55eab979fd5be74c0ed4175fd7db"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "0cdd2c98d82281bd6c54ba306059ce4ba51e978a31577607ba6f546b9fec391f"
     },
     "n8n": {
       "githubId": 193215554,
@@ -105,15 +105,15 @@
         "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
       },
       "latestRelease": {
-        "id": 386872474,
-        "tagName": "n8n@2.38.7",
-        "name": "n8n@2.38.7",
-        "publishedAt": "2026-09-11T08:06:20Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.38.7",
-        "bodySha256": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca"
+        "id": 390518095,
+        "tagName": "n8n@2.39.7",
+        "name": "n8n@2.39.7",
+        "publishedAt": "2026-09-17T07:44:43Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.7",
+        "bodySha256": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "d1a8245fb6a5af195b4689b1cec49bb8dd50565e8059b64ca4815e408bf0448e"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "b683da2f3da141e1914845aad5c6177675dc793f131f3b23b1536ccf6ba82b1b"
     },
     "excalidraw": {
       "githubId": 231283452,
@@ -144,7 +144,7 @@
         "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
         "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
     },
     "archify": {
@@ -189,7 +189,7 @@
         "htmlUrl": "https://github.com/tt-a1i/archify/releases/tag/v2.16.0",
         "bodySha256": "b20a59bf9c87ce81efb75806a391cbc87d910c6f1857c52cfc4bfe0a57d3803a"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "ff7daecbdfb099dbac15396bd7cdce0be96715735972020426a2c943f82fecad"
     },
     "papertodo": {
@@ -213,10 +213,10 @@
         "wpf"
       ],
       "readme": {
-        "sha": "78c1e743f3dc4d196938821c2094bdcf42f4817c",
+        "sha": "0016f6ed394f1d7a2b7d5880f23eaf3aab0cc3bf",
         "path": "README.md",
         "htmlUrl": "https://github.com/snownico0722/PaperTodo/blob/main/README.md",
-        "contentSha256": "5b8ee3af1b301c453fd0d465267b097fe6c661eb410c6c1c895531ac1f1ed61d"
+        "contentSha256": "00c0ad8cafbc04a092eb4f2090c3abd474abfbc4141d40c3ef38e50881f2eaad"
       },
       "latestRelease": {
         "id": 379351717,
@@ -224,10 +224,10 @@
         "name": "PaperTodo v3.31",
         "publishedAt": "2026-08-30T17:28:21Z",
         "htmlUrl": "https://github.com/snownico0722/PaperTodo/releases/tag/v3.31",
-        "bodySha256": "7a621c64b894aa5ab6db6945093813a6e2411c2369d899b75620a77827caee9d"
+        "bodySha256": "88920a4e6778513f0356ef9201e6e29cc65622876413501819f92612acfde8f5"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "937c806d8b76a2db43ee19b37ffd46fd3d4a1c46e41f2f29147ac0ece49ffdaa"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "834a9048d1eb5446642c060038de5414661118f62f80091fefd8d3161b58e56b"
     },
     "nanobot": {
       "githubId": 1147094660,
@@ -258,21 +258,21 @@
         "workflow-automation"
       ],
       "readme": {
-        "sha": "599cd24df7a5d5034eb7599bd808899fee0bce8f",
+        "sha": "e32bf821cac82522be38d77cdec91380946c935a",
         "path": "README.md",
         "htmlUrl": "https://github.com/HKUDS/nanobot/blob/main/README.md",
-        "contentSha256": "af3655f024b0404769f457819ab60c30d540317522209c728fa3232c8c4bcbdf"
+        "contentSha256": "a504e6d4f97b3b9db482b6abb48b22096eb4c84d417f6367978c48356662eedc"
       },
       "latestRelease": {
-        "id": 359708142,
-        "tagName": "v0.3.0",
-        "name": "v0.3.0",
-        "publishedAt": "2026-07-25T08:08:47Z",
-        "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.0",
-        "bodySha256": "aaf40767fd8e183781f6f8c2ea427691421bfee4d0aa4bf2e2247e9de2077789"
+        "id": 389400321,
+        "tagName": "v0.3.5",
+        "name": "v0.3.5",
+        "publishedAt": "2026-09-15T19:05:37Z",
+        "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.5",
+        "bodySha256": "df22450787ecc661a873b9e114bfbcfc952e4e438af808fa92f5bb7242cd2e65"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "5737d206f7f2eb707f4796468e9f3cea77cc1cacaddaac9c55c29461451f062a"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "a08111199d67518b7208e87c8fdb9b909740bb93cc56514e2f468bae5a7891b9"
     },
     "maka": {
       "githubId": 1251460378,
@@ -303,7 +303,7 @@
         "contentSha256": "2f60c904352e67fff28042a550b520a097c5a268ee7945a371aa6b4f6840ea3d"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "76191cebc681affc79e13e20a83b0e2e24b1b97de4a10a7be31af9ac108ef8fc"
     },
     "superset": {
@@ -346,7 +346,7 @@
         "htmlUrl": "https://github.com/apache/superset/releases/tag/6.1.0",
         "bodySha256": "9e67f7044d6058bbfbd5c3b69c41f5395362c367517a592fc7ad3358ffdc8766"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "a6bf28cb13c77f27ea54d711ac724ab6e9808feda1718ac24b322e1a639e86da"
     },
     "plausible": {
@@ -391,7 +391,7 @@
         "htmlUrl": "https://github.com/plausible/analytics/releases/tag/v3.2.1",
         "bodySha256": "1b7fd93b573e3fbb0c62991c711c1a3ab9cf549e361ab3ee134a3d5b89be7366"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "6d45492f126a8ea101c09aab1501879d7b25efe7c247ba248d5b4391aa5daeea"
     },
     "lossless-cut": {
@@ -460,7 +460,7 @@
         "htmlUrl": "https://github.com/TagStudioDev/TagStudio/releases/tag/v9.6.3",
         "bodySha256": "05f8ef3602d805684648fe1cbe6041df83efa7c02f7c7a54b87cdc6b35e227a2"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "6e2d022f832ef066d0bd7151d0fe8848fa263a51ecc7e8e2637ac79ea9f2b043"
     },
     "meetily": {
@@ -505,7 +505,7 @@
         "htmlUrl": "https://github.com/Zackriya-Solutions/meetily/releases/tag/v0.4.1",
         "bodySha256": "7b38be97940ad1e46ab28151dc1311d0500b6378b600f866a115399efa464391"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "8c5698be25940865cdb7023570a6527f4e05c361d5b3efc7509915040c0aed8b"
     },
     "trilium": {
@@ -549,7 +549,7 @@
         "htmlUrl": "https://github.com/TriliumNext/Trilium/releases/tag/v0.105.0",
         "bodySha256": "67305603a5484e04cc0da357bf8311a932e225c7220ecea83f1cb102e810fdf6"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "a6cd813eca57c1c6ab97b91f91b91ceef8e246610daf3abf63104f2e813dd093"
     },
     "responsible-ai-toolbox": {
@@ -627,7 +627,7 @@
         "contentSha256": "bc47f91df82c3a205a16193839e996a7edec4fec71aa3337984a0b331888d95b"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-15T05:41:17Z",
+      "capturedAt": "2026-09-18T05:28:58Z",
       "fingerprint": "1e18a6e5350977ce126e80015411d5e129f174e136d4e9ac70d69b435b8158c7"
     },
     "airflow": {
@@ -659,21 +659,21 @@
         "workflow-orchestration"
       ],
       "readme": {
-        "sha": "886a21be6d7e6c172969bfab21dc4d784e236167",
+        "sha": "7e49de2a1ea248a85415227ff92af955ba677438",
         "path": "README.md",
         "htmlUrl": "https://github.com/apache/airflow/blob/main/README.md",
-        "contentSha256": "eac37b3407be0ce890f9873115a7c575991ce80c9ba88dc8c9fd47fca5781ebf"
+        "contentSha256": "56475872e413d26d62a744660a6856c0a75e05ee5fdf48974f925f5f5001188b"
       },
       "latestRelease": {
-        "id": 369136526,
-        "tagName": "3.3.1",
-        "name": "Apache Airflow 3.3.1",
-        "publishedAt": "2026-08-12T09:50:17Z",
-        "htmlUrl": "https://github.com/apache/airflow/releases/tag/3.3.1",
-        "bodySha256": "0d16066cc63008dd4f16a9550f8e7a424c4dc1ea34bbb926082e84934edc1c63"
+        "id": 390631037,
+        "tagName": "3.3.2",
+        "name": "Apache Airflow 3.3.2",
+        "publishedAt": "2026-09-17T11:10:15Z",
+        "htmlUrl": "https://github.com/apache/airflow/releases/tag/3.3.2",
+        "bodySha256": "26e221e7448cd017297dddb3bc405dbb14b562a757904010e2a3f2bd4ada9514"
       },
-      "capturedAt": "2026-09-15T05:41:17Z",
-      "fingerprint": "ae7cb35d6c3095eb6dc02f3fdfcb087947442bc2f541970031a4199c21e7885e"
+      "capturedAt": "2026-09-18T05:28:58Z",
+      "fingerprint": "70a4f585393e2007d0d9fd39e29f4095432ae1701aad09a2f8c4171915779264"
     }
   }
 }

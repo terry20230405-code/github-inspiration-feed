@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "remotion",
-  "generatedAt": "2026-09-15T05:41:17Z",
-  "sourceFingerprint": "9dc71707f46fed6bf7d7074ac4d73cd12f3a18603d552156afab1d19df0cd6bb",
+  "generatedAt": "2026-09-18T05:28:58Z",
+  "sourceFingerprint": "0c46608cd75edac73a9967dc9db9dc7e7334217e16ab321870cb14ec3f5f0f06",
   "repository": {
     "githubId": 274495425,
     "fullName": "remotion-dev/remotion",
     "name": "Remotion",
-    "stars": 59266,
-    "forks": 4523,
+    "stars": 59634,
+    "forks": 4571,
     "language": "TypeScript",
-    "pushedAt": "2026-09-14T20:50:53Z",
+    "pushedAt": "2026-09-17T17:16:37Z",
     "license": "Remotion License",
     "state": "active",
-    "fetchedAt": "2026-09-15T05:40:59Z"
+    "fetchedAt": "2026-09-18T05:28:36Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 385518591,
-      "after": 387830786,
+      "before": 387830786,
+      "after": 390811149,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "v4.0.523",
-      "after": "v4.0.524",
+      "before": "v4.0.524",
+      "after": "v4.0.526",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-09T13:00:45Z",
-      "after": "2026-09-13T07:50:18Z",
+      "before": "2026-09-13T07:50:18Z",
+      "after": "2026-09-17T14:51:58Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "07bcf00bdcc33e1621907e92f5de6713d5f2a0999b7e350e84c9ccbd57268c52",
-      "after": "a8c39b8ae1656ee6804589e56219151ce1e1979d90dce136042b5e6a3e0a8ac2",
+      "before": "a8c39b8ae1656ee6804589e56219151ce1e1979d90dce136042b5e6a3e0a8ac2",
+      "after": "5ade60f1ecf11d456f7ec76f35eb9b613335cb644d20e592d5fbb88965631037",
       "level": "release"
     }
   ],
@@ -71,13 +71,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 387830786,
-        "tagName": "v4.0.524",
-        "name": "v4.0.524",
-        "publishedAt": "2026-09-13T07:50:18Z",
-        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.524",
-        "bodySha256": "a8c39b8ae1656ee6804589e56219151ce1e1979d90dce136042b5e6a3e0a8ac2",
-        "body": "## What's Changed\n\n- `@remotion/web-renderer`: **Pitch-shifting using `toneFrequency` is now supported in preview and rendering!** by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11183\n- `@remotion/bundler`: Fix Rspack bundles without optional Studio dependencies by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11257\n- `@remotion/media`: Upgrade Mediabunny to 1.56.1 by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11219\n- `@remotion/promo-pages`: Add video automation landing page by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11184\n- `@remotion/skills`: Use SVG agent icons by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11217\n- `@remotion/studio`: Simplify Studio settings controls by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11193\n- `@remotion/studio`: Create, duplicate, rename and delete compositions without Prettier by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11194\n- `@remotion/studio`: Show keyboard shortcuts in toolbar button tooltips by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11200\n- `@remotion/studio`: Add syntax highlighting to error overlays by @samohovets in https://github.com/remotion-dev/remotion/pull/11232\n- `@remotion/studio`: Preserve number field display precision by @samohovets in https://github.com/remotion-dev/remotion/pull/11245\n- `@remotion/studio`: Highlight active error lines instead of dimming context by @samohovets in https://github.com/remotion-dev/remotion/pull/11247\n- `@remotion/studio`: Collapse timeline children after insertion without flicker by @samohovets in https://github.com/remotion-dev/remotion/pull/11206\n- `@remotion/studio`: Fix map timeline dragging and local animation timing by @samohovets in https://github.com/remotion-dev/remotion/pull/11208\n\n## Elements\n\n- Elements: Clarify editable layer guidance by @samohovets in https://github.com/remotion-dev/remotion/pull/11214\n- Elements: Add `initialProps` to the `component-owned-sequence` installs by @samohovets in https://github.com/remotion-dev/remotion/pull/11221\n- Elements: Use unique preview URLs by @samohovets in https://github.com/remotion-dev/remotion/pull/11237\n- Elements: Remove sticky listing card tooltip by @samohovets in https://github.com/remotion-dev/remotion/pull/11238\n- Elements: Preserve initial props when inserting components in Browser Studio by @samohovets in https://github.com/remotion-dev/remotion/pull/11239\n\n## Templates\n\n- Recorder: Replace Media Parser with Mediabunny by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11223\n- Recorder: require selected media devices by @gauravsaxena1997 in https://github.com/remotion-dev/remotion/pull/11240\n\n## Docs\n\n- Clarify Element Sequence ownership and editing by @samohovets in https://github.com/remotion-dev/remotion/pull/11209\n- Add Angles to Products resources by @shuicici in https://github.com/remotion-dev/remotion/pull/11213\n- Add progress slider to tear effect demo by @samohovets in https://github.com/remotion-dev/remotion/pull/11229\n- Add Lexington Motion to the resources page by @michael-andreuzza in https://github.com/remotion-dev/remotion/pull/11231\n- Prevent content hash collisions from corrupting bundles by @samohovets in https://github.com/remotion-dev/remotion/pull/11236\n\n## Internal and experimental\n\n- Stabilize transition registration range test by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11205\n- Stop local dev servers from opening browsers by @samohovets in https://github.com/remotion-dev/remotion/pull/11233\n- Remove implementation-detail Element tests by @samohovets in https://github.com/remotion-dev/remotion/pull/11246\n\n**Full Changelog**: https://github.com/remotion-dev/remotion/compare/v4.0.523...v4.0.524\n",
+        "id": 390811149,
+        "tagName": "v4.0.526",
+        "name": "v4.0.526",
+        "publishedAt": "2026-09-17T14:51:58Z",
+        "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.526",
+        "bodySha256": "5ade60f1ecf11d456f7ec76f35eb9b613335cb644d20e592d5fbb88965631037",
+        "body": "## What's Changed\n\n- [`@remotion/effects`: Add `lut()` for inline Cube color transforms](https://remotion.dev/docs/effects/lut) by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11380\n- `remotion`: Fix read-only Studio resize crashes with `<Img>` by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11400\n- `remotion`: Support credentialed images with effects by @alec-watts in https://github.com/remotion-dev/remotion/pull/11362\n- `remotion`: Clamp negative `delayRender()` timeouts by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11375\n- `@remotion/studio`: Make fontWeight keyframable by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11412\n- `@remotion/studio`: Expand timeline properties when setting a keyframe by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11413\n- `@remotion/studio`: Add \"Copy image\" right-click action by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11351\n- `@remotion/studio`: Add \"Copy frame\" right-click action by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11381\n- `@remotion/studio`: Show a preview of `.cube` files by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11388\n- `@remotion/studio`: Make inspector sections collapsible by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11348\n- `@remotion/studio`: Preview source in Fix computed value modal by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11387\n- `@remotion/studio`: Restart with upgraded CLI by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11333\n- `@remotion/studio`: Offer new composition when an Element drop cannot be inserted by @samohovets in https://github.com/remotion-dev/remotion/pull/11378\n- `@remotion/studio`: Hide unavailable settings in read-only Studio by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11399\n- `@remotion/studio`: Restore Source Inspector asset actions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11390\n- `@remotion/studio`: Prevent selecting Inspector labels by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11352\n- `@remotion/studio`: Fix duplicate Open in actions by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11383\n- `@remotion/studio`: Fix code frame line numbers while scrolling by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11389\n- `@remotion/studio`: Fix duplicated timeline rows flickering after deletion by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11397\n- `@remotion/studio`: Speed up canvas outline ordering by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11363\n- `@remotion/studio`: Reduce timeline row renders during selection by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11338\n- `@remotion/studio`: Save folder operations without Prettier by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11336\n- `@remotion/studio`: Save JSX duplication without Prettier by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11347\n- `@remotion/studio`: Add \"Generate with agent\" interaction by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11414\n- `@remotion/studio-codemods`: Reorder sequences without Prettier by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11367\n- `@remotion/studio-codemods`: Split video and audio without Prettier by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11368\n- `@remotion/studio-codemods`: Remove Prettier from default props updates by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11379\n- `@remotion/studio-codemods`: Remove Prettier from remaining codemods by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11386\n- `@remotion/captions`: Harden `parseSrt()` for pre-cue noise, CRLF, and dot-millis timestamps by @Copilot in https://github.com/remotion-dev/remotion/pull/11360\n- `@remotion/cli`: Fix `remotiond` startup under Deno by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11374\n- `@remotion/whisper-webgpu`: Upgrade Transformers.js to 4.3.0 by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11366\n\n## Docs\n\n- Restructure License FAQ into topical sections by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11369\n- Restyle Copy page button by @samohovets in https://github.com/remotion-dev/remotion/pull/11395\n\n## Elements\n\n- Make third-party libraries discoverable by @samohovets in https://github.com/remotion-dev/remotion/pull/11339\n- Add third-party libraries to Studio by @samohovets in https://github.com/remotion-dev/remotion/pull/11340\n- Reframe libraries as third-party Elements by @samohovets in https://github.com/remotion-dev/remotion/pull/11342\n- Add Lexington Themes library by @samohovets in https://github.com/remotion-dev/remotion/pull/11384\n- Fix install dialog layout shifts by @samohovets in https://github.com/remotion-dev/remotion/pull/11346\n\n## Internal\n\n- Remove recurrently flaky tests by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11350\n- remotion.dev/brand: Add React Scan capture by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11344\n- remotion.dev/brand: Fix `<Studio>` timeline controls by @JonnyBurger in https://github.com/remotion-dev/remotion/pull/11385\n\n**Full Changelog**: https://github.com/remotion-dev/remotion/compare/v4.0.525...v4.0.526\n",
         "bodyTruncated": false
       }
     }

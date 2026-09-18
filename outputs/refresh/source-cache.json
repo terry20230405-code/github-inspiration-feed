@@ -3,151 +3,151 @@
   "repositories": {
     "274495425": {
       "metadata": {
-        "etag": "\"9121a00de5c25b9b77fddb328116ca096005cad742c8448427b6dd98582bfda7\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"9042fed98c828e82dac10cca204fdd99aef0323904d93191d5cfcee0170ac199\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "W/\"3eb05612d3c1322dcdf7e84cf75195a1d334e06c\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"8dc6e2829b0a88ca29e8ac64eca3a4785fdc9861749324124595ede62a87ae14\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"7979609527b64d23599175cf59d5c4bc62a0b3fd52975d652666df7a6534bda4\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "remotion-dev/remotion"
     },
     "455229168": {
       "metadata": {
-        "etag": "\"88d57b45f870de7c61f1d47cc32f512a45c4f31ca7b50cd4bd43ca0195458c68\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"a6a5fbbf84927959a63aa1240196cf52b6b2ec762715b20510f3926eabc8f1b9\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"ba774d44cdd7b9e9baed4cc4166d4c317e3ebae8\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"3fb7417db13f9dbbf3b743d675b9e05a781dff0723d78a05ef29e099cb6f74c7\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"2b3dfe9c010fc73729fc707d7d6bdc94b45ea791731c85f9cf75271727c7f37f\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "immich-app/immich"
     },
     "193215554": {
       "metadata": {
-        "etag": "\"91314c3dcb3289fcfd8a39976a4d20e40c6d6f48bcd1d0fd0591d9f88f8e2670\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"83242332e9e74f14d1c887183c5a42ae93d741e326a517ccffe417308369e0fa\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "W/\"21909fae00cbad4f18af84d2948752445051a915\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"50aed96b71bade3b0806c8977d3a9e7c0b32f984d0245fa521b14ada26bd4d9b\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"9330ae6482fd55d3f72977a500a849a65810fe2524652e936bd05f12e81a1a42\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "n8n-io/n8n"
     },
     "231283452": {
       "metadata": {
-        "etag": "\"f04a5c5f877d11113d4c222d6856cafbf8f2652859f118c760c3fcfb2d22e970\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"14ad93652204411dfaa4f5a84e545c9491b0671759315d5baa17e7ac489da2b9\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "W/\"48b9d1de9fbb1c74406407e89e2471a01b1f28de\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"cc41643a8ada2a5e5ad5bd24176bc1f0cd989c309d95bc92c3ee26483336903a\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"97b551025d13306343d7586950a74d4942b44369d7d9cc427f0fcc224a965c5b\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "excalidraw/excalidraw"
     },
     "1211139949": {
       "metadata": {
-        "etag": "\"ea08d82e2166607dcd051ef0f9bbe739b5ad9b074e9347fd381b4d12dea7c6cd\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"074566405709f087161b29959f899a3deec3ad7d208c0a9f97404d8c0e29eb28\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"b1ef38e4552354d5562c74c26426aefd8c5edbe7\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"329e8c5cdaf96d012ff608e7f9879337d033531731ed3353de5f32e633148b46\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"ac40787486e9635940712b74a104e81d0d5909064b9d0cb38ff5e8a7f8a2865c\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "tt-a1i/archify"
     },
     "1250907197": {
       "metadata": {
-        "etag": "\"2b82bbf49e49c92217b4680465958fe07a951ef2c74f2be5ed69d53820035da1\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"bcafa4cf17417b849ed959114d0ff2cb5f20d5175d5830ccee179229cc6c9dbe\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
-        "etag": "\"78c1e743f3dc4d196938821c2094bdcf42f4817c\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"0016f6ed394f1d7a2b7d5880f23eaf3aab0cc3bf\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"a7abad7a472bb62e8056410d5da6fa71fcdaead4693c909804542df6c8d4c6fa\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"514bb01c911a5992610bbcf4b051f395d489fe85196c83c6c0cdfc7d95ffcfd8\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "snownico0722/PaperTodo"
     },
     "1147094660": {
       "metadata": {
-        "etag": "\"59ad32f21e26988d6b888ef6c3acab94744ec7096ff8d7169c7adc485835d88a\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"314870c7f87a5dbb1243d09fe18c6baac1eaddfe1663003bf209cb70866907a0\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
-        "etag": "\"599cd24df7a5d5034eb7599bd808899fee0bce8f\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"e32bf821cac82522be38d77cdec91380946c935a\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"1ee6148eabec0892e78805510c0369ab667b964689af4ead5d85fbab81c70348\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"b8038f7961203cdfcbeb6ce3e973ff4abdffe4ec1b05cc24e4e4403a711d2647\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "HKUDS/nanobot"
     },
     "1251460378": {
       "metadata": {
-        "etag": "\"b583ef1fe0ae85c63d6188bf8d6db6f9f4d4347d7c452609a7e3745ccc640542\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"b2387278b78410577e339744520a53f76ec47e83ad4fa5a1b4eeb72d0e02ae6b\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"81c955da3a84d8d3c1a5592a709d0d9cc613383b\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
         "etag": null,
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "apache/maka"
     },
     "39464018": {
       "metadata": {
-        "etag": "\"5b0801ca92b9683d261e28de6786b721ba93197298f92b6a2529e988726169da\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"28b16cca586d75ba5fc1722eeaa557f74f333b6a2b6200e77a415eadc337e68f\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"961886df64d20b96bc6d3632d29e68dffc074872\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"eb22542578e7bb4eb1558a09299cd197a527a94b51db8d98a58f7637ec829cb8\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"cff30e5d2ad6b7b6730cd6473cdecf966aa8f59fb2ff3724f1b8225c81014a6f\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "apache/superset"
     },
     "160427405": {
       "metadata": {
-        "etag": "\"45e5a9254bdbecefef8a9ab641ccf3e55b5684498ca7e1436253f5fcce375c90\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"97cf91d84bcebb1c81f0a546daf58623434d69e0244286441a9c8f6caebf04f6\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"6320d91e4b69b40da0c6a5433a258bf23e0f51ce\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"13ef9c0c0246bf911187893d390e5903913dd4cf58233d9525f853d52f8453fc\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"0d59748c8178c57c4df970e25f32a5f5cf5eb27f2aa8c6f824ea61171f6c6476\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "plausible/analytics"
     },
@@ -168,46 +168,46 @@
     },
     "787908531": {
       "metadata": {
-        "etag": "\"fc58d17ce9e6f560750b2ea93843b15b11a45085424f7b24b8c6ce64e754bc00\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"d21e3aa3bfe8ba41645c4af2b5229dd75fe3fd68eeccc25e4b8e56cbdbf46e4a\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"57b2d3b94e7ad6d049681825386e30bc3ee8a7f8\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"106c42a12ff86f72708fc63e40a5a0890eab467885df29823ff012894812dac3\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"9e1dd880fc46e4f9494e167280a919c5b7494a0781361d3e512cb8277ebcd8e4\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "TagStudioDev/TagStudio"
     },
     "908589694": {
       "metadata": {
-        "etag": "\"32976ac21d6ad61f17117b9aaa89e5a10fb7ed7f0e921df8609c0339f43e7fba\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"0c1e2dd023799fa1c9ceb3ac9c373f1df25a66ca3a1f1e7ab2e0ee87f742023d\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"65e0ab4ad685cc45cd651d24f192cb2ddd24e3f6\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"76e6e8a947b1b26c55356f647de01649b7efad4d6fe555aaf82bb8bc1503d552\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"57d58be93b7bb2a7f41620a16641499ff76712d3dfb1afcbdcacd0964a8089a6\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "Zackriya-Solutions/meetily"
     },
     "92111509": {
       "metadata": {
-        "etag": "\"4279399b6e79f147f107e14a996392fffbbbf96b40e9ed582abac79a98177cc8\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"15f88a3d0f4981f89f191db0ed2295acc4732b4c76a85611a9bf12ea2c171822\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"80b39d4443b540232776a31f6ea6b661d29bf0d4\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"b5eefad08f2d313b1c10d391a15167f58b34800e3071a0235ff886b55ae34a6f\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"24a3cd855dd413abfb3000e04e714a7152848e74b702efcf7da70548381f0008\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "TriliumNext/Trilium"
     },
@@ -228,31 +228,31 @@
     },
     "291137": {
       "metadata": {
-        "etag": "\"ad5234b89816292c4dd9616581b832b54df47b6a775e5225df1b635dde3fb5d6\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"d5cb3d214ceb4aaa0ae496aebd4f950e0f81dd8c1637d379927b4ce8e22b8fdd\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
         "etag": "\"ad507ecbdcb50bf0dd13946dc068940ab6978b3f\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
         "etag": null,
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "ohmyzsh/ohmyzsh"
     },
     "33884891": {
       "metadata": {
-        "etag": "\"4dfd5534c0b556004fa0dfdaed77068e75439d48318a178ba94f4e2c5b9b8284\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"61f8af40ec5d4a26b323cd27c48a2a0f2a1d404004eb6d8f483864ee6c1f78ed\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "readme": {
-        "etag": "\"886a21be6d7e6c172969bfab21dc4d784e236167\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"7e49de2a1ea248a85415227ff92af955ba677438\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "release": {
-        "etag": "\"f1c6746adbb8428c033060f51660a0ca25c82db547bb039150cb809bd4620f89\"",
-        "lastCheckedAt": "2026-09-15T05:41:17Z"
+        "etag": "\"5a638fa7cc68bde3eb08fd1fafb9697ed3059b77c58a97c4b24fffe333f647ae\"",
+        "lastCheckedAt": "2026-09-18T05:28:58Z"
       },
       "fullName": "apache/airflow"
     }

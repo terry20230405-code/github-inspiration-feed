@@ -3,93 +3,93 @@
   "repositories": {
     "274495425": {
       "fullName": "remotion-dev/remotion",
-      "etag": "\"9121a00de5c25b9b77fddb328116ca096005cad742c8448427b6dd98582bfda7\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"9042fed98c828e82dac10cca204fdd99aef0323904d93191d5cfcee0170ac199\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "231283452": {
       "fullName": "excalidraw/excalidraw",
-      "etag": "\"f04a5c5f877d11113d4c222d6856cafbf8f2652859f118c760c3fcfb2d22e970\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"14ad93652204411dfaa4f5a84e545c9491b0671759315d5baa17e7ac489da2b9\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "455229168": {
       "fullName": "immich-app/immich",
-      "etag": "\"88d57b45f870de7c61f1d47cc32f512a45c4f31ca7b50cd4bd43ca0195458c68\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"a6a5fbbf84927959a63aa1240196cf52b6b2ec762715b20510f3926eabc8f1b9\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "193215554": {
       "fullName": "n8n-io/n8n",
-      "etag": "\"91314c3dcb3289fcfd8a39976a4d20e40c6d6f48bcd1d0fd0591d9f88f8e2670\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"83242332e9e74f14d1c887183c5a42ae93d741e326a517ccffe417308369e0fa\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "1211139949": {
       "fullName": "tt-a1i/archify",
-      "etag": "\"b80ff249a1764968b5739b67070ce6ddcfb477ed08c49b20173b9bca2b926841\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"074566405709f087161b29959f899a3deec3ad7d208c0a9f97404d8c0e29eb28\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "1250907197": {
       "fullName": "snownico0722/PaperTodo",
-      "etag": "\"2b82bbf49e49c92217b4680465958fe07a951ef2c74f2be5ed69d53820035da1\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"bcafa4cf17417b849ed959114d0ff2cb5f20d5175d5830ccee179229cc6c9dbe\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "1147094660": {
       "fullName": "HKUDS/nanobot",
-      "etag": "\"59ad32f21e26988d6b888ef6c3acab94744ec7096ff8d7169c7adc485835d88a\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"314870c7f87a5dbb1243d09fe18c6baac1eaddfe1663003bf209cb70866907a0\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "1251460378": {
       "fullName": "apache/maka",
-      "etag": "\"b583ef1fe0ae85c63d6188bf8d6db6f9f4d4347d7c452609a7e3745ccc640542\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"b2387278b78410577e339744520a53f76ec47e83ad4fa5a1b4eeb72d0e02ae6b\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "39464018": {
       "fullName": "apache/superset",
-      "etag": "\"5b0801ca92b9683d261e28de6786b721ba93197298f92b6a2529e988726169da\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"28b16cca586d75ba5fc1722eeaa557f74f333b6a2b6200e77a415eadc337e68f\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "160427405": {
       "fullName": "plausible/analytics",
-      "etag": "\"45e5a9254bdbecefef8a9ab641ccf3e55b5684498ca7e1436253f5fcce375c90\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"97cf91d84bcebb1c81f0a546daf58623434d69e0244286441a9c8f6caebf04f6\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "72343657": {
       "fullName": "mifi/lossless-cut",
-      "etag": "\"5aa25b9b69b9a49d1662ce6aab235cc1c93587449bbb0e5355a4fa16ce5dc766\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"f1da4104d1844702b004bdfa3db8a1563caceebaaaa1e52c5611ad1f1126f2ed\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "933963452": {
       "fullName": "bytedance/flowgram.ai",
-      "etag": "\"95c188ac49a5521ec4a7ca19c9debb8d637a4ff1a501b47cbb32c7d3a06c4ea4\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"a9580ab8e08efdc0913deab9a4891b735844bfd69df7f62835628b2888435a06\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "787908531": {
       "fullName": "TagStudioDev/TagStudio",
-      "etag": "\"fc58d17ce9e6f560750b2ea93843b15b11a45085424f7b24b8c6ce64e754bc00\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"d21e3aa3bfe8ba41645c4af2b5229dd75fe3fd68eeccc25e4b8e56cbdbf46e4a\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "908589694": {
       "fullName": "Zackriya-Solutions/meetily",
-      "etag": "\"32976ac21d6ad61f17117b9aaa89e5a10fb7ed7f0e921df8609c0339f43e7fba\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"0c1e2dd023799fa1c9ceb3ac9c373f1df25a66ca3a1f1e7ab2e0ee87f742023d\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "92111509": {
       "fullName": "TriliumNext/Trilium",
-      "etag": "\"4279399b6e79f147f107e14a996392fffbbbf96b40e9ed582abac79a98177cc8\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"15f88a3d0f4981f89f191db0ed2295acc4732b4c76a85611a9bf12ea2c171822\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "277645425": {
       "fullName": "microsoft/responsible-ai-toolbox",
-      "etag": "\"2ed1692a741fb3fe8de1d9a667a9fbab3585b089d132b0f107f482910726ffc4\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"f17f9ab9fb2dda30c83324a652b040b6a8fab30ed6572a89af2332c1d548c18b\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "291137": {
       "fullName": "ohmyzsh/ohmyzsh",
-      "etag": "\"ad5234b89816292c4dd9616581b832b54df47b6a775e5225df1b635dde3fb5d6\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"d5cb3d214ceb4aaa0ae496aebd4f950e0f81dd8c1637d379927b4ce8e22b8fdd\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     },
     "33884891": {
       "fullName": "apache/airflow",
-      "etag": "\"4dfd5534c0b556004fa0dfdaed77068e75439d48318a178ba94f4e2c5b9b8284\"",
-      "lastCheckedAt": "2026-09-15T05:40:59Z"
+      "etag": "\"57607af87570c952e2ddef84da2aadfe0a811b0502501d52e5b1c217b3f74717\"",
+      "lastCheckedAt": "2026-09-18T05:28:36Z"
     }
   }
 }
