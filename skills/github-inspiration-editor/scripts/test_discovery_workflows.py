@@ -35,8 +35,9 @@ class DiscoveryWorkflowContractTests(unittest.TestCase):
 
     def test_discovery_only_creates_review_batch(self) -> None:
         workflow = DISCOVERY_WORKFLOW.read_text(encoding="utf-8")
-        self.assertIn('cron: "0 9 * * 2,5"', workflow)
-        self.assertIn('timezone: "Asia/Shanghai"', workflow)
+        self.assertIn("workflow_dispatch:", workflow)
+        self.assertNotIn("schedule:", workflow)
+        self.assertNotIn("cron:", workflow)
         self.assertIn("OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}", workflow)
         self.assertIn("AI_API_BASE_URL: ${{ vars.AI_API_BASE_URL }}", workflow)
         self.assertIn("AI_MODEL: ${{ vars.AI_MODEL }}", workflow)
