@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T05:28:58Z",
+  "generatedAt": "2026-09-22T05:44:58Z",
   "mode": "write",
   "selectedBy": "stage-six-report",
   "githubApiVersion": "2026-03-10",
   "authenticated": true,
   "summary": {
-    "checked": 15,
-    "updated": 6,
-    "refreshed": 9,
-    "semanticReviewPending": 6,
+    "checked": 13,
+    "updated": 5,
+    "refreshed": 8,
+    "semanticReviewPending": 5,
     "contentDraftRequired": 0,
     "humanDecisionRequired": 0,
     "failed": 0
@@ -17,42 +17,15 @@
   "repositories": [
     {
       "id": "remotion",
-      "status": "updated",
-      "observation": "source-changed",
-      "changes": [
-        {
-          "field": "latestRelease.id",
-          "before": 387830786,
-          "after": 390811149,
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.tagName",
-          "before": "v4.0.524",
-          "after": "v4.0.526",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.publishedAt",
-          "before": "2026-09-13T07:50:18Z",
-          "after": "2026-09-17T14:51:58Z",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "a8c39b8ae1656ee6804589e56219151ce1e1979d90dce136042b5e6a3e0a8ac2",
-          "after": "5ade60f1ecf11d456f7ec76f35eb9b613335cb644d20e592d5fbb88965631037",
-          "level": "release"
-        }
-      ],
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
       "sourceFingerprint": "0c46608cd75edac73a9967dc9db9dc7e7334217e16ab321870cb14ec3f5f0f06",
-      "semanticReviewStatus": "pending",
+      "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4984",
-      "reasons": [
-        "sourceFingerprint does not match the current source snapshot"
-      ]
+      "rateLimitRemaining": "4986",
+      "reasons": []
     },
     {
       "id": "excalidraw",
@@ -63,47 +36,20 @@
       "semanticReviewStatus": "complete",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4983",
+      "rateLimitRemaining": "4985",
       "reasons": []
     },
     {
       "id": "immich",
-      "status": "updated",
-      "observation": "source-changed",
-      "changes": [
-        {
-          "field": "latestRelease.id",
-          "before": 388599058,
-          "after": 389445351,
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.tagName",
-          "before": "v3.2.1",
-          "after": "v3.2.2",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.publishedAt",
-          "before": "2026-09-14T18:24:25Z",
-          "after": "2026-09-15T20:14:33Z",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "c9bbbea6b1d9f693829b22c7106c221c3eb32c30280bc5a58cde599647bdf0c0",
-          "after": "2a5b5d2add35159cc8763cb159ac89fe61ffe7578d472f4fe981437120752f69",
-          "level": "release"
-        }
-      ],
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
       "sourceFingerprint": "0cdd2c98d82281bd6c54ba306059ce4ba51e978a31577607ba6f546b9fec391f",
-      "semanticReviewStatus": "pending",
+      "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4982",
-      "reasons": [
-        "sourceFingerprint does not match the current source snapshot"
-      ]
+      "rateLimitRemaining": "4984",
+      "reasons": []
     },
     {
       "id": "n8n",
@@ -112,79 +58,73 @@
       "changes": [
         {
           "field": "latestRelease.id",
-          "before": 386872474,
-          "after": 390518095,
+          "before": 390518095,
+          "after": 393013822,
           "level": "release"
         },
         {
           "field": "latestRelease.tagName",
-          "before": "n8n@2.38.7",
-          "after": "n8n@2.39.7",
+          "before": "n8n@2.39.7",
+          "after": "n8n@2.39.10",
           "level": "release"
         },
         {
           "field": "latestRelease.publishedAt",
-          "before": "2026-09-11T08:06:20Z",
-          "after": "2026-09-17T07:44:43Z",
+          "before": "2026-09-17T07:44:43Z",
+          "after": "2026-09-21T14:07:26Z",
           "level": "release"
         },
         {
           "field": "latestRelease.bodySha256",
-          "before": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
-          "after": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
+          "before": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
+          "after": "82a5259c6a9de37e359f1d82cdb16f0433576ef5131ec658831179c6eee2f990",
           "level": "release"
         }
       ],
-      "sourceFingerprint": "b683da2f3da141e1914845aad5c6177675dc793f131f3b23b1536ccf6ba82b1b",
+      "sourceFingerprint": "1cc01998a096a5d9aa1623f217276a39010aafde15dd7ecd51010cf1ed3617de",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4981",
+      "rateLimitRemaining": "4983",
       "reasons": [
         "sourceFingerprint does not match the current source snapshot"
       ]
     },
     {
       "id": "archify",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "ff7daecbdfb099dbac15396bd7cdce0be96715735972020426a2c943f82fecad",
-      "semanticReviewStatus": "not-needed",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4980",
-      "reasons": []
-    },
-    {
-      "id": "papertodo",
       "status": "updated",
       "observation": "source-changed",
       "changes": [
         {
           "field": "readme.sha",
-          "before": "78c1e743f3dc4d196938821c2094bdcf42f4817c",
-          "after": "0016f6ed394f1d7a2b7d5880f23eaf3aab0cc3bf",
+          "before": "b1ef38e4552354d5562c74c26426aefd8c5edbe7",
+          "after": "7a9f6fe7b46500a9a0038b86a6df14d28ae6d75c",
           "level": "readme"
         },
         {
           "field": "readme.contentSha256",
-          "before": "5b8ee3af1b301c453fd0d465267b097fe6c661eb410c6c1c895531ac1f1ed61d",
-          "after": "00c0ad8cafbc04a092eb4f2090c3abd474abfbc4141d40c3ef38e50881f2eaad",
+          "before": "72c641ab2df957fe045c60e1d8fb0515e43118cc31213e9ee0dfb7923a8e71b7",
+          "after": "ebbdafe991d39edb20109f335fe0b80c3320d9d4cd1d1fba70c46871327ae8b2",
           "level": "readme"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "7a621c64b894aa5ab6db6945093813a6e2411c2369d899b75620a77827caee9d",
-          "after": "88920a4e6778513f0356ef9201e6e29cc65622876413501819f92612acfde8f5",
-          "level": "release"
         }
       ],
-      "sourceFingerprint": "834a9048d1eb5446642c060038de5414661118f62f80091fefd8d3161b58e56b",
+      "sourceFingerprint": "c668af930c23dce0a44ed662b183408ab22f82ea01513362febf189a3c93806a",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4979",
+      "rateLimitRemaining": "4982",
+      "reasons": []
+    },
+    {
+      "id": "papertodo",
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
+      "sourceFingerprint": "834a9048d1eb5446642c060038de5414661118f62f80091fefd8d3161b58e56b",
+      "semanticReviewStatus": "not-needed",
+      "contentDraftRequired": false,
+      "humanDecisionRequired": false,
+      "rateLimitRemaining": "4981",
       "reasons": []
     },
     {
@@ -194,70 +134,72 @@
       "changes": [
         {
           "field": "readme.sha",
-          "before": "599cd24df7a5d5034eb7599bd808899fee0bce8f",
-          "after": "e32bf821cac82522be38d77cdec91380946c935a",
+          "before": "e32bf821cac82522be38d77cdec91380946c935a",
+          "after": "e4ed7f92e41abde959b9e8d049888dac78fb1c4b",
           "level": "readme"
         },
         {
           "field": "readme.contentSha256",
-          "before": "af3655f024b0404769f457819ab60c30d540317522209c728fa3232c8c4bcbdf",
-          "after": "a504e6d4f97b3b9db482b6abb48b22096eb4c84d417f6367978c48356662eedc",
+          "before": "a504e6d4f97b3b9db482b6abb48b22096eb4c84d417f6367978c48356662eedc",
+          "after": "0947e164d934fa082ed3dbae33167f981ef325e1579011b1042b4464df318951",
           "level": "readme"
-        },
-        {
-          "field": "latestRelease.id",
-          "before": 359708142,
-          "after": 389400321,
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.tagName",
-          "before": "v0.3.0",
-          "after": "v0.3.5",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.publishedAt",
-          "before": "2026-07-25T08:08:47Z",
-          "after": "2026-09-15T19:05:37Z",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "aaf40767fd8e183781f6f8c2ea427691421bfee4d0aa4bf2e2247e9de2077789",
-          "after": "df22450787ecc661a873b9e114bfbcfc952e4e438af808fa92f5bb7242cd2e65",
-          "level": "release"
         }
       ],
-      "sourceFingerprint": "a08111199d67518b7208e87c8fdb9b909740bb93cc56514e2f468bae5a7891b9",
+      "sourceFingerprint": "0ad93dc359611d7444fdde9777c506e5f1b0daaee9e2325dc87f6b2b29308ba2",
       "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4978",
+      "rateLimitRemaining": "4980",
       "reasons": []
     },
     {
       "id": "maka",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "76191cebc681affc79e13e20a83b0e2e24b1b97de4a10a7be31af9ac108ef8fc",
-      "semanticReviewStatus": "not-needed",
+      "status": "updated",
+      "observation": "source-changed",
+      "changes": [
+        {
+          "field": "readme.sha",
+          "before": "81c955da3a84d8d3c1a5592a709d0d9cc613383b",
+          "after": "82fcc0c17cd80ed77cf8648f12420b3616199165",
+          "level": "readme"
+        },
+        {
+          "field": "readme.contentSha256",
+          "before": "2f60c904352e67fff28042a550b520a097c5a268ee7945a371aa6b4f6840ea3d",
+          "after": "3e7a62e9a604db13d33be1393b7fcbd70873185f66948d729fb5a4d6a3684b4d",
+          "level": "readme"
+        }
+      ],
+      "sourceFingerprint": "6d45e8c309f214213df13db7ac2f91bdf717926d4ecbe9d7f490e6f54961a614",
+      "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4977",
+      "rateLimitRemaining": "4979",
       "reasons": []
     },
     {
       "id": "superset",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "a6bf28cb13c77f27ea54d711ac724ab6e9808feda1718ac24b322e1a639e86da",
-      "semanticReviewStatus": "not-needed",
+      "status": "updated",
+      "observation": "source-changed",
+      "changes": [
+        {
+          "field": "readme.sha",
+          "before": "961886df64d20b96bc6d3632d29e68dffc074872",
+          "after": "0dde0dbc618f287adc56221c34ea7698eaa2da97",
+          "level": "readme"
+        },
+        {
+          "field": "readme.contentSha256",
+          "before": "ca75688235bc4414db3bfbe2c347224657d9d738b97a9e04419cb037f455b59b",
+          "after": "92b78c078265d1ce22d12d2563d6ce5056e89fe44baa71c60e116055ad6a4a46",
+          "level": "readme"
+        }
+      ],
+      "sourceFingerprint": "248666a46949d5af78f0cc7bc9098a0b733e05c85c942d1db09e771611642e15",
+      "semanticReviewStatus": "pending",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4976",
+      "rateLimitRemaining": "4978",
       "reasons": []
     },
     {
@@ -269,31 +211,7 @@
       "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4975",
-      "reasons": []
-    },
-    {
-      "id": "tagstudio",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "6e2d022f832ef066d0bd7151d0fe8848fa263a51ecc7e8e2637ac79ea9f2b043",
-      "semanticReviewStatus": "not-needed",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4974",
-      "reasons": []
-    },
-    {
-      "id": "meetily",
-      "status": "refreshed",
-      "observation": "unchanged",
-      "changes": [],
-      "sourceFingerprint": "8c5698be25940865cdb7023570a6527f4e05c361d5b3efc7509915040c0aed8b",
-      "semanticReviewStatus": "not-needed",
-      "contentDraftRequired": false,
-      "humanDecisionRequired": false,
-      "rateLimitRemaining": "4973",
+      "rateLimitRemaining": "4977",
       "reasons": []
     },
     {
@@ -305,7 +223,7 @@
       "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4972",
+      "rateLimitRemaining": "4976",
       "reasons": []
     },
     {
@@ -317,56 +235,19 @@
       "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4971",
+      "rateLimitRemaining": "4975",
       "reasons": []
     },
     {
       "id": "airflow",
-      "status": "updated",
-      "observation": "source-changed",
-      "changes": [
-        {
-          "field": "readme.sha",
-          "before": "886a21be6d7e6c172969bfab21dc4d784e236167",
-          "after": "7e49de2a1ea248a85415227ff92af955ba677438",
-          "level": "readme"
-        },
-        {
-          "field": "readme.contentSha256",
-          "before": "eac37b3407be0ce890f9873115a7c575991ce80c9ba88dc8c9fd47fca5781ebf",
-          "after": "56475872e413d26d62a744660a6856c0a75e05ee5fdf48974f925f5f5001188b",
-          "level": "readme"
-        },
-        {
-          "field": "latestRelease.id",
-          "before": 369136526,
-          "after": 390631037,
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.tagName",
-          "before": "3.3.1",
-          "after": "3.3.2",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.publishedAt",
-          "before": "2026-08-12T09:50:17Z",
-          "after": "2026-09-17T11:10:15Z",
-          "level": "release"
-        },
-        {
-          "field": "latestRelease.bodySha256",
-          "before": "0d16066cc63008dd4f16a9550f8e7a424c4dc1ea34bbb926082e84934edc1c63",
-          "after": "26e221e7448cd017297dddb3bc405dbb14b562a757904010e2a3f2bd4ada9514",
-          "level": "release"
-        }
-      ],
+      "status": "refreshed",
+      "observation": "unchanged",
+      "changes": [],
       "sourceFingerprint": "70a4f585393e2007d0d9fd39e29f4095432ae1701aad09a2f8c4171915779264",
-      "semanticReviewStatus": "pending",
+      "semanticReviewStatus": "not-needed",
       "contentDraftRequired": false,
       "humanDecisionRequired": false,
-      "rateLimitRemaining": "4970",
+      "rateLimitRemaining": "4974",
       "reasons": []
     }
   ]

@@ -3,216 +3,216 @@
     "githubId": 274495425,
     "fullName": "remotion-dev/remotion",
     "name": "Remotion",
-    "stars": 59634,
-    "forks": 4571,
+    "stars": 59979,
+    "forks": 4612,
     "language": "TypeScript",
-    "pushedAt": "2026-09-17T17:16:37Z",
+    "pushedAt": "2026-09-21T16:14:59Z",
     "license": "Remotion License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "excalidraw": {
     "githubId": 231283452,
     "fullName": "excalidraw/excalidraw",
     "name": "Excalidraw",
-    "stars": 132258,
-    "forks": 15328,
+    "stars": 132631,
+    "forks": 15402,
     "language": "TypeScript",
-    "pushedAt": "2026-09-17T19:06:17Z",
+    "pushedAt": "2026-09-21T14:43:34Z",
     "license": "MIT",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "immich": {
     "githubId": 455229168,
     "fullName": "immich-app/immich",
     "name": "Immich",
-    "stars": 114489,
-    "forks": 6981,
+    "stars": 114778,
+    "forks": 7028,
     "language": "TypeScript",
-    "pushedAt": "2026-09-18T01:51:36Z",
+    "pushedAt": "2026-09-22T04:51:46Z",
     "license": "AGPL-3.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "n8n": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 205097,
-    "forks": 60754,
+    "stars": 205639,
+    "forks": 60844,
     "language": "TypeScript",
-    "pushedAt": "2026-09-18T03:29:31Z",
+    "pushedAt": "2026-09-22T05:44:26Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "archify": {
     "githubId": 1211139949,
     "fullName": "tt-a1i/archify",
     "name": "Archify",
-    "stars": 66089,
-    "forks": 4410,
+    "stars": 69290,
+    "forks": 4648,
     "language": "JavaScript",
-    "pushedAt": "2026-09-18T05:06:14Z",
+    "pushedAt": "2026-09-22T04:37:59Z",
     "license": "MIT",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "papertodo": {
     "githubId": 1250907197,
     "fullName": "snownico0722/PaperTodo",
     "name": "PaperTodo",
-    "stars": 2382,
-    "forks": 122,
+    "stars": 2406,
+    "forks": 124,
     "language": "C#",
-    "pushedAt": "2026-09-18T01:54:27Z",
+    "pushedAt": "2026-09-22T05:43:42Z",
     "license": "Other",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "nanobot": {
     "githubId": 1147094660,
     "fullName": "HKUDS/nanobot",
     "name": "nanobot",
-    "stars": 48302,
-    "forks": 8535,
+    "stars": 48471,
+    "forks": 8567,
     "language": "Python",
-    "pushedAt": "2026-09-17T18:29:36Z",
+    "pushedAt": "2026-09-22T05:20:13Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "maka": {
     "githubId": 1251460378,
     "fullName": "apache/maka",
     "name": "maka",
-    "stars": 5551,
-    "forks": 514,
+    "stars": 5612,
+    "forks": 518,
     "language": "TypeScript",
-    "pushedAt": "2026-09-18T05:19:25Z",
+    "pushedAt": "2026-09-22T05:36:23Z",
     "license": "Apache License 2.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "superset": {
     "githubId": 39464018,
     "fullName": "apache/superset",
     "name": "superset",
-    "stars": 74822,
-    "forks": 18340,
+    "stars": 74876,
+    "forks": 18369,
     "language": "Python",
-    "pushedAt": "2026-09-18T05:10:44Z",
+    "pushedAt": "2026-09-22T05:44:00Z",
     "license": "Apache License 2.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "plausible": {
     "githubId": 160427405,
     "fullName": "plausible/analytics",
     "name": "analytics",
-    "stars": 29124,
-    "forks": 1869,
+    "stars": 29179,
+    "forks": 1872,
     "language": "Elixir",
-    "pushedAt": "2026-09-17T20:12:55Z",
+    "pushedAt": "2026-09-22T04:55:25Z",
     "license": "GNU Affero General Public License v3.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "lossless-cut": {
     "githubId": 72343657,
     "fullName": "mifi/lossless-cut",
     "name": "lossless-cut",
-    "stars": 43848,
-    "forks": 2174,
+    "stars": 43950,
+    "forks": 2182,
     "language": "TypeScript",
     "pushedAt": "2026-09-14T09:55:23Z",
     "license": "GNU General Public License v2.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "flowgram-ai": {
     "githubId": 933963452,
     "fullName": "bytedance/flowgram.ai",
     "name": "flowgram.ai",
-    "stars": 8456,
-    "forks": 769,
+    "stars": 8459,
+    "forks": 771,
     "language": "TypeScript",
     "pushedAt": "2026-09-01T04:02:40Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "tagstudio": {
     "githubId": 787908531,
     "fullName": "TagStudioDev/TagStudio",
     "name": "TagStudio",
-    "stars": 7194,
-    "forks": 467,
+    "stars": 7204,
+    "forks": 466,
     "language": "Python",
     "pushedAt": "2026-09-16T06:21:27Z",
     "license": "GNU General Public License v3.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "meetily": {
     "githubId": 908589694,
     "fullName": "Zackriya-Solutions/meetily",
     "name": "meetily",
-    "stars": 30896,
-    "forks": 3345,
+    "stars": 31019,
+    "forks": 3370,
     "language": "Rust",
     "pushedAt": "2026-09-15T18:32:32Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "trilium": {
     "githubId": 92111509,
     "fullName": "TriliumNext/Trilium",
     "name": "Trilium",
-    "stars": 37879,
-    "forks": 2542,
+    "stars": 37936,
+    "forks": 2551,
     "language": "TypeScript",
-    "pushedAt": "2026-09-18T04:39:01Z",
+    "pushedAt": "2026-09-22T05:32:21Z",
     "license": "GNU Affero General Public License v3.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "responsible-ai-toolbox": {
     "githubId": 277645425,
     "fullName": "microsoft/responsible-ai-toolbox",
     "name": "responsible-ai-toolbox",
     "stars": 1835,
-    "forks": 497,
+    "forks": 498,
     "language": "TypeScript",
     "pushedAt": "2026-09-10T08:26:39Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "ohmyzsh": {
     "githubId": 291137,
     "fullName": "ohmyzsh/ohmyzsh",
     "name": "ohmyzsh",
-    "stars": 189785,
-    "forks": 26925,
+    "stars": 189875,
+    "forks": 27279,
     "language": "Shell",
-    "pushedAt": "2026-09-16T08:47:21Z",
+    "pushedAt": "2026-09-21T20:48:05Z",
     "license": "MIT License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "airflow": {
     "githubId": 33884891,
     "fullName": "apache/airflow",
     "name": "airflow",
-    "stars": 46885,
-    "forks": 17860,
+    "stars": 46931,
+    "forks": 17891,
     "language": "Python",
-    "pushedAt": "2026-09-18T05:18:38Z",
+    "pushedAt": "2026-09-22T05:43:29Z",
     "license": "Apache License 2.0",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   }
 }

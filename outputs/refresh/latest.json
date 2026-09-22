@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T05:28:36Z",
+  "generatedAt": "2026-09-22T05:44:43Z",
   "mode": "write",
   "dataFile": "src/data/repositories.json",
   "githubApiVersion": "2026-03-10",
@@ -11,7 +11,7 @@
     "refreshed": 0,
     "reviewRequired": 0,
     "failed": 0,
-    "researchRefreshRecommended": 15,
+    "researchRefreshRecommended": 13,
     "contentReviewRecommended": 0
   },
   "repositories": [
@@ -25,20 +25,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 59266,
-          "after": 59634,
+          "before": 59634,
+          "after": 59979,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 4523,
-          "after": 4571,
+          "before": 4571,
+          "after": 4612,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-14T20:50:53Z",
-          "after": "2026-09-17T17:16:37Z",
+          "before": "2026-09-17T17:16:37Z",
+          "after": "2026-09-21T16:14:59Z",
           "level": "activity"
         }
       ],
@@ -56,20 +56,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 131953,
-          "after": 132258,
+          "before": 132258,
+          "after": 132631,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 15274,
-          "after": 15328,
+          "before": 15328,
+          "after": 15402,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-14T17:29:34Z",
-          "after": "2026-09-17T19:06:17Z",
+          "before": "2026-09-17T19:06:17Z",
+          "after": "2026-09-21T14:43:34Z",
           "level": "activity"
         }
       ],
@@ -87,20 +87,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 114190,
-          "after": 114489,
+          "before": 114489,
+          "after": 114778,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 6916,
-          "after": 6981,
+          "before": 6981,
+          "after": 7028,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T04:24:28Z",
-          "after": "2026-09-18T01:51:36Z",
+          "before": "2026-09-18T01:51:36Z",
+          "after": "2026-09-22T04:51:46Z",
           "level": "activity"
         }
       ],
@@ -118,20 +118,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 204333,
-          "after": 205097,
+          "before": 205097,
+          "after": 205639,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 60673,
-          "after": 60754,
+          "before": 60754,
+          "after": 60844,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T05:40:38Z",
-          "after": "2026-09-18T03:29:31Z",
+          "before": "2026-09-18T03:29:31Z",
+          "after": "2026-09-22T05:44:26Z",
           "level": "activity"
         }
       ],
@@ -149,20 +149,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 62586,
-          "after": 66089,
+          "before": 66089,
+          "after": 69290,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 4141,
-          "after": 4410,
+          "before": 4410,
+          "after": 4648,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T03:33:20Z",
-          "after": "2026-09-18T05:06:14Z",
+          "before": "2026-09-18T05:06:14Z",
+          "after": "2026-09-22T04:37:59Z",
           "level": "activity"
         }
       ],
@@ -180,20 +180,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 2350,
-          "after": 2382,
+          "before": 2382,
+          "after": 2406,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 119,
-          "after": 122,
+          "before": 122,
+          "after": 124,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T05:36:21Z",
-          "after": "2026-09-18T01:54:27Z",
+          "before": "2026-09-18T01:54:27Z",
+          "after": "2026-09-22T05:43:42Z",
           "level": "activity"
         }
       ],
@@ -211,20 +211,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 48158,
-          "after": 48302,
+          "before": 48302,
+          "after": 48471,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 8512,
-          "after": 8535,
+          "before": 8535,
+          "after": 8567,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T03:55:12Z",
-          "after": "2026-09-17T18:29:36Z",
+          "before": "2026-09-17T18:29:36Z",
+          "after": "2026-09-22T05:20:13Z",
           "level": "activity"
         }
       ],
@@ -242,20 +242,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 5421,
-          "after": 5551,
+          "before": 5551,
+          "after": 5612,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 502,
-          "after": 514,
+          "before": 514,
+          "after": 518,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T05:17:29Z",
-          "after": "2026-09-18T05:19:25Z",
+          "before": "2026-09-18T05:19:25Z",
+          "after": "2026-09-22T05:36:23Z",
           "level": "activity"
         }
       ],
@@ -273,20 +273,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 74762,
-          "after": 74822,
+          "before": 74822,
+          "after": 74876,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 18271,
-          "after": 18340,
+          "before": 18340,
+          "after": 18369,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T05:30:44Z",
-          "after": "2026-09-18T05:10:44Z",
+          "before": "2026-09-18T05:10:44Z",
+          "after": "2026-09-22T05:44:00Z",
           "level": "activity"
         }
       ],
@@ -304,20 +304,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 29079,
-          "after": 29124,
+          "before": 29124,
+          "after": 29179,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 1863,
-          "after": 1869,
+          "before": 1869,
+          "after": 1872,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T04:55:26Z",
-          "after": "2026-09-17T20:12:55Z",
+          "before": "2026-09-17T20:12:55Z",
+          "after": "2026-09-22T04:55:25Z",
           "level": "activity"
         }
       ],
@@ -335,14 +335,14 @@
       "changes": [
         {
           "field": "stars",
-          "before": 43759,
-          "after": 43848,
+          "before": 43848,
+          "after": 43950,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 2170,
-          "after": 2174,
+          "before": 2174,
+          "after": 2182,
           "level": "statistics"
         }
       ],
@@ -360,14 +360,14 @@
       "changes": [
         {
           "field": "stars",
-          "before": 8452,
-          "after": 8456,
+          "before": 8456,
+          "after": 8459,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 768,
-          "after": 769,
+          "before": 769,
+          "after": 771,
           "level": "statistics"
         }
       ],
@@ -381,28 +381,22 @@
       "httpStatus": 200,
       "rateLimitRemaining": "4969",
       "status": "updated",
-      "changeLevel": "activity",
+      "changeLevel": "statistics",
       "changes": [
         {
           "field": "stars",
-          "before": 7184,
-          "after": 7194,
+          "before": 7194,
+          "after": 7204,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 466,
-          "after": 467,
+          "before": 467,
+          "after": 466,
           "level": "statistics"
-        },
-        {
-          "field": "pushedAt",
-          "before": "2026-09-15T04:54:55Z",
-          "after": "2026-09-16T06:21:27Z",
-          "level": "activity"
         }
       ],
-      "researchRefreshRecommended": true,
+      "researchRefreshRecommended": false,
       "contentReviewRecommended": false,
       "reviewReasons": []
     },
@@ -412,28 +406,22 @@
       "httpStatus": 200,
       "rateLimitRemaining": "4968",
       "status": "updated",
-      "changeLevel": "activity",
+      "changeLevel": "statistics",
       "changes": [
         {
           "field": "stars",
-          "before": 30775,
-          "after": 30896,
+          "before": 30896,
+          "after": 31019,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 3325,
-          "after": 3345,
+          "before": 3345,
+          "after": 3370,
           "level": "statistics"
-        },
-        {
-          "field": "pushedAt",
-          "before": "2026-09-14T09:35:16Z",
-          "after": "2026-09-15T18:32:32Z",
-          "level": "activity"
         }
       ],
-      "researchRefreshRecommended": true,
+      "researchRefreshRecommended": false,
       "contentReviewRecommended": false,
       "reviewReasons": []
     },
@@ -447,20 +435,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 37850,
-          "after": 37879,
+          "before": 37879,
+          "after": 37936,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 2540,
-          "after": 2542,
+          "before": 2542,
+          "after": 2551,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T04:22:46Z",
-          "after": "2026-09-18T04:39:01Z",
+          "before": "2026-09-18T04:39:01Z",
+          "after": "2026-09-22T05:32:21Z",
           "level": "activity"
         }
       ],
@@ -477,15 +465,9 @@
       "changeLevel": "statistics",
       "changes": [
         {
-          "field": "stars",
-          "before": 1834,
-          "after": 1835,
-          "level": "statistics"
-        },
-        {
           "field": "forks",
-          "before": 495,
-          "after": 497,
+          "before": 497,
+          "after": 498,
           "level": "statistics"
         }
       ],
@@ -503,20 +485,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 189721,
-          "after": 189785,
+          "before": 189785,
+          "after": 189875,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 26571,
-          "after": 26925,
+          "before": 26925,
+          "after": 27279,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-14T19:43:54Z",
-          "after": "2026-09-16T08:47:21Z",
+          "before": "2026-09-16T08:47:21Z",
+          "after": "2026-09-21T20:48:05Z",
           "level": "activity"
         }
       ],
@@ -534,20 +516,20 @@
       "changes": [
         {
           "field": "stars",
-          "before": 46857,
-          "after": 46885,
+          "before": 46885,
+          "after": 46931,
           "level": "statistics"
         },
         {
           "field": "forks",
-          "before": 17839,
-          "after": 17860,
+          "before": 17860,
+          "after": 17891,
           "level": "statistics"
         },
         {
           "field": "pushedAt",
-          "before": "2026-09-15T04:24:38Z",
-          "after": "2026-09-18T05:18:38Z",
+          "before": "2026-09-18T05:18:38Z",
+          "after": "2026-09-22T05:43:29Z",
           "level": "activity"
         }
       ],

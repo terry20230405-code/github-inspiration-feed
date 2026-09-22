@@ -26,7 +26,7 @@
         "htmlUrl": "https://github.com/remotion-dev/remotion/releases/tag/v4.0.526",
         "bodySha256": "5ade60f1ecf11d456f7ec76f35eb9b613335cb644d20e592d5fbb88965631037"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "0c46608cd75edac73a9967dc9db9dc7e7334217e16ab321870cb14ec3f5f0f06"
     },
     "immich": {
@@ -67,7 +67,7 @@
         "htmlUrl": "https://github.com/immich-app/immich/releases/tag/v3.2.2",
         "bodySha256": "2a5b5d2add35159cc8763cb159ac89fe61ffe7578d472f4fe981437120752f69"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "0cdd2c98d82281bd6c54ba306059ce4ba51e978a31577607ba6f546b9fec391f"
     },
     "n8n": {
@@ -105,15 +105,15 @@
         "contentSha256": "75c64f04b8b1e7d435496f6ebd2dbf3ea5ff7d3ff3d944d7fcf98cf1a7df2242"
       },
       "latestRelease": {
-        "id": 390518095,
-        "tagName": "n8n@2.39.7",
-        "name": "n8n@2.39.7",
-        "publishedAt": "2026-09-17T07:44:43Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.7",
-        "bodySha256": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a"
+        "id": 393013822,
+        "tagName": "n8n@2.39.10",
+        "name": "n8n@2.39.10",
+        "publishedAt": "2026-09-21T14:07:26Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.10",
+        "bodySha256": "82a5259c6a9de37e359f1d82cdb16f0433576ef5131ec658831179c6eee2f990"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
-      "fingerprint": "b683da2f3da141e1914845aad5c6177675dc793f131f3b23b1536ccf6ba82b1b"
+      "capturedAt": "2026-09-22T05:44:58Z",
+      "fingerprint": "1cc01998a096a5d9aa1623f217276a39010aafde15dd7ecd51010cf1ed3617de"
     },
     "excalidraw": {
       "githubId": 231283452,
@@ -144,7 +144,7 @@
         "htmlUrl": "https://github.com/excalidraw/excalidraw/releases/tag/v0.18.1",
         "bodySha256": "2f6ee9bffbceb1deed5aa90622328572718241766e40457192f1b74cf2bb42c6"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "d3f5b62a309c08f907587ee77c3092280a476aa2619cf960d7dc96ec58f6287d"
     },
     "archify": {
@@ -176,10 +176,10 @@
         "text-to-diagram"
       ],
       "readme": {
-        "sha": "b1ef38e4552354d5562c74c26426aefd8c5edbe7",
+        "sha": "7a9f6fe7b46500a9a0038b86a6df14d28ae6d75c",
         "path": "README.md",
         "htmlUrl": "https://github.com/tt-a1i/archify/blob/main/README.md",
-        "contentSha256": "72c641ab2df957fe045c60e1d8fb0515e43118cc31213e9ee0dfb7923a8e71b7"
+        "contentSha256": "ebbdafe991d39edb20109f335fe0b80c3320d9d4cd1d1fba70c46871327ae8b2"
       },
       "latestRelease": {
         "id": 379259141,
@@ -189,8 +189,8 @@
         "htmlUrl": "https://github.com/tt-a1i/archify/releases/tag/v2.16.0",
         "bodySha256": "b20a59bf9c87ce81efb75806a391cbc87d910c6f1857c52cfc4bfe0a57d3803a"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
-      "fingerprint": "ff7daecbdfb099dbac15396bd7cdce0be96715735972020426a2c943f82fecad"
+      "capturedAt": "2026-09-22T05:44:58Z",
+      "fingerprint": "c668af930c23dce0a44ed662b183408ab22f82ea01513362febf189a3c93806a"
     },
     "papertodo": {
       "githubId": 1250907197,
@@ -226,7 +226,7 @@
         "htmlUrl": "https://github.com/snownico0722/PaperTodo/releases/tag/v3.31",
         "bodySha256": "88920a4e6778513f0356ef9201e6e29cc65622876413501819f92612acfde8f5"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "834a9048d1eb5446642c060038de5414661118f62f80091fefd8d3161b58e56b"
     },
     "nanobot": {
@@ -258,10 +258,10 @@
         "workflow-automation"
       ],
       "readme": {
-        "sha": "e32bf821cac82522be38d77cdec91380946c935a",
+        "sha": "e4ed7f92e41abde959b9e8d049888dac78fb1c4b",
         "path": "README.md",
         "htmlUrl": "https://github.com/HKUDS/nanobot/blob/main/README.md",
-        "contentSha256": "a504e6d4f97b3b9db482b6abb48b22096eb4c84d417f6367978c48356662eedc"
+        "contentSha256": "0947e164d934fa082ed3dbae33167f981ef325e1579011b1042b4464df318951"
       },
       "latestRelease": {
         "id": 389400321,
@@ -271,8 +271,8 @@
         "htmlUrl": "https://github.com/HKUDS/nanobot/releases/tag/v0.3.5",
         "bodySha256": "df22450787ecc661a873b9e114bfbcfc952e4e438af808fa92f5bb7242cd2e65"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
-      "fingerprint": "a08111199d67518b7208e87c8fdb9b909740bb93cc56514e2f468bae5a7891b9"
+      "capturedAt": "2026-09-22T05:44:58Z",
+      "fingerprint": "0ad93dc359611d7444fdde9777c506e5f1b0daaee9e2325dc87f6b2b29308ba2"
     },
     "maka": {
       "githubId": 1251460378,
@@ -297,14 +297,14 @@
         "typescript"
       ],
       "readme": {
-        "sha": "81c955da3a84d8d3c1a5592a709d0d9cc613383b",
+        "sha": "82fcc0c17cd80ed77cf8648f12420b3616199165",
         "path": "README.md",
         "htmlUrl": "https://github.com/apache/maka/blob/main/README.md",
-        "contentSha256": "2f60c904352e67fff28042a550b520a097c5a268ee7945a371aa6b4f6840ea3d"
+        "contentSha256": "3e7a62e9a604db13d33be1393b7fcbd70873185f66948d729fb5a4d6a3684b4d"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-18T05:28:58Z",
-      "fingerprint": "76191cebc681affc79e13e20a83b0e2e24b1b97de4a10a7be31af9ac108ef8fc"
+      "capturedAt": "2026-09-22T05:44:58Z",
+      "fingerprint": "6d45e8c309f214213df13db7ac2f91bdf717926d4ecbe9d7f490e6f54961a614"
     },
     "superset": {
       "githubId": 39464018,
@@ -333,10 +333,10 @@
         "superset"
       ],
       "readme": {
-        "sha": "961886df64d20b96bc6d3632d29e68dffc074872",
+        "sha": "0dde0dbc618f287adc56221c34ea7698eaa2da97",
         "path": "README.md",
         "htmlUrl": "https://github.com/apache/superset/blob/master/README.md",
-        "contentSha256": "ca75688235bc4414db3bfbe2c347224657d9d738b97a9e04419cb037f455b59b"
+        "contentSha256": "92b78c078265d1ce22d12d2563d6ce5056e89fe44baa71c60e116055ad6a4a46"
       },
       "latestRelease": {
         "id": 322053215,
@@ -346,8 +346,8 @@
         "htmlUrl": "https://github.com/apache/superset/releases/tag/6.1.0",
         "bodySha256": "9e67f7044d6058bbfbd5c3b69c41f5395362c367517a592fc7ad3358ffdc8766"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
-      "fingerprint": "a6bf28cb13c77f27ea54d711ac724ab6e9808feda1718ac24b322e1a639e86da"
+      "capturedAt": "2026-09-22T05:44:58Z",
+      "fingerprint": "248666a46949d5af78f0cc7bc9098a0b733e05c85c942d1db09e771611642e15"
     },
     "plausible": {
       "githubId": 160427405,
@@ -391,7 +391,7 @@
         "htmlUrl": "https://github.com/plausible/analytics/releases/tag/v3.2.1",
         "bodySha256": "1b7fd93b573e3fbb0c62991c711c1a3ab9cf549e361ab3ee134a3d5b89be7366"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "6d45492f126a8ea101c09aab1501879d7b25efe7c247ba248d5b4391aa5daeea"
     },
     "lossless-cut": {
@@ -549,7 +549,7 @@
         "htmlUrl": "https://github.com/TriliumNext/Trilium/releases/tag/v0.105.0",
         "bodySha256": "67305603a5484e04cc0da357bf8311a932e225c7220ecea83f1cb102e810fdf6"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "a6cd813eca57c1c6ab97b91f91b91ceef8e246610daf3abf63104f2e813dd093"
     },
     "responsible-ai-toolbox": {
@@ -627,7 +627,7 @@
         "contentSha256": "bc47f91df82c3a205a16193839e996a7edec4fec71aa3337984a0b331888d95b"
       },
       "latestRelease": null,
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "1e18a6e5350977ce126e80015411d5e129f174e136d4e9ac70d69b435b8158c7"
     },
     "airflow": {
@@ -672,7 +672,7 @@
         "htmlUrl": "https://github.com/apache/airflow/releases/tag/3.3.2",
         "bodySha256": "26e221e7448cd017297dddb3bc405dbb14b562a757904010e2a3f2bd4ada9514"
       },
-      "capturedAt": "2026-09-18T05:28:58Z",
+      "capturedAt": "2026-09-22T05:44:58Z",
       "fingerprint": "70a4f585393e2007d0d9fd39e29f4095432ae1701aad09a2f8c4171915779264"
     }
   }

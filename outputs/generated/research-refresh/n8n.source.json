@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
   "projectId": "n8n",
-  "generatedAt": "2026-09-18T05:28:58Z",
-  "sourceFingerprint": "b683da2f3da141e1914845aad5c6177675dc793f131f3b23b1536ccf6ba82b1b",
+  "generatedAt": "2026-09-22T05:44:58Z",
+  "sourceFingerprint": "1cc01998a096a5d9aa1623f217276a39010aafde15dd7ecd51010cf1ed3617de",
   "repository": {
     "githubId": 193215554,
     "fullName": "n8n-io/n8n",
     "name": "n8n",
-    "stars": 205097,
-    "forks": 60754,
+    "stars": 205639,
+    "forks": 60844,
     "language": "TypeScript",
-    "pushedAt": "2026-09-18T03:29:31Z",
+    "pushedAt": "2026-09-22T05:44:26Z",
     "license": "Sustainable Use License",
     "state": "active",
-    "fetchedAt": "2026-09-18T05:28:36Z"
+    "fetchedAt": "2026-09-22T05:44:43Z"
   },
   "observation": "source-changed",
   "changes": [
     {
       "field": "latestRelease.id",
-      "before": 386872474,
-      "after": 390518095,
+      "before": 390518095,
+      "after": 393013822,
       "level": "release"
     },
     {
       "field": "latestRelease.tagName",
-      "before": "n8n@2.38.7",
-      "after": "n8n@2.39.7",
+      "before": "n8n@2.39.7",
+      "after": "n8n@2.39.10",
       "level": "release"
     },
     {
       "field": "latestRelease.publishedAt",
-      "before": "2026-09-11T08:06:20Z",
-      "after": "2026-09-17T07:44:43Z",
+      "before": "2026-09-17T07:44:43Z",
+      "after": "2026-09-21T14:07:26Z",
       "level": "release"
     },
     {
       "field": "latestRelease.bodySha256",
-      "before": "a63df38c416889c6e22d3dc7b3a177cb7c55840c8802c030dd7029828473ecca",
-      "after": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
+      "before": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
+      "after": "82a5259c6a9de37e359f1d82cdb16f0433576ef5131ec658831179c6eee2f990",
       "level": "release"
     }
   ],
@@ -88,13 +88,13 @@
       "kind": "release",
       "retrievalStatus": "fetched",
       "content": {
-        "id": 390518095,
-        "tagName": "n8n@2.39.7",
-        "name": "n8n@2.39.7",
-        "publishedAt": "2026-09-17T07:44:43Z",
-        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.7",
-        "bodySha256": "f11a5ff7a72d4095396d49912d0c5631734239f90fa77b2c48d719db55d4f82a",
-        "body": "## [2.39.7](https://github.com/n8n-io/n8n/compare/n8n@2.39.6...n8n@2.39.7) (2026-09-17)\n\n\n### Bug Fixes\n\n* **core:** Keep breaking change detection running when a rule throws ([#38790](https://github.com/n8n-io/n8n/issues/38790)) ([28945cb](https://github.com/n8n-io/n8n/commit/28945cb71d09a4cf232148ad00873dd11f59e484))\n* **editor:** Send number values in credential inputs ([#38881](https://github.com/n8n-io/n8n/issues/38881)) ([3ac6dda](https://github.com/n8n-io/n8n/commit/3ac6dda7d03ba19444fa4a1597488623a146e550))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/38901?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
+        "id": 393013822,
+        "tagName": "n8n@2.39.10",
+        "name": "n8n@2.39.10",
+        "publishedAt": "2026-09-21T14:07:26Z",
+        "htmlUrl": "https://github.com/n8n-io/n8n/releases/tag/n8n%402.39.10",
+        "bodySha256": "82a5259c6a9de37e359f1d82cdb16f0433576ef5131ec658831179c6eee2f990",
+        "body": "## [2.39.10](https://github.com/n8n-io/n8n/compare/n8n@2.39.9...n8n@2.39.10) (2026-09-21)\n\n\n### Bug Fixes\n\n* Limit declarative routing during base URL ownership checks ([#39146](https://github.com/n8n-io/n8n/issues/39146)) ([164b3f3](https://github.com/n8n-io/n8n/commit/164b3f3d8ea08ba5111d2e04cbe17921bc395fff))\n\n<!-- This is an auto-generated description by cubic. -->\n<a href=\"https://cubic.dev/pr/n8n-io/n8n/pull/39179?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n<!-- End of auto-generated description by cubic. -->\n\n",
         "bodyTruncated": false
       }
     }
