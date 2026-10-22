@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 2,
+  "id": "it-tools",
+  "repository": {
+    "githubId": 253222599,
+    "fullName": "CorentinTh/it-tools",
+    "name": "it-tools",
+    "stars": 40463,
+    "forks": 5386,
+    "language": "Vue",
+    "pushedAt": "2026-09-03T22:29:01Z",
+    "license": "GNU General Public License v3.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:57:44Z"
+  },
+  "editorial": {
+    "audience": "开发者和 IT 从业者",
+    "directions": [
+      {
+        "approach": "复用 regex tester 和 cheatsheet，让用户贴入样本文本与正则，查看匹配位置、分组结果和提示说明，形成一个独立的正则练习流程。",
+        "audience": "经常写校验、搜索和过滤规则的前后端开发者，以及学习正则的新手",
+        "difference": "把通用工具站收束成单一的正则验证与学习产品。",
+        "id": "regex-practice-lab",
+        "name": "正则练习台",
+        "problem": "写正则时总要反复试错，才知道规则有没有真正命中目标文本。",
+        "scope": [
+          "文本输入",
+          "正则输入",
+          "匹配高亮",
+          "结果列表",
+          "速查提示",
+          "复制结果"
+        ],
+        "tagline": "输入文本和正则，立刻看匹配结果"
+      },
+      {
+        "approach": "复用 JSON/XML 互转、Markdown to HTML 和 Base64 处理能力，让用户贴入内容、选择目标格式、读取转换结果并复制出去。",
+        "audience": "需要在接口、文档和代码片段之间搬运内容的前后端开发者",
+        "difference": "把分散的小工具合成一个专注格式互转的产品。",
+        "id": "format-converter-hub",
+        "name": "数据格式转换台",
+        "problem": "同一份数据经常要在不同格式之间来回转换，手工改很容易出错。",
+        "scope": [
+          "内容输入",
+          "格式选择",
+          "转换输出",
+          "错误提示",
+          "复制结果"
+        ],
+        "tagline": "把 JSON、XML、Markdown 和 Base64 互相转换"
+      },
+      {
+        "approach": "复用自托管、收藏和多工具导航能力，让团队把常用工具部署到内网，按收藏快速进入对应工具。",
+        "audience": "小团队、实验室管理员和内网协作成员",
+        "difference": "从公共工具站变成团队内部的共享工具页。",
+        "id": "team-tool-shelf",
+        "name": "内网工具柜",
+        "problem": "团队常用工具分散在各处，找起来慢，也难统一入口。",
+        "scope": [
+          "自托管部署",
+          "收藏保存",
+          "分类导航",
+          "工具直达",
+          "内网访问"
+        ],
+        "tagline": "把常用开发工具装进团队自托管首页"
+      }
+    ],
+    "features": [
+      "正则测试器和 cheatsheet",
+      "Markdown 转 HTML",
+      "JSON 与 XML 互转",
+      "Base64 处理增强",
+      "邮箱规范化"
+    ],
+    "hook": "把开发杂活拆成一个个小工具",
+    "meaning": "这类能力适合被拆成更窄的单用途产品：同一套输入、处理和结果骨架，可以换成某个具体场景的专用工具站，而不用重做基础交互。对想做 Vibe Coding 工具的人来说，价值在于把解析、转换、预览和收藏这些通用能力复用到更窄的问题上。",
+    "opportunity": [
+      "正则测试和 cheatsheet 说明它已经具备“输入一段文本 → 立刻看匹配结果”的单点验证流程，适合拆成独立练习台。",
+      "Markdown to HTML、JSON/XML 互转和 Base64 处理说明它擅长处理不同文本结构，适合做面向接口和文档清洗的专用转换台。",
+      "自托管和收藏功能说明它不仅能服务个人临时使用，也能承载团队内部的统一入口和常用工具复用。"
+    ],
+    "stack": [
+      "Vue",
+      "TypeScript",
+      "Docker"
+    ],
+    "summary": "它把面向开发者和 IT 从业者的在线小工具放在同一个网页里，能做正则测试、Markdown 转 HTML、JSON/XML 互转、Base64 处理和邮箱规范化。用户直接输入文本或数据，就能得到可复制的结果，也可以用 Docker 自托管到自己的环境里。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "CorentinTh/it-tools",
+    "accent": "#a928c3",
+    "foreground": "#ffffff",
+    "motif": "wave",
+    "variant": 3961612012
+  }
+}

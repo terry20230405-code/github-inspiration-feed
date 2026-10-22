@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "qwen-audio-agent",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/qwen-audio-agent.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/qwen-audio-agent.research.md",
+  "projectSha256": "5bad8580f7bb8180b2d73eb392f2cf8a6f1ac9947e8bdc4357148700b502be00",
+  "researchSha256": "c6d1f4506627302d23aa56cf0f5f3b2909fbc57c2c24adaa369fee71ec691b28",
+  "reviewedAt": "2026-09-04T05:44:18Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "research.md 的 `Page field evidence` 表中，`repository.githubId`、`repository.fullName`、`repository.name`、`repository.stars`、`repository.forks`、`repository.language`、`repository.pushedAt`、`repository.license`、`editorial.summary`、`editorial.audience`、`editorial.features`、`editorial.stack` 都分别指向 F1/F12/F3-F13，且这些事实在 `Verified repository facts` 中已登记。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "`editorial.hook` 被标注为由 F3/F5/F6 推断，`editorial.meaning` 和 `editorial.opportunity` 被标注为由 F2/F5/F6/F7/F8/F10/F11/F14 推断；五个方向各自的 `Direction rationale` 也都写明了 reused capability 与 evidence。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "研究笔记的 `Snapshot` 与项目 JSON 的 `repository.fetchedAt` 同为 2026-09-04T05:24:48Z；官方 LICENSE 文件 S4 确认 Apache License 2.0，README 徽章不构成冲突。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook 是“让语音对话边聊边办事”，语序自然、动宾关系清楚，没有英文直译式堆叠。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 明确写出接入什么（实时语音前端、ACP 后端 Agent）、用户做什么（语音聊天、工具调用、追问进度、取消任务）、得到什么（结果回传和持续状态更新）。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary+features 覆盖了实时语音互动/自然打断、ACP 后端 Agent 接入、后台异步任务与取消、结果自动回到当前对话、WebUI/TUI/桌面浮窗、跨会话记忆等至少三个核心能力。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "`editorial.stack` 只保留了 JavaScript、Node.js、ACP、MCP、DashScope realtime voice frontend、speech-to-speech frontend 等能帮助理解复用边界的基础技术词。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只写“让语音对话边聊边办事”作为记忆点；summary 才展开实时语音前端、ACP 后端 Agent、后台任务和结果回传。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "summary 只描述原项目；`meaning` 用“前台不断线对话、后台持续执行、结果回到同一会话”解释复用价值，没有把新方向写进 summary。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "`meaning` 讲总体复用价值；`opportunity` 的五条分别从 F5/F6/F10/F11/F14 连接到桌面办事、车内控制、客服接力、巡检执行、直播口播的具体摩擦与新可能性。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "项目 `audience` 只写原项目用户；五个方向的 `audience` 各自写新产品用户；各方向 `scope` 都是支撑该流程的最小功能集合，没有混入路线图。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "`personal-voice-task-desk` 的 audience=“经常在桌面上边说边办事的个人用户和小团队”，problem=“语音交代完任务后，用户还得反复催进度、补充要求、等结果。”",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "`personal-voice-task-desk` 的 approach 写明“语音发起任务→后台 Agent 异步处理→持续回报进度→完成后结果带回当前会话”，scope 中也列出任务跟踪、结果回流和入口。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "`personal-voice-task-desk` 对照原项目 F5/F6/F7/F9：原项目是通用实时语音运行时与多入口，方向改成个人桌面办事台；至少 audience、workflow、outcome 三项实质变化。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "`personal-voice-task-desk` 的 scope 只有 6 项，且都直接支撑任务发起、状态跟踪、结果回流和入口，不含装饰性功能或路线图。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "10 组 pairwise comparison 已逐对核对；例如 `support-call-handoff` vs `livestream-prompt-assistant` 在 audience、input、workflow、outcome 四轴都不同，满足任意一对至少两项实质不同。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "`personal-voice-task-desk`、`support-call-handoff`、`livestream-prompt-assistant` 都直接说明分别给桌面办事、客服接力、直播口播减少了催进度/查单转接/不断线接话的麻烦。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "最终选入的三项里有 `personal-voice-task-desk`，明确服务个人和小团队；因此满足至少一个非商业/个人主题方向的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

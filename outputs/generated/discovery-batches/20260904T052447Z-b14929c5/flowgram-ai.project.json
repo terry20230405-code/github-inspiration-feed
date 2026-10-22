@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 2,
+  "id": "flowgram-ai",
+  "repository": {
+    "githubId": 933963452,
+    "fullName": "bytedance/flowgram.ai",
+    "name": "flowgram.ai",
+    "stars": 8419,
+    "forks": 768,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-01T04:02:40Z",
+    "license": "MIT License",
+    "state": "active",
+    "fetchedAt": "2026-09-04T06:10:11Z"
+  },
+  "editorial": {
+    "audience": "给要搭 AI workflow platform 的开发者和平台团队",
+    "directions": [
+      {
+        "approach": "开发者提供节点 schema、字段规则和联动关系，表单引擎负责渲染、校验、侧效应处理和错误捕获，最后得到统一的节点配置面板。",
+        "audience": "做 AI 工作流平台的前端和平台工程师",
+        "difference": "把整套框架缩成单个节点配置层，不再覆盖画布、变量和材料。",
+        "id": "node-config-panel-factory",
+        "name": "节点配置面板工厂",
+        "problem": "每新增一个节点，都要重复做配置表单、联动和校验。",
+        "scope": [
+          "schema 导入",
+          "字段渲染",
+          "校验与联动",
+          "错误提示",
+          "配置预览"
+        ],
+        "tagline": "用节点 schema 生成可校验的配置面板"
+      },
+      {
+        "approach": "用户在自由布局画布上放置节点并连接连线，画布能力负责节点摆放和关系表达，最后得到一张可分享的流程原型图。",
+        "audience": "方案设计师和解决方案架构师",
+        "difference": "只保留自由画布，把完整平台收缩成草图和原型工具。",
+        "id": "free-canvas-prototyper",
+        "name": "自由画布流程原型器",
+        "problem": "在正式开发前，团队很难快速把流程想法画成可讨论的图。",
+        "scope": [
+          "节点拖拽",
+          "自由连线",
+          "画布缩放平移",
+          "草图保存",
+          "基础节点库"
+        ],
+        "tagline": "在自由画布上拖节点、连流程"
+      },
+      {
+        "approach": "用户输入带分支和循环的步骤说明，固定布局画布把节点放到指定位置并组织复合结构，最后得到一张结构清楚的流程图。",
+        "audience": "业务分析师和流程管理员",
+        "difference": "只做结构化流程表达，不处理变量检查和配置面板。",
+        "id": "branch-loop-diagrammer",
+        "name": "分支循环编排器",
+        "problem": "分支和循环一多，普通流程图就会变得难读。",
+        "scope": [
+          "固定位置拖拽",
+          "分支节点",
+          "循环节点",
+          "连线组织",
+          "结构预览"
+        ],
+        "tagline": "把分支和循环排成一张清楚的流程图"
+      }
+    ],
+    "features": [
+      "自由布局画布，节点可任意摆放并用自由连线连接",
+      "固定布局画布，支持拖拽到指定位置和分支、循环等复合节点",
+      "节点配置表单引擎，负责 CRUD、渲染、校验、联动和错误捕获",
+      "变量引擎，支持作用域约束、变量结构检查和类型推断",
+      "可复用材料，包含 LLM、Condition、Code Editor 等节点"
+    ],
+    "hook": "给 AI 工作流平台搭好可拼装底座",
+    "meaning": "它把画布、表单、变量和材料拆成可复用基础件，适合嵌入新的工作流产品里。对新项目来说，最有价值的是直接复用编辑、校验和流程组织这几层，而不用从零重写。",
+    "opportunity": [
+      "用表单引擎做节点配置面板工厂，减少每个节点重复写表单和校验",
+      "用变量引擎做流程变量审查器，专门检查作用域和类型问题",
+      "用自由布局画布做流程原型器，帮助先把流程想法画出来",
+      "用固定布局画布做分支循环编排器，让复杂流程更容易看懂",
+      "把 ready-to-use materials 整理成独立材料库，供不同构建器复用"
+    ],
+    "stack": [
+      "TypeScript",
+      "workflow canvas",
+      "form engine",
+      "variable engine",
+      "ready-to-use materials"
+    ],
+    "summary": "FlowGram 是一个面向开发者的 TypeScript workflow 开发框架和工具包，内置自由布局画布、固定布局画布、节点配置表单、变量作用域链和可复用材料。它不是现成平台，而是让团队把这些能力组合起来，更快搭出自己的 AI workflow platform。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "bytedance/flowgram.ai",
+    "accent": "#8c7221",
+    "foreground": "#ffffff",
+    "motif": "polyline",
+    "variant": 1949116971
+  }
+}

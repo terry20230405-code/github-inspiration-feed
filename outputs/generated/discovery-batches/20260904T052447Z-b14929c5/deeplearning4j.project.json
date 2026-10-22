@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 2,
+  "id": "deeplearning4j",
+  "repository": {
+    "githubId": 14734876,
+    "fullName": "deeplearning4j/deeplearning4j",
+    "name": "deeplearning4j",
+    "stars": 14247,
+    "forks": 3825,
+    "language": "Java",
+    "pushedAt": "2026-09-04T05:35:30Z",
+    "license": "Apache License 2.0",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:56:09Z"
+  },
+  "editorial": {
+    "audience": "JVM 语言栈里的机器学习开发者、数据工程师和平台工程师",
+    "directions": [
+      {
+        "approach": "接收 HDFS、CSV、图片、视频、音频或 Excel 原始素材，按规则清洗、校验、切分并导出成训练集。",
+        "audience": "需要反复整理训练数据的数据工程师和标注运营",
+        "difference": "原项目把数据处理当作训练生态的一部分，这个方向把它单独做成数据整理产品。",
+        "id": "d-data-prep",
+        "name": "训练数据整理器",
+        "problem": "原始数据来源杂、格式多，训练前总要重复做清洗、切分和导出。",
+        "scope": [
+          "多源数据接入",
+          "字段与格式校验",
+          "清洗和转换规则",
+          "训练/验证切分",
+          "导出数据集"
+        ],
+        "tagline": "把 HDFS、CSV、图片和音视频整理成训练集"
+      },
+      {
+        "approach": "上传 h5 或 TensorFlow 冻结模型，先做兼容检查，再转换和打包成 JVM 项目可直接引用的模型产物。",
+        "audience": "要把旧模型迁到 JVM 技术栈里的迁移工程师",
+        "difference": "原项目只是支持导入模型继续使用，这个方向专门解决迁移、验证和打包。",
+        "id": "d-model-migration",
+        "name": "Keras 模型迁移器",
+        "problem": "已有的 Keras 或 TensorFlow 模型想迁到 JVM 项目里，但需要先确认能否直接复用。",
+        "scope": [
+          "h5 / .pb 上传",
+          "兼容性检查",
+          "模型转换",
+          "样本验证",
+          "迁移报告"
+        ],
+        "tagline": "把 h5 / frozen .pb 模型转成 JVM 可用包"
+      },
+      {
+        "approach": "给学习者一份 SameDiff 示例图和样本数据，让他们修改层、损失或参数，立刻看到前向和反向结果。",
+        "audience": "学习深度学习、想在 JVM 里动手实验的人",
+        "difference": "原项目是给开发者集成到应用里的库，这个方向把 SameDiff 做成练习和对比环境。",
+        "id": "d-learning-lab",
+        "name": "SameDiff 练习实验台",
+        "problem": "学习者需要一个能反复试错、马上看到梯度和损失变化的实验环境。",
+        "scope": [
+          "示例图加载",
+          "样本数据运行",
+          "层和损失编辑",
+          "前向/反向对比",
+          "结果导出"
+        ],
+        "tagline": "改一份 SameDiff 例子，看到前向和反向结果"
+      }
+    ],
+    "features": [
+      "读取和预处理多种数据格式，包括 HDFS、Spark、图片、视频、音频、CSV 和 Excel",
+      "用 DL4J 构建 MultiLayerNetwork 和 ComputationGraph，并支持自定义层",
+      "导入 Keras 的 h5 模型",
+      "导入 TensorFlow frozen .pb 模型",
+      "ND4J 提供 500 多个数学、线性代数和深度学习运算，并支持 CPU / GPU 加速",
+      "SameDiff 提供自动微分、图式执行，并支持自定义层和损失函数"
+    ],
+    "hook": "让 JVM 项目直接做深度学习训练和推理",
+    "meaning": "它把数据管道、数值运算、模型导入和自动微分拆成能单独复用的模块，适合再拼成训练、迁移、推理或实验类产品。对已经在 JVM 里维护业务系统的团队来说，这种分层比换一套语言栈更容易嵌入现有流程。",
+    "opportunity": [
+      "DataVec 已经能接多种数据格式，如果新产品只想解决训练前整理原始素材的重复工作，就可以围绕清洗、切分和导出做成独立工具。",
+      "DL4J 已经支持 Keras h5 和 TensorFlow frozen .pb 导入，如果团队手里有旧模型文件，就能把“能不能迁进 JVM”做成单独的迁移检查与打包产品。",
+      "ND4J 提供 JVM 里的数值和线性代数运算，如果目标是现有后端直接返回预测结果，就可以把它收束成在线推理产品。",
+      "SameDiff 已经支持图式自动微分和自定义层，如果目标是反复试验网络结构，就可以做成学习或研究型实验台。"
+    ],
+    "stack": [
+      "Java",
+      "JVM",
+      "ND4J",
+      "DataVec",
+      "SameDiff",
+      "Apache Spark",
+      "C++",
+      "CUDA"
+    ],
+    "summary": "它面向 JVM 项目，把原始数据接入、预处理、网络搭建、Keras h5 导入和 TensorFlow frozen .pb 导入放在同一套工具里。最后可在 Java、Scala、Kotlin、Clojure 等 JVM 语言中，得到可训练、可运行的深度学习模型和结果。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "deeplearning4j/deeplearning4j",
+    "accent": "#278721",
+    "foreground": "#ffffff",
+    "motif": "orbit",
+    "variant": 3078679989
+  }
+}

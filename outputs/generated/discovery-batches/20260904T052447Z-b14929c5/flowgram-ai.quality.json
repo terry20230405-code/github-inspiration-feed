@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "flowgram-ai",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/flowgram-ai.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/flowgram-ai.research.md",
+  "projectSha256": "ea3f86452c68076287ddcadc8c6d7c487d678b2ccc79c886f22fe8945b809b2a",
+  "researchSha256": "4f1e8ec15c9443584575e0c488b7adf271b79a6f09c3ee8a70f200b6489d91ea",
+  "reviewedAt": "2026-09-04T06:30:02Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state 分别对应 F1-F8；editorial.summary/audience/features/stack 都能在 F9-F13 找到支撑。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "editorial.hook、meaning、opportunity 都是基于 F9-F13 的推断；五个 directions 的 rationale 也都明确引用了 F10-F13，而不是把推断和原项目功能混在一起。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "F7 与 S4 都指向 MIT License，F8 说明仓库 active 且未归档/未 fork；没有与 README 或官方许可证文件相冲突的证据。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook“给 AI 工作流平台搭好可拼装底座”是自然中文：‘搭好’直接带宾语‘底座’，‘可拼装’也自然修饰‘底座’，没有英文直译式名词堆叠。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 明确写了输入/能力/结果：面向开发者的 TypeScript workflow 框架和工具包，内置自由布局画布、固定布局画布、节点配置表单、变量作用域链和可复用材料，并帮助团队组合这些能力搭出自己的 AI workflow platform。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary+features 至少覆盖四个核心能力：画布（自由/固定）、节点配置表单引擎、变量引擎、可复用 materials；不是只讲单一工具。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "TypeScript、workflow canvas、form engine、variable engine、ready-to-use materials 都保留了，而且在 summary/features/stack 中说明了各自产品作用，不是无意义的底层术语堆砌。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只建立记忆点，没有列功能清单；summary 才展开输入、能力和结果，两者分工清楚。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "meaning 只解释画布/表单/变量/材料为何适合复用，并没有把新方向写成现成能力。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "opportunity 的每条都把已验证能力连接到具体新产品：F12→节点配置面板，F12→变量审查器，F11→自由画布原型器/分支循环编排器，F10→材料库编辑台。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "project.audience 是原项目用户；各 direction.audience 只是新的目标用户群；各 direction.scope 都只列 3-6 个支撑该流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "入选方向都写出了具体用户和重复场景：node-config-panel-factory 的前端/平台工程师在“每新增一个节点”时重复做配置；free-canvas-prototyper 的方案设计师/架构师要在正式开发前反复画草图；branch-loop-diagrammer 的业务分析师/流程管理员要把分支和循环画得一眼能懂。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "入选方向都写明了输入、核心步骤和结果：schema→渲染/校验→配置面板；空白画布和节点→拖拽连线→原型图；步骤说明→固定排版/复合节点→结构清楚的流程图。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "入选三项都复用了 F10-F13 的已验证能力，但用户、输入、工作流和可见结果都相对 F9-F13 的原始“搭建 AI workflow framework/toolkit”发生了实质变化。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "三个入选方向的 scope 都是 3-6 项且闭合：node-config-panel-factory、free-canvas-prototyper、branch-loop-diagrammer 的 scope 分别足以完成各自流程，没有混入路线图或装饰性功能。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "入选三方向的两两组合都至少有三项差异：node-config vs free-canvas、node-config vs branch-loop、free-canvas vs branch-loop 在 audience/input/workflow/outcome 上都不同，不是仅换文件类型或界面。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "每个入选方向都有具体价值：node-config-panel-factory 减少每个节点重复写表单和校验；free-canvas-prototyper 让团队先把想法画成可讨论的图；branch-loop-diagrammer 让复杂分支/循环流程更容易看懂。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "selectedDirectionIds 包含 free-canvas-prototyper；它主要服务“把流程想法画成可讨论的图”的创意/原型工作，满足至少一个非纯商业用途的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

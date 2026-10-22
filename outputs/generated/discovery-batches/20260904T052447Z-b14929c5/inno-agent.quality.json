@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "inno-agent",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/inno-agent.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/inno-agent.research.md",
+  "projectSha256": "37113b0edc67426c9b0209cd761392ef5eef5796967b3ba24c12a02907c133e5",
+  "researchSha256": "2f6f3d4c718c6c821c1162c8c7143bba4f27b562faeb408b45338a385748e09a",
+  "reviewedAt": "2026-09-04T05:57:43Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "研究笔记 `Page field evidence` 表逐项给出 `repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state` 与 `editorial.summary/audience/features/stack` 的事实映射；例如 `repository.githubId -> F1`、`repository.pushedAt -> F2`、`repository.license -> F3`、`editorial.features -> F5, F7, F9`。来源登记在 `Sources` 的 S1-S4。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "研究笔记 `Page field evidence` 已把 `editorial.hook` 标为依据 `F4, F5, F6, F7` 的 inferred，`meaning` 依据 `F4, F5, F7, F8`，`opportunity` 依据 `F5, F7, F8, F9`；五个方向分别在 `Direction rationale` 的 D1-D5 段写出 `Reused capability`、`Evidence` 和 `Original workflow/New workflow`，把推断与原项目事实分开。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "研究笔记 `Snapshot` 与项目 `repository` 的 `githubId/fullName/stars/forks/pushedAt/license/state/fetchedAt` 一致；许可证在 `Snapshot`、`repository.license` 与事实 `F3` 中都为 `MIT License`，且 `Snapshot note` 明确说明 Star/Fork/push 是抓取值而非实时值。未发现与 S1-S4 冲突的字段。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "`editorial.hook` 为“把日常学习交给会记忆的陪练”。记忆点来自研究笔记 `F4` 的 personal learning agent 与 `F5` 的分层记忆；句子里“把…交给…”、“会记忆的陪练”搭配自然，没有评价词堆砌，也不是英文结构直译。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "`editorial.summary` 交代了连接对象“接入大模型提供商、个人 IM 和本地工作区”，核心动作“把学习任务、提醒、笔记与练习串成连续的对话工作流”，以及结果“输出可回放的聊天、终端和练习记录”；对应事实见 F4-F7、F9。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "`editorial.summary` 与 `editorial.features` 共同覆盖至少六项核心能力，其中可验证的至少有：三层记忆（`features[0]` / F5）、自然语言 scheduler（`features[1]` / F4,F7）、Feishu/WeChat IM（`features[2]` / F7）、Practice Lab 运行记录（`features[3]` / F7）、多端形态（`features[4]` / F6）、会话回放与时间线（`features[5]` / F7,F9）。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "页面只保留会影响产品理解或复用判断的基础技术词：`summary` 中的 `L1/L2/L3` 直接对应 F5 的记忆层；`stack` 中的 `Electron`、`React 19`、`SSE`、`WebSocket`、`SQLite`、`Pi SDK` 对应 F4-F7，能帮助判断它有桌面端、Web UI、流式后端、终端和本地存储，不是无关底层细节。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "`editorial.hook` 只保留一个记忆点“会记忆的陪练”；`editorial.summary` 才展开输入连接、工作流和输出，没有重复 hook 原句，也未把 features 清单塞进 hook。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "`editorial.summary` 只描述原仓库能力；`editorial.meaning` 使用“这样的结构很适合被拆成更窄的产品，例如……”解释复用价值，没有把错题复盘、讲义整理等新方向写成已存在功能。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "`editorial.meaning` 先概括总体价值为“可写入、可追踪、可回放的状态层”；`editorial.opportunity` 再逐条把能力连到具体方向，如“L2 wiki 的文件摄取与混合检索，适合把讲义、课件和参考资料整理成课程知识页”“scheduler 加上 Feishu / WeChat 通道，天然适合做按节奏推送的复习提醒和跟进”。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "`editorial.audience` 只写原项目用户“单人学习者”；各 `directions[*].audience` 分别写新产品用户。且入选方向的 `approach` 都是完整流程，如 `directions[0].approach` 的“更新 L1/L2→排复习节点→推送提醒→安排再练”，而 `scope` 只列支撑流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "入选方向 `wrong-review-coach`、`handout-knowledge-organizer`、`learning-replay-station` 都写了具体用户和重复问题：分别是“备考或自学时总在同一类题上反复失手的人”“课程助教、家教和知识型创作者”“家长、导师或班主任”，对应问题见各自 `problem` 字段。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "三条入选方向都可演示完整流程：`wrong-review-coach.approach` 写明错题输入、L1/L2 更新、排程、提醒、再练、清单输出；`handout-knowledge-organizer.approach` 写明资料进入 L2 wiki、切主题页、形成问答入口；`learning-replay-station.approach` 写明导出记录、时间线重放、审阅过程。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "入选方向的 D3 审核全部通过：`wrong-review-coach` 经核实改变了 input/workflow/outcome；`handout-knowledge-organizer` 改变了 audience/input/workflow/outcome；`learning-replay-station` 改变了 audience/input/workflow/outcome。相反，未入选的 `practice-lab-trainer` 与 `review-reminder-manager` 主要是把 F7/F4 已有能力单独包装，因此被剔除。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "入选三条方向的 `scope` 都是 5 项、且都直接支撑各自流程，没有路线图或装饰项：错题复盘围绕导入/打标签/排程/提醒/再练；讲义整理围绕导入/生成知识页/引用摘要/问答/更新；学习回放围绕导出/时间线回放/产物预览/画像变化/分享。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "入选组合的三组两两比较都通过：`wrong-review-coach` vs `handout-knowledge-organizer` 在 audience/input/workflow/outcome 四轴都不同；`wrong-review-coach` vs `learning-replay-station` 在 audience/input/workflow/outcome 四轴都不同；`handout-knowledge-organizer` vs `learning-replay-station` 在 audience/input/workflow/outcome 四轴都不同。详见对应 pair audits。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "入选三条方向都写了具体价值而非空泛效率：`wrong-review-coach.problem` 解决“几天后就很难继续复盘”；`handout-knowledge-organizer.problem` 解决“PDF、PPT 和图片讲义分散，学生问答会反复重复”；`learning-replay-station.problem` 解决“只看到结果，不知道学习过程里卡在哪里”。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "最终入选的三条方向都主要服务于学习、教学与家庭/导师审阅场景，不是营销、销售或赚钱流程；因此满足“默认保留非商业价值”。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

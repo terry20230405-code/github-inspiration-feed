@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "tagstudio",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tagstudio.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tagstudio.research.md",
+  "projectSha256": "b413fd664c61d75519ede4c4e874537e9b24a3b51dfaf62b274cf536a7353630",
+  "researchSha256": "c8d4a44ea7fb405c5a406debcee5bb76bdbe7aaf8d0519c33131ba19b213d2d4",
+  "reviewedAt": "2026-09-04T06:27:37Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "research notes 的 Page field evidence 表把 repository.githubId/fullName/name 对应到 F1，stars/forks/pushedAt 对应到 F2，language 对应到 F3，state 对应到 F4，license 对应到 F5；editorial.summary 对应到 F6-F11，editorial.features 对应到 F7-F11，editorial.stack 对应到 F3/F7/F13。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "Page field evidence 明确把 editorial.hook、editorial.meaning、editorial.opportunity 和 audience 标为 inferred，并用 F6-F13 作为依据；Direction rationale 也逐条把每个方向的 audience/input/workflow/outcome 绑定到 F6-F13，没有把推断写成原始事实。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "project.repository.license 写的是 GNU GPL v3.0，research 的 F5 由 S4 官方 LICENSE 文件和 S1 元数据共同确认同一许可证；没有 README 徽章与官方文件冲突的证据。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook 是“让照片和文件夹变成可回头找的标签库”，动词“变成”带宾语“标签库”自然，修饰语“可回头找的”也直接修饰“标签库”，没有英文直译或生造名词堆叠。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 交代了输入“你现有的照片和文件夹”、核心操作“开成一个本地资料库 / 给文件加标签、别名、父标签和字段 / 按标签、路径、filetype、mediatype 搜索 / 预览…并找回移动后的条目”，以及可见结果“本地资料库”。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary 和 features 共同覆盖了至少三个已验证能力：建 library（F7）、标签/字段建模（F9/F10）、组合搜索（F11）、多媒体预览/播放（F8/F13）、未链接条目处理（F11）。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "summary 保留了 SQLite、filetype、mediatype、sidecar 文件、预览、移动后的条目等基础词，但都直接关系到产品怎么用、怎么复用，不是无助理解的底层细节堆砌。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只负责记忆点“让照片和文件夹变成可回头找的标签库”，没有列功能；summary 才展开 library、SQLite、标签、搜索、预览和找回条目，二者分工清楚。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "summary 只描述 TagStudio 本身的能力；meaning 只解释“文件放在原地 + 元数据可重组”这一复用价值，没有把 d1-d5 这类新方向写进现有产品定义。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "opportunity 的四条都按“已验证能力/限制 → 具体摩擦 → 新产品可能性”展开，例如 library 叠在现有目录上 → 适合不搬家的本地资料库；标签别名/父标签 → 适合稳定词表；字段+搜索 → 轻量档案卡；预览/播放 → 离线素材柜。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "project.editorial.audience 仍是“需要在不搬动原文件的前提下，给照片和各类文件做标签、字段和检索的人”；五个 directions 的 audience 都改成了更具体的新用户群，scope 也都只列支撑新流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "d1 明确写了“经常整理旅行照片和家庭影集的人”以及“照片散在原文件夹里，想回看某次旅行时很难按地点、人物和日期翻出来”，场景具体且重复发生。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "d1 的 approach 写明输入是旅行照片目录，过程是补地点/人物/日期并按标签和路径回看，结果是可回看的旅行相册；流程可直接演示。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "d1 复用 F6-F11 的 library/标签/字段/搜索/预览能力，但把原项目的通用文件管理改成“旅行照片目录→旅行相册回看”；与原项目相比，audience、input、workflow、outcome 至少四项变化。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "d1 的 scope 只有导入目录、添加标签与日期、按标签/路径/filetype 搜索、预览图片、处理移动后的条目 5 项，足以闭合“建库→整理→回看”这条流程，没有混入云同步、成片或社交分享。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "选中的 d1、d2、d4 两两比较时，至少都能验证 input、workflow、outcome 三项以上差异：旅行照片回看 vs 设计资产整理 vs 音视频预览/播放，没有只是换文件类型的皮相改动。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "d1 直接减少“旅行照片散在原文件夹里翻不出来”的麻烦，d2 解决“记得内容但记不住文件名”的创作素材查找，d4 让媒体素材不用靠文件名盲找，三者都给具体用户带来明确价值。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "最终选入的 d1 主要服务个人旅行与家庭影集整理，属于非商业/个人场景；因此三方向集合满足至少保留一个个人用途方向的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

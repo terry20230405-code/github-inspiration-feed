@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "deeplearning4j",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/deeplearning4j.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/deeplearning4j.research.md",
+  "projectSha256": "cf9eaefebaa38ca6ed2cc9eadb6f4098c487bf3f04c92f0bc412f872cee7689d",
+  "researchSha256": "ffdadec35b9bb0b059943f1629900f1385dc6b33637649c78d9a0fb8a2b96f03",
+  "reviewedAt": "2026-09-04T06:17:54Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state 全部与研究笔记 Snapshot 和 Verified repository facts 对应：F1-F4 覆盖仓库身份、数量、语言、时间、许可证和状态；editorial.summary/audience/features/stack 都在 Page field evidence 中逐项指向 F5-F12。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "editorial.hook、meaning、opportunity 和 5 个 directions 都引用了 F5-F12 的已验证能力；例如 hook 只概括“JVM 项目的深度学习训练和推理”，meaning 解释可拆分复用模块，opportunity 再把这些能力转成数据整理、迁移、推理、实验四种新方向。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "研究笔记的 repository.license='Apache License 2.0' 与官方 LICENSE 文件 F4 一致；repository.state='active'、default branch=master、latest release 标为未知，未与来源形成冲突，也没有把未验证内容写成确定事实。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook='让 JVM 项目直接做深度学习训练和推理'，中文里“让...直接做...”和“训练和推理”搭配自然，动宾关系清楚，没有抽象堆词或英式直译痕迹。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 写明输入是“原始数据接入、预处理、网络搭建、Keras h5 导入和 TensorFlow frozen .pb 导入”，过程是这些能力放在同一套工具里，结果是“得到可训练、可运行的深度学习模型和结果”。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary 和 features 共同覆盖至少三项核心能力：数据处理(F10)、网络构建与训练(F7)、模型导入(F11)、数值运算(F8)、自动微分(F9)。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "summary 保留了 DataVec、ND4J、SameDiff、Spark、Keras h5、TensorFlow frozen .pb 等基础技术词，因为它们直接决定产品能力和复用边界；没有把这些能力粗暴改写成失真的大白话。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只负责记忆点“让 JVM 项目直接做深度学习训练和推理”，没有列出功能清单；summary 才展开原项目的输入、处理和结果，因此两者分工清楚。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "summary 仍在描述原项目的能力组合，而 meaning 解释“数据管道、数值运算、模型导入和自动微分拆成能单独复用的模块”为什么值得复用，没有把新方向写进 summary。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "meaning 给出总体复用价值；opportunity 逐条把已验证能力(F10/F11/F7/F8/F9)连接到具体摩擦和新产品可能性，分别是数据整理、模型迁移、在线推理和学习实验，没有只写“可以加 AI”。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "project.editorial.audience 只写原项目用户“JVM 语言栈里的机器学习开发者、数据工程师和平台工程师”；五个 direction.audience 分别写新产品用户。各 direction.approach 都是完整流程，scope 也只列支撑该流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "d-jvm-inference 的 audience 是“要在现有 JVM 后端里直接提供预测能力的工程师”，problem 说明线上服务已在 JVM 里但预测逻辑绕到另一套模型服务；这是具体用户和重复场景。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "d-jvm-inference 的 approach 明确“接入模型和请求，返回 JVM 服务里的预测结果”，scope 包含导入模型、特征映射、推理接口、结果格式化、健康检查；用户输入、核心步骤和可见结果都写全。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "d-jvm-inference 复用 F7/F8/F11 的推理与模型导入能力，但原项目面向训练生态，方向面向线上请求；对比中用户、输入、workflow、outcome 都变化，且不是仅换界面或包装已有 API。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "d-jvm-inference 的 scope 只有导入/挂载模型、特征映射、推理、结果格式化、健康检查，足以闭合“接入请求→返回预测”的第一版流程，没有混入训练编排或 ETL 路线图。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "5 个方向的两两组合都被独立核对，且每一对至少有两项实质不同；例如 d-data-prep vs d-model-migration 是不同输入/流程/输出，d-spark-training vs d-learning-lab 则是不同用户/输入/流程/输出，不是换文件类型或换界面。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "每个方向都给出具体价值：推理盒减少后端双栈集成，训练数据整理器减少重复清洗切分，迁移器减少旧模型能否复用的不确定性，Spark 面板减少集群训练提交和监控负担，练习实验台让学习者即时看到前后向变化。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "最终候选三项中包含 d-learning-lab，主要服务学习者而不是商业流程，因此满足“至少一个主要服务于个人/学习/社区”的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

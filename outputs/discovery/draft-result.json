@@ -1,152 +1,112 @@
 {
-  "status": "awaiting-approval",
-  "batchId": "20260901T150054Z-44a78a5d",
-  "batchPath": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d",
-  "candidateCount": 1,
-  "rejectedCount": 4,
+  "status": "partial-failure",
+  "batchId": "20260904T052447Z-b14929c5",
+  "batchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5",
+  "candidateCount": 8,
+  "rejectedCount": 3,
   "rejected": [
     {
-      "fullName": "Pinvou/pinvou-agent",
-      "stage": "首轮修复无实质进展",
-      "reason": "首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3",
+      "fullName": "0xsline/OpenChatCut",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：B1",
       "failedChecks": [
         {
-          "id": "D3",
-          "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
+          "id": "B1",
+          "evidence": "`editorial.hook` = \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined abstraction and the compressed verb-object relation is not natural Chinese."
         }
       ],
-      "structuralErrors": [],
-      "blockers": [],
+      "structuralErrors": [
+        "fact F11 cites an unavailable source",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "editorial.summary should contain 60-180 characters",
+        "page field evidence is missing `editorial.opportunity`",
+        "fact F11 cites an unavailable source",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "editorial.summary should contain 60-180 characters",
+        "page field evidence is missing `editorial.opportunity`"
+      ],
+      "blockers": [
+        "B1: `editorial.hook` uses the unnatural phrase \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined noun stack and the verb-object pairing is not natural Chinese."
+      ],
       "repairHistory": [
         {
           "round": 0,
           "label": "初次检查",
           "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
           "changedPaths": [],
-          "failedChecks": [
-            {
-              "id": "D3",
-              "evidence": "`受控代码协作桌面` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。"
-            }
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "subtitle-localizer"
           ],
-          "failedDirectionAudits": [
-            {
-              "changedAxes": [
-                "audience"
-              ],
-              "directionId": "受控代码协作桌面",
-              "evidence": "F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。",
-              "status": "fail"
-            }
-          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
           "structuralErrors": [
-            "editorial.directions[0].id must be a lowercase kebab-case slug",
-            "editorial.directions[1].id must be a lowercase kebab-case slug",
-            "editorial.directions[2].id must be a lowercase kebab-case slug"
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
           ],
-          "blockers": [
-            "D3: `受控代码协作桌面` 与原项目的 code mode 在 audience、input、workflow、outcome 上都不成立为实质新增；研究笔记 F14 已经写明可在真实项目或临时工作区里用 ACP 读写代码、运行命令，并显示 plan/tool steps/permission requests/file changes，方向只是收窄命名。"
-          ]
+          "blockers": []
         },
         {
           "round": 1,
           "label": "第 1 轮修复后复检",
-          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
           "changedPaths": [
-            "editorial.directions",
-            "editorial.opportunity",
+            "editorial.meaning",
+            "editorial.summary",
             "decisionReason",
             "fieldEvidence",
-            "directionRationales",
             "directionComparisons"
           ],
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "subtitle-localizer"
+          ],
           "failedChecks": [
             {
-              "id": "D3",
-              "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
-            }
-          ],
-          "failedDirectionAudits": [
-            {
-              "changedAxes": [
-                "audience",
-                "input"
-              ],
-              "directionId": "hai-bao-gai-gao-tai",
-              "evidence": "F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。",
-              "status": "fail"
-            }
-          ],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [],
-          "blockers": []
-        }
-      ]
-    },
-    {
-      "fullName": "apache/superset",
-      "stage": "A3 程序校验",
-      "reason": "GitHub 客观数据未能与本轮快照完全对应",
-      "failedChecks": [
-        {
-          "id": "A3",
-          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
-        }
-      ],
-      "structuralErrors": [
-        "repository.pushedAt must not be later than repository.fetchedAt"
-      ],
-      "blockers": [],
-      "repairHistory": []
-    },
-    {
-      "fullName": "tldraw/tldraw",
-      "stage": "两轮自动修复后质量复检",
-      "reason": "两轮修复后仍未通过：A4",
-      "failedChecks": [
-        {
-          "id": "A4",
-          "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
-        }
-      ],
-      "structuralErrors": [],
-      "blockers": [
-        "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
-      ],
-      "repairHistory": [
-        {
-          "round": 0,
-          "label": "初次检查",
-          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
-          "changedPaths": [],
-          "failedChecks": [
-            {
-              "id": "A4",
-              "evidence": "research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。"
+              "id": "A1",
+              "evidence": "`editorial.summary` 写入了“Codex、Claude Code”，但研究笔记只在 `F4`/`F5`/`F6`/`F8` 中验证了 built-in agent、外部 MCP agents、真实时间线、转写驱动编辑和导出，没有任何 fact ID 支持这两个具体工具名。"
             },
             {
-              "id": "E3",
-              "evidence": "所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。"
+              "id": "A4",
+              "evidence": "`repository.license` 填的是“GNU Affero General Public License v3.0”，但研究 `F9` 和官方 LICENSE 文件明确是“GNU Affero General Public License v3.0 or later”；同时 `editorial.summary` 额外声称 Codex/Claude Code，超出已验证来源。"
             }
           ],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
-          "structuralErrors": [],
+          "structuralErrors": [
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
           "blockers": [
-            "A4：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解；修改字段：repository.license / editorial.summary；修复结果：需先澄清或补足许可事实后再发。",
-            "E3：三条方向的 audience 都是团队/内部工具/运营配置人（产品、设计和评审团队；内容团队和内部工具团队；运营、产品和自动化配置人员），没有一个主要服务于个人、家庭、学习、创作或社区；修改字段：至少一个 direction.audience / difference / approach；修复结果：补一条非商业或创作/学习取向方向。"
+            "A1: `editorial.summary` 写了“Codex、Claude Code”，但研究笔记只验证了 `F4`/`F5`/`F6`/`F8` 关于 built-in agent、MCP、时间线、转写和导出，没有任何 fact ID 支持这两个具体工具名。",
+            "A4: `repository.license` 填的是“GNU Affero General Public License v3.0”，而研究 `F9` / 官方 LICENSE 文件明确是“GNU Affero General Public License v3.0 or later”，字段与一手来源不一致。"
           ]
         },
         {
-          "round": 1,
-          "label": "第 1 轮修复后复检",
-          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
           "changedPaths": [
+            "editorial.audience",
             "editorial.directions",
+            "editorial.features",
+            "editorial.hook",
+            "editorial.meaning",
             "editorial.opportunity",
             "editorial.summary",
             "decisionReason",
+            "facts",
             "fieldEvidence",
             "inferences",
             "directionRationales",
@@ -154,398 +114,1535 @@
             "uncertainty",
             "localizationDecisions"
           ],
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "memory-video-album"
+          ],
+          "failedChecks": [
+            {
+              "id": "B1",
+              "evidence": "`editorial.hook` = \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined abstraction and the compressed verb-object relation is not natural Chinese."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F11 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "editorial.summary should contain 60-180 characters",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F11 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "editorial.summary should contain 60-180 characters",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": [
+            "B1: `editorial.hook` uses the unnatural phrase \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined noun stack and the verb-object pairing is not natural Chinese."
+          ]
+        }
+      ]
+    },
+    {
+      "fullName": "apache/echarts",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：fieldEvidence must contain every required field exactly once and in order; page field evidence is missing `editorial.opportunity`; fieldEvidence must contain every required field exactly once and in order",
+      "failedChecks": [],
+      "structuralErrors": [
+        "fieldEvidence must contain every required field exactly once and in order",
+        "page field evidence is missing `editorial.opportunity`",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "page field evidence is missing `editorial.opportunity`"
+      ],
+      "blockers": [],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "reading-habit-recap",
+            "data-story-card-editor"
+          ],
           "failedChecks": [],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
           "structuralErrors": [
-            "direction comparisons must contain every unique direction pair exactly once and in order",
-            "quality items must contain A1-E3 exactly once and in order",
-            "direction pair audits must contain every unique project direction pair exactly once and in order"
+            "fact F12 cites an unavailable source",
+            "direction family-finance-checkup cites an unknown fact",
+            "direction class-score-briefing cites an unknown fact",
+            "direction reading-habit-recap cites an unknown fact",
+            "direction community-shift-heatboard cites an unknown fact",
+            "direction data-story-card-editor cites an unknown fact",
+            "fact F12 cites an unavailable source",
+            "direction family-finance-checkup cites an unknown fact",
+            "direction reading-habit-recap cites an unknown fact",
+            "direction data-story-card-editor cites an unknown fact"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
+          "changedPaths": [
+            "editorial.meaning",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "class-score-briefing",
+            "data-story-card-editor"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`"
           ],
           "blockers": []
         },
         {
           "round": 2,
           "label": "第 2 轮修复后复检",
-          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
           "changedPaths": [
             "decisionReason",
-            "directionComparisons"
+            "facts",
+            "fieldEvidence",
+            "directionRationales"
           ],
-          "failedChecks": [
-            {
-              "id": "A4",
-              "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
-            }
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "reading-habit-recap",
+            "community-shift-heatboard"
           ],
+          "failedChecks": [],
           "failedDirectionAudits": [],
           "failedDirectionPairAudits": [],
-          "structuralErrors": [],
-          "blockers": [
-            "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
-          ]
+          "structuralErrors": [
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
         }
       ]
     },
     {
-      "fullName": "labring/FastGPT",
-      "stage": "A3 程序校验",
-      "reason": "GitHub 客观数据未能与本轮快照完全对应",
+      "fullName": "f/prompts.chat",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：A1, A4",
       "failedChecks": [
         {
-          "id": "A3",
-          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
+          "id": "A1",
+          "evidence": "失败。研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，但项目 JSON `repository.license` 实际写成 `This project uses a dual-license model:`，字段值与可追溯主张不一致。且 `editorial.stack` 写入 `Next.js`、`TypeScript`、`PostgreSQL`，但研究笔记只给出 `F3, F9, F10`，其中 `F9`、`F10`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。"
+        },
+        {
+          "id": "A4",
+          "evidence": "失败。项目 JSON `repository.license` 为 `This project uses a dual-license model:`，而研究笔记 `F11` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，`Page field evidence` 也计划写成 `MIT / CC0 1.0 Universal 双许可`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，`I3` 已注明 GitHub 检测值 `Other / NOASSERTION` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。"
         }
       ],
       "structuralErrors": [
-        "fieldEvidence must contain every required field exactly once and in order",
-        "repository.pushedAt must not be later than repository.fetchedAt",
-        "page field evidence is missing `editorial.meaning`"
+        "fact F13 cites an unavailable source",
+        "fact F13 cites an unavailable source"
       ],
-      "blockers": [],
-      "repairHistory": []
+      "blockers": [
+        "A4：许可证存在实质矛盾。`project.repository.license` 写成 `This project uses a dual-license model:`，但研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，且 `F11` 明确写明“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”。许可证属于必须暂停项。"
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "classroom-prompt-workbench"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.features",
+            "editorial.meaning",
+            "editorial.summary",
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "inferences",
+            "directionRationales",
+            "directionComparisons",
+            "uncertainty",
+            "localizationDecisions"
+          ],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "classroom-prompt-workbench"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F13 cites an unavailable source",
+            "fact F13 cites an unavailable source"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
+          "changedPaths": [
+            "editorial.hook",
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "directionComparisons",
+            "uncertainty"
+          ],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "kids-ai-adventure"
+          ],
+          "failedChecks": [
+            {
+              "id": "A1",
+              "evidence": "失败。研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，但项目 JSON `repository.license` 实际写成 `This project uses a dual-license model:`，字段值与可追溯主张不一致。且 `editorial.stack` 写入 `Next.js`、`TypeScript`、`PostgreSQL`，但研究笔记只给出 `F3, F9, F10`，其中 `F9`、`F10`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。"
+            },
+            {
+              "id": "A4",
+              "evidence": "失败。项目 JSON `repository.license` 为 `This project uses a dual-license model:`，而研究笔记 `F11` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，`Page field evidence` 也计划写成 `MIT / CC0 1.0 Universal 双许可`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，`I3` 已注明 GitHub 检测值 `Other / NOASSERTION` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。"
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F13 cites an unavailable source",
+            "fact F13 cites an unavailable source"
+          ],
+          "blockers": [
+            "A4：许可证存在实质矛盾。`project.repository.license` 写成 `This project uses a dual-license model:`，但研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，且 `F11` 明确写明“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”。许可证属于必须暂停项。"
+          ]
+        }
+      ]
     }
   ],
-  "batchFingerprint": "cd065eac51842fa4887592722eb0519a9ee500204951be6cadcd264f5b0987ea",
+  "errorCount": 1,
+  "errors": [
+    {
+      "fullName": "Pinvou/pinvou-agent",
+      "stage": "第 1 轮定向修复",
+      "reason": "AI provider request failed (RemoteDisconnected): Remote end closed connection without response",
+      "fatal": false,
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "research-delivery-workbench",
+            "visual-asset-editor",
+            "personal-knowledge-vault"
+          ],
+          "failedChecks": [
+            {
+              "id": "A2",
+              "evidence": "Fail. The research note separates `Verified repository facts` from `Product inferences`, but several inference links are not supported by the cited facts. In `## Direction rationale`, D2 cites `Evidence: F4, F7` for a design-mode direction even though direct visual generation/editing is verified in F5, not F4/F7; D5 cites `Evidence: F5, F7` for enterprise connectors even though connectors/OAuth-SSO are verified in F8, not F5/F7. Also `editorial.meaning` has no direct row in `Page field evidence`; it is only loosely implied by I1/I2."
+            },
+            {
+              "id": "A4",
+              "evidence": "Fail. The project JSON introduces unverified specifics instead of preserving uncertainty. `editorial.directions[4].approach` names exact systems — `Feishu, DingTalk, WeCom, 会议和知识库` — but the verified facts only record generic `统一工具仓和 OAuth/SSO connectors` in F8; the research note does not register those exact product names as facts. That should have been marked unknown or grounded with a fact ID, not asserted as settled capability detail."
+            },
+            {
+              "id": "D3",
+              "evidence": "Fail for the selected final set. All three selected directions are mostly existing modes or feature subsets extracted from the repo rather than materially new products. `research-delivery-workbench` repeats F4+F7 work-mode document flow; `visual-asset-editor` repeats F5 design-mode flow; `personal-knowledge-vault` repeats F8 knowledge-base flow. Their direction audits fail because each has only one verified changed axis (`audience`)."
+            }
+          ],
+          "failedDirectionAudits": [
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "research-delivery-workbench",
+              "evidence": "Fail. Compared with the original repository, this direction mostly repackages existing Work-mode capability. Research note F4 already says the repo uses attachments, personal knowledge, Skills, MCP tools and workflows for research/writing and delivers reusable files; F7 already says it has an artifact panel and editable Markdown artifacts. The project direction `research-delivery-workbench.approach` repeats that same input→process→result path, so only the target audience becomes narrower.",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "visual-asset-editor",
+              "evidence": "Fail. Research note F5 already states the original Design mode turns natural-language prompts into posters and data visualizations and lets users directly edit elements, copy, fonts, colors, size and layout. The project direction `visual-asset-editor.approach` is effectively the same workflow and outcome, so the only verified change is a narrower audience.",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "code-project-co-pilot",
+              "evidence": "Fail. Research note F6 already says the original Code mode uses ACP to connect Codex / Claude Code / Kimi to real projects or temporary workspaces, run commands and preserve sessions. The project direction `code-project-co-pilot.approach` restates that same core workflow and visible result, so only the audience is more specific.",
+              "status": "fail"
+            },
+            {
+              "changedAxes": [
+                "audience"
+              ],
+              "directionId": "personal-knowledge-vault",
+              "evidence": "Fail. Research note F8 already verifies file management, full-text and vector retrieval, provenance retention and memory center in the original product. The project direction `personal-knowledge-vault.approach` mainly narrows those existing capabilities to students and self-learners, without proving a materially new input/workflow/outcome beyond the original knowledge-base feature set.",
+              "status": "fail"
+            }
+          ],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.meaning`",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.meaning`"
+          ],
+          "blockers": []
+        }
+      ]
+    }
+  ],
+  "notStartedCount": 0,
+  "batchFingerprint": "324cad6333b8a0f9418c469bfe4aaf22afc677e015fe31601e34c04b89fffc0e",
   "aiMetrics": {
-    "maxConcurrentCandidates": 2,
-    "wallTimeSeconds": 1807.9,
-    "logicalCallCount": 18,
-    "successfulCallCount": 18,
-    "providerUsageReportedCallCount": 18,
-    "summedRequestTimeSeconds": 2623.0,
-    "promptTokens": 217310,
-    "completionTokens": 139749,
-    "totalTokens": 357059,
-    "cachedPromptTokens": 75520,
-    "reasoningTokens": 85589,
+    "maxConcurrentCandidates": 3,
+    "wallTimeSeconds": 4894.3,
+    "logicalCallCount": 51,
+    "successfulCallCount": 50,
+    "providerUsageReportedCallCount": 50,
+    "summedRequestTimeSeconds": 12565.1,
+    "promptTokens": 762960,
+    "completionTokens": 443565,
+    "totalTokens": 1206525,
+    "cachedPromptTokens": 65024,
+    "reasoningTokens": 238667,
     "calls": [
       {
         "sequence": 1,
-        "candidate": "Pinvou/pinvou-agent",
+        "candidate": "0xsline/OpenChatCut",
         "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 14499,
-        "schemaCharacters": 4689,
-        "durationSeconds": 227.6,
+        "instructionCharacters": 39089,
+        "inputCharacters": 62424,
+        "schemaCharacters": 4690,
+        "durationSeconds": 267.9,
         "attempts": 1,
         "usage": {
-          "promptTokens": 13327,
-          "completionTokens": 12319,
-          "totalTokens": 25646,
+          "promptTokens": 25077,
+          "completionTokens": 13188,
+          "totalTokens": 38265,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 8286
+          "reasoningTokens": 7641
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 179.6
         }
       },
       {
         "sequence": 2,
-        "candidate": "apache/maka",
+        "candidate": "QwenAudio/qwen-audio-agent",
         "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 16035,
-        "schemaCharacters": 4689,
-        "durationSeconds": 206.1,
+        "instructionCharacters": 39089,
+        "inputCharacters": 26342,
+        "schemaCharacters": 4690,
+        "durationSeconds": 304.3,
         "attempts": 1,
         "usage": {
-          "promptTokens": 13105,
-          "completionTokens": 11117,
-          "totalTokens": 24222,
+          "promptTokens": 16230,
+          "completionTokens": 14950,
+          "totalTokens": 31180,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 7586
+          "reasoningTokens": 9748
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 227.8
         }
       },
       {
         "sequence": 3,
-        "candidate": "apache/maka",
-        "stage": "inspiration_quality_review",
+        "candidate": "Pinvou/pinvou-agent",
+        "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9671,
-        "schemaCharacters": 1670,
-        "durationSeconds": 121.5,
+        "instructionCharacters": 39089,
+        "inputCharacters": 16282,
+        "schemaCharacters": 4690,
+        "durationSeconds": 350.4,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6703,
-          "completionTokens": 6520,
-          "totalTokens": 13223,
+          "promptTokens": 14649,
+          "completionTokens": 17792,
+          "totalTokens": 32441,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 4655
+          "reasoningTokens": 12737
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 271.5
         }
       },
       {
         "sequence": 4,
-        "candidate": "Pinvou/pinvou-agent",
+        "candidate": "0xsline/OpenChatCut",
         "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9640,
-        "schemaCharacters": 1670,
-        "durationSeconds": 126.7,
+        "instructionCharacters": 7123,
+        "inputCharacters": 12840,
+        "schemaCharacters": 5328,
+        "durationSeconds": 121.6,
         "attempts": 1,
         "usage": {
-          "promptTokens": 7162,
-          "completionTokens": 6782,
-          "totalTokens": 13944,
-          "cachedPromptTokens": 2304,
-          "reasoningTokens": 4821
+          "promptTokens": 9670,
+          "completionTokens": 6493,
+          "totalTokens": 16163,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4030
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 86.2
         }
       },
       {
         "sequence": 5,
-        "candidate": "apache/maka",
-        "stage": "inspiration_project_repair_1",
+        "candidate": "QwenAudio/qwen-audio-agent",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 26656,
-        "schemaCharacters": 4689,
-        "durationSeconds": 146.9,
+        "instructionCharacters": 7123,
+        "inputCharacters": 12225,
+        "schemaCharacters": 5328,
+        "durationSeconds": 138.3,
         "attempts": 1,
         "usage": {
-          "promptTokens": 17328,
-          "completionTokens": 7832,
-          "totalTokens": 25160,
+          "promptTokens": 9348,
+          "completionTokens": 6249,
+          "totalTokens": 15597,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 4260
+          "reasoningTokens": 3106
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 82.7
         }
       },
       {
         "sequence": 6,
         "candidate": "Pinvou/pinvou-agent",
-        "stage": "inspiration_project_repair_1",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 25419,
-        "schemaCharacters": 4689,
-        "durationSeconds": 116.8,
+        "instructionCharacters": 7123,
+        "inputCharacters": 12179,
+        "schemaCharacters": 5328,
+        "durationSeconds": 121.7,
         "attempts": 1,
         "usage": {
-          "promptTokens": 18186,
-          "completionTokens": 6095,
-          "totalTokens": 24281,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 1960
+          "promptTokens": 9404,
+          "completionTokens": 6438,
+          "totalTokens": 15842,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 3209
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 62.7
         }
       },
       {
         "sequence": 7,
-        "candidate": "Pinvou/pinvou-agent",
-        "stage": "inspiration_quality_review",
+        "candidate": "0xsline/OpenChatCut",
+        "stage": "inspiration_project_repair_1",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9709,
-        "schemaCharacters": 1670,
-        "durationSeconds": 142.1,
+        "instructionCharacters": 39089,
+        "inputCharacters": 81826,
+        "schemaCharacters": 4690,
+        "durationSeconds": 139.7,
         "attempts": 1,
         "usage": {
-          "promptTokens": 7172,
-          "completionTokens": 7387,
-          "totalTokens": 14559,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 5565
+          "promptTokens": 32739,
+          "completionTokens": 7364,
+          "totalTokens": 40103,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 1806
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 39.6
         }
       },
       {
         "sequence": 8,
-        "candidate": "apache/maka",
-        "stage": "inspiration_quality_review",
+        "candidate": "QwenAudio/qwen-audio-agent",
+        "stage": "inspiration_project_repair_1",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9534,
-        "schemaCharacters": 1670,
-        "durationSeconds": 91.1,
+        "instructionCharacters": 39089,
+        "inputCharacters": 44090,
+        "schemaCharacters": 4690,
+        "durationSeconds": 166.8,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6730,
-          "completionTokens": 4712,
-          "totalTokens": 11442,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 3106
+          "promptTokens": 24082,
+          "completionTokens": 8797,
+          "totalTokens": 32879,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 3234
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 72.1
         }
       },
       {
         "sequence": 9,
-        "candidate": "apache/maka",
-        "stage": "inspiration_project_repair_2",
-        "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 26449,
-        "schemaCharacters": 4689,
-        "durationSeconds": 143.4,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 17304,
-          "completionTokens": 7592,
-          "totalTokens": 24896,
-          "cachedPromptTokens": 0,
-          "reasoningTokens": 3963
+        "candidate": "Pinvou/pinvou-agent",
+        "stage": "inspiration_project_repair_1",
+        "status": "error",
+        "instructionCharacters": 39089,
+        "inputCharacters": 40003,
+        "schemaCharacters": 4690,
+        "durationSeconds": 863.3,
+        "attempts": 3,
+        "usage": null,
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": null,
+          "firstEventSeconds": null
         }
       },
       {
         "sequence": 10,
-        "candidate": "apache/maka",
+        "candidate": "0xsline/OpenChatCut",
         "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9898,
-        "schemaCharacters": 1670,
-        "durationSeconds": 95.5,
+        "instructionCharacters": 7123,
+        "inputCharacters": 12858,
+        "schemaCharacters": 5328,
+        "durationSeconds": 299.5,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6789,
-          "completionTokens": 5059,
-          "totalTokens": 11848,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 3166
+          "promptTokens": 9975,
+          "completionTokens": 13253,
+          "totalTokens": 23228,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 10200
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 235.0
         }
       },
       {
         "sequence": 11,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_draft",
+        "candidate": "QwenAudio/qwen-audio-agent",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 11062,
-        "schemaCharacters": 4689,
-        "durationSeconds": 243.7,
+        "instructionCharacters": 7123,
+        "inputCharacters": 12809,
+        "schemaCharacters": 5328,
+        "durationSeconds": 112.2,
         "attempts": 1,
         "usage": {
-          "promptTokens": 12546,
-          "completionTokens": 13223,
-          "totalTokens": 25769,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 9527
+          "promptTokens": 9997,
+          "completionTokens": 5954,
+          "totalTokens": 15951,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2134
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 43.2
         }
       },
       {
         "sequence": 12,
-        "candidate": "apache/superset",
-        "stage": "inspiration_project_draft",
+        "candidate": "QwenAudio/qwen-audio-agent",
+        "stage": "inspiration_project_repair_2",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 27352,
-        "schemaCharacters": 4689,
-        "durationSeconds": 204.0,
+        "instructionCharacters": 39089,
+        "inputCharacters": 49741,
+        "schemaCharacters": 4690,
+        "durationSeconds": 320.8,
         "attempts": 1,
         "usage": {
-          "promptTokens": 16655,
-          "completionTokens": 10923,
-          "totalTokens": 27578,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 7545
+          "promptTokens": 25360,
+          "completionTokens": 15140,
+          "totalTokens": 40500,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 9237
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 220.1
         }
       },
       {
         "sequence": 13,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_quality_review",
+        "candidate": "0xsline/OpenChatCut",
+        "stage": "inspiration_project_repair_2",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9830,
-        "schemaCharacters": 1670,
-        "durationSeconds": 116.5,
+        "instructionCharacters": 39089,
+        "inputCharacters": 80394,
+        "schemaCharacters": 4690,
+        "durationSeconds": 152.4,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6939,
-          "completionTokens": 6200,
-          "totalTokens": 13139,
-          "cachedPromptTokens": 2304,
-          "reasoningTokens": 4050
+          "promptTokens": 33196,
+          "completionTokens": 8092,
+          "totalTokens": 41288,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 1857
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 40.1
         }
       },
       {
         "sequence": 14,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_repair_1",
+        "candidate": "0xsline/OpenChatCut",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 21990,
-        "schemaCharacters": 4689,
-        "durationSeconds": 134.6,
+        "instructionCharacters": 7123,
+        "inputCharacters": 13854,
+        "schemaCharacters": 5328,
+        "durationSeconds": 178.8,
         "attempts": 1,
         "usage": {
-          "promptTokens": 17061,
-          "completionTokens": 7133,
-          "totalTokens": 24194,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 2588
+          "promptTokens": 10326,
+          "completionTokens": 7257,
+          "totalTokens": 17583,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4562
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 124.2
         }
       },
       {
         "sequence": 15,
-        "candidate": "tldraw/tldraw",
+        "candidate": "QwenAudio/qwen-audio-agent",
         "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 11408,
-        "schemaCharacters": 1670,
-        "durationSeconds": 95.1,
+        "instructionCharacters": 7123,
+        "inputCharacters": 13776,
+        "schemaCharacters": 5328,
+        "durationSeconds": 127.5,
         "attempts": 1,
         "usage": {
-          "promptTokens": 7836,
-          "completionTokens": 5015,
-          "totalTokens": 12851,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 2744
+          "promptTokens": 10310,
+          "completionTokens": 5701,
+          "totalTokens": 16011,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2772
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 77.4
         }
       },
       {
         "sequence": 16,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_repair_2",
+        "candidate": "hhyqhh/inno-agent",
+        "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 23361,
-        "schemaCharacters": 4689,
-        "durationSeconds": 100.8,
+        "instructionCharacters": 39089,
+        "inputCharacters": 19415,
+        "schemaCharacters": 4690,
+        "durationSeconds": 314.4,
         "attempts": 1,
         "usage": {
-          "promptTokens": 17728,
-          "completionTokens": 5191,
-          "totalTokens": 22919,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 653
+          "promptTokens": 15272,
+          "completionTokens": 13048,
+          "totalTokens": 28320,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 7509
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 194.4
         }
       },
       {
         "sequence": 17,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_quality_review",
+        "candidate": "apache/echarts",
+        "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 11431,
-        "schemaCharacters": 1670,
-        "durationSeconds": 104.8,
-        "attempts": 1,
+        "instructionCharacters": 39089,
+        "inputCharacters": 28539,
+        "schemaCharacters": 4690,
+        "durationSeconds": 430.0,
+        "attempts": 2,
         "usage": {
-          "promptTokens": 7839,
-          "completionTokens": 5585,
-          "totalTokens": 13424,
-          "cachedPromptTokens": 5888,
-          "reasoningTokens": 3970
+          "promptTokens": 17575,
+          "completionTokens": 8130,
+          "totalTokens": 25705,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2120
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 41.2
         }
       },
       {
         "sequence": 18,
-        "candidate": "labring/FastGPT",
+        "candidate": "tldraw/tldraw",
         "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 19527,
-        "schemaCharacters": 4689,
-        "durationSeconds": 205.8,
+        "instructionCharacters": 39089,
+        "inputCharacters": 25473,
+        "schemaCharacters": 4690,
+        "durationSeconds": 364.3,
         "attempts": 1,
         "usage": {
-          "promptTokens": 16900,
-          "completionTokens": 11064,
-          "totalTokens": 27964,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 7144
+          "promptTokens": 16772,
+          "completionTokens": 13516,
+          "totalTokens": 30288,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 8286
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 254.3
+        }
+      },
+      {
+        "sequence": 19,
+        "candidate": "hhyqhh/inno-agent",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 13157,
+        "schemaCharacters": 5328,
+        "durationSeconds": 183.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9664,
+          "completionTokens": 6911,
+          "totalTokens": 16575,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4142
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 123.1
+        }
+      },
+      {
+        "sequence": 20,
+        "candidate": "apache/echarts",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12939,
+        "schemaCharacters": 5328,
+        "durationSeconds": 121.7,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 10042,
+          "completionTokens": 4643,
+          "totalTokens": 14685,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2070
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 63.5
+        }
+      },
+      {
+        "sequence": 21,
+        "candidate": "hhyqhh/inno-agent",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 37159,
+        "schemaCharacters": 4690,
+        "durationSeconds": 201.4,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 23129,
+          "completionTokens": 9152,
+          "totalTokens": 32281,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 3624
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 105.0
+        }
+      },
+      {
+        "sequence": 22,
+        "candidate": "tldraw/tldraw",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12062,
+        "schemaCharacters": 5328,
+        "durationSeconds": 178.4,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9315,
+          "completionTokens": 7017,
+          "totalTokens": 16332,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4495
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 123.6
+        }
+      },
+      {
+        "sequence": 23,
+        "candidate": "apache/echarts",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 46936,
+        "schemaCharacters": 4690,
+        "durationSeconds": 183.3,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 25652,
+          "completionTokens": 8222,
+          "totalTokens": 33874,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2532
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 83.0
+        }
+      },
+      {
+        "sequence": 24,
+        "candidate": "hhyqhh/inno-agent",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 13153,
+        "schemaCharacters": 5328,
+        "durationSeconds": 115.0,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9956,
+          "completionTokens": 6125,
+          "totalTokens": 16081,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2279
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 45.7
+        }
+      },
+      {
+        "sequence": 25,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 27335,
+        "schemaCharacters": 4690,
+        "durationSeconds": 298.4,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 16347,
+          "completionTokens": 11281,
+          "totalTokens": 27628,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 5967
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 171.4
+        }
+      },
+      {
+        "sequence": 26,
+        "candidate": "apache/echarts",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12535,
+        "schemaCharacters": 5328,
+        "durationSeconds": 124.8,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9764,
+          "completionTokens": 4749,
+          "totalTokens": 14513,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2455
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 75.2
+        }
+      },
+      {
+        "sequence": 27,
+        "candidate": "CorentinTh/it-tools",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 39175,
+        "schemaCharacters": 4690,
+        "durationSeconds": 339.6,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 18992,
+          "completionTokens": 12367,
+          "totalTokens": 31359,
+          "cachedPromptTokens": 9472,
+          "reasoningTokens": 7603
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 224.5
+        }
+      },
+      {
+        "sequence": 28,
+        "candidate": "apache/echarts",
+        "stage": "inspiration_project_repair_2",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 47850,
+        "schemaCharacters": 4690,
+        "durationSeconds": 462.9,
+        "attempts": 2,
+        "usage": {
+          "promptTokens": 25103,
+          "completionTokens": 8520,
+          "totalTokens": 33623,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2588
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 76.3
+        }
+      },
+      {
+        "sequence": 29,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12831,
+        "schemaCharacters": 5328,
+        "durationSeconds": 126.4,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9719,
+          "completionTokens": 6653,
+          "totalTokens": 16372,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2794
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 56.8
+        }
+      },
+      {
+        "sequence": 30,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 46182,
+        "schemaCharacters": 4690,
+        "durationSeconds": 255.3,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 24896,
+          "completionTokens": 11647,
+          "totalTokens": 36543,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 6349
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 163.0
+        }
+      },
+      {
+        "sequence": 31,
+        "candidate": "CorentinTh/it-tools",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11670,
+        "schemaCharacters": 5328,
+        "durationSeconds": 150.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 8867,
+          "completionTokens": 5431,
+          "totalTokens": 14298,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2424
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 80.0
+        }
+      },
+      {
+        "sequence": 32,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 14258,
+        "schemaCharacters": 4690,
+        "durationSeconds": 681.3,
+        "attempts": 2,
+        "usage": {
+          "promptTokens": 13992,
+          "completionTokens": 14967,
+          "totalTokens": 28959,
+          "cachedPromptTokens": 13568,
+          "reasoningTokens": 10279
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 297.9
+        }
+      },
+      {
+        "sequence": 33,
+        "candidate": "apache/echarts",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12944,
+        "schemaCharacters": 5328,
+        "durationSeconds": 227.7,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 10022,
+          "completionTokens": 8432,
+          "totalTokens": 18454,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 5935
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 174.9
+        }
+      },
+      {
+        "sequence": 34,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12805,
+        "schemaCharacters": 5328,
+        "durationSeconds": 65.3,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9687,
+          "completionTokens": 2698,
+          "totalTokens": 12385,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 0
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 5.3
+        }
+      },
+      {
+        "sequence": 35,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_project_repair_2",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 44601,
+        "schemaCharacters": 4690,
+        "durationSeconds": 411.0,
+        "attempts": 2,
+        "usage": {
+          "promptTokens": 23988,
+          "completionTokens": 6443,
+          "totalTokens": 30431,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 1198
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 38.5
+        }
+      },
+      {
+        "sequence": 36,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 10225,
+        "schemaCharacters": 4690,
+        "durationSeconds": 305.5,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 12291,
+          "completionTokens": 11524,
+          "totalTokens": 23815,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 6701
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 198.3
+        }
+      },
+      {
+        "sequence": 37,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11855,
+        "schemaCharacters": 5328,
+        "durationSeconds": 240.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 8999,
+          "completionTokens": 8727,
+          "totalTokens": 17726,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 5958
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 176.3
+        }
+      },
+      {
+        "sequence": 38,
+        "candidate": "deeplearning4j/deeplearning4j",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12753,
+        "schemaCharacters": 5328,
+        "durationSeconds": 148.2,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9354,
+          "completionTokens": 5800,
+          "totalTokens": 15154,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2833
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 82.2
+        }
+      },
+      {
+        "sequence": 39,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11483,
+        "schemaCharacters": 5328,
+        "durationSeconds": 178.5,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 8745,
+          "completionTokens": 6502,
+          "totalTokens": 15247,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4177
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 131.4
+        }
+      },
+      {
+        "sequence": 40,
+        "candidate": "TagStudioDev/TagStudio",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 53850,
+        "schemaCharacters": 4690,
+        "durationSeconds": 356.7,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 22080,
+          "completionTokens": 12962,
+          "totalTokens": 35042,
+          "cachedPromptTokens": 9472,
+          "reasoningTokens": 7849
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 243.8
+        }
+      },
+      {
+        "sequence": 41,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 26882,
+        "schemaCharacters": 4690,
+        "durationSeconds": 106.0,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 19756,
+          "completionTokens": 5246,
+          "totalTokens": 25002,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 410
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 19.2
+        }
+      },
+      {
+        "sequence": 42,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_project_repair_1",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 30708,
+        "schemaCharacters": 4690,
+        "durationSeconds": 288.6,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 20898,
+          "completionTokens": 12754,
+          "totalTokens": 33652,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 7706
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 197.2
+        }
+      },
+      {
+        "sequence": 43,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11855,
+        "schemaCharacters": 5328,
+        "durationSeconds": 129.2,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 8999,
+          "completionTokens": 5178,
+          "totalTokens": 14177,
+          "cachedPromptTokens": 5888,
+          "reasoningTokens": 2727
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 75.5
+        }
+      },
+      {
+        "sequence": 44,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_project_repair_2",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 26264,
+        "schemaCharacters": 4690,
+        "durationSeconds": 209.3,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 19221,
+          "completionTokens": 9287,
+          "totalTokens": 28508,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 4472
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 125.8
+        }
+      },
+      {
+        "sequence": 45,
+        "candidate": "TagStudioDev/TagStudio",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12215,
+        "schemaCharacters": 5328,
+        "durationSeconds": 225.8,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9188,
+          "completionTokens": 8631,
+          "totalTokens": 17819,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 5696
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 162.3
+        }
+      },
+      {
+        "sequence": 46,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12063,
+        "schemaCharacters": 5328,
+        "durationSeconds": 264.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9077,
+          "completionTokens": 10349,
+          "totalTokens": 19426,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 7630
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 204.9
+        }
+      },
+      {
+        "sequence": 47,
+        "candidate": "bytedance/flowgram.ai",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11877,
+        "schemaCharacters": 5328,
+        "durationSeconds": 201.5,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9251,
+          "completionTokens": 8444,
+          "totalTokens": 17695,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 5862
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 155.9
+        }
+      },
+      {
+        "sequence": 48,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_project_repair_2",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 30880,
+        "schemaCharacters": 4690,
+        "durationSeconds": 131.7,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 21289,
+          "completionTokens": 6368,
+          "totalTokens": 27657,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 1353
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 43.2
+        }
+      },
+      {
+        "sequence": 49,
+        "candidate": "f/prompts.chat",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 12045,
+        "schemaCharacters": 5328,
+        "durationSeconds": 94.1,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9350,
+          "completionTokens": 4944,
+          "totalTokens": 14294,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 1211
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 26.8
+        }
+      },
+      {
+        "sequence": 50,
+        "candidate": "vkohaupt/vokoscreenNG",
+        "stage": "inspiration_project_draft",
+        "status": "success",
+        "instructionCharacters": 39089,
+        "inputCharacters": 26002,
+        "schemaCharacters": 4690,
+        "durationSeconds": 647.6,
+        "attempts": 2,
+        "usage": {
+          "promptTokens": 16292,
+          "completionTokens": 14957,
+          "totalTokens": 31249,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 10097
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 273.7
+        }
+      },
+      {
+        "sequence": 51,
+        "candidate": "vkohaupt/vokoscreenNG",
+        "stage": "inspiration_quality_review",
+        "status": "success",
+        "instructionCharacters": 7123,
+        "inputCharacters": 11274,
+        "schemaCharacters": 5328,
+        "durationSeconds": 138.6,
+        "attempts": 1,
+        "usage": {
+          "promptTokens": 9053,
+          "completionTokens": 5272,
+          "totalTokens": 14325,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 3063
+        },
+        "transport": {
+          "requestedMode": "stream",
+          "responseMode": "stream",
+          "firstEventSeconds": 89.1
         }
       }
     ]
   },
-  "preview": "# 自动候选审核：20260901T150054Z-44a78a5d\n\n- 生成时间：2026-09-01T15:00:54Z\n- 合格候选：1\n- 未通过深读：4\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. maka\n\n- 仓库：https://github.com/apache/maka\n- Star：4391\n- 许可证：Apache License 2.0\n- 主题色：#bf5831\n- Hook：把 AI 代理做成可回放工作区\n- 介绍：它把本地项目、模型连接和权限设置接到同一个 AI agent 工作区里，让你在 Desktop、TUI/CLI 或 Eval 中发起任务、查看工具轨迹并接续中断的回合。模型消息、tool calls、tool results、权限决策和终止事件都会写成可回放的记录。\n- 改造方向：\n  - 会话复盘台：从历史会话里找出失败点并接着跑\n  - 权限审计台：先连模型和工具，再把越界动作关进审批\n  - 实验对照台：把评测结果和失败点放在一起看\n\n## 未进入候选的仓库\n\n### Pinvou/pinvou-agent\n\n- 停止阶段：首轮修复无实质进展\n- 结果：首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3\n- 最终失败证据：\n  - D3：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n- 修复轨迹：\n  - 初次检查：失败 D3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - D3 当轮证据：\\`受控代码协作桌面\\` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。\n    - 方向 受控代码协作桌面：变化轴 audience；F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。\n  - 第 1 轮修复后复检：失败 D3；改动 editorial.directions, editorial.opportunity, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - D3 当轮证据：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n    - 方向 hai-bao-gai-gao-tai：变化轴 audience, input；F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。\n\n### apache/superset\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - repository.pushedAt must not be later than repository.fetchedAt\n\n### tldraw/tldraw\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A4\n- 最终失败证据：\n  - A4：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n- 当前阻断项：\n  - License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other.\n- 修复轨迹：\n  - 初次检查：失败 A4, E3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - A4 当轮证据：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。\n    - E3 当轮证据：所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。\n  - 第 1 轮修复后复检：失败 无；改动 editorial.directions, editorial.opportunity, editorial.summary, decisionReason, fieldEvidence, inferences, directionRationales, directionComparisons, uncertainty, localizationDecisions；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n  - 第 2 轮修复后复检：失败 A4；改动 decisionReason, directionComparisons；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - A4 当轮证据：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n\n### labring/FastGPT\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - fieldEvidence must contain every required field exactly once and in order\n  - repository.pushedAt must not be later than repository.fetchedAt\n  - page field evidence is missing \\`editorial.meaning\\`\n\n\n\n## AI 执行统计\n\n- 候选并发上限：2\n- AI 逻辑调用：18\n- 深读阶段墙钟时间：1807.9 秒\n- 各请求耗时合计：2623.0 秒（并发请求会重叠）\n- 返回 usage 的调用：18\n- 输入 Token：217310\n- 输出 Token：139749\n- 其中缓存输入 Token：75520\n- 其中推理 Token：85589\n",
+  "preview": "# 自动候选审核：20260904T052447Z-b14929c5\n\n- 生成时间：2026-09-04T05:24:47Z\n- 合格候选：8\n- 未通过深读：3\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. qwen-audio-agent\n\n- 仓库：https://github.com/QwenAudio/qwen-audio-agent\n- Star：2335\n- 许可证：Apache License 2.0\n- 主题色：#8631bf\n- Hook：让语音对话边聊边办事\n- 介绍：它接入实时语音前端和可兼容 ACP 的后端 Agent，把语音聊天、工具调用、后台异步任务和结果回传放在同一条对话里。用户可以在 WebUI、TUI 或桌面浮窗中继续追问进度、取消任务，并收到持续状态更新。\n- 改造方向：\n  - 桌面语音任务台：用一句语音发起任务，进度和结果回到对话里\n  - 客服接力台：把咨询、查单和人工转接接在同一段对话里\n  - 直播口播助理：一边直播一边回答观众、提产品和提醒风险\n\n## 2. inno-agent\n\n- 仓库：https://github.com/hhyqhh/inno-agent\n- Star：1082\n- 许可证：MIT License\n- 主题色：#198655\n- Hook：把日常学习交给会记忆的陪练\n- 介绍：Inno Agent 接入大模型提供商、个人 IM 和本地工作区，把学习任务、提醒、笔记与练习串成连续的对话工作流。它用 L1 画像、L2 wiki、L3 会话记录和 SQLite 检索保存长期上下文，并在 Web、Desktop 和 CLI 里输出可回放的聊天、终端和练习记录。\n- 改造方向：\n  - 错题复盘教练：把错题和薄弱点变成复习提醒和再练习\n  - 讲义整理助手：把讲义和课件整理成可检索的课程知识页\n  - 学习回放站：导出并回看完整学习对话和练习过程\n\n## 3. tldraw\n\n- 仓库：https://github.com/tldraw/tldraw\n- Star：50117\n- 许可证：tldraw license\n- 主题色：#942eb8\n- Hook：给 React 应用装上可协作的无限画布\n- 介绍：tldraw 是给 React 应用接入无限画布的 SDK。开发者可以组合自定义 shapes、tools、bindings 和 UI 组件，直接得到多人协作、绘图/图形/文本/箭头、图片视频、运行时 Editor API，以及 AI 和网页嵌入能力。\n- 改造方向：\n  - 评审批注板：把截图和草图放进一块可协作的评审画布\n  - 互动课堂黑板：把讲解、板书和学生标注放到同一块黑板上\n  - 家庭记忆墙：把照片、视频和留言拼成一面回忆墙\n\n## 4. deeplearning4j\n\n- 仓库：https://github.com/deeplearning4j/deeplearning4j\n- Star：14247\n- 许可证：Apache License 2.0\n- 主题色：#278721\n- Hook：让 JVM 项目直接做深度学习训练和推理\n- 介绍：它面向 JVM 项目，把原始数据接入、预处理、网络搭建、Keras h5 导入和 TensorFlow frozen .pb 导入放在同一套工具里。最后可在 Java、Scala、Kotlin、Clojure 等 JVM 语言中，得到可训练、可运行的深度学习模型和结果。\n- 改造方向：\n  - 训练数据整理器：把 HDFS、CSV、图片和音视频整理成训练集\n  - Keras 模型迁移器：把 h5 / frozen .pb 模型转成 JVM 可用包\n  - SameDiff 练习实验台：改一份 SameDiff 例子，看到前向和反向结果\n\n## 5. it-tools\n\n- 仓库：https://github.com/CorentinTh/it-tools\n- Star：40463\n- 许可证：GNU General Public License v3.0\n- 主题色：#a928c3\n- Hook：把开发杂活拆成一个个小工具\n- 介绍：它把面向开发者和 IT 从业者的在线小工具放在同一个网页里，能做正则测试、Markdown 转 HTML、JSON/XML 互转、Base64 处理和邮箱规范化。用户直接输入文本或数据，就能得到可复制的结果，也可以用 Docker 自托管到自己的环境里。\n- 改造方向：\n  - 正则练习台：输入文本和正则，立刻看匹配结果\n  - 数据格式转换台：把 JSON、XML、Markdown 和 Base64 互相转换\n  - 内网工具柜：把常用开发工具装进团队自托管首页\n\n## 6. flowgram.ai\n\n- 仓库：https://github.com/bytedance/flowgram.ai\n- Star：8419\n- 许可证：MIT License\n- 主题色：#8c7221\n- Hook：给 AI 工作流平台搭好可拼装底座\n- 介绍：FlowGram 是一个面向开发者的 TypeScript workflow 开发框架和工具包，内置自由布局画布、固定布局画布、节点配置表单、变量作用域链和可复用材料。它不是现成平台，而是让团队把这些能力组合起来，更快搭出自己的 AI workflow platform。\n- 改造方向：\n  - 节点配置面板工厂：用节点 schema 生成可校验的配置面板\n  - 自由画布流程原型器：在自由画布上拖节点、连流程\n  - 分支循环编排器：把分支和循环排成一张清楚的流程图\n\n## 7. TagStudio\n\n- 仓库：https://github.com/TagStudioDev/TagStudio\n- Star：7166\n- 许可证：GNU General Public License v3.0\n- 主题色：#4e2ebd\n- Hook：让照片和文件夹变成可回头找的标签库\n- 介绍：TagStudio 把你现有的照片和文件夹开成一个本地资料库，条目和标签存进 .TagStudio 里的 SQLite 数据库，不用搬文件也不用 sidecar 文件。它能给文件加标签、别名、父标签和字段，按标签、路径、filetype、mediatype 搜索，还能预览图片、视频、音频和文本并找回移动后的条目。\n- 改造方向：\n  - 旅行相册标签册：把相机照片和文件夹整理成可搜的相册\n  - 设计素材档案库：把设计文件和参考图收进可查的素材库\n  - 音视频素材柜：把音视频素材放进能直接浏览的柜子\n\n## 8. vokoscreenNG\n\n- 仓库：https://github.com/vkohaupt/vokoscreenNG\n- Star：1499\n- 许可证：GNU General Public License v2.0\n- 主题色：#1f8468\n- Hook：把屏幕、摄像头和多路声音录成讲解视频\n- 介绍：它面向 Windows 和 Linux，把屏幕、某个区域或窗口录成录屏视频，Linux 还支持窗口录制。它还能混录多路声音，叠加内建摄像头，并用倒计时、定时器、放大镜、Showclick 和 Halo 辅助录制，让成片更适合讲解和演示。\n- 改造方向：\n  - 课堂录屏器：把课件窗口和讲解声录成课后视频\n  - 产品演示短片机：录下窗口和点击提示，直接给客户看\n  - 故障复现录像包：把屏幕、声音和步骤一起留给同事\n\n## 未进入候选的仓库\n\n### 0xsline/OpenChatCut\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：B1\n- 最终失败证据：\n  - B1：\\`editorial.hook\\` = \"把聊天改片写进真实视频时间线\"; \\`聊天改片\\` is a coined abstraction and the compressed verb-object relation is not natural Chinese.\n- 当前结构错误：\n  - fact F11 cites an unavailable source\n  - fieldEvidence must contain every required field exactly once and in order\n  - editorial.summary should contain 60-180 characters\n  - page field evidence is missing \\`editorial.opportunity\\`\n  - fact F11 cites an unavailable source\n  - fieldEvidence must contain every required field exactly once and in order\n  - editorial.summary should contain 60-180 characters\n  - page field evidence is missing \\`editorial.opportunity\\`\n- 当前阻断项：\n  - B1: \\`editorial.hook\\` uses the unnatural phrase \"把聊天改片写进真实视频时间线\"; \\`聊天改片\\` is a coined noun stack and the verb-object pairing is not natural Chinese.\n- 修复轨迹：\n  - 初次检查：失败 无；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n  - 第 1 轮修复后复检：失败 A1, A4；改动 editorial.meaning, editorial.summary, decisionReason, fieldEvidence, directionComparisons；策略 第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。\n    - A1 当轮证据：\\`editorial.summary\\` 写入了“Codex、Claude Code”，但研究笔记只在 \\`F4\\`/\\`F5\\`/\\`F6\\`/\\`F8\\` 中验证了 built-in agent、外部 MCP agents、真实时间线、转写驱动编辑和导出，没有任何 fact ID 支持这两个具体工具名。\n    - A4 当轮证据：\\`repository.license\\` 填的是“GNU Affero General Public License v3.0”，但研究 \\`F9\\` 和官方 LICENSE 文件明确是“GNU Affero General Public License v3.0 or later”；同时 \\`editorial.summary\\` 额外声称 Codex/Claude Code，超出已验证来源。\n  - 第 2 轮修复后复检：失败 B1；改动 editorial.audience, editorial.directions, editorial.features, editorial.hook, editorial.meaning, editorial.opportunity, editorial.summary, decisionReason, facts, fieldEvidence, inferences, directionRationales, directionComparisons, uncertainty, localizationDecisions；策略 第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。\n    - B1 当轮证据：\\`editorial.hook\\` = \"把聊天改片写进真实视频时间线\"; \\`聊天改片\\` is a coined abstraction and the compressed verb-object relation is not natural Chinese.\n\n### apache/echarts\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：fieldEvidence must contain every required field exactly once and in order; page field evidence is missing \\`editorial.opportunity\\`; fieldEvidence must contain every required field exactly once and in order\n- 当前结构错误：\n  - fieldEvidence must contain every required field exactly once and in order\n  - page field evidence is missing \\`editorial.opportunity\\`\n  - fieldEvidence must contain every required field exactly once and in order\n  - page field evidence is missing \\`editorial.opportunity\\`\n- 修复轨迹：\n  - 初次检查：失败 无；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n  - 第 1 轮修复后复检：失败 无；改动 editorial.meaning, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。\n  - 第 2 轮修复后复检：失败 无；改动 decisionReason, facts, fieldEvidence, directionRationales；策略 第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。\n\n### f/prompts.chat\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A1, A4\n- 最终失败证据：\n  - A1：失败。研究笔记 \\`Page field evidence\\` 中 \\`repository.license\\` 的已验证主张是 \\`MIT / CC0 1.0 Universal 双许可\\`，但项目 JSON \\`repository.license\\` 实际写成 \\`This project uses a dual-license model:\\`，字段值与可追溯主张不一致。且 \\`editorial.stack\\` 写入 \\`Next.js\\`、\\`TypeScript\\`、\\`PostgreSQL\\`，但研究笔记只给出 \\`F3, F9, F10\\`，其中 \\`F9\\`、\\`F10\\`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。\n  - A4：失败。项目 JSON \\`repository.license\\` 为 \\`This project uses a dual-license model:\\`，而研究笔记 \\`F11\\` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，\\`Page field evidence\\` 也计划写成 \\`MIT / CC0 1.0 Universal 双许可\\`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，\\`I3\\` 已注明 GitHub 检测值 \\`Other / NOASSERTION\\` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。\n- 当前结构错误：\n  - fact F13 cites an unavailable source\n  - fact F13 cites an unavailable source\n- 当前阻断项：\n  - A4：许可证存在实质矛盾。\\`project.repository.license\\` 写成 \\`This project uses a dual-license model:\\`，但研究笔记 \\`Page field evidence\\` 中 \\`repository.license\\` 的已验证主张是 \\`MIT / CC0 1.0 Universal 双许可\\`，且 \\`F11\\` 明确写明“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”。许可证属于必须暂停项。\n- 修复轨迹：\n  - 初次检查：失败 无；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n  - 第 1 轮修复后复检：失败 无；改动 editorial.directions, editorial.features, editorial.meaning, editorial.summary, decisionReason, facts, fieldEvidence, inferences, directionRationales, directionComparisons, uncertainty, localizationDecisions；策略 第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。\n  - 第 2 轮修复后复检：失败 A1, A4；改动 editorial.hook, decisionReason, facts, fieldEvidence, directionComparisons, uncertainty；策略 第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。\n    - A1 当轮证据：失败。研究笔记 \\`Page field evidence\\` 中 \\`repository.license\\` 的已验证主张是 \\`MIT / CC0 1.0 Universal 双许可\\`，但项目 JSON \\`repository.license\\` 实际写成 \\`This project uses a dual-license model:\\`，字段值与可追溯主张不一致。且 \\`editorial.stack\\` 写入 \\`Next.js\\`、\\`TypeScript\\`、\\`PostgreSQL\\`，但研究笔记只给出 \\`F3, F9, F10\\`，其中 \\`F9\\`、\\`F10\\`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。\n    - A4 当轮证据：失败。项目 JSON \\`repository.license\\` 为 \\`This project uses a dual-license model:\\`，而研究笔记 \\`F11\\` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，\\`Page field evidence\\` 也计划写成 \\`MIT / CC0 1.0 Universal 双许可\\`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，\\`I3\\` 已注明 GitHub 检测值 \\`Other / NOASSERTION\\` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。\n\n\n\n## 技术故障（不是内容质量不合格）\n\n- 技术失败：1\n- 已通过全部检查的候选仍保留在审核批次中；失败候选不会发布。\n- 本轮仍以失败状态报告，请修复服务问题后再发起新运行。\n\n- Pinvou/pinvou-agent：第 1 轮定向修复；AI provider request failed (RemoteDisconnected): Remote end closed connection without response\n\n## AI 执行统计\n\n- 候选并发上限：3\n- AI 逻辑调用：51\n- 深读阶段墙钟时间：4894.3 秒\n- 各请求耗时合计：12565.1 秒（并发请求会重叠）\n- 返回 usage 的调用：50\n- 输入 Token：762960\n- 输出 Token：443565\n- 其中缓存输入 Token：65024\n- 其中推理 Token：238667\n- Token 统计仅汇总成功响应返回的 usage；断线、失败尝试或缺失 usage 可能仍计费，请以服务商账单为准。\n",
   "publicationAuthorized": false
 }

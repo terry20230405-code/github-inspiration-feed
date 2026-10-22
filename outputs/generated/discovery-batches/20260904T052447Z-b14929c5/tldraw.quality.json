@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "tldraw",
+  "projectPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tldraw.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tldraw.research.md",
+  "projectSha256": "43449073ef365bb6ad8c283403810bf52f8e58ddfbd2e06904490e2a4cf480bb",
+  "researchSha256": "bb54d2798fd832a999b19ab18129369c37d5bfde4cef24ed85a226f1bcfbeb87",
+  "reviewedAt": "2026-09-04T05:56:08Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "research notes 的 Page field evidence 表把 repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state 对应到 F1-F5，把 editorial.summary/audience/features/stack 对应到 F6-F15，满足可追溯要求。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "Page field evidence 明确把 editorial.hook 记为由 F6-F8 推断，editorial.meaning 与 editorial.opportunity 分别由 F6-F13、F7-F15 推断；五个方向在 Direction rationale 里也都用 Reused capability + Evidence 把原项目事实和新方向分开。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "repository.license 写的是 tldraw license，研究笔记 F5 说明官方 LICENSE.md（S4）也写明 tldraw license；GitHub 元数据里 Other/NOASSERTION 只是显示差异，不构成来源冲突。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook“给 React 应用装上可协作的无限画布”是自然中文，动宾搭配正常，也直接点出 F6-F8 的真实能力。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "summary 说明了输入对象是 React 应用，核心动作是组合 shapes/tools/bindings/UI 组件，最后得到多人协作、绘图、Editor API、AI 和网页嵌入能力。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "summary 与 features 共同覆盖了自定义 shapes/tools/bindings/UI、多人实时协作、绘图/图形/文本/箭头/图片视频与导出、运行时 Editor API、AI integrations 和网页嵌入，核心能力超过三项。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "summary 保留了 React、SDK、Editor API、AI integrations、Cloudflare Durable Objects 等会影响复用判断的基础术语，并说明了它们在产品中的作用。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "hook 只建立记忆点，没有列功能；summary 则展开完整产品画面，没有重复 hook 原句。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "summary 只介绍原项目 tldraw；meaning 只解释这些能力为什么可复用，没有把新方向写成现有功能。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "meaning 讲的是整体复用价值；opportunity 把自定义画布、协作、媒体嵌入和 AI/API 逐条连接到具体新产品可能性。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "project.editorial.audience 只描述原项目的 React 开发者；五个方向的 audience 都是新产品用户群，approach 说明完整流程，scope 都是 3-6 个支撑流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "五个方向都写明了具体用户群和重复场景，例如设计评审、课堂互动、研究整理、家庭回忆和分支叙事，不是泛泛的“所有人”。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "每个方向都写出了输入、核心步骤和可见结果，例如导入截图后批注并导出、写板书后生成讲义、嵌入网页后整理成研究板。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "选定的三个方向都同时改变了 audience、input、workflow、outcome，相比原项目的“React 开发者接入画布 SDK”已不只是换行业名或包一层接口。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "每个方向的 scope 都是 5 项，足以完成对应流程，并且没有混入路线图、可选装饰或未来排期。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "已逐对核对 10 组方向；每一对都在至少 audience、input、workflow、outcome 上有实质差异，不是同一管线换皮。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "选定方向分别为评审批注板、互动课堂黑板和家庭记忆墙：它们分别减少反馈散落、课堂工具割裂和家庭素材难回看这三类具体麻烦。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "三个入选方向里包含家庭记忆墙，明确服务家庭/个人记忆整理，因此满足非商业主题的保留要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

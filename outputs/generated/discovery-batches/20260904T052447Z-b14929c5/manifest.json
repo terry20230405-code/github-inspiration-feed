@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "batchId": "20260904T052447Z-b14929c5",
+  "createdAt": "2026-09-04T05:24:47Z",
+  "status": "awaiting-approval",
+  "sourceDiscovery": "outputs/discovery/latest.json",
+  "candidates": [
+    {
+      "projectId": "qwen-audio-agent",
+      "fullName": "QwenAudio/qwen-audio-agent",
+      "githubId": 1313435339,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/qwen-audio-agent.project.json",
+          "sha256": "5bad8580f7bb8180b2d73eb392f2cf8a6f1ac9947e8bdc4357148700b502be00"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/qwen-audio-agent.research.md",
+          "sha256": "c6d1f4506627302d23aa56cf0f5f3b2909fbc57c2c24adaa369fee71ec691b28"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/qwen-audio-agent.quality.json",
+          "sha256": "b71f75d0610eb7dfdd766dcb19307d057894f42566dffe3e528bfffff64f0dfb"
+        }
+      }
+    },
+    {
+      "projectId": "inno-agent",
+      "fullName": "hhyqhh/inno-agent",
+      "githubId": 1252294823,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/inno-agent.project.json",
+          "sha256": "37113b0edc67426c9b0209cd761392ef5eef5796967b3ba24c12a02907c133e5"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/inno-agent.research.md",
+          "sha256": "2f6f3d4c718c6c821c1162c8c7143bba4f27b562faeb408b45338a385748e09a"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/inno-agent.quality.json",
+          "sha256": "e29e2c0ffab8deac384725d43d33cc4ae466a9b3dacbf5a3f380090ca78e4b85"
+        }
+      }
+    },
+    {
+      "projectId": "tldraw",
+      "fullName": "tldraw/tldraw",
+      "githubId": 365739812,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tldraw.project.json",
+          "sha256": "43449073ef365bb6ad8c283403810bf52f8e58ddfbd2e06904490e2a4cf480bb"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tldraw.research.md",
+          "sha256": "bb54d2798fd832a999b19ab18129369c37d5bfde4cef24ed85a226f1bcfbeb87"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tldraw.quality.json",
+          "sha256": "807f8248bee760e7a39be9dd887ada7fc47fb66bfbd3585343788a834bf4867d"
+        }
+      }
+    },
+    {
+      "projectId": "deeplearning4j",
+      "fullName": "deeplearning4j/deeplearning4j",
+      "githubId": 14734876,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/deeplearning4j.project.json",
+          "sha256": "cf9eaefebaa38ca6ed2cc9eadb6f4098c487bf3f04c92f0bc412f872cee7689d"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/deeplearning4j.research.md",
+          "sha256": "ffdadec35b9bb0b059943f1629900f1385dc6b33637649c78d9a0fb8a2b96f03"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/deeplearning4j.quality.json",
+          "sha256": "41b70898f91d17dfe70f98925e3fdc0909b2cd3f92f55461ea4d9dee5c2d2d6e"
+        }
+      }
+    },
+    {
+      "projectId": "it-tools",
+      "fullName": "CorentinTh/it-tools",
+      "githubId": 253222599,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/it-tools.project.json",
+          "sha256": "eff8e150fcb206b845288605a710ecdc5a0afbdb88a68abb31eb38d0fa15d6cb"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/it-tools.research.md",
+          "sha256": "7d398c2692188dee57c9d803a3298ddd7d12c7538455609a59e4c99ddbdd2e95"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/it-tools.quality.json",
+          "sha256": "a73a44ed37a4144a6686593acc479155bebf60ea6badfe0059a1db93293d7fc1"
+        }
+      }
+    },
+    {
+      "projectId": "flowgram-ai",
+      "fullName": "bytedance/flowgram.ai",
+      "githubId": 933963452,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/flowgram-ai.project.json",
+          "sha256": "ea3f86452c68076287ddcadc8c6d7c487d678b2ccc79c886f22fe8945b809b2a"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/flowgram-ai.research.md",
+          "sha256": "4f1e8ec15c9443584575e0c488b7adf271b79a6f09c3ee8a70f200b6489d91ea"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/flowgram-ai.quality.json",
+          "sha256": "5c99c1f1ca5de47b479b019a9e1cc1920fdc0d8019674f9c7ba64682cfec8fcb"
+        }
+      }
+    },
+    {
+      "projectId": "tagstudio",
+      "fullName": "TagStudioDev/TagStudio",
+      "githubId": 787908531,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tagstudio.project.json",
+          "sha256": "b413fd664c61d75519ede4c4e874537e9b24a3b51dfaf62b274cf536a7353630"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tagstudio.research.md",
+          "sha256": "c8d4a44ea7fb405c5a406debcee5bb76bdbe7aaf8d0519c33131ba19b213d2d4"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/tagstudio.quality.json",
+          "sha256": "a33e793550d31369224018245a7594a6ee70e63155c93ff5e8c6895ff04d859e"
+        }
+      }
+    },
+    {
+      "projectId": "vokoscreenng",
+      "fullName": "vkohaupt/vokoscreenNG",
+      "githubId": 103692141,
+      "artifacts": {
+        "project": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/vokoscreenng.project.json",
+          "sha256": "994cfddcb3fbd4e043f7fda357c40f8ef1c87110bb0947693bec1b0daae3b884"
+        },
+        "research": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/vokoscreenng.research.md",
+          "sha256": "fdc9d6395014930c35fc27f68723c2e5d70a8150862aceac94071c2028103300"
+        },
+        "quality": {
+          "path": "outputs/generated/discovery-batches/20260904T052447Z-b14929c5/vokoscreenng.quality.json",
+          "sha256": "be3f4f2703e8a62375b7619f3d5e448bad28cb608f6ee9f9c6509142620351aa"
+        }
+      }
+    }
+  ],
+  "batchFingerprint": "324cad6333b8a0f9418c469bfe4aaf22afc677e015fe31601e34c04b89fffc0e",
+  "rejected": [
+    {
+      "fullName": "0xsline/OpenChatCut",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：B1",
+      "failedChecks": [
+        {
+          "id": "B1",
+          "evidence": "`editorial.hook` = \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined abstraction and the compressed verb-object relation is not natural Chinese."
+        }
+      ],
+      "structuralErrors": [
+        "fact F11 cites an unavailable source",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "editorial.summary should contain 60-180 characters",
+        "page field evidence is missing `editorial.opportunity`",
+        "fact F11 cites an unavailable source",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "editorial.summary should contain 60-180 characters",
+        "page field evidence is missing `editorial.opportunity`"
+      ],
+      "blockers": [
+        "B1: `editorial.hook` uses the unnatural phrase \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined noun stack and the verb-object pairing is not natural Chinese."
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "subtitle-localizer"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
+          "changedPaths": [
+            "editorial.meaning",
+            "editorial.summary",
+            "decisionReason",
+            "fieldEvidence",
+            "directionComparisons"
+          ],
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "subtitle-localizer"
+          ],
+          "failedChecks": [
+            {
+              "id": "A1",
+              "evidence": "`editorial.summary` 写入了“Codex、Claude Code”，但研究笔记只在 `F4`/`F5`/`F6`/`F8` 中验证了 built-in agent、外部 MCP agents、真实时间线、转写驱动编辑和导出，没有任何 fact ID 支持这两个具体工具名。"
+            },
+            {
+              "id": "A4",
+              "evidence": "`repository.license` 填的是“GNU Affero General Public License v3.0”，但研究 `F9` 和官方 LICENSE 文件明确是“GNU Affero General Public License v3.0 or later”；同时 `editorial.summary` 额外声称 Codex/Claude Code，超出已验证来源。"
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F0 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": [
+            "A1: `editorial.summary` 写了“Codex、Claude Code”，但研究笔记只验证了 `F4`/`F5`/`F6`/`F8` 关于 built-in agent、MCP、时间线、转写和导出，没有任何 fact ID 支持这两个具体工具名。",
+            "A4: `repository.license` 填的是“GNU Affero General Public License v3.0”，而研究 `F9` / 官方 LICENSE 文件明确是“GNU Affero General Public License v3.0 or later”，字段与一手来源不一致。"
+          ]
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
+          "changedPaths": [
+            "editorial.audience",
+            "editorial.directions",
+            "editorial.features",
+            "editorial.hook",
+            "editorial.meaning",
+            "editorial.opportunity",
+            "editorial.summary",
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "inferences",
+            "directionRationales",
+            "directionComparisons",
+            "uncertainty",
+            "localizationDecisions"
+          ],
+          "selectedDirectionIds": [
+            "interview-cleanup",
+            "rough-cut-assistant",
+            "memory-video-album"
+          ],
+          "failedChecks": [
+            {
+              "id": "B1",
+              "evidence": "`editorial.hook` = \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined abstraction and the compressed verb-object relation is not natural Chinese."
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F11 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "editorial.summary should contain 60-180 characters",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F11 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "editorial.summary should contain 60-180 characters",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": [
+            "B1: `editorial.hook` uses the unnatural phrase \"把聊天改片写进真实视频时间线\"; `聊天改片` is a coined noun stack and the verb-object pairing is not natural Chinese."
+          ]
+        }
+      ]
+    },
+    {
+      "fullName": "apache/echarts",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：fieldEvidence must contain every required field exactly once and in order; page field evidence is missing `editorial.opportunity`; fieldEvidence must contain every required field exactly once and in order",
+      "failedChecks": [],
+      "structuralErrors": [
+        "fieldEvidence must contain every required field exactly once and in order",
+        "page field evidence is missing `editorial.opportunity`",
+        "fieldEvidence must contain every required field exactly once and in order",
+        "page field evidence is missing `editorial.opportunity`"
+      ],
+      "blockers": [],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "reading-habit-recap",
+            "data-story-card-editor"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F12 cites an unavailable source",
+            "direction family-finance-checkup cites an unknown fact",
+            "direction class-score-briefing cites an unknown fact",
+            "direction reading-habit-recap cites an unknown fact",
+            "direction community-shift-heatboard cites an unknown fact",
+            "direction data-story-card-editor cites an unknown fact",
+            "fact F12 cites an unavailable source",
+            "direction family-finance-checkup cites an unknown fact",
+            "direction reading-habit-recap cites an unknown fact",
+            "direction data-story-card-editor cites an unknown fact"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
+          "changedPaths": [
+            "editorial.meaning",
+            "decisionReason",
+            "fieldEvidence",
+            "directionRationales",
+            "directionComparisons"
+          ],
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "class-score-briefing",
+            "data-story-card-editor"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
+          "changedPaths": [
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "directionRationales"
+          ],
+          "selectedDirectionIds": [
+            "family-finance-checkup",
+            "reading-habit-recap",
+            "community-shift-heatboard"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
+        }
+      ]
+    },
+    {
+      "fullName": "f/prompts.chat",
+      "stage": "两轮自动修复后质量复检",
+      "reason": "两轮修复后仍未通过：A1, A4",
+      "failedChecks": [
+        {
+          "id": "A1",
+          "evidence": "失败。研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，但项目 JSON `repository.license` 实际写成 `This project uses a dual-license model:`，字段值与可追溯主张不一致。且 `editorial.stack` 写入 `Next.js`、`TypeScript`、`PostgreSQL`，但研究笔记只给出 `F3, F9, F10`，其中 `F9`、`F10`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。"
+        },
+        {
+          "id": "A4",
+          "evidence": "失败。项目 JSON `repository.license` 为 `This project uses a dual-license model:`，而研究笔记 `F11` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，`Page field evidence` 也计划写成 `MIT / CC0 1.0 Universal 双许可`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，`I3` 已注明 GitHub 检测值 `Other / NOASSERTION` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。"
+        }
+      ],
+      "structuralErrors": [
+        "fact F13 cites an unavailable source",
+        "fact F13 cites an unavailable source"
+      ],
+      "blockers": [
+        "A4：许可证存在实质矛盾。`project.repository.license` 写成 `This project uses a dual-license model:`，但研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，且 `F11` 明确写明“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”。许可证属于必须暂停项。"
+      ],
+      "repairHistory": [
+        {
+          "round": 0,
+          "label": "初次检查",
+          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
+          "changedPaths": [],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "classroom-prompt-workbench"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`",
+            "fact F12 cites an unavailable source",
+            "fieldEvidence must contain every required field exactly once and in order",
+            "page field evidence is missing `editorial.hook`",
+            "page field evidence is missing `editorial.summary`",
+            "page field evidence is missing `editorial.meaning`",
+            "page field evidence is missing `editorial.audience`",
+            "page field evidence is missing `editorial.features`",
+            "page field evidence is missing `editorial.stack`",
+            "page field evidence is missing `editorial.opportunity`"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 1,
+          "label": "第 1 轮修复后复检",
+          "strategy": "第一轮采用完整语义单元重写：根据每条失败证据重写整句、整个字段或整个失败方向，并同步更新直接依赖的证据绑定、方向依据和两两比较。禁止只换词、补一句或改标题。",
+          "changedPaths": [
+            "editorial.directions",
+            "editorial.features",
+            "editorial.meaning",
+            "editorial.summary",
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "inferences",
+            "directionRationales",
+            "directionComparisons",
+            "uncertainty",
+            "localizationDecisions"
+          ],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "classroom-prompt-workbench"
+          ],
+          "failedChecks": [],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F13 cites an unavailable source",
+            "fact F13 cites an unavailable source"
+          ],
+          "blockers": []
+        },
+        {
+          "round": 2,
+          "label": "第 2 轮修复后复检",
+          "strategy": "第二轮采用替代方案重建：丢弃上一轮仍失败的表达角度、核心工作流或差异理由，从已验证事实重新选择方案；可以修改失败单元的全部直接依赖字段，但不得改动无关内容。",
+          "changedPaths": [
+            "editorial.hook",
+            "decisionReason",
+            "facts",
+            "fieldEvidence",
+            "directionComparisons",
+            "uncertainty"
+          ],
+          "selectedDirectionIds": [
+            "personal-prompt-vault",
+            "prompting-workbook",
+            "kids-ai-adventure"
+          ],
+          "failedChecks": [
+            {
+              "id": "A1",
+              "evidence": "失败。研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，但项目 JSON `repository.license` 实际写成 `This project uses a dual-license model:`，字段值与可追溯主张不一致。且 `editorial.stack` 写入 `Next.js`、`TypeScript`、`PostgreSQL`，但研究笔记只给出 `F3, F9, F10`，其中 `F9`、`F10`并未逐项登记这三项技术，栈字段缺少逐项可追溯事实。"
+            },
+            {
+              "id": "A4",
+              "evidence": "失败。项目 JSON `repository.license` 为 `This project uses a dual-license model:`，而研究笔记 `F11` 明确许可证内容是“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”，`Page field evidence` 也计划写成 `MIT / CC0 1.0 Universal 双许可`。这是项目 JSON、研究笔记与官方 LICENSE 之间的实质不一致，不应以模糊句代替已验证许可证。另，`I3` 已注明 GitHub 检测值 `Other / NOASSERTION` 与官方 LICENSE 可见冲突，属于必须谨慎处理的许可证不确定性。"
+            }
+          ],
+          "failedDirectionAudits": [],
+          "failedDirectionPairAudits": [],
+          "structuralErrors": [
+            "fact F13 cites an unavailable source",
+            "fact F13 cites an unavailable source"
+          ],
+          "blockers": [
+            "A4：许可证存在实质矛盾。`project.repository.license` 写成 `This project uses a dual-license model:`，但研究笔记 `Page field evidence` 中 `repository.license` 的已验证主张是 `MIT / CC0 1.0 Universal 双许可`，且 `F11` 明确写明“源码和站点作者内容采用 MIT；提示词内容和数据采用 CC0 1.0 Universal”。许可证属于必须暂停项。"
+          ]
+        }
+      ]
+    }
+  ],
+  "publicationAuthorized": false
+}

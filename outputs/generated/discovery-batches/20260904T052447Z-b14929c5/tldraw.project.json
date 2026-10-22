@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "tldraw",
+  "repository": {
+    "githubId": 365739812,
+    "fullName": "tldraw/tldraw",
+    "name": "tldraw",
+    "stars": 50117,
+    "forks": 3495,
+    "language": "TypeScript",
+    "pushedAt": "2026-09-03T17:19:50Z",
+    "license": "tldraw license",
+    "state": "active",
+    "fetchedAt": "2026-09-04T05:47:05Z"
+  },
+  "editorial": {
+    "audience": "用 React 做画布应用、白板工具和交互编辑器的开发者",
+    "directions": [
+      {
+        "approach": "把截图、草图和说明拖进无限画布，现场画箭头、写文字、多人同步修改，最后导出一张可回看的评审板。",
+        "audience": "设计师、产品经理和客户评审团队",
+        "difference": "从开发者集成画布，改成面向方案确认的成品批注板。",
+        "id": "review-annotation-board",
+        "name": "评审批注板",
+        "problem": "设计和方案反馈散在聊天、文档和图片里，修改点难以统一回看。",
+        "scope": [
+          "导入图片和截图",
+          "文字与箭头批注",
+          "多人实时同步",
+          "页面整理",
+          "导出图片或 PDF"
+        ],
+        "tagline": "把截图和草图放进一块可协作的评审画布"
+      },
+      {
+        "approach": "在大屏或平板上写字、画几何图形、插入图片和视频，学生可同步标注，课后导出讲义。",
+        "audience": "老师、培训讲师和助教",
+        "difference": "从开发者接入画布，改成课堂里直接使用的互动黑板。",
+        "id": "classroom-blackboard",
+        "name": "互动课堂黑板",
+        "problem": "讲解、板书和学生提问常被切成不同工具。",
+        "scope": [
+          "手写和几何图形",
+          "图片/视频插入",
+          "课堂协作标注",
+          "讲义导出",
+          "触屏适配"
+        ],
+        "tagline": "把讲解、板书和学生标注放到同一块黑板上"
+      },
+      {
+        "approach": "多人把照片和视频拖到无限画布，补上文字、箭头和位置关系，一起整理并导出。",
+        "audience": "家庭成员、朋友小组和活动组织者",
+        "difference": "从开发者可编程画布，改成日常记忆整理和分享工具。",
+        "id": "family-memory-wall",
+        "name": "家庭记忆墙",
+        "problem": "旅行、聚会和成长素材散在相册与聊天里，难以一起回看。",
+        "scope": [
+          "照片和视频导入",
+          "文字说明和标注",
+          "多人协作整理",
+          "时间或主题分区",
+          "分享与导出"
+        ],
+        "tagline": "把照片、视频和留言拼成一面回忆墙"
+      }
+    ],
+    "features": [
+      "无限画布引擎",
+      "自定义 shapes、tools、bindings 和 UI 组件",
+      "多人实时协作",
+      "绘图、几何图形、文本、箭头、图片/视频和导出",
+      "运行时 Editor API",
+      "AI integrations 和网页嵌入"
+    ],
+    "hook": "给 React 应用装上可协作的无限画布",
+    "meaning": "它把画布引擎、协作、扩展点和运行时控制做成可复用底座，让团队不用从零实现白板内核，就能把评审板、课堂黑板、研究整理板和分支叙事图等产品做出来。",
+    "opportunity": [
+      "自定义 shapes、tools 和 UI 组件，让同一套画布切换成评审板、课堂黑板或记忆墙，而不是停留在通用白板。",
+      "多人实时协作和自托管同步，适合需要同时标注、共同修改、保留留痕的场景。",
+      "图片、视频、网页嵌入和导出，把外部资料收进同一块画布里整理、讲解和分享。",
+      "AI integrations 配合运行时 Editor API，可以让模型读写画布内容，做研究整理、分支草稿或批注修改。"
+    ],
+    "stack": [
+      "TypeScript",
+      "React",
+      "@tldraw/sync",
+      "Cloudflare Durable Objects"
+    ],
+    "summary": "tldraw 是给 React 应用接入无限画布的 SDK。开发者可以组合自定义 shapes、tools、bindings 和 UI 组件，直接得到多人协作、绘图/图形/文本/箭头、图片视频、运行时 Editor API，以及 AI 和网页嵌入能力。"
+  },
+  "visual": {
+    "generatorVersion": 2,
+    "seed": "tldraw/tldraw",
+    "accent": "#942eb8",
+    "foreground": "#ffffff",
+    "motif": "polyline",
+    "variant": 3317284413
+  }
+}
