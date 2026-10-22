@@ -1,551 +1,257 @@
 {
-  "status": "awaiting-approval",
-  "batchId": "20260901T150054Z-44a78a5d",
-  "batchPath": "outputs/generated/discovery-batches/20260901T150054Z-44a78a5d",
-  "candidateCount": 1,
-  "rejectedCount": 4,
+  "status": "partial-failure",
+  "batchId": "20260903T084424Z-68aee9d4",
+  "batchPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4",
+  "candidateCount": 3,
+  "rejectedCount": 1,
   "rejected": [
     {
-      "fullName": "Pinvou/pinvou-agent",
-      "stage": "首轮修复无实质进展",
-      "reason": "首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3",
-      "failedChecks": [
-        {
-          "id": "D3",
-          "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
-        }
-      ],
+      "fullName": "larashero3-dotcom/lieflat-charts",
+      "stage": "生成首版候选",
+      "reason": "可从 README、最新 release 与许可证文件较准确地说明项目能力，也能提出至少五个彼此有明显差异的更窄产品方向；但当前证据缺少 S1 所要求的 repository.fetchedAt 精确采集时间，且 README 内部对部分模板数量表述不一致，因此这份草稿适合继续评审与补证，不适合直接作为完整发布记录。",
+      "failedChecks": [],
       "structuralErrors": [],
-      "blockers": [],
-      "repairHistory": [
-        {
-          "round": 0,
-          "label": "初次检查",
-          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
-          "changedPaths": [],
-          "failedChecks": [
-            {
-              "id": "D3",
-              "evidence": "`受控代码协作桌面` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。"
-            }
-          ],
-          "failedDirectionAudits": [
-            {
-              "changedAxes": [
-                "audience"
-              ],
-              "directionId": "受控代码协作桌面",
-              "evidence": "F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。",
-              "status": "fail"
-            }
-          ],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [
-            "editorial.directions[0].id must be a lowercase kebab-case slug",
-            "editorial.directions[1].id must be a lowercase kebab-case slug",
-            "editorial.directions[2].id must be a lowercase kebab-case slug"
-          ],
-          "blockers": [
-            "D3: `受控代码协作桌面` 与原项目的 code mode 在 audience、input、workflow、outcome 上都不成立为实质新增；研究笔记 F14 已经写明可在真实项目或临时工作区里用 ACP 读写代码、运行命令，并显示 plan/tool steps/permission requests/file changes，方向只是收窄命名。"
-          ]
-        },
-        {
-          "round": 1,
-          "label": "第 1 轮修复后复检",
-          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
-          "changedPaths": [
-            "editorial.directions",
-            "editorial.opportunity",
-            "decisionReason",
-            "fieldEvidence",
-            "directionRationales",
-            "directionComparisons"
-          ],
-          "failedChecks": [
-            {
-              "id": "D3",
-              "evidence": "方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。"
-            }
-          ],
-          "failedDirectionAudits": [
-            {
-              "changedAxes": [
-                "audience",
-                "input"
-              ],
-              "directionId": "hai-bao-gai-gao-tai",
-              "evidence": "F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。",
-              "status": "fail"
-            }
-          ],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [],
-          "blockers": []
-        }
-      ]
-    },
-    {
-      "fullName": "apache/superset",
-      "stage": "A3 程序校验",
-      "reason": "GitHub 客观数据未能与本轮快照完全对应",
-      "failedChecks": [
-        {
-          "id": "A3",
-          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
-        }
-      ],
-      "structuralErrors": [
-        "repository.pushedAt must not be later than repository.fetchedAt"
-      ],
-      "blockers": [],
-      "repairHistory": []
-    },
-    {
-      "fullName": "tldraw/tldraw",
-      "stage": "两轮自动修复后质量复检",
-      "reason": "两轮修复后仍未通过：A4",
-      "failedChecks": [
-        {
-          "id": "A4",
-          "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
-        }
-      ],
-      "structuralErrors": [],
-      "blockers": [
-        "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
-      ],
-      "repairHistory": [
-        {
-          "round": 0,
-          "label": "初次检查",
-          "strategy": "生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。",
-          "changedPaths": [],
-          "failedChecks": [
-            {
-              "id": "A4",
-              "evidence": "research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。"
-            },
-            {
-              "id": "E3",
-              "evidence": "所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。"
-            }
-          ],
-          "failedDirectionAudits": [],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [],
-          "blockers": [
-            "A4：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解；修改字段：repository.license / editorial.summary；修复结果：需先澄清或补足许可事实后再发。",
-            "E3：三条方向的 audience 都是团队/内部工具/运营配置人（产品、设计和评审团队；内容团队和内部工具团队；运营、产品和自动化配置人员），没有一个主要服务于个人、家庭、学习、创作或社区；修改字段：至少一个 direction.audience / difference / approach；修复结果：补一条非商业或创作/学习取向方向。"
-          ]
-        },
-        {
-          "round": 1,
-          "label": "第 1 轮修复后复检",
-          "strategy": "针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。",
-          "changedPaths": [
-            "editorial.directions",
-            "editorial.opportunity",
-            "editorial.summary",
-            "decisionReason",
-            "fieldEvidence",
-            "inferences",
-            "directionRationales",
-            "directionComparisons",
-            "uncertainty",
-            "localizationDecisions"
-          ],
-          "failedChecks": [],
-          "failedDirectionAudits": [],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [
-            "direction comparisons must contain every unique direction pair exactly once and in order",
-            "quality items must contain A1-E3 exactly once and in order",
-            "direction pair audits must contain every unique project direction pair exactly once and in order"
-          ],
-          "blockers": []
-        },
-        {
-          "round": 2,
-          "label": "第 2 轮修复后复检",
-          "strategy": "采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。",
-          "changedPaths": [
-            "decisionReason",
-            "directionComparisons"
-          ],
-          "failedChecks": [
-            {
-              "id": "A4",
-              "evidence": "The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly."
-            }
-          ],
-          "failedDirectionAudits": [],
-          "failedDirectionPairAudits": [],
-          "structuralErrors": [],
-          "blockers": [
-            "License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other."
-          ]
-        }
-      ]
-    },
-    {
-      "fullName": "labring/FastGPT",
-      "stage": "A3 程序校验",
-      "reason": "GitHub 客观数据未能与本轮快照完全对应",
-      "failedChecks": [
-        {
-          "id": "A3",
-          "evidence": "repository.pushedAt 不能晚于 repository.fetchedAt"
-        }
-      ],
-      "structuralErrors": [
-        "fieldEvidence must contain every required field exactly once and in order",
-        "repository.pushedAt must not be later than repository.fetchedAt",
-        "page field evidence is missing `editorial.meaning`"
-      ],
       "blockers": [],
       "repairHistory": []
     }
   ],
-  "batchFingerprint": "cd065eac51842fa4887592722eb0519a9ee500204951be6cadcd264f5b0987ea",
+  "errorCount": 1,
+  "errors": [
+    {
+      "fullName": "apache/superset",
+      "stage": "生成首版候选",
+      "reason": "AI provider request failed (RemoteDisconnected): Remote end closed connection without response",
+      "fatal": false,
+      "repairHistory": []
+    }
+  ],
+  "notStartedCount": 0,
+  "batchFingerprint": "b7cc3d8cd758a599f6291565323932758bcd9df1ca0e287243bbb74d49192cc1",
   "aiMetrics": {
-    "maxConcurrentCandidates": 2,
-    "wallTimeSeconds": 1807.9,
-    "logicalCallCount": 18,
-    "successfulCallCount": 18,
-    "providerUsageReportedCallCount": 18,
-    "summedRequestTimeSeconds": 2623.0,
-    "promptTokens": 217310,
-    "completionTokens": 139749,
-    "totalTokens": 357059,
-    "cachedPromptTokens": 75520,
-    "reasoningTokens": 85589,
+    "maxConcurrentCandidates": 3,
+    "wallTimeSeconds": 1663.4,
+    "logicalCallCount": 12,
+    "successfulCallCount": 11,
+    "providerUsageReportedCallCount": 11,
+    "summedRequestTimeSeconds": 4622.7,
+    "promptTokens": 199205,
+    "completionTokens": 84364,
+    "totalTokens": 283569,
+    "cachedPromptTokens": 70912,
+    "reasoningTokens": 30926,
     "calls": [
       {
         "sequence": 1,
-        "candidate": "Pinvou/pinvou-agent",
+        "candidate": "larashero3-dotcom/lieflat-charts",
         "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 14499,
-        "schemaCharacters": 4689,
-        "durationSeconds": 227.6,
+        "instructionCharacters": 38676,
+        "inputCharacters": 18555,
+        "schemaCharacters": 4690,
+        "durationSeconds": 138.0,
         "attempts": 1,
         "usage": {
-          "promptTokens": 13327,
-          "completionTokens": 12319,
-          "totalTokens": 25646,
+          "promptTokens": 17238,
+          "completionTokens": 7346,
+          "totalTokens": 24584,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 8286
+          "reasoningTokens": 1252
         }
       },
       {
         "sequence": 2,
-        "candidate": "apache/maka",
+        "candidate": "snapotter-hq/SnapOtter",
         "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 16035,
-        "schemaCharacters": 4689,
-        "durationSeconds": 206.1,
-        "attempts": 1,
+        "instructionCharacters": 38676,
+        "inputCharacters": 54032,
+        "schemaCharacters": 4690,
+        "durationSeconds": 691.3,
+        "attempts": 3,
         "usage": {
-          "promptTokens": 13105,
-          "completionTokens": 11117,
-          "totalTokens": 24222,
+          "promptTokens": 22768,
+          "completionTokens": 6912,
+          "totalTokens": 29680,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 7586
+          "reasoningTokens": 319
         }
       },
       {
         "sequence": 3,
-        "candidate": "apache/maka",
-        "stage": "inspiration_quality_review",
+        "candidate": "Pinvou/pinvou-agent",
+        "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9671,
-        "schemaCharacters": 1670,
-        "durationSeconds": 121.5,
-        "attempts": 1,
+        "instructionCharacters": 38676,
+        "inputCharacters": 15968,
+        "schemaCharacters": 4690,
+        "durationSeconds": 474.7,
+        "attempts": 2,
         "usage": {
-          "promptTokens": 6703,
-          "completionTokens": 6520,
-          "totalTokens": 13223,
-          "cachedPromptTokens": 0,
-          "reasoningTokens": 4655
+          "promptTokens": 14501,
+          "completionTokens": 10461,
+          "totalTokens": 24962,
+          "cachedPromptTokens": 14080,
+          "reasoningTokens": 3616
         }
       },
       {
         "sequence": 4,
-        "candidate": "Pinvou/pinvou-agent",
-        "stage": "inspiration_quality_review",
+        "candidate": "tejaswigowda/ffmpeg-webCLI",
+        "stage": "inspiration_project_draft",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9640,
-        "schemaCharacters": 1670,
-        "durationSeconds": 126.7,
-        "attempts": 1,
+        "instructionCharacters": 38676,
+        "inputCharacters": 64081,
+        "schemaCharacters": 4690,
+        "durationSeconds": 478.9,
+        "attempts": 2,
         "usage": {
-          "promptTokens": 7162,
-          "completionTokens": 6782,
-          "totalTokens": 13944,
-          "cachedPromptTokens": 2304,
-          "reasoningTokens": 4821
+          "promptTokens": 25085,
+          "completionTokens": 10904,
+          "totalTokens": 35989,
+          "cachedPromptTokens": 9472,
+          "reasoningTokens": 4725
         }
       },
       {
         "sequence": 5,
-        "candidate": "apache/maka",
-        "stage": "inspiration_project_repair_1",
+        "candidate": "Pinvou/pinvou-agent",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 26656,
-        "schemaCharacters": 4689,
-        "durationSeconds": 146.9,
+        "instructionCharacters": 7123,
+        "inputCharacters": 14270,
+        "schemaCharacters": 5328,
+        "durationSeconds": 168.7,
         "attempts": 1,
         "usage": {
-          "promptTokens": 17328,
-          "completionTokens": 7832,
-          "totalTokens": 25160,
+          "promptTokens": 10846,
+          "completionTokens": 5772,
+          "totalTokens": 16618,
           "cachedPromptTokens": 0,
-          "reasoningTokens": 4260
+          "reasoningTokens": 3088
         }
       },
       {
         "sequence": 6,
-        "candidate": "Pinvou/pinvou-agent",
-        "stage": "inspiration_project_repair_1",
+        "candidate": "tejaswigowda/ffmpeg-webCLI",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 25419,
-        "schemaCharacters": 4689,
-        "durationSeconds": 116.8,
+        "instructionCharacters": 7123,
+        "inputCharacters": 13314,
+        "schemaCharacters": 5328,
+        "durationSeconds": 122.5,
         "attempts": 1,
         "usage": {
-          "promptTokens": 18186,
-          "completionTokens": 6095,
-          "totalTokens": 24281,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 1960
+          "promptTokens": 10628,
+          "completionTokens": 6514,
+          "totalTokens": 17142,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2921
         }
       },
       {
         "sequence": 7,
-        "candidate": "Pinvou/pinvou-agent",
-        "stage": "inspiration_quality_review",
-        "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9709,
-        "schemaCharacters": 1670,
-        "durationSeconds": 142.1,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 7172,
-          "completionTokens": 7387,
-          "totalTokens": 14559,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 5565
-        }
+        "candidate": "apache/superset",
+        "stage": "inspiration_project_draft",
+        "status": "error",
+        "instructionCharacters": 38676,
+        "inputCharacters": 39612,
+        "schemaCharacters": 4690,
+        "durationSeconds": 836.3,
+        "attempts": null,
+        "usage": null
       },
       {
         "sequence": 8,
-        "candidate": "apache/maka",
+        "candidate": "snapotter-hq/SnapOtter",
         "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9534,
-        "schemaCharacters": 1670,
-        "durationSeconds": 91.1,
-        "attempts": 1,
+        "instructionCharacters": 7123,
+        "inputCharacters": 14482,
+        "schemaCharacters": 5328,
+        "durationSeconds": 457.8,
+        "attempts": 2,
         "usage": {
-          "promptTokens": 6730,
-          "completionTokens": 4712,
-          "totalTokens": 11442,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 3106
+          "promptTokens": 10896,
+          "completionTokens": 6745,
+          "totalTokens": 17641,
+          "cachedPromptTokens": 10496,
+          "reasoningTokens": 3948
         }
       },
       {
         "sequence": 9,
-        "candidate": "apache/maka",
-        "stage": "inspiration_project_repair_2",
+        "candidate": "tejaswigowda/ffmpeg-webCLI",
+        "stage": "inspiration_project_repair_1",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 26449,
-        "schemaCharacters": 4689,
-        "durationSeconds": 143.4,
-        "attempts": 1,
+        "instructionCharacters": 38676,
+        "inputCharacters": 83285,
+        "schemaCharacters": 4690,
+        "durationSeconds": 782.7,
+        "attempts": 3,
         "usage": {
-          "promptTokens": 17304,
-          "completionTokens": 7592,
-          "totalTokens": 24896,
-          "cachedPromptTokens": 0,
-          "reasoningTokens": 3963
+          "promptTokens": 33875,
+          "completionTokens": 9694,
+          "totalTokens": 43569,
+          "cachedPromptTokens": 33536,
+          "reasoningTokens": 3348
         }
       },
       {
         "sequence": 10,
-        "candidate": "apache/maka",
-        "stage": "inspiration_quality_review",
+        "candidate": "snapotter-hq/SnapOtter",
+        "stage": "inspiration_project_repair_1",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9898,
-        "schemaCharacters": 1670,
-        "durationSeconds": 95.5,
+        "instructionCharacters": 38676,
+        "inputCharacters": 73350,
+        "schemaCharacters": 4690,
+        "durationSeconds": 192.7,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6789,
-          "completionTokens": 5059,
-          "totalTokens": 11848,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 3166
+          "promptTokens": 31698,
+          "completionTokens": 9128,
+          "totalTokens": 40826,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2673
         }
       },
       {
         "sequence": 11,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_draft",
+        "candidate": "snapotter-hq/SnapOtter",
+        "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 11062,
-        "schemaCharacters": 4689,
-        "durationSeconds": 243.7,
+        "instructionCharacters": 7123,
+        "inputCharacters": 14486,
+        "schemaCharacters": 5328,
+        "durationSeconds": 140.1,
         "attempts": 1,
         "usage": {
-          "promptTokens": 12546,
-          "completionTokens": 13223,
-          "totalTokens": 25769,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 9527
+          "promptTokens": 10893,
+          "completionTokens": 5555,
+          "totalTokens": 16448,
+          "cachedPromptTokens": 0,
+          "reasoningTokens": 2694
         }
       },
       {
         "sequence": 12,
-        "candidate": "apache/superset",
-        "stage": "inspiration_project_draft",
-        "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 27352,
-        "schemaCharacters": 4689,
-        "durationSeconds": 204.0,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 16655,
-          "completionTokens": 10923,
-          "totalTokens": 27578,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 7545
-        }
-      },
-      {
-        "sequence": 13,
-        "candidate": "tldraw/tldraw",
+        "candidate": "tejaswigowda/ffmpeg-webCLI",
         "stage": "inspiration_quality_review",
         "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 9830,
-        "schemaCharacters": 1670,
-        "durationSeconds": 116.5,
+        "instructionCharacters": 7123,
+        "inputCharacters": 13487,
+        "schemaCharacters": 5328,
+        "durationSeconds": 139.0,
         "attempts": 1,
         "usage": {
-          "promptTokens": 6939,
-          "completionTokens": 6200,
-          "totalTokens": 13139,
-          "cachedPromptTokens": 2304,
-          "reasoningTokens": 4050
-        }
-      },
-      {
-        "sequence": 14,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_repair_1",
-        "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 21990,
-        "schemaCharacters": 4689,
-        "durationSeconds": 134.6,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 17061,
-          "completionTokens": 7133,
-          "totalTokens": 24194,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 2588
-        }
-      },
-      {
-        "sequence": 15,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_quality_review",
-        "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 11408,
-        "schemaCharacters": 1670,
-        "durationSeconds": 95.1,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 7836,
-          "completionTokens": 5015,
-          "totalTokens": 12851,
-          "cachedPromptTokens": 2816,
-          "reasoningTokens": 2744
-        }
-      },
-      {
-        "sequence": 16,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_project_repair_2",
-        "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 23361,
-        "schemaCharacters": 4689,
-        "durationSeconds": 100.8,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 17728,
-          "completionTokens": 5191,
-          "totalTokens": 22919,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 653
-        }
-      },
-      {
-        "sequence": 17,
-        "candidate": "tldraw/tldraw",
-        "stage": "inspiration_quality_review",
-        "status": "success",
-        "instructionCharacters": 4815,
-        "inputCharacters": 11431,
-        "schemaCharacters": 1670,
-        "durationSeconds": 104.8,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 7839,
-          "completionTokens": 5585,
-          "totalTokens": 13424,
-          "cachedPromptTokens": 5888,
-          "reasoningTokens": 3970
-        }
-      },
-      {
-        "sequence": 18,
-        "candidate": "labring/FastGPT",
-        "stage": "inspiration_project_draft",
-        "status": "success",
-        "instructionCharacters": 34856,
-        "inputCharacters": 19527,
-        "schemaCharacters": 4689,
-        "durationSeconds": 205.8,
-        "attempts": 1,
-        "usage": {
-          "promptTokens": 16900,
-          "completionTokens": 11064,
-          "totalTokens": 27964,
-          "cachedPromptTokens": 8960,
-          "reasoningTokens": 7144
+          "promptTokens": 10777,
+          "completionTokens": 5333,
+          "totalTokens": 16110,
+          "cachedPromptTokens": 3328,
+          "reasoningTokens": 2342
         }
       }
     ]
   },
-  "preview": "# 自动候选审核：20260901T150054Z-44a78a5d\n\n- 生成时间：2026-09-01T15:00:54Z\n- 合格候选：1\n- 未通过深读：4\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. maka\n\n- 仓库：https://github.com/apache/maka\n- Star：4391\n- 许可证：Apache License 2.0\n- 主题色：#bf5831\n- Hook：把 AI 代理做成可回放工作区\n- 介绍：它把本地项目、模型连接和权限设置接到同一个 AI agent 工作区里，让你在 Desktop、TUI/CLI 或 Eval 中发起任务、查看工具轨迹并接续中断的回合。模型消息、tool calls、tool results、权限决策和终止事件都会写成可回放的记录。\n- 改造方向：\n  - 会话复盘台：从历史会话里找出失败点并接着跑\n  - 权限审计台：先连模型和工具，再把越界动作关进审批\n  - 实验对照台：把评测结果和失败点放在一起看\n\n## 未进入候选的仓库\n\n### Pinvou/pinvou-agent\n\n- 停止阶段：首轮修复无实质进展\n- 结果：首轮修复后方向差异没有可测量改善，停止无效第二轮：D3（单个方向与原项目的实质差异通过数 2→2）；仍未通过：D3\n- 最终失败证据：\n  - D3：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n- 修复轨迹：\n  - 初次检查：失败 D3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - D3 当轮证据：\\`受控代码协作桌面\\` 只是在原项目已存在的 code mode 上改写命名：F14 已给出真实项目/临时工作区、plan、permission requests、file changes 与代码读写/命令执行，因此不足两项实质变化。\n    - 方向 受控代码协作桌面：变化轴 audience；F14 已经覆盖真实项目或临时工作区、ACP、plan、tool steps、permission requests、file changes 和代码读写/命令执行；方向没有在输入、核心工作流或可见结果上形成新的重复集成流程，只是把原有 code mode 改写成面向开发者的叙述。\n  - 第 1 轮修复后复检：失败 D3；改动 editorial.directions, editorial.opportunity, decisionReason, fieldEvidence, directionRationales, directionComparisons；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n    - D3 当轮证据：方向复用 F12/F15/F16 的资料闭环能力，但把原项目的通用 workspace 改成资料检索、摘证与文档交付；与原项目相比，用户、输入、工作流、可见结果都发生实质变化。\n    - 方向 hai-bao-gai-gao-tai：变化轴 audience, input；F13 已明确“design mode 可以用自然语言创建海报和数据可视化，并在设计界面里直接改元素”，F15 也包含可编辑 artifacts；该方向只是把同一能力改写成海报/图表、文案/数据/尺寸的子集，没有新的核心工作流或可见结果，改动不足两项实质轴。\n\n### apache/superset\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - repository.pushedAt must not be later than repository.fetchedAt\n\n### tldraw/tldraw\n\n- 停止阶段：两轮自动修复后质量复检\n- 结果：两轮修复后仍未通过：A4\n- 最终失败证据：\n  - A4：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n- 当前阻断项：\n  - License state remains unresolved: GitHub metadata is recorded as Other/NOASSERTION, the README says tldraw license with a production license key requirement, and the research note marks repository.license as unknown while the project JSON sets it to Other.\n- 修复轨迹：\n  - 初次检查：失败 A4, E3；改动 无；策略 生成后首次完整检查；A3 由程序核对，A4 及其他语义项由 AI 审核。\n    - A4 当轮证据：research note 的 Uncertainty 明确写出“GitHub 元数据把许可证记为 Other/NOASSERTION，README 则写的是 tldraw license 并说明生产使用需要 license key”，license 语义未被页面消解。\n    - E3 当轮证据：所有方向都面向商业团队/内部工具场景，没有一条主要服务于个人、家庭、学习、创作或社区，因此缺少必须保留的非商业主题方向。\n  - 第 1 轮修复后复检：失败 无；改动 editorial.directions, editorial.opportunity, editorial.summary, decisionReason, fieldEvidence, inferences, directionRationales, directionComparisons, uncertainty, localizationDecisions；策略 针对失败证据，只删除、降级或重新绑定没有一手来源支持的主张；保持已通过字段不变。\n  - 第 2 轮修复后复检：失败 A4；改动 decisionReason, directionComparisons；策略 采用不同方案：从已验证事实重新构造受影响字段，不沿用上一轮仍然失败的句式或推断。\n    - A4 当轮证据：The project JSON asserts repository.license='Other' while the research note explicitly treats repository.license as unknown because GitHub metadata and README licensing language do not align cleanly.\n\n### labring/FastGPT\n\n- 停止阶段：A3 程序校验\n- 结果：GitHub 客观数据未能与本轮快照完全对应\n- 最终失败证据：\n  - A3：repository.pushedAt 不能晚于 repository.fetchedAt\n- 当前结构错误：\n  - fieldEvidence must contain every required field exactly once and in order\n  - repository.pushedAt must not be later than repository.fetchedAt\n  - page field evidence is missing \\`editorial.meaning\\`\n\n\n\n## AI 执行统计\n\n- 候选并发上限：2\n- AI 逻辑调用：18\n- 深读阶段墙钟时间：1807.9 秒\n- 各请求耗时合计：2623.0 秒（并发请求会重叠）\n- 返回 usage 的调用：18\n- 输入 Token：217310\n- 输出 Token：139749\n- 其中缓存输入 Token：75520\n- 其中推理 Token：85589\n",
+  "preview": "# 自动候选审核：20260903T084424Z-68aee9d4\n\n- 生成时间：2026-09-03T08:44:24Z\n- 合格候选：3\n- 未通过深读：1\n- 当前状态：等待人工审核\n- 合并此 PR 表示批准本批候选进入灵感流；关闭 PR 表示拒绝整批。\n\n## 1. SnapOtter\n\n- 仓库：https://github.com/snapotter-hq/SnapOtter\n- Star：2410\n- 许可证：GNU Affero General Public License v3.0\n- 主题色：#23854b\n- Hook：把图片、视频和PDF都留在本地处理\n- 介绍：SnapOtter 是一个自托管文件处理平台，能在 Web UI、REST API 和 pipelines 里处理图片、视频、音频、PDF 与文档。它提供 200+ 工具，覆盖转换、压缩、OCR、转录、去元数据、图像编辑和本地 AI 处理，并强调文件留在自有网络内完成处理。\n- 改造方向：\n  - 家庭记忆整理柜：把老照片、扫描件和录音整理成可搜索的家庭档案\n  - 课程资料打包器：把讲义、录音和录屏自动整理成可分发的学习包\n  - 文件脱敏工作台：把待共享文件处理成脱敏后的安全版本\n\n## 2. pinvou-agent\n\n- 仓库：https://github.com/Pinvou/pinvou-agent\n- Star：1596\n- 许可证：MIT License\n- 主题色：#2f22bf\n- Hook：把聊天窗口变成能交付文件的桌面助手\n- 介绍：Pinvou Agent 是一个桌面 AI 工作区，可接入本地模型或兼容 OpenAI 的 API，把附件、知识库、工具和工作流放进同一会话里，生成并保留可继续修改的文件产物。它还把海报与数据可视化编辑、真实代码项目协作、统一工具连接和会话持久化放进同一个 Tauri 桌面应用。\n- 改造方向：\n  - 合同整理助理：导入合同和制度文件，生成可复核的条款摘要包\n  - 家庭资料问答柜：整理家中证件和说明书，得到带来源的私有问答台\n  - 群聊行动纪要器：接入团队消息和附件，整理出待办、结论和可发送文件\n\n## 3. ffmpeg-webCLI\n\n- 仓库：https://github.com/tejaswigowda/ffmpeg-webCLI\n- Star：1406\n- 许可证：GNU General Public License v3.0\n- 主题色：#1b882d\n- Hook：把私密视频处理留在浏览器里\n- 介绍：这是一个基于 ffmpeg.wasm 的浏览器视频编辑器，用户把本地媒体文件拖进页面后，就能在浏览器里完成转码、裁切、压缩、GIF 生成、字幕嵌入和音频提取，并直接预览下载结果。它还支持 Whisper 自动字幕、批量处理、链式操作、原始 ffmpeg 命令和离线 PWA，所以文件无需上传到服务器。\n- 改造方向：\n  - 访谈字幕审校台：导入访谈录像，在本地生成、修改并导出可发布字幕\n  - 课程视频批量定型器：一次设好同一套处理规则，把整批课程视频处理成统一成片\n  - 成长片段卡片机：从家庭视频里截出几个瞬间，生成可发给亲友的动图和封面图\n\n## 未进入候选的仓库\n\n### larashero3-dotcom/lieflat-charts\n\n- 停止阶段：生成首版候选\n- 结果：可从 README、最新 release 与许可证文件较准确地说明项目能力，也能提出至少五个彼此有明显差异的更窄产品方向；但当前证据缺少 S1 所要求的 repository.fetchedAt 精确采集时间，且 README 内部对部分模板数量表述不一致，因此这份草稿适合继续评审与补证，不适合直接作为完整发布记录。\n\n\n\n## 技术故障（不是内容质量不合格）\n\n- 技术失败：1\n- 已通过全部检查的候选仍保留在审核批次中；失败候选不会发布。\n- 本轮仍以失败状态报告，请修复服务问题后再发起新运行。\n\n- apache/superset：生成首版候选；AI provider request failed (RemoteDisconnected): Remote end closed connection without response\n\n## AI 执行统计\n\n- 候选并发上限：3\n- AI 逻辑调用：12\n- 深读阶段墙钟时间：1663.4 秒\n- 各请求耗时合计：4622.7 秒（并发请求会重叠）\n- 返回 usage 的调用：11\n- 输入 Token：199205\n- 输出 Token：84364\n- 其中缓存输入 Token：70912\n- 其中推理 Token：30926\n",
   "publicationAuthorized": false
 }

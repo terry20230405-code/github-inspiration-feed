@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "ffmpeg-webcli",
+  "projectPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/ffmpeg-webcli.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/ffmpeg-webcli.research.md",
+  "projectSha256": "80e039cdfedbf3d72bd18f04bd933b0966237e1a92fa36d9937c4ade9c42ea0b",
+  "researchSha256": "05a1a1aa619475c420c4eef596357a14af0fae55bba8993401978bdde336dadd",
+  "reviewedAt": "2026-09-03T08:44:24Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "通过：repository.githubId/fullName/name/stars/forks/language/pushedAt/license/state/fetchedAt 分别对应研究笔记 Snapshot 与 F1/F2/F12，editorial.summary、audience、features、stack 也都能在 F3-F12 中找到一手来源支撑。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "通过：editorial.hook 来自 F3/F11，meaning 来自 F3/F5/F6/F7/F8，opportunity 来自 F3/F5/F6/F7/F10/F11；五个方向各自都在 Direction rationale 中标出对应事实依据。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "通过：repository.license 与官方 LICENSE 文件 S4/F12 一致为 GNU General Public License v3.0，未见 README badge 与官方文件的实际冲突。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "通过：hook“把私密视频处理留在浏览器里”是自然中文，动词“处理”和宾语“私密视频”搭配正常，“留在浏览器里”表达明确，不是英文直译或名词堆叠。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "通过：summary 明确写出本地媒体拖入页面后，在浏览器里完成转码、裁切、压缩、GIF 生成、字幕嵌入、音频提取，并直接预览下载结果。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "通过：summary + features 覆盖了本地处理/预览、批量处理、链式操作、Whisper 自动字幕、原始 ffmpeg 命令与多输入合成，超过三个核心能力。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "通过：stack 保留了 ffmpeg.wasm、WebAssembly、Web Workers、PWA/Service Worker、Transformers.js/Whisper 等会影响本地处理、离线和字幕能力理解的术语，并说明了作用。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "通过：hook 只建立记忆点，没有列功能；summary 才完整描述输入、处理和输出，二者分工清楚且不重复同一句话。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "通过：summary 只讲原项目能力；meaning 解释这些已验证能力为何可复用，没有把任何新方向写成现有功能。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "通过：meaning 给出总体复用价值；opportunity 逐条把已验证能力（本地处理、批量、字幕、合成）连接到具体新产品机会，没有只写“加 AI”。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "通过：project audience 描述原项目用户；五个 directions 的 audience 都是新产品用户；每个 approach 讲流程，scope 只列支撑流程的最小功能集。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "通过：入选的 interview-subtitle-review、course-batch-standardizer、memory-moment-card-maker 都分别写明了具体用户群与重复场景/问题，而不是泛化到“所有人”。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "通过：三个入选方向都写清了输入、核心步骤和可见结果，例如访谈视频→转写校对→字幕交付，课程批量→排队链式处理→统一成片，家庭视频→标记瞬间→轻量分享物。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "通过：三个入选方向都复用了已验证能力并且相对原项目在至少两项上实质变化；每个方向都明确对比了原项目的用户、输入、工作流和结果。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "通过：三个入选方向的 scope 分别为 5、5、5 项，均足以闭合其流程且未混入路线图或装饰性功能。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "通过：已核对全部十组方向对；每一对都至少在两个轴上实质不同，且选中的三方向两两之间差异明确，不是同一管线换皮。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "通过：每个入选方向都说明了具体价值：访谈字幕审校减少转写校对与发布摩擦，课程批量定型减少整批统一处理摩擦，成长片段卡片机保留家庭回忆并便于分享。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "通过：三项入选方向中包含面向家庭用户的 memory-moment-card-maker，满足至少一个主要服务个人/家庭/学习/创作/社区的要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}

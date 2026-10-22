@@ -1,53 +1,53 @@
 # GitHub 自动发现报告
 
-- 生成时间：2026-09-01T15:00:46Z
+- 生成时间：2026-09-03T08:44:14Z
 - 搜索路线：12 / 12
 - API 模式：authenticated
-- 可用仓库：192
+- 可用仓库：186
 - 初选仓库：36
 - 等待 AI 深读：5
 - 本轮最多生成候选：5
-- 候选并发上限：2
+- 候选并发上限：3
 - 发布授权：否
 
 ## AI 深读队列
 
-### 1. apache/maka
+### 1. larashero3-dotcom/lieflat-charts
 
 - 搜索方向：AI 与智能助手
-- 评分：84.66
-- Star：4391
-- 语言：TypeScript
-- 简介：Apache Maka (Incubating) is a local-first AI agent workspace. Model messages, tool calls, tool results, permission decisions, and termination events are recorded as an append-only log.
+- 评分：86.7
+- Star：3987
+- 语言：HTML
+- 简介：Data visualization Skill for AI Agents, turning data into polished, interactive HTML charts. 面向 AI Agents 的数据可视化 Skill，将数据快速生成精致、可交互的 HTML 图表。
 
-### 2. Pinvou/pinvou-agent
+### 2. snapotter-hq/SnapOtter
+
+- 搜索方向：自托管与隐私
+- 评分：81.24
+- Star：2410
+- 语言：TypeScript
+- 简介：Open-source, self-hosted file-processing tool. Convert, compress, OCR, transcribe & run local AI across image, video, audio, PDF & documents, via UI, REST API & pipelines. Your files never leave your network.
+
+### 3. Pinvou/pinvou-agent
 
 - 搜索方向：自动化与工作流
-- 评分：80.43
-- Star：1554
+- 评分：80.58
+- Star：1596
 - 语言：Rust
 - 简介：Open-source desktop AI agent for tools, files, knowledge, workflows, and real deliverables.
 
-### 3. apache/superset
+### 4. tejaswigowda/ffmpeg-webCLI
+
+- 搜索方向：视频与音频
+- 评分：79.45
+- Star：1406
+- 语言：JavaScript
+- 简介：A browser-based video editor powered by ffmpeg.wasm. No uploads, no servers -- all processing happens locally in your browser using WebAssembly.
+
+### 5. apache/superset
 
 - 搜索方向：数据工具
 - 评分：79.0
-- Star：74574
+- Star：74607
 - 语言：Python
 - 简介：Apache Superset is a Data Visualization and Data Exploration Platform
-
-### 4. tldraw/tldraw
-
-- 搜索方向：设计与创作
-- 评分：79.0
-- Star：50067
-- 语言：TypeScript
-- 简介：Build infinite canvas apps in React with the tldraw SDK. World's best, top-most agent recommended #1 five star SDK.
-
-### 5. labring/FastGPT
-
-- 搜索方向：知识与笔记
-- 评分：79.0
-- Star：29530
-- 语言：TypeScript
-- 简介：FastGPT is a knowledge-based platform built on the LLMs, offers a comprehensive suite of out-of-the-box capabilities such as data processing, RAG retrieval, and visual AI workflow orchestration, letting you easily develop and deploy complex question-answering systems without the need for extensive setup or configuration.

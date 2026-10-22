@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "projectId": "snapotter",
+  "projectPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/snapotter.project.json",
+  "researchPath": "outputs/generated/discovery-batches/20260903T084424Z-68aee9d4/snapotter.research.md",
+  "projectSha256": "51620affb0d43682bfeae3d318d03c0b91dde27fc1e6d6266d59578637c70743",
+  "researchSha256": "883235214c0a5569a6e5a4d0a9b05eff5183c6a501025979c3d97b5d89ca6674",
+  "reviewedAt": "2026-09-03T08:44:24Z",
+  "items": [
+    {
+      "id": "A1",
+      "evidence": "research notes 的 `Page field evidence` 表把 `repository.githubId`、`repository.fullName`、`repository.name`、`editorial.summary`、`editorial.audience`、`editorial.features`、`editorial.stack` 分别绑定到 F1/F2/F3/F4/F5/F6/F7/F8/F10/F11/F13，且这些事实都在 `Verified repository facts` 中有对应来源。",
+      "status": "pass"
+    },
+    {
+      "id": "A2",
+      "evidence": "`editorial.hook`、`editorial.meaning`、`editorial.opportunity` 以及五个 directions 都明确基于研究笔记中的 F2/F3/F4/F6/F7/F8 等事实做推断，并在 `Page field evidence` 中标为 inferred 或 verified。",
+      "status": "pass"
+    },
+    {
+      "id": "A3",
+      "status": "pass",
+      "evidence": "程序已逐项核对 githubId、fullName、许可证、仓库状态、fetchedAt、Star、Fork 与 pushedAt；项目值与本轮 GitHub 原始快照完全一致，计数保持整数且未转成实时描述。"
+    },
+    {
+      "id": "A4",
+      "evidence": "research notes 的 F13 指出仓库许可证为 AGPL-3.0，且 S4 官方 LICENSE 文件也是 AGPL v3 正文；`repository.state=active` 由 F11 证明，未见与来源冲突的归档/身份信息。",
+      "status": "pass"
+    },
+    {
+      "id": "B1",
+      "evidence": "hook `把图片、视频和PDF都留在本地处理` 是自然中文：‘把…留在本地处理’的宾语和动作搭配清楚，直接点出项目的本地处理特征，没有英文直译式名词堆叠。",
+      "status": "pass"
+    },
+    {
+      "id": "B2",
+      "evidence": "`summary` 同时说明了输入/连接方式（Web UI、REST API、pipelines）、核心操作（处理图片、视频、音频、PDF 与文档）和可见结果（完成转换、压缩、OCR、转录、去元数据、图像编辑、本地 AI 处理）。",
+      "status": "pass"
+    },
+    {
+      "id": "B3",
+      "evidence": "`summary` 与 `features` 共同覆盖了至少三项核心能力：多模态文件处理、200+ 工具、本地 AI、JSON pipelines、REST API、浏览器图像编辑器和 SSO。",
+      "status": "pass"
+    },
+    {
+      "id": "B4",
+      "evidence": "`stack` 保留了 TypeScript、Web UI、REST API、JSON pipelines、Postgres 17、Redis 8、Docker、本地 AI / OCR / 转录等基础词，这些词直接帮助理解自托管文件处理平台如何运行与复用。",
+      "status": "pass"
+    },
+    {
+      "id": "C1",
+      "evidence": "`hook` 只建立记忆点，不展开功能；`summary` 才完整描述平台能力与交互方式，两者职责分离。",
+      "status": "pass"
+    },
+    {
+      "id": "C2",
+      "evidence": "`summary` 只讲 SnapOtter 本身的能力与部署形态；`meaning` 解释这些能力为何可复用，没有把任何新方向写进原项目摘要。",
+      "status": "pass"
+    },
+    {
+      "id": "C3",
+      "evidence": "`meaning` 总结了统一私有部署、多模态处理、批处理和 API 接入的复用价值；`opportunity` 再把这些已验证能力分别连接到家庭归档、课程打包、内容发布、脱敏和内部接入等具体方向。",
+      "status": "pass"
+    },
+    {
+      "id": "C4",
+      "evidence": "项目 `audience` 只描述原项目的自托管用户、团队管理员和接入者；各 direction 的 `audience` 分别指向家庭用户、老师/讲师、短视频创作者、办事人员和内部开发者，`approach` 都给出了完整流程，`scope` 也只保留支撑该流程的最小功能。",
+      "status": "pass"
+    },
+    {
+      "id": "D1",
+      "evidence": "`family-memory-archive` 明确写出家庭用户这一具体人群，以及‘照片、扫描件和录音分散保存、以后难查找和保存’这一重复场景。",
+      "status": "pass"
+    },
+    {
+      "id": "D2",
+      "evidence": "`class-material-packager` 写明输入是讲义、课件、录音和录屏，核心流程是 OCR、转录、字幕生成与格式统一，结果是可分发的课程学习包。",
+      "status": "pass"
+    },
+    {
+      "id": "D3",
+      "evidence": "`document-redaction-desk` 复用了 F2/F3/F4/F5/F8 对应的 PDF/OCR/图片处理/去元数据能力，但把原项目的通用 UI/API 工具选择改成面向办事人员的脱敏流程；在 audience、input、workflow、outcome 四个轴上都发生了实质变化。",
+      "status": "pass"
+    },
+    {
+      "id": "D4",
+      "evidence": "`document-redaction-desk` 的 `scope` 只有 PDF/图片/文档导入、OCR、敏感信息遮盖、元数据清理、安全副本导出与留档，共 5 项，足以完成‘检查—遮盖—清理—导出’流程，没有混入路线图或装饰功能。",
+      "status": "pass"
+    },
+    {
+      "id": "E1",
+      "evidence": "已核对全部十组方向配对；例如 `family-memory-archive` vs `class-material-packager`、`class-material-packager` vs `document-redaction-desk`、`creator-caption-prep` vs `internal-file-gateway` 都在 audience/input/workflow/outcome 上至少两项不同，不是换皮。",
+      "status": "pass"
+    },
+    {
+      "id": "E2",
+      "evidence": "三个入选方向分别减少了不同人群的重复劳动：家庭用户不用手工整理老资料，老师/讲师不用来回拼课程包，办事人员不用自己逐页脱敏。",
+      "status": "pass"
+    },
+    {
+      "id": "E3",
+      "evidence": "入选的三项方向里包含 `family-memory-archive` 这一明显服务个人/家庭的非商业主题，满足‘默认保留非商业价值’要求。",
+      "status": "pass"
+    }
+  ],
+  "blockers": [],
+  "publicationCandidate": true,
+  "publicationAuthorized": false
+}
