@@ -11,6 +11,8 @@ GitHub Inspiration Feed is built for Vibe Coding users who want more than a list
 
 Every candidate goes through deterministic validation, editorial quality checks, and human review before it reaches the public feed. The result is a mobile-first browsing experience that connects open-source discovery with practical product thinking.
 
+![GitHub Inspiration Feed project preview](docs/images/project-preview.png)
+
 ## Highlights
 
 ### Mobile-first inspiration feed
